@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">Ra</string>
+    <string name="TitleActivityTiles">Tiles</string>
+    <string name="TitleActivityScore">Score</string>
+    <string name="TitleActivityNewGame">New Game</string>
+    <string name="TitleEpoch">"Epoch: "</string>
+    <string name="TitleRaTrack">"Ra Track: "</string>
+    <string name="TitleAuctionTrack">Auction:</string>
+    <string name="TitleBidDialog">Bid</string>
+    <string name="TitleGodDialog">Exchange for</string>
+    <string name="TitleScoreEpoch">Score for Epoch %d</string>
+    <string name="CurrentPlayer">Current Player: %d</string>
+    <string name="btnPlay">Play</string>
+    <string name="btnQuit">Quit</string>
+    <string name="btnDraw">Draw</string>
+    <string name="btnAuction">Auction</string>
+    <string name="btnGod">God</string>
+    <string name="defaultName">You</string>
+    <string name="StatusTurnStart">%s\'s turn</string>
+    <string name="StatusDrewTile" formatted="false">%s drew a %s tile</string>
+    <string name="StatusUsedGod">%s used 1 or more God tiles</string>
+    <string name="StatusCallsAuction">%s calls Ra</string>
+    <string name="StatusAuctionPlayerBid" formatted="false">%s bid %d</string>
+    <string name="StatusAuctionPlayerPassed">%s passed</string>
+    <string name="StatusAuctionWon">%s won the auction</string>
+    <string name="StatusAuctionEveryonePassed">Everyone passed in the auction</string>
+    <string name="StatusEpochOver">Epoch %d is over</string>
+    <string name="StatusGameOver">%s won</string>
+    <string name="BidPass">Pass</string>
+    <string name="TitlePlayer1">Player 1:</string>
+    <string name="TitlePlayer2">Player 2:</string>
+    <string name="TitlePlayer3">Player 3:</string>
+    <string name="TitlePlayer4">Player 4:</string>
+    <string name="TitlePlayer5">Player 5:</string>
+    <string name="cbHuman">Human</string>
+    <string-array name="NamesAiEasy">
+        <item>AI Easy 1</item>
+        <item>Anubis</item>
+        <item>Bastet</item>
+        <item>Chnum</item>
+        <item>Horus</item>
+    </string-array>
+    <string-array name="NamesAiMedium">
+        <item>AI Medium 1</item>
+        <item>Seth</item>
+        <item>Sobek</item>
+        <item>Thoth</item>
+        <item>Uto</item>
+    </string-array>
+    <string-array name="NamesAiHard">
+        <item>AI Hard 1</item>
+        <item>AI Hard 2</item>
+        <item>AI Hard 3</item>
+        <item>AI Hard 4</item>
+        <item>AI Hard 5</item>
+    </string-array>
 </resources>

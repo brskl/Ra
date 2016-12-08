@@ -1,5 +1,6 @@
 package com.example.ben.ra;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -175,11 +176,13 @@ public class NewGameActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    private void StartGame()
+    private void StartGame(View v)
     {
         // Setup Game
 
         // Start GameActivity
+        Intent intent = new Intent(v.getContext(), GameActivity.class);
+        startActivity(intent);
 
         // TODO: can we finish this activity now so Game Activity will go back to main
         // Seems to work, test some more
@@ -249,7 +252,7 @@ public class NewGameActivity extends AppCompatActivity {
                 Log.v(NewGameActivity.class.toString(), "buttonOK pressed");
                 SavePreferences();
 
-                StartGame();
+                StartGame(v);
 
         }
     }

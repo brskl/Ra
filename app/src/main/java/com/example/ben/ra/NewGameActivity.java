@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import junit.framework.Assert;
+
 public class NewGameActivity extends AppCompatActivity {
     private int nPlayers;
     private boolean [] afHuman = new boolean [Game.nMaxPlayers_c];
@@ -134,6 +136,56 @@ public class NewGameActivity extends AppCompatActivity {
         }
     }
 
+    private void SetupClickCheckBox(View v, int iPlayer)
+    {
+        EditText et;
+
+        afHuman[iPlayer] = ((CheckBox) v).isChecked();
+        et = (EditText) findViewById(aietPlayers[iPlayer]);
+        if (!afHuman[iPlayer])
+        {
+            asNames[iPlayer] = AIname(iPlayer);
+            et.setText(asNames[iPlayer]);
+        }
+        // TODO: else if new human, make the text field have the focus
+    }
+
+    private void SavePreferences()
+    {
+        EditText et;
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = settings.edit();
+
+        editor.putInt("NumPlayers", nPlayers);
+        editor.putBoolean("Player2Human", afHuman[1]);
+        editor.putBoolean("Player3Human", afHuman[2]);
+        editor.putBoolean("Player4Human", afHuman[3]);
+        editor.putBoolean("Player5Human", afHuman[4]);
+        for (int i = 0; i < Game.nMaxPlayers_c; i++)
+        {
+            if (afHuman[i])
+            {
+                et = (EditText) findViewById(aietPlayers[i]);
+                asNames[i] = et.getText().toString();
+                editor.putString(aisPrefNames[i], asNames[i]);
+            }
+        }
+
+        editor.commit();
+    }
+
+    private void StartGame()
+    {
+        // Setup Game
+
+        // Start GameActivity
+
+        // TODO: can we finish this activity now so Game Activity will go back to main
+        // Seems to work, test some more
+        finish();
+    }
+
     public void onClickNewGameRadio(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameRadio");
@@ -161,7 +213,27 @@ public class NewGameActivity extends AppCompatActivity {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameCheckbox");
 
         switch(v.getId()) {
+            case R.id.checkBox1:
+                Assert.fail("CheckBox1 clicked, should never be enabled");
+                break;
+            case R.id.checkBox2:
+                Log.v(NewGameActivity.class.toString(), "checkBox2 pressed");
+                SetupClickCheckBox(v, 1);
+                break;
+            case R.id.checkBox3:
+                Log.v(NewGameActivity.class.toString(), "checkBox3 pressed");
+                SetupClickCheckBox(v, 2);
+                break;
+            case R.id.checkBox4:
+                Log.v(NewGameActivity.class.toString(), "checkBox4 pressed");
+                SetupClickCheckBox(v, 3);
+                break;
+            case R.id.checkBox5:
+                Log.v(NewGameActivity.class.toString(), "checkBox5 pressed");
+                SetupClickCheckBox(v, 4);
+                break;
         }
+        EnableUx();
     }
 
     public void onClickNewGameButton(View v)
@@ -169,6 +241,16 @@ public class NewGameActivity extends AppCompatActivity {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameButton");
 
         switch(v.getId()) {
+            case R.id.buttonCancel:
+                Log.v(NewGameActivity.class.toString(), "buttonCancel pressed");
+                finish(); // TODO: return cancel request code
+                break;
+            case R.id.buttonOK:
+                Log.v(NewGameActivity.class.toString(), "buttonOK pressed");
+                SavePreferences();
+
+                StartGame();
+
         }
     }
 }

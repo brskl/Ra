@@ -12,22 +12,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d(MainActivity.class.toString(), "onCreate");
     }
 
     public void onClickMain(View v)
     {
+        Log.d(MainActivity.class.toString(), "onClickMain");
+
         switch(v.getId())
         {
             case R.id.buttonPlay:
             {
-                Log.v("UI", "Starting NewGameActivity");
+                Log.v(MainActivity.class.toString(), "Starting NewGameActivity");
 
                 Intent intent = new Intent(v.getContext(), NewGameActivity.class);
                 startActivity(intent);
             }
             break;
             case R.id.buttonQuit:
-                Log.v("UI", "Exitting app");
+                Log.v(MainActivity.class.toString(), "Exitting app");
                 finish();
                 break;
         }

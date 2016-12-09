@@ -173,12 +173,18 @@ public class NewGameActivity extends AppCompatActivity {
             }
         }
 
-        editor.commit();
+        editor.apply();
     }
 
     private void StartGame(View v)
     {
-        // Setup Game
+        // Setup Game instance
+        Game game = Game.getInstance();
+
+        game.initialize(nPlayers);
+        for (int i = 0; i < nPlayers; i++) {
+            game.setPlayer(i, asNames[i], true, afHuman[i], aiAILevel[i]);
+        }
 
         // Start GameActivity
         Intent intent = new Intent(v.getContext(), GameActivity.class);

@@ -10,6 +10,8 @@ public class Game {
 
     private static Game instance = null;
 
+    private int nPlayers = 0;
+
     private Game() {
         // defeat normal instantiation
     }
@@ -22,9 +24,17 @@ public class Game {
         return instance;
     }
 
-    public void initialize(int nPlayers)
+    public int getNPlayers()
     {
+        return nPlayers;
+    }
 
+    public void initialize(int nPlayersValue)
+    {
+        if (nPlayersValue < 3 || nPlayersValue > nMaxPlayers_c)
+            throw new IllegalArgumentException("Illegal number of players");
+
+        nPlayers = nPlayersValue;
     }
 
     public void setPlayer(int index, String name, boolean fLocal, boolean fHuman, int aiLevel)

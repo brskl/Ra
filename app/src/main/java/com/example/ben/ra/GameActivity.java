@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import static com.example.ben.ra.Game.getInstance;
+
 public class GameActivity extends AppCompatActivity {
 
     @Override
@@ -13,8 +15,35 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         Log.d(GameActivity.class.toString(), "onCreate");
+
+        SetNumplayerUI();
     }
 
-    public void onClickGame(View v)
-    {}
+    private void SetNumplayerUI() {
+        View v;
+        Game game = Game.getInstance();
+
+        switch (game.getNPlayers()) {
+            case 3:
+                v = findViewById(R.id.textViewNamePlayer4);
+                v.setVisibility(View.GONE);
+                v = findViewById(R.id.textViewSunsPlayer4);
+                v.setVisibility(View.GONE);
+                // fall through
+            case 4:
+                v = findViewById(R.id.textViewNamePlayer5);
+                v.setVisibility(View.GONE);
+                v = findViewById(R.id.textViewSunsPlayer5);
+                v.setVisibility(View.GONE);
+                break;
+            default:
+                // do nothing
+                break;
+        }
+    }
+
+    public void onClickGame(View v){
+        Log.d(GameActivity.class.toString(), "onClickGame");
+
+    }
 }

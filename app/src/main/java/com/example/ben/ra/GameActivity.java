@@ -3,6 +3,7 @@ package com.example.ben.ra;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -13,4 +14,7 @@ public class GameActivity extends AppCompatActivity {
 
         Log.d(GameActivity.class.toString(), "onCreate");
     }
+
+    public void onClickGame(View v)
+    {}
 }

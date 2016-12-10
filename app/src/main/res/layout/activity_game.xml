@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_game"
     android:layout_width="match_parent"
@@ -11,10 +11,237 @@
     tools:context="com.example.ben.ra.GameActivity">
 
     <TextView
-        android:id="@+id/textViewTitleGame"
+        android:id="@+id/TextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/TitleActivityGame" />
+
+    <TextView
+        android:id="@+id/textViewEpochTitle"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/TextView1"
+        android:text="@string/TitleEpoch"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewEpochValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game (to be removed)"
+        android:layout_alignTop="@id/textViewEpochTitle"
+        android:layout_centerHorizontal="true"
+        android:text="current epoch"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewRaTrackTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textViewEpochTitle"
+        android:text="@string/TitleRaTrack"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewRaTrackValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textViewRaTrackTitle"
+        android:layout_alignLeft="@id/textViewEpochValue"
+        android:text="Ra&apos;s / Max Ra&apos;s"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewNamePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/textViewEpochTitle"
+        android:layout_below="@id/textViewRaTrackTitle"
+        android:layout_marginTop="28dp"
+        android:text="Player1 name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewNamePlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/textViewNamePlayer1"
+        android:layout_below="@id/textViewNamePlayer1"
+        android:text="Player2 name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewNamePlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/textViewNamePlayer2"
+        android:layout_below="@id/textViewNamePlayer2"
+        android:text="Player3 name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewNamePlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/textViewNamePlayer3"
+        android:layout_below="@id/textViewNamePlayer3"
+        android:text="Player4 name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewNamePlayer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/textViewNamePlayer4"
+        android:layout_below="@id/textViewNamePlayer4"
+        android:text="Player5 name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSunsPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textViewNamePlayer1"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/textViewEpochTitle"
+        android:text="Suns 1"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSunsPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textViewNamePlayer2"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/textViewEpochTitle"
+        android:text="Suns 2"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSunsPlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textViewNamePlayer3"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/textViewEpochTitle"
+        android:text="Suns 3"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSunsPlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textViewNamePlayer4"
+        android:layout_toRightOf="@id/textViewEpochTitle"
+        android:layout_alignParentRight="true"
+        android:text="Suns 4"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSunsPlayer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textViewNamePlayer5"
+        android:layout_toRightOf="@id/textViewEpochTitle"
+        android:layout_alignParentRight="true"
+        android:text="Suns 5"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewCurrentPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewNamePlayer5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/CurrentPlayer"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewAuctionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/textViewCurrentPlayer"
+        android:layout_alignParentLeft="true"
+        android:text="@string/TitleAuctionTrack"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewAuctionItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textViewAuctionTitle"
+        android:layout_centerVertical="true"
+        android:text="tiles for auction"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textViewAuctionItems"
+        android:layout_marginTop="73dp"
+        android:text="Status"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutButtonsHuman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textViewStatus" >
+
+        <Button
+            android:id="@+id/buttonDraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="@string/btnDraw" />
+
+        <Button
+            android:id="@+id/buttonAuction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="@string/btnAuction" />
+
+        <Button
+            android:id="@+id/buttonGod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="@string/btnGod" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayoutButtonsHuman"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickGame"
+        android:text="@android:string/ok" />
+
+    <Button
+        android:id="@+id/buttonTiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayoutButtonsHuman"
+        android:layout_toRightOf="@id/buttonOK"
+        android:onClick="onClickGame"
+        android:text="Tiles" />
+
+</RelativeLayout>

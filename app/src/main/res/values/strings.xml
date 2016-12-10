@@ -3,6 +3,7 @@
     <string name="TitleActivityTiles">Tiles</string>
     <string name="TitleActivityScore">Score</string>
     <string name="TitleActivityNewGame">New Game</string>
+    <string name="TitleActivityGame">Game board</string>
     <string name="TitleEpoch">"Epoch: "</string>
     <string name="TitleRaTrack">"Ra Track: "</string>
     <string name="TitleAuctionTrack">Auction:</string>

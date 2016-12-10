@@ -10,7 +10,8 @@ public class Game {
 
     private static Game instance = null;
 
-    private int nPlayers = 0;
+    protected int nPlayers = 0;
+    protected int iEpoch = 1; // 1,2,3 - current epoch
 
     private Game() {
         // defeat normal instantiation
@@ -27,6 +28,10 @@ public class Game {
     public int getNPlayers()
     {
         return nPlayers;
+    }
+
+    public int getEpoch() {
+        return iEpoch;
     }
 
     public void initialize(int nPlayersValue)

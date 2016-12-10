@@ -4,10 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import static com.example.ben.ra.Game.getInstance;
 
 public class GameActivity extends AppCompatActivity {
+
+    private TextView tvEpoch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +19,11 @@ public class GameActivity extends AppCompatActivity {
 
         Log.d(GameActivity.class.toString(), "onCreate");
 
+        tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
+
         SetNumplayerUI();
+
+        UpdateDisplay();
     }
 
     private void SetNumplayerUI() {
@@ -45,5 +52,18 @@ public class GameActivity extends AppCompatActivity {
     public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
 
+    }
+
+    protected void UpdateDisplayRound()
+    {
+        Game game = Game.getInstance();
+
+        // current epoch
+        tvEpoch.setText(String.format("%d", game.getEpoch()));
+
+    }
+
+    protected void UpdateDisplay()    {
+        UpdateDisplayRound();
     }
 }

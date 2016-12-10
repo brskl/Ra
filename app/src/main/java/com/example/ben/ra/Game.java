@@ -44,6 +44,8 @@ public class Game {
         return iEpoch;
     }
 
+    public int getPlayerCurrent() { return iPlayerCurrent; }
+
     public void initialize(int nPlayersValue)
     {
         if (nPlayersValue < nMinPlayers_c || nPlayersValue > nMaxPlayers_c)
@@ -74,7 +76,7 @@ public class Game {
         int aSunsInitial[][];
         ArrayList<Integer> alSunList = new ArrayList<Integer>(nPlayers);
         int i, j;
-        int iSunList, iSun, iPlayerCurrent;
+        int iSunList, iSun;
 
         // give initial Sun sets to players, determine starting player. First set must be that for starting player
         switch (nPlayers)
@@ -117,14 +119,15 @@ public class Game {
             }
 
             iSun = alSunList.remove(iSunList);
-            Log.v("Gameplay", "Initial sun distribution, player " + (i+1) + " getting set #" + (iSun+1) + " of suns.");
+            Log.v("Gameplay", "Initial sun distribution, player " + Integer.toString(i+1) + " getting set #" + Integer.toString(iSun+1) + " of suns.");
             aPlayers[i].setSuns(new ArrayList<Integer>(nSunsPerPlayer));
             aPlayers[i].setSunsNext(new ArrayList<Integer>(nSunsPerPlayer));
-            for (j = 0; j < nSunsPerPlayer; j++)
+            for (j = 0; j < nSunsPerPlayer; j++) {
                 aPlayers[i].getSuns().add(aSunsInitial[iSun][j]);
+            }
             if (iSun == 0)
             {
-                Log.v("Gameplay", "Starting player is player #" + (i+1));
+                Log.v("Gameplay", "Starting player is player #" + Integer.toString(i+1));
                 iPlayerCurrent = i; // first player
             }
         }

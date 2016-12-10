@@ -11,6 +11,9 @@ import static com.example.ben.ra.Game.getInstance;
 public class GameActivity extends AppCompatActivity {
 
     private TextView tvEpoch;
+    private TextView tvStatus;
+    private TextView atvPlayerSuns[] = new TextView[Game.nMaxPlayers_c];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,12 @@ public class GameActivity extends AppCompatActivity {
         Log.d(GameActivity.class.toString(), "onCreate");
 
         tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
+        tvStatus = (TextView) findViewById(R.id.textViewStatus);
+        atvPlayerSuns[0] = (TextView) findViewById(R.id.textViewSunsPlayer1);
+        atvPlayerSuns[1] = (TextView) findViewById(R.id.textViewSunsPlayer2);
+        atvPlayerSuns[2] = (TextView) findViewById(R.id.textViewSunsPlayer3);
+        atvPlayerSuns[3] = (TextView) findViewById(R.id.textViewSunsPlayer4);
+        atvPlayerSuns[4] = (TextView) findViewById(R.id.textViewSunsPlayer5);
 
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
@@ -58,11 +67,11 @@ public class GameActivity extends AppCompatActivity {
     protected void UpdateDisplayPlayerNames(){
         TextView tv;
         Game game = Game.getInstance();
-        final int tvIDs[] = {R.id.textViewNamePlayer1, R.id.textViewNamePlayer2, R.id.textViewNamePlayer3, R.id.textViewNamePlayer4, R.id.textViewNamePlayer5};
+        final int atvIDs[] = {R.id.textViewNamePlayer1, R.id.textViewNamePlayer2, R.id.textViewNamePlayer3, R.id.textViewNamePlayer4, R.id.textViewNamePlayer5};
 
         for (int i = 0; i < game.getNPlayers(); i++)
         {
-            tv = (TextView) findViewById(tvIDs[i]);
+            tv = (TextView) findViewById(atvIDs[i]);
             tv.setText(getString(R.string.PlayerNamePlaceholder, game.aPlayers[i].getName()));
         }
     }
@@ -72,10 +81,49 @@ public class GameActivity extends AppCompatActivity {
 
         // current epoch
         tvEpoch.setText(String.format("%d", game.getEpoch()));
+    }
 
+    protected void UpdateDisplayPlayerSuns(int iPlayer)
+    {
+        Game game = Game.getInstance();
+        StringBuilder sb = new StringBuilder();
+        boolean fFirst = true;
+        int i;
+
+        for (i = 0; i < game.aPlayers[iPlayer].getSuns().size(); i++)
+        {
+            if (fFirst)
+                fFirst = false;
+            else
+                sb.append(", ");
+            sb.append(game.aPlayers[iPlayer].getSuns().get(i).toString());
+        }
+
+        sb.append(" : ");
+        fFirst = true;
+        for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
+        {
+            if (fFirst)
+                fFirst = false;
+            else
+                sb.append(", ");
+            sb.append(game.aPlayers[iPlayer].alSunsNext.get(i).toString());
+        }
+        atvPlayerSuns[iPlayer].setText(sb.toString());
+    }
+
+    protected void UpdateDisplayPlayersSuns()
+    {
+        Game game = Game.getInstance();
+
+        for (int i = 0; i < game.getNPlayers(); i++)
+        {
+            UpdateDisplayPlayerSuns(i);
+        }
     }
 
     protected void UpdateDisplay(){
         UpdateDisplayRound();
+        UpdateDisplayPlayersSuns();
     }
 }

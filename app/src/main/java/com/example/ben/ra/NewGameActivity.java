@@ -185,6 +185,7 @@ public class NewGameActivity extends AppCompatActivity {
         for (int i = 0; i < nPlayers; i++) {
             game.setPlayer(i, asNames[i], true, afHuman[i], aiAILevel[i]);
         }
+        game.initializeSuns();
 
         // Start GameActivity
         Intent intent = new Intent(v.getContext(), GameActivity.class);

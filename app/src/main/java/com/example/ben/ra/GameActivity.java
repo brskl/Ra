@@ -22,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
         tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
 
         SetNumplayerUI();
+        UpdateDisplayPlayerNames();
 
         UpdateDisplay();
     }
@@ -54,8 +55,19 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    protected void UpdateDisplayRound()
-    {
+    protected void UpdateDisplayPlayerNames(){
+        TextView tv;
+        Game game = Game.getInstance();
+        final int tvIDs[] = {R.id.textViewNamePlayer1, R.id.textViewNamePlayer2, R.id.textViewNamePlayer3, R.id.textViewNamePlayer4, R.id.textViewNamePlayer5};
+
+        for (int i = 0; i < game.getNPlayers(); i++)
+        {
+            tv = (TextView) findViewById(tvIDs[i]);
+            tv.setText(getString(R.string.PlayerNamePlaceholder, game.aPlayers[i].getName()));
+        }
+    }
+
+    protected void UpdateDisplayRound() {
         Game game = Game.getInstance();
 
         // current epoch
@@ -63,7 +75,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    protected void UpdateDisplay()    {
+    protected void UpdateDisplay(){
         UpdateDisplayRound();
     }
 }

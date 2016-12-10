@@ -27,6 +27,7 @@
     <string name="StatusAuctionEveryonePassed">Everyone passed in the auction</string>
     <string name="StatusEpochOver">Epoch %d is over</string>
     <string name="StatusGameOver">%s won</string>
+    <string name="PlayerNamePlaceholder">%s:</string>
     <string name="BidPass">Pass</string>
     <string name="TitlePlayer1">Player 1:</string>
     <string name="TitlePlayer2">Player 2:</string>

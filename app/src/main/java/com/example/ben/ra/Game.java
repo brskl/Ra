@@ -20,6 +20,7 @@ public class Game {
     protected int nPlayers = 0;
     protected int iPlayerCurrent = -1; // n-1 index
     protected int iEpoch = 1; // 1,2,3 - current epoch
+    protected int nRa = 0; // number of Ra tiles played
     protected Player [] aPlayers = null;
     private Random rndPlay = null;
 
@@ -43,6 +44,10 @@ public class Game {
     public int getEpoch() {
         return iEpoch;
     }
+
+    public int getRas() { return nRa; }
+
+    public int getMaxRas() {return nPlayers + 5; }
 
     public int getPlayerCurrent() { return iPlayerCurrent; }
 

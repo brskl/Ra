@@ -13,6 +13,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvEpoch;
     private TextView tvStatus;
     private TextView tvCurrentPlayer;
+    private TextView tvRaTrackValue;
     private TextView atvPlayerSuns[] = new TextView[Game.nMaxPlayers_c];
 
 
@@ -26,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
         tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
         tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
+        tvRaTrackValue = (TextView) findViewById(R.id.textViewRaTrackValue);
         atvPlayerSuns[0] = (TextView) findViewById(R.id.textViewSunsPlayer1);
         atvPlayerSuns[1] = (TextView) findViewById(R.id.textViewSunsPlayer2);
         atvPlayerSuns[2] = (TextView) findViewById(R.id.textViewSunsPlayer3);
@@ -83,6 +85,9 @@ public class GameActivity extends AppCompatActivity {
 
         // current epoch
         tvEpoch.setText(String.format("%d", game.getEpoch()));
+
+        // current number of Ra tiles
+        tvRaTrackValue.setText(String.format("%d / %d", game.getRas(), game.getMaxRas()));
 
         // current player
         tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent()+1));

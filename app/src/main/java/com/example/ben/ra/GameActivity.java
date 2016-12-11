@@ -90,7 +90,7 @@ public class GameActivity extends AppCompatActivity {
         tvRaTrackValue.setText(String.format("%d / %d", game.getRas(), game.getMaxRas()));
 
         // current player
-        tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent()+1));
+        tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));
     }
 
     protected void UpdateDisplayPlayerSuns(int iPlayer)

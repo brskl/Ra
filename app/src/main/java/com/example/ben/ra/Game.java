@@ -49,7 +49,7 @@ public class Game {
 
     public int getMaxRas() {return nPlayers + 5; }
 
-    public int getPlayerCurrent() { return iPlayerCurrent; }
+    public Player getPlayerCurrent() { return aPlayers[iPlayerCurrent]; }
 
     public void initialize(int nPlayersValue)
     {

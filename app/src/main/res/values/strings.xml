@@ -10,7 +10,7 @@
     <string name="TitleBidDialog">Bid</string>
     <string name="TitleGodDialog">Exchange for</string>
     <string name="TitleScoreEpoch">Score for Epoch %d</string>
-    <string name="CurrentPlayer">Current Player: %d</string>
+    <string name="CurrentPlayer">Current Player: %s</string>
     <string name="btnPlay">Play</string>
     <string name="btnQuit">Quit</string>
     <string name="btnDraw">Draw</string>

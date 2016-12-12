@@ -15,11 +15,14 @@ public class Game {
     static final int nMinPlayers_c = 3;
     static final int nMaxPlayers_c = 5;
 
+    public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, AuctionUserMakingBid, ResolveDisaster, EpochOver };
+
     private static Game instance = null;
 
     protected int nPlayers = 0;
     protected int iPlayerCurrent = -1; // n-1 index
     protected int iEpoch = 1; // 1,2,3 - current epoch
+    protected Status statusCurrent = Status.TurnStart;
     protected int nRa = 0; // number of Ra tiles played
     protected Player [] aPlayers = null;
     private Random rndPlay = null;
@@ -44,6 +47,8 @@ public class Game {
     public int getEpoch() {
         return iEpoch;
     }
+
+    public Status getStatusCurrent() { return statusCurrent; }
 
     public int getRas() { return nRa; }
 

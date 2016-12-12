@@ -132,8 +132,23 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    protected void UpdateDisplayStatus(){
+        Game game = Game.getInstance();
+
+        switch(game.getStatusCurrent())
+        {
+            case TurnStart:
+                tvStatus.setText(getString(R.string.StatusTurnStart, game.getPlayerCurrent().getName()));
+                break;
+            default:
+                // TODO replace with assert
+                tvStatus.setText("Not Yet Implemented");
+                break;
+        }
+    }
     protected void UpdateDisplay(){
         UpdateDisplayRound();
         UpdateDisplayPlayersSuns();
+        UpdateDisplayStatus();
     }
 }

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static com.example.ben.ra.Game.getInstance;
@@ -15,7 +16,10 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvCurrentPlayer;
     private TextView tvRaTrackValue;
     private TextView atvPlayerSuns[] = new TextView[Game.nMaxPlayers_c];
-
+    private Button btnOk;
+    private Button btnAuction;
+    private Button btnDraw;
+    private Button btnGod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class GameActivity extends AppCompatActivity {
         atvPlayerSuns[2] = (TextView) findViewById(R.id.textViewSunsPlayer3);
         atvPlayerSuns[3] = (TextView) findViewById(R.id.textViewSunsPlayer4);
         atvPlayerSuns[4] = (TextView) findViewById(R.id.textViewSunsPlayer5);
+        btnOk = (Button) findViewById(R.id.buttonOK);
+        btnAuction = (Button) findViewById(R.id.buttonAuction);
+        btnDraw = (Button) findViewById(R.id.buttonDraw);
+        btnGod = (Button) findViewById(R.id.buttonGod);
 
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
@@ -65,7 +73,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
-
     }
 
     protected void UpdateDisplayPlayerNames(){
@@ -146,9 +153,30 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    protected void UpdateDisplayButtons()
+    {
+        boolean fCurrentPlayerLocalHuman;
+        boolean fOKonly = true;
+        Game game = Game.getInstance();
+
+        fCurrentPlayerLocalHuman = (game.getPlayerCurrent().getHuman() && game.getPlayerCurrent().getLocal());
+        if (fCurrentPlayerLocalHuman)
+        {
+            if (game.getStatusCurrent() == Game.Status.TurnStart)
+                fOKonly = false;
+        }
+
+        btnOk.setEnabled(fOKonly);
+        btnAuction.setEnabled(!fOKonly);
+        // TODO add Draw button
+        // TODO add God button
+    }
+
     protected void UpdateDisplay(){
         UpdateDisplayRound();
         UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();
+        UpdateDisplayButtons();
     }
 }

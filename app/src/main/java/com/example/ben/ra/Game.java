@@ -129,7 +129,7 @@ public class Game {
             }
 
             iSun = alSunList.remove(iSunList);
-            Log.v("Gameplay", "Initial sun distribution, player " + Integer.toString(i+1) + " getting set #" + Integer.toString(iSun+1) + " of suns.");
+            Log.v(Game.class.toString(), "Initial sun distribution, player " + Integer.toString(i+1) + " getting set #" + Integer.toString(iSun+1) + " of suns.");
             aPlayers[i].setSuns(new ArrayList<Integer>(nSunsPerPlayer));
             aPlayers[i].setSunsNext(new ArrayList<Integer>(nSunsPerPlayer));
             for (j = 0; j < nSunsPerPlayer; j++) {
@@ -137,7 +137,7 @@ public class Game {
             }
             if (iSun == 0)
             {
-                Log.v("Gameplay", "Starting player is player #" + Integer.toString(i+1));
+                Log.v(Game.class.toString(), "Starting player is player #" + Integer.toString(i+1));
                 iPlayerCurrent = i; // first player
             }
         }

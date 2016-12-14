@@ -8,16 +8,29 @@ import java.util.ArrayList;
 public class Player {
     protected String sName = null;
     protected ArrayList<Integer> alSuns = null, alSunsNext = null;
+    // TODO: seperate into PlayerHuman and PlayerAi, make Player an abstract class
+    protected boolean fHuman;
+    protected boolean fLocal = true;
+    protected int iAiLevel = -1;
 
-    Player(String name)
+    Player(String name, boolean local, boolean human, int AiLevel)
     {
         sName = name;
+        fLocal = local;
+        fHuman = human;
+        iAiLevel = AiLevel;
     }
 
     public String getName()
     {
         return sName;
     }
+
+    public boolean getLocal() { return fLocal; }
+
+    public boolean getHuman() { return fHuman; }
+
+    public int getAiLevel() { return iAiLevel; }
 
     public ArrayList<Integer> getSuns()
     {

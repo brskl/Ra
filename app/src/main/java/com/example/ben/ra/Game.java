@@ -14,8 +14,32 @@ import java.util.Random;
 public class Game {
     static final int nMinPlayers_c = 3;
     static final int nMaxPlayers_c = 5;
+    static final int nMaxAuction_c = 8;
 
     public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, AuctionUserMakingBid, ResolveDisaster, EpochOver };
+    public enum Tile {
+        tNone,	// none
+        tRa,	// Ra
+        tGod,	// God
+        tGold,	// Gold
+        tPharaoh,	// Pharaoh
+        tNile, tFlood, // Nile, Flooding Nile
+        tCiv1, tCiv2, tCiv3, tCiv4, tCiv5, // Civilization tiles
+        tMon1, tMon2, tMon3, tMon4, tMon5, tMon6, tMon7, tMon8, // Monument tiles
+        tDisasterP, tDisasterN, tDisasterC, tDisasterM // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
+    };
+    // Number of each kind of tile, must be in same order as enum
+    private static final int anTileTypes_c[] = {
+            0,	// none
+            30,	// Ra
+            8,	// God
+            5,	// Gold
+            25,	// Pharaoh
+            25, 12,	// Nile, Flooding Nile
+            5, 5, 5, 5, 5,	// Civilization tiles
+            5, 5, 5, 5, 5, 5, 5, 5,	// Monument tiles
+            2, 2, 4, 2 // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
+    };
 
     private static Game instance = null;
 
@@ -24,7 +48,10 @@ public class Game {
     protected int iEpoch = 1; // 1,2,3 - current epoch
     protected Status statusCurrent = Status.TurnStart;
     protected int nRa = 0; // number of Ra tiles played
+    protected int iAtAuctionSun = 1; // Sun tile 1 always in auction at start of game
     protected Player [] aPlayers = null;
+    protected ArrayList<Tile> altTilebag = null;
+    protected ArrayList<Tile> altAuction = null;
     private Random rndPlay = null;
 
     private Game() {
@@ -56,6 +83,12 @@ public class Game {
 
     public Player getPlayerCurrent() { return aPlayers[iPlayerCurrent]; }
 
+    public boolean FAuctionTrackFull()
+    {
+        return (altAuction.size() == nMaxAuction_c);
+    }
+
+
     public void initialize(int nPlayersValue)
     {
         if (nPlayersValue < nMinPlayers_c || nPlayersValue > nMaxPlayers_c)
@@ -67,6 +100,8 @@ public class Game {
         nPlayers = nPlayersValue;
 
         aPlayers = new Player[nPlayersValue];
+
+        altAuction = new ArrayList<Tile>(nMaxAuction_c);
     }
 
     public void setPlayer(int index, String name, boolean fLocal, boolean fHuman, int aiLevel)

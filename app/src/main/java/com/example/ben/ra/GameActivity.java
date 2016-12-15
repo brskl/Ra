@@ -86,6 +86,18 @@ public class GameActivity extends AppCompatActivity {
         {
             case TurnStart:
                 Assert.assertFalse(game.getPlayerCurrent().getHuman());
+                if (game.FAuctionTrackFull())
+                {
+                    Log.v(GameActivity.class.toString(), "start in-voluntaary auction");
+                    // TODO: Add code to call StartAuction()
+                }
+                else
+                {
+                    // Get AI decision
+                    // TODO: for now, just draw tile
+                    Log.v(GameActivity.class.toString(), "Get AI decision on what to do");
+                    // TODO: add code to draw tile
+                }
                 break;
             default:
                 Assert.fail();

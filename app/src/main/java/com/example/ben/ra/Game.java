@@ -80,7 +80,7 @@ public class Game {
     public void initializeSuns()
     {
         Log.v(Game.class.toString(), "Initializing Suns");
-        // assert (aPlayers != null);
+        Assert.assertNotNull(aPlayers);
 
         int nSunsPerPlayer;
         int aSunsInitial[][];
@@ -118,13 +118,13 @@ public class Game {
             // if only 1 player left
             if (i == nPlayers - 1)
             {
-                // assert (1 == alSunList.size()); // only 1 remaining set
+                Assert.assertEquals(1, alSunList.size()); // only 1 remaining set
                 iSunList = 0;
             }
             else
             {
                 // randomly choose a player
-                // Assert.assertTrue("", alSunList.size() > 1);
+                Assert.assertTrue(alSunList.size() > 1);
                 iSunList = rndPlay.nextInt(alSunList.size());
             }
 

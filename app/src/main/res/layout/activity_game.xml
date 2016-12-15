@@ -232,7 +232,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/LinearLayoutButtonsHuman"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickGame"
+        android:onClick="onClickGameOk"
         android:text="@android:string/ok" />
 
     <Button

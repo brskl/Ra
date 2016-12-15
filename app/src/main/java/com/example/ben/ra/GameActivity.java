@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import junit.framework.Assert;
+
 import static com.example.ben.ra.Game.getInstance;
 
 public class GameActivity extends AppCompatActivity {
@@ -73,6 +75,21 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
+    }
+
+    public void onClickGameOk(View v)
+    {
+        Log.d(GameActivity.class.toString(), "onClickGameOk");
+
+        Game game = Game.getInstance();
+        switch (game.getStatusCurrent())
+        {
+            case TurnStart:
+                Assert.assertFalse(game.getPlayerCurrent().getHuman());
+                break;
+            default:
+                Assert.fail();
+        }
     }
 
     protected void UpdateDisplayPlayerNames(){

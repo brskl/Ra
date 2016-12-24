@@ -218,4 +218,27 @@ public class Game {
             }
         }
     }
+
+    public void DrawTile()
+    {
+        int iTile;
+
+        Assert.assertTrue("Auction block should have space left", altAuction.size() < nMaxAuction_c);
+        Assert.assertFalse("Tile bag should not be empty", altTilebag.isEmpty());
+        iTile = rndPlay.nextInt(altTilebag.size()); // iTile = 0 if test sequence
+        tLastDrawn = altTilebag.remove(iTile);
+        anTilebag[tLastDrawn.ordinal()]--;
+        Assert.assertTrue(anTilebag[tLastDrawn.ordinal()] >= 0);
+        Log.v(Game.class.toString(), "drawn from tile bag: " + tLastDrawn.name());
+        if (tLastDrawn == Tile.tRa)
+        {
+            nRa++;
+            Assert.assertTrue("Too many Ras", nRa <= getMaxRas());
+        }
+        else
+        {
+            altAuction.add(tLastDrawn);
+        }
+        statusCurrent = Status.DrewTile;
+    }
 }

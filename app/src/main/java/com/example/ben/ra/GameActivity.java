@@ -1,5 +1,6 @@
 package com.example.ben.ra;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -94,6 +95,38 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
+
+        Game game = Game.getInstance();
+
+        switch(v.getId()) {
+            case R.id.buttonOK:
+                Log.v("UI", "buttonOK pressed");
+                onClickGameOk(v);
+                break;
+            case R.id.buttonAuction:
+                Log.v("UI", "buttonAuction pressed");
+                // if auction track full, auction is not voluntary
+        //         StartAuction(!game.FAuctionTrackFull());
+                break;
+            case R.id.buttonDraw:
+                Log.v("UI", "buttonDraw pressed");
+                Assert.assertFalse(game.FAuctionTrackFull());
+                game.DrawTile();
+                break;
+            case R.id.buttonGod:
+                Log.v("UI", "buttonGod pressed");
+         //       PlayerGodDialog(); // ???
+                break;
+            case R.id.buttonTiles:
+            {
+                Log.v("UI", "Starting RaTilesActivity");
+        //        Intent intent = new Intent(v.getContext(), RaTilesActivity.class);
+        //        startActivity(intent);
+            }
+            break;
+        }
+
+        UpdateDisplay();
     }
 
     public void onClickGameOk(View v)
@@ -116,6 +149,7 @@ public class GameActivity extends AppCompatActivity {
                     // TODO: for now, just draw tile
                     Log.v(GameActivity.class.toString(), "Get AI decision on what to do");
                     // TODO: add code to draw tile
+                    game.DrawTile();
                 }
                 break;
             default:

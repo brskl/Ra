@@ -9,14 +9,32 @@ import android.widget.TextView;
 
 import junit.framework.Assert;
 
+import java.util.ArrayList;
+
 import static com.example.ben.ra.Game.getInstance;
 
 public class GameActivity extends AppCompatActivity {
+    // Must be in same order as RaGame.Tile enum
+    // All 2 characters for formatting
+    private final String sTiles [] = {
+            "",		// none
+            "Ra",	// Ra
+            "G ",	// God
+            "Au",	// Gold
+            "P ",	// Pharaoh
+            "N ",	// Nile
+            "NF",	// Nile Flood
+            "C1", "C2", "C3", "C4", "C5",	// Civs
+            "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", // Monuments
+            "DP", "DN", "DC", "DM"	// Disasters (Pharaoh, Nile, Civs, Monuments)
+    };
+
 
     private TextView tvEpoch;
     private TextView tvStatus;
     private TextView tvCurrentPlayer;
     private TextView tvRaTrackValue;
+    private TextView tvAuctionItems;
     private TextView atvPlayerSuns[] = new TextView[Game.nMaxPlayers_c];
     private Button btnOk;
     private Button btnAuction;
@@ -34,6 +52,7 @@ public class GameActivity extends AppCompatActivity {
         tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
         tvRaTrackValue = (TextView) findViewById(R.id.textViewRaTrackValue);
+        tvAuctionItems = (TextView) findViewById(R.id.textViewAuctionItems);
         atvPlayerSuns[0] = (TextView) findViewById(R.id.textViewSunsPlayer1);
         atvPlayerSuns[1] = (TextView) findViewById(R.id.textViewSunsPlayer2);
         atvPlayerSuns[2] = (TextView) findViewById(R.id.textViewSunsPlayer3);
@@ -183,6 +202,28 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    private String TileString(Game.Tile etValue)
+    {
+        return sTiles[etValue.ordinal()];
+    }
+
+    protected void UpdateDisplayAuction(){
+        Game game = Game.getInstance();
+
+        StringBuilder sbAuction = new StringBuilder();
+
+        // add current sun
+        sbAuction.append(String.format("%2d; ", game.getAtAuctionSun()));
+
+        // add current tiles
+        for (Game.Tile tile: game.getAuction())
+        {
+            sbAuction.append(TileString(tile) + " ");
+        }
+
+        tvAuctionItems.setText(sbAuction.toString());
+    }
+
     protected void UpdateDisplayButtons()
     {
         boolean fCurrentPlayerLocalHuman;
@@ -206,6 +247,7 @@ public class GameActivity extends AppCompatActivity {
         UpdateDisplayRound();
         UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();
+        UpdateDisplayAuction();
         UpdateDisplayButtons();
     }
 }

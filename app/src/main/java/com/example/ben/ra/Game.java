@@ -93,6 +93,8 @@ public class Game {
         return (altAuction.size() == nMaxAuction_c);
     }
 
+    public ArrayList<Tile> getAuction() { return altAuction; }
+
     protected void initalizeTiles()
     {
         Log.v(Game.class.toString(), "Initializing tiles.");

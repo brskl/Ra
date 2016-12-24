@@ -45,13 +45,16 @@ public class Game {
 
     protected int nPlayers = 0;
     protected int iPlayerCurrent = -1; // n-1 index
-    protected int iEpoch = 1; // 1,2,3 - current epoch
-    protected Status statusCurrent = Status.TurnStart;
-    protected int nRa = 0; // number of Ra tiles played
-    protected int iAtAuctionSun = 1; // Sun tile 1 always in auction at start of game
+    protected int iEpoch; // 1,2,3 - current epoch
+    protected Status statusCurrent;
+    protected int nRa; // number of Ra tiles played
     protected Player [] aPlayers = null;
-    protected ArrayList<Tile> altTilebag = null;
+    protected int iAtAuctionSun;
     protected ArrayList<Tile> altAuction = null;
+    protected ArrayList<Tile> altTilebag = null;
+    protected int [] anTilebag = null;
+    protected Tile tLastDrawn;
+
     private Random rndPlay = null;
 
     private Game() {
@@ -77,6 +80,8 @@ public class Game {
 
     public Status getStatusCurrent() { return statusCurrent; }
 
+    public int getAtAuctionSun() { return iAtAuctionSun; }
+
     public int getRas() { return nRa; }
 
     public int getMaxRas() {return nPlayers + 5; }
@@ -88,13 +93,39 @@ public class Game {
         return (altAuction.size() == nMaxAuction_c);
     }
 
+    protected void initalizeTiles()
+    {
+        Log.v(Game.class.toString(), "Initializing tiles.");
+
+        int nTiles;
+        int i, j;
+
+        anTilebag = anTileTypes_c.clone();
+
+        // put tiles in bag
+        // total is constant, but easier to figure , TODO: change this???
+        nTiles = 0;
+        for (i = 0; i < anTileTypes_c.length; i++) {
+            nTiles += anTileTypes_c[i];
+        }
+
+        altTilebag = new ArrayList<Tile>(nTiles);
+
+        for (i = 0; i < anTileTypes_c.length; i++)
+        {
+            for (j = 0; j < anTileTypes_c[i]; j++)
+            {
+                altTilebag.add(Tile.values()[i]);
+            }
+        }
+    }
 
     public void initialize(int nPlayersValue)
     {
         if (nPlayersValue < nMinPlayers_c || nPlayersValue > nMaxPlayers_c)
             throw new IllegalArgumentException("Illegal number of players");
 
-        Log.v("Gameplay", "Initializing game for " + nPlayersValue + " players.");
+        Log.v(Game.class.toString(), "Initializing game for " + nPlayersValue + " players.");
 
         rndPlay = new Random(); // TODO: replace with own random class which can save sequence and replay
         nPlayers = nPlayersValue;
@@ -102,6 +133,14 @@ public class Game {
         aPlayers = new Player[nPlayersValue];
 
         altAuction = new ArrayList<Tile>(nMaxAuction_c);
+
+        tLastDrawn = Tile.tNone;
+        statusCurrent = Status.TurnStart;
+        nRa = 0;
+        iAtAuctionSun = 1; // Sun tile 1 always in auction at start of game
+        iEpoch = 1;
+
+        initalizeTiles();
     }
 
     public void setPlayer(int index, String name, boolean fLocal, boolean fHuman, int aiLevel)

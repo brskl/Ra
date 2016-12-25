@@ -95,6 +95,8 @@ public class Game {
 
     public ArrayList<Tile> getAuction() { return altAuction; }
 
+    public Tile getTileLastDrawn() { return tLastDrawn; }
+
     protected void initalizeTiles()
     {
         Log.v(Game.class.toString(), "Initializing tiles.");

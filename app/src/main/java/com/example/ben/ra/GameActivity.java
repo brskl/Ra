@@ -223,17 +223,23 @@ public class GameActivity extends AppCompatActivity {
 
     protected void UpdateDisplayStatus(){
         Game game = Game.getInstance();
+        String sStatus;
 
         switch(game.getStatusCurrent())
         {
             case TurnStart:
-                tvStatus.setText(getString(R.string.StatusTurnStart, game.getPlayerCurrent().getName()));
+                sStatus = getString(R.string.StatusTurnStart, game.getPlayerCurrent().getName());
+                break;
+            case DrewTile:
+                sStatus = getString(R.string.StatusDrewTile, game.getPlayerCurrent().getName(), TileString(game.getTileLastDrawn()));
                 break;
             default:
                 // TODO replace with assert
-                tvStatus.setText("Not Yet Implemented");
+                sStatus = "Not Yet Implemented";
                 break;
         }
+
+        tvStatus.setText(sStatus);
     }
 
     private String TileString(Game.Tile etValue)

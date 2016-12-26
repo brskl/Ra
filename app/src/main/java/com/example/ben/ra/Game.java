@@ -244,6 +244,43 @@ public class Game {
         statusCurrent = Status.DrewTile;
     }
 
+    protected boolean FEpochOver()
+    {
+        switch (statusCurrent)
+        {
+            case DrewTile:
+                if (nRa == getMaxRas()) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case AuctionWon:
+                for (Player player : aPlayers)
+                {
+                    if (!player.alSuns.isEmpty())
+                        return false;
+                }
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public boolean TestEpochOver()
+    {
+        if (FEpochOver())
+        {
+            Assert.assertTrue(statusCurrent == Status.DrewTile || statusCurrent == Status.AuctionWon);
+            statusCurrent = Status.EpochOver;
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public void SetNextPlayerTurn()
     {
         int iNext = iPlayerCurrent;
@@ -258,7 +295,7 @@ public class Game {
                 break;
         }
         iPlayerCurrent = iNext;
-    //    Assert.assertTrue("Can't determine next player", !aPlayers[iPlayerCurrent].alSuns.isEmpty() || FEpochOver());
+        Assert.assertTrue("Can't determine next player", !aPlayers[iPlayerCurrent].alSuns.isEmpty() || FEpochOver());
         statusCurrent = Status.TurnStart;
     }
 }

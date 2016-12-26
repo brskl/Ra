@@ -235,7 +235,7 @@ public class GameActivity extends AppCompatActivity {
 
     protected void UpdateDisplayStatus(){
         Game game = Game.getInstance();
-        String sStatus;
+        String sStatus = null;
 
         switch(game.getStatusCurrent())
         {
@@ -251,6 +251,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
+        Assert.assertNotNull("Illegal Status", sStatus);
         tvStatus.setText(sStatus);
     }
 

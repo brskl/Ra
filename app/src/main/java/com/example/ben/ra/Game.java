@@ -243,4 +243,24 @@ public class Game {
         }
         statusCurrent = Status.DrewTile;
     }
+
+    public void SetNextPlayerTurn()
+    {
+        int iNext = iPlayerCurrent;
+        int i;
+
+        // Can be same player if current player has suns and all other players do not.
+
+        for (i = 0; i < nPlayers; i++)
+        {
+            iNext = (iNext + 1) % nPlayers;
+            if (!aPlayers[iNext].alSuns.isEmpty())
+                break;
+        }
+        iPlayerCurrent = iNext;
+    //    Assert.assertTrue("Can't determine next player", !aPlayers[iPlayerCurrent].alSuns.isEmpty() || FEpochOver());
+        statusCurrent = Status.TurnStart;
+    }
 }
+
+

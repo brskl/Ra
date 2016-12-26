@@ -115,7 +115,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case R.id.buttonGod:
                 Log.v("UI", "buttonGod pressed");
-         //       PlayerGodDialog(); // ???
+        //        PlayerGodDialog(); // ???
                 break;
             case R.id.buttonTiles:
             {
@@ -150,6 +150,18 @@ public class GameActivity extends AppCompatActivity {
                     Log.v(GameActivity.class.toString(), "Get AI decision on what to do");
                     // TODO: add code to draw tile
                     game.DrawTile();
+                }
+                break;
+            case DrewTile:
+                if (game.getTileLastDrawn() == Game.Tile.tRa)
+                {
+     //               if (raGame.FEpochOver())
+     //                   DoEpochOver();
+     //               else
+     //                   StartAuction(false);
+                }
+                else {
+                    game.SetNextPlayerTurn();
                 }
                 break;
             default:

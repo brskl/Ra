@@ -93,6 +93,26 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    protected void StartAuction(boolean fVoluntary)
+    {
+
+        Log.v(GameActivity.class.toString(), "Auction started, voluntary " + fVoluntary);
+
+        Game game = Game.getInstance();
+
+        Assert.assertTrue(( game.getStatusCurrent() == Game.Status.TurnStart) ||
+                          ((game.getStatusCurrent() == Game.Status.DrewTile) &&
+                           (game.getTileLastDrawn() == Game.Tile.tRa)));
+
+        game.InitAuction(fVoluntary);
+
+        // TEST CODE
+
+        // real code
+        //game.SetNextPlayerAuction();
+        //this.DoAuctionBid();
+    }
+
     public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
 
@@ -155,14 +175,18 @@ public class GameActivity extends AppCompatActivity {
             case DrewTile:
                 if (game.getTileLastDrawn() == Game.Tile.tRa)
                 {
-     //               if (raGame.FEpochOver())
-     //                   DoEpochOver();
-     //               else
-     //                   StartAuction(false);
-                }
-                else {
+                    if (game.TestEpochOver()) {
+                        //                   DoEpochOver();
+                        ;
+                    } else {
+                        StartAuction(false);
+                    }
+                } else {
                     game.SetNextPlayerTurn();
                 }
+                break;
+            case AuctionEveryonePassed:
+                game.SetNextPlayerTurn();
                 break;
             default:
                 Assert.fail();
@@ -244,6 +268,12 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case DrewTile:
                 sStatus = getString(R.string.StatusDrewTile, game.getPlayerCurrent().getName(), TileString(game.getTileLastDrawn()));
+                break;
+            case EpochOver:
+                sStatus = getString(R.string.StatusEpochOver, game.getEpoch());
+                break;
+            case AuctionEveryonePassed:
+                sStatus = getString(R.string.StatusAuctionEveryonePassed);
                 break;
             default:
                 // TODO replace with assert

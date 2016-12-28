@@ -15,6 +15,7 @@ public class Game {
     static final int nMinPlayers_c = 3;
     static final int nMaxPlayers_c = 5;
     static final int nMaxAuction_c = 8;
+    static final int nEpochs_c = 3;
 
     public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, AuctionUserMakingBid, ResolveDisaster, EpochOver };
     public enum Tile {
@@ -281,6 +282,12 @@ public class Game {
         }
     }
 
+    public boolean FLastEpoch()
+    {
+        Assert.assertTrue("Invalid number of epochs", getEpoch() <= nEpochs_c && getEpoch() >= 1);
+        return (getEpoch() == nEpochs_c);
+    }
+
     public void SetNextPlayerTurn()
     {
         int iNext = iPlayerCurrent;
@@ -297,6 +304,22 @@ public class Game {
         iPlayerCurrent = iNext;
         Assert.assertTrue("Can't determine next player", !aPlayers[iPlayerCurrent].alSuns.isEmpty() || FEpochOver());
         statusCurrent = Status.TurnStart;
+    }
+
+    protected void InitAuction(boolean fVoluntary)
+    {
+        Log.v(Game.class.toString(), "Auction called voluntary: " + fVoluntary + " by player " + getPlayerCurrent().getName());
+
+        // TEST CODE
+        statusCurrent = Status.AuctionEveryonePassed;
+
+        // REAL CODe
+        //fAuctionVoluntary = fVoluntary;
+        //iAuctionPlayerCaller = iPlayerCurrent;
+        //iAuctionPlayerCurrent = iPlayerCurrent;
+        //iAuctionPlayerHighest = -1;
+        //iAuctionHighBid = 0;
+        //statusCurrent = Status.AuctionInProgress;
     }
 }
 

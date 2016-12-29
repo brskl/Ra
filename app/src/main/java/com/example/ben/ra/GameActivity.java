@@ -310,10 +310,14 @@ public class GameActivity extends AppCompatActivity {
                 sStatus = getString(R.string.StatusEpochOver, game.getEpoch());
                 break;
             case CallsAuction:
-                sStatus = "CallsAuction NYI";
+                sStatus = getString(R.string.StatusCallsAuction, game.getPlayerCurrent().getName());
                 break;
             case AuctionInProgress:
-                sStatus = "AuctionInProgress NYI";
+                if (game.FAuctionCurrentPlayerBidHighest()) {
+                    sStatus = getString(R.string.StatusAuctionPlayerBid, game.getAuctionPlayerCurrent().getName(), game.getAuctionHighBid());
+                } else {
+                    sStatus = getString(R.string.StatusAuctionPlayerPassed, game.getAuctionPlayerCurrent().getName());
+                }
                 break;
             case AuctionWon:
                 sStatus = "AuctionWon NYI";

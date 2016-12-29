@@ -97,6 +97,12 @@ public class Game {
 
     public Player getPlayerCurrent() { return aPlayers[iPlayerCurrent]; }
 
+    public Player getAuctionPlayerCurrent() { return aPlayers[iAuctionPlayerCurrent]; }
+
+    public int getAuctionHighBid() { return iAuctionHighBid; }
+
+    public boolean FAuctionCurrentPlayerBidHighest() { return (iAuctionPlayerCurrent == iAuctionPlayerHighest); }
+
     public boolean FAuctionTrackFull()
     {
         return (altAuction.size() == nMaxAuction_c);
@@ -323,7 +329,7 @@ public class Game {
         fAuctionVoluntary = fVoluntary;
         iAuctionPlayerCaller = iPlayerCurrent;
         iAuctionPlayerCurrent = iPlayerCurrent;
-        iAuctionPlayerHighest = -1;
+        iAuctionPlayerHighest = Integer.MIN_VALUE;
         iAuctionHighBid = Integer.MIN_VALUE;
         statusCurrent = Status.AuctionInProgress;
     }

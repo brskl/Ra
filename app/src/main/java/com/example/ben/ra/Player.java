@@ -12,6 +12,7 @@ public class Player {
     protected boolean fHuman;
     protected boolean fLocal = true;
     protected int iAiLevel = -1;
+    protected int [] nTiles = null; // count of tiles of type with index eaqual to tile ordinal
 
     Player(String name, boolean local, boolean human, int AiLevel)
     {
@@ -19,6 +20,11 @@ public class Player {
         fLocal = local;
         fHuman = human;
         iAiLevel = AiLevel;
+
+        nTiles = new int [Game.Tile.values().length];
+        // TODO: Check if this init is necessary
+        for (int i = 0; i < nTiles.length; i++)
+            nTiles[i] = 0;
     }
 
     public String getName()
@@ -51,4 +57,6 @@ public class Player {
     {
         alSunsNext = alSunsNextValue;
     }
+
+    public int[] getNTiles() { return nTiles; }
 }

@@ -1,6 +1,8 @@
 package com.example.ben.ra;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,6 +95,74 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    protected void PlayerLiveBidDialog()
+    {
+        Log.v(GameActivity.class.toString(), "Doing Live Player bid dialog");
+
+        int i, iValue;
+        String [] asHumanBidChoices;
+        ArrayList<String> alBidChoices = new ArrayList<String>(5); // TODO replace 5 with constant
+        Game game = Game.getInstance();
+        ArrayList<Integer> alSuns;
+
+        Assert.assertTrue(game.FCanBid());
+        Assert.assertTrue(game.getAuctionPlayerCurrent().getHuman());
+
+        alSuns = game.getAuctionPlayerCurrent().getSuns();
+
+        for (i = 0; i < alSuns.size(); i++)
+        {
+            iValue = alSuns.get(i);
+            if (iValue > game.getAuctionHighBid())
+                alBidChoices.add(Integer.toString(iValue));
+        }
+    //   if (!game.FMustBid())
+        {
+            alBidChoices.add(getString(R.string.BidPass));
+        }
+
+        asHumanBidChoices = new String [alBidChoices.size()];
+        alBidChoices.toArray(asHumanBidChoices);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.TitleBidDialog);
+        builder.setCancelable(false);
+        builder.setSingleChoiceItems(asHumanBidChoices, -1, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int item)
+            {
+                String sBid;
+                int iBid;
+                int iBidValue;
+                Game game = Game.getInstance();
+                ArrayList<Integer> alSuns = game.getAuctionPlayerCurrent().getSuns();
+
+                Log.v(GameActivity.class.toString(), "Player bid dialog clicked item " + item);
+                sBid = (String) ((AlertDialog) dialog).getListView().getItemAtPosition(item);
+                if (sBid.equals(getString(R.string.BidPass)))
+                    iBid = -1; // Pass
+                else
+                {
+                    iBidValue = Integer.parseInt(sBid);
+                    for (iBid = 0; iBid < alSuns.size(); iBid++)
+                    {
+                        if (iBidValue == alSuns.get(iBid))
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                //game.MakeBid(iBid);
+                UpdateDisplay();
+                dialog.dismiss();
+            }
+
+        });
+        builder.show();
+
+    }
+
     protected void DoAuctionBid()
     {
         Log.v(GameActivity.class.toString(), "Doing auction bid");
@@ -103,22 +173,14 @@ public class GameActivity extends AppCompatActivity {
         if (!game.FCanBid())
             return;
 
-        // TEST CODE. Just bid indicating pass
-
-
-        // REAL Code
-        //if (raGame.aPlayers[raGame.iAuctionPlayerCurrent].fHuman)
-        //{
-        //    // Bring up async dialog
-        //    PlayerBidDialog(raGame.iAuctionPlayerCurrent);
-        //}
-        //else
-        //{
-        //    // Get AI decision
-        //    raGame.MakeBid(AiBidIndex());
-        //}
-
-    }
+        if (game.getAuctionPlayerCurrent().getHuman()) {
+            PlayerLiveBidDialog();
+        } else {
+            // TODO
+            //    // Get AI decision
+            //    raGame.MakeBid(AiBidIndex());          ;
+        }
+      }
 
     protected void StartAuction(boolean fVoluntary)
     {
@@ -321,9 +383,6 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case AuctionWon:
                 sStatus = "AuctionWon NYI";
-                break;
-            case AuctionUserMakingBid:
-                sStatus = "AuctionUserMakingBid NYI";
                 break;
             case AuctionEveryonePassed:
                 sStatus = getString(R.string.StatusAuctionEveryonePassed);

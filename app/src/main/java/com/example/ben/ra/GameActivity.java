@@ -93,9 +93,35 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    protected void DoAuctionBid()
+    {
+        Log.v(GameActivity.class.toString(), "Doing auction bid");
+
+        Game game = Game.getInstance();
+
+        // Check if current player can bid
+        if (!game.FCanBid())
+            return;
+
+        // TEST CODE. Just bid indicating pass
+
+
+        // REAL Code
+        //if (raGame.aPlayers[raGame.iAuctionPlayerCurrent].fHuman)
+        //{
+        //    // Bring up async dialog
+        //    PlayerBidDialog(raGame.iAuctionPlayerCurrent);
+        //}
+        //else
+        //{
+        //    // Get AI decision
+        //    raGame.MakeBid(AiBidIndex());
+        //}
+
+    }
+
     protected void StartAuction(boolean fVoluntary)
     {
-
         Log.v(GameActivity.class.toString(), "Auction started, voluntary " + fVoluntary);
 
         Game game = Game.getInstance();
@@ -105,12 +131,9 @@ public class GameActivity extends AppCompatActivity {
                            (game.getTileLastDrawn() == Game.Tile.tRa)));
 
         game.InitAuction(fVoluntary);
+        game.SetNextPlayerAuction();
 
-        // TEST CODE
-
-        // real code
-        //game.SetNextPlayerAuction();
-        //this.DoAuctionBid();
+        DoAuctionBid();
     }
 
     public void onClickGame(View v){
@@ -187,6 +210,20 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case AuctionEveryonePassed:
                 game.SetNextPlayerTurn();
+                break;
+            case CallsAuction:
+                StartAuction(true);
+                break;
+            case AuctionInProgress:
+                if (game.FAuctionFinished())
+                {
+                    game.ResolveAuction();
+                }
+                else
+                {
+                    game.SetNextPlayerAuction();
+                    DoAuctionBid();
+                }
                 break;
             default:
                 Assert.fail();
@@ -271,6 +308,18 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case EpochOver:
                 sStatus = getString(R.string.StatusEpochOver, game.getEpoch());
+                break;
+            case CallsAuction:
+                sStatus = "CallsAuction NYI";
+                break;
+            case AuctionInProgress:
+                sStatus = "AuctionInProgress NYI";
+                break;
+            case AuctionWon:
+                sStatus = "AuctionWon NYI";
+                break;
+            case AuctionUserMakingBid:
+                sStatus = "AuctionUserMakingBid NYI";
                 break;
             case AuctionEveryonePassed:
                 sStatus = getString(R.string.StatusAuctionEveryonePassed);

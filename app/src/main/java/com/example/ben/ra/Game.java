@@ -7,6 +7,7 @@ import junit.framework.Assert;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 /**
  * Created by Ben on 12/7/2016.
  */
@@ -56,6 +57,13 @@ public class Game {
     protected int [] anTilebag = null;
     protected Tile tLastDrawn;
 
+    // auction state
+    protected int iAuctionPlayerCaller;
+    protected int iAuctionPlayerCurrent;
+    protected int iAuctionPlayerHighest;
+    protected int iAuctionHighBid;
+    protected boolean fAuctionVoluntary;
+
     private Random rndPlay = null;
 
     private Game() {
@@ -97,6 +105,7 @@ public class Game {
     public ArrayList<Tile> getAuction() { return altAuction; }
 
     public Tile getTileLastDrawn() { return tLastDrawn; }
+
 
     protected void initalizeTiles()
     {
@@ -228,7 +237,8 @@ public class Game {
 
         Assert.assertTrue("Auction block should have space left", altAuction.size() < nMaxAuction_c);
         Assert.assertFalse("Tile bag should not be empty", altTilebag.isEmpty());
-        iTile = rndPlay.nextInt(altTilebag.size()); // iTile = 0 if test sequence
+        //iTile = rndPlay.nextInt(altTilebag.size());
+        iTile = 0; // test sequence
         tLastDrawn = altTilebag.remove(iTile);
         anTilebag[tLastDrawn.ordinal()]--;
         Assert.assertTrue(anTilebag[tLastDrawn.ordinal()] >= 0);
@@ -310,16 +320,60 @@ public class Game {
     {
         Log.v(Game.class.toString(), "Auction called voluntary: " + fVoluntary + " by player " + getPlayerCurrent().getName());
 
-        // TEST CODE
-        statusCurrent = Status.AuctionEveryonePassed;
+        fAuctionVoluntary = fVoluntary;
+        iAuctionPlayerCaller = iPlayerCurrent;
+        iAuctionPlayerCurrent = iPlayerCurrent;
+        iAuctionPlayerHighest = -1;
+        iAuctionHighBid = Integer.MIN_VALUE;
+        statusCurrent = Status.AuctionInProgress;
+    }
 
-        // REAL CODe
-        //fAuctionVoluntary = fVoluntary;
-        //iAuctionPlayerCaller = iPlayerCurrent;
-        //iAuctionPlayerCurrent = iPlayerCurrent;
-        //iAuctionPlayerHighest = -1;
-        //iAuctionHighBid = 0;
-        //statusCurrent = Status.AuctionInProgress;
+    public void SetNextPlayerAuction()
+    {
+        Log.v(Game.class.toString(), "SetNextPlayerAuction");
+
+        int iNext = iAuctionPlayerCurrent;
+        int i;
+
+        for (i = 0; i < nPlayers; i++)
+        {
+            iNext = (iNext + 1) % nPlayers;
+            if (!aPlayers[iNext].alSuns.isEmpty())
+                break;
+        }
+        iAuctionPlayerCurrent = iNext;
+        Assert.assertTrue("Can't determine next player", !aPlayers[iAuctionPlayerCurrent].alSuns.isEmpty() || FEpochOver());
+    }
+
+    public boolean FCanBid()
+    {
+        int iHighestSun;
+
+        Assert.assertTrue(iAuctionPlayerHighest < nPlayers);
+        Assert.assertTrue(0 <= iAuctionPlayerCurrent && iAuctionPlayerCurrent < nPlayers);
+
+        // if no bid
+        if (iAuctionHighBid == 0)
+            return true;
+
+        Assert.assertTrue(aPlayers[iAuctionPlayerCurrent].alSuns.size() > 0);
+        iHighestSun = aPlayers[iAuctionPlayerCurrent].alSuns.get(aPlayers[iAuctionPlayerCurrent].alSuns.size() - 1);
+        if (iHighestSun > iAuctionHighBid)
+            return true;
+        Log.v(Game.class.toString(), "Player " + aPlayers[iAuctionPlayerCurrent].getName() + " can not bid");
+        return false;
+    }
+
+    public boolean FAuctionFinished()
+    {
+        return (iAuctionPlayerCaller == iAuctionPlayerCurrent);
+    }
+
+    public void ResolveAuction()
+    {
+        // TEST CODE
+        Log.v(Game.class.toString(), "Everyone passed in auction");
+        statusCurrent = Status.AuctionEveryonePassed;
     }
 }
 

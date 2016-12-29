@@ -279,6 +279,14 @@ public class GameActivity extends AppCompatActivity {
                     DoAuctionBid();
                 }
                 break;
+            case AuctionWon:
+                if (game.TestEpochOver()) {
+                    // TODO: DoEpochOver()
+                    ;
+                } else {
+                    game.SetNextPlayerTurn();
+                }
+                break;
             default:
                 Assert.fail();
         }
@@ -374,7 +382,7 @@ public class GameActivity extends AppCompatActivity {
                 }
                 break;
             case AuctionWon:
-                sStatus = "AuctionWon NYI";
+                sStatus = getString(R.string.StatusAuctionWon, game.getAuctionPlayerHighest().getName());
                 break;
             case AuctionEveryonePassed:
                 sStatus = getString(R.string.StatusAuctionEveryonePassed);

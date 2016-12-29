@@ -99,6 +99,8 @@ public class Game {
 
     public Player getAuctionPlayerCurrent() { return aPlayers[iAuctionPlayerCurrent]; }
 
+    public Player getAuctionPlayerHighest() { return aPlayers[iAuctionPlayerHighest]; }
+
     public int getAuctionHighBid() { return iAuctionHighBid; }
 
     public boolean FAuctionCurrentPlayerBidHighest() { return (iAuctionPlayerCurrent == iAuctionPlayerHighest); }
@@ -404,7 +406,7 @@ public class Game {
         if (valueBid <= iAuctionHighBid) {
             throw new IllegalArgumentException("Illegal bid, too low");
         }
-        Log.v("Gameplay", "Player " + getAuctionPlayerCurrent().getName() + " bids tile with value of " + valueBid);
+        Log.v(Game.class.toString(), "Player " + getAuctionPlayerCurrent().getName() + " bids tile with value of " + valueBid);
         iAuctionPlayerHighest = iAuctionPlayerCurrent;
         iAuctionHighBid = valueBid;
 
@@ -412,9 +414,46 @@ public class Game {
 
     public void ResolveAuction()
     {
-        // TEST CODE
-        Log.v(Game.class.toString(), "Everyone passed in auction");
-        statusCurrent = Status.AuctionEveryonePassed;
+        if (iAuctionHighBid == Integer.MIN_VALUE) {
+            Log.v(Game.class.toString(), "Everyone passed in auction");
+            statusCurrent = Status.AuctionEveryonePassed;
+            if (FAuctionTrackFull()) {
+                // throw out tiles
+                Log.v(Game.class.toString(), "Cleared tiles because auction track is full");
+                altAuction.clear();
+            }
+        } else {
+            Log.v(Game.class.toString(), "Player " + aPlayers[iAuctionPlayerHighest].getName() + " won auction with sun tile value of " + iAuctionHighBid);
+            Assert.assertTrue(0 <= iAuctionPlayerHighest && iAuctionPlayerHighest < nPlayers);
+
+            Player playerWinner = aPlayers[iAuctionPlayerHighest];
+            int iSunWinner;
+
+            statusCurrent = Status.AuctionWon;
+            playerWinner.getSunsNext().add(iAtAuctionSun); // move sun in auction to Player's suns for next Epoch
+            // Remove winning bid sun from Player's current suns
+            for (iSunWinner = 0; iSunWinner < playerWinner.getSuns().size(); iSunWinner++)
+            {
+                if (iAuctionHighBid == playerWinner.getSuns().get(iSunWinner)) {
+                    break;
+                }
+            }
+            Assert.assertTrue(iSunWinner < playerWinner.getSuns().size());
+            playerWinner.getSuns().remove(iSunWinner);
+
+            iAtAuctionSun = iAuctionHighBid; // Move winning bid to auction
+
+
+            // move tiles into player's tiles
+            while (altAuction.size() > 0)
+            {
+                Tile tCurrent = altAuction.remove(0);
+                playerWinner.getNTiles()[tCurrent.ordinal()]++;
+            }
+
+            // TODO: ResolveDisastersAuto()
+        }
+
     }
 }
 

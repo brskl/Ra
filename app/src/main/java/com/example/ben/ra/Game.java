@@ -18,7 +18,7 @@ public class Game {
     static final int nMaxAuction_c = 8;
     static final int nEpochs_c = 3;
 
-    public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, AuctionUserMakingBid, ResolveDisaster, EpochOver };
+    public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, EpochOver };
     public enum Tile {
         tNone,	// none
         tRa,	// Ra

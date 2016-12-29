@@ -149,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
             case R.id.buttonAuction:
                 Log.v("UI", "buttonAuction pressed");
                 // if auction track full, auction is not voluntary
-        //         StartAuction(!game.FAuctionTrackFull());
+                StartAuction(!game.FAuctionTrackFull());
                 break;
             case R.id.buttonDraw:
                 Log.v("UI", "buttonDraw pressed");

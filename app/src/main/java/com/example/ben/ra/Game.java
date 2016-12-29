@@ -383,12 +383,31 @@ public class Game {
             return false;
 
         return true;
-
     }
 
     public boolean FAuctionFinished()
     {
         return (iAuctionPlayerCaller == iAuctionPlayerCurrent);
+    }
+
+    public void MakeBid(int valueBid)
+    {
+        if (valueBid == 0)
+        {
+            Log.v(Game.class.toString(), "Player " + getAuctionPlayerCurrent().getName() + " passes");
+            return;
+        }
+
+        if (!getAuctionPlayerCurrent().getSuns().contains(valueBid)) {
+            throw new IllegalArgumentException("Invalid sun value");
+        }
+        if (valueBid <= iAuctionHighBid) {
+            throw new IllegalArgumentException("Illegal bid, too low");
+        }
+        Log.v("Gameplay", "Player " + getAuctionPlayerCurrent().getName() + " bids tile with value of " + valueBid);
+        iAuctionPlayerHighest = iAuctionPlayerCurrent;
+        iAuctionHighBid = valueBid;
+
     }
 
     public void ResolveAuction()

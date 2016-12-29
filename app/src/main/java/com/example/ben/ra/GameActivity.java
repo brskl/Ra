@@ -131,7 +131,6 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int item)
             {
                 String sBid;
-                int iBid;
                 int iBidValue;
                 Game game = Game.getInstance();
                 ArrayList<Integer> alSuns = game.getAuctionPlayerCurrent().getSuns();
@@ -139,20 +138,14 @@ public class GameActivity extends AppCompatActivity {
                 Log.v(GameActivity.class.toString(), "Player bid dialog clicked item " + item);
                 sBid = (String) ((AlertDialog) dialog).getListView().getItemAtPosition(item);
                 if (sBid.equals(getString(R.string.BidPass)))
-                    iBid = -1; // Pass
+                    iBidValue = 0; // Pass
                 else
                 {
                     iBidValue = Integer.parseInt(sBid);
-                    for (iBid = 0; iBid < alSuns.size(); iBid++)
-                    {
-                        if (iBidValue == alSuns.get(iBid))
-                        {
-                            break;
-                        }
-                    }
+
                 }
 
-                //game.MakeBid(iBid);
+                game.MakeBid(iBidValue);
                 UpdateDisplay();
                 dialog.dismiss();
             }

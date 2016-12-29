@@ -197,28 +197,28 @@ public class GameActivity extends AppCompatActivity {
 
         switch(v.getId()) {
             case R.id.buttonOK:
-                Log.v("UI", "buttonOK pressed");
+                Log.v(GameActivity.class.toString(), "buttonOK pressed");
                 onClickGameOk(v);
                 break;
             case R.id.buttonAuction:
-                Log.v("UI", "buttonAuction pressed");
+                Log.v(GameActivity.class.toString(), "buttonAuction pressed");
                 // if auction track full, auction is not voluntary
                 StartAuction(!game.FAuctionTrackFull());
                 break;
             case R.id.buttonDraw:
-                Log.v("UI", "buttonDraw pressed");
+                Log.v(GameActivity.class.toString(), "buttonDraw pressed");
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
                 break;
             case R.id.buttonGod:
-                Log.v("UI", "buttonGod pressed");
+                Log.v(GameActivity.class.toString(), "buttonGod pressed");
         //        PlayerGodDialog(); // ???
                 break;
             case R.id.buttonTiles:
             {
-                Log.v("UI", "Starting RaTilesActivity");
-        //        Intent intent = new Intent(v.getContext(), RaTilesActivity.class);
-        //        startActivity(intent);
+                Log.v(GameActivity.class.toString(), "Starting RaTilesActivity");
+                Intent intent = new Intent(v.getContext(), TilesActivity.class);
+                startActivity(intent);
             }
             break;
         }

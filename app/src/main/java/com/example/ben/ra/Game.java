@@ -372,6 +372,20 @@ public class Game {
         return false;
     }
 
+    public boolean FMustBid()
+    {
+        // player must bid if voluntary auction and everyone else passed
+        if (iAuctionHighBid > 0)
+            return false;
+        if (!fAuctionVoluntary)
+            return false;
+        if (iAuctionPlayerCurrent != iAuctionPlayerCaller)
+            return false;
+
+        return true;
+
+    }
+
     public boolean FAuctionFinished()
     {
         return (iAuctionPlayerCaller == iAuctionPlayerCurrent);

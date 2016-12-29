@@ -99,7 +99,6 @@ public class GameActivity extends AppCompatActivity {
     {
         Log.v(GameActivity.class.toString(), "Doing Live Player bid dialog");
 
-        int i, iValue;
         String [] asHumanBidChoices;
         ArrayList<String> alBidChoices = new ArrayList<String>(5); // TODO replace 5 with constant
         Game game = Game.getInstance();
@@ -107,16 +106,16 @@ public class GameActivity extends AppCompatActivity {
 
         Assert.assertTrue(game.FCanBid());
         Assert.assertTrue(game.getAuctionPlayerCurrent().getHuman());
+        Assert.assertTrue(game.getAuctionPlayerCurrent().getLocal());
 
         alSuns = game.getAuctionPlayerCurrent().getSuns();
 
-        for (i = 0; i < alSuns.size(); i++)
+        for (Integer iValue: alSuns)
         {
-            iValue = alSuns.get(i);
             if (iValue > game.getAuctionHighBid())
                 alBidChoices.add(Integer.toString(iValue));
         }
-    //   if (!game.FMustBid())
+        if (!game.FMustBid())
         {
             alBidChoices.add(getString(R.string.BidPass));
         }

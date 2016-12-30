@@ -1,5 +1,7 @@
 package com.example.ben.ra;
 
+import junit.framework.Assert;
+
 import java.util.ArrayList;
 
 /**
@@ -66,6 +68,22 @@ public class Player {
     {
         Game game = Game.getInstance();
 
-        return 0; // pass
+        Assert.assertTrue(game.FCanBid());
+
+        // pass unless more than 4 tiles or must bid. If bid, always use lowest
+        if (!game.FMustBid() && game.getAuction().size() <= 4) {
+            return 0; // pass
+        }
+
+        for (Integer i: alSuns)
+        {
+            if (i > game.getAuctionHighBid())
+            {
+                return i;
+            }
+        }
+
+        Assert.fail("Unable to determine AI bid");
+        return 0;
     }
 }

@@ -59,4 +59,13 @@ public class Player {
     }
 
     public int[] getNTiles() { return nTiles; }
+
+    // TODO In PlayerLive sub-class have Assert.Fail() and return 0 (pass). OR don't have function be abstract. Have Player cast to PlayerAi first
+    // TODO In PlayerAi have real code. Also consider using AsyncTask so on separate thread and can show progress
+    public int AiBid()
+    {
+        Game game = Game.getInstance();
+
+        return 0; // pass
+    }
 }

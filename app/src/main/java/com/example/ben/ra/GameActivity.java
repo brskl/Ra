@@ -168,9 +168,11 @@ public class GameActivity extends AppCompatActivity {
         if (game.getAuctionPlayerCurrent().getHuman()) {
             PlayerLiveBidDialog();
         } else {
-            // TODO
-            //    // Get AI decision
-            //    raGame.MakeBid(AiBidIndex());          ;
+            Player player = game.getAuctionPlayerCurrent();
+            Assert.assertFalse(player.getHuman());
+
+            // Get AI decision
+            game.MakeBid(player.AiBid());
         }
       }
 

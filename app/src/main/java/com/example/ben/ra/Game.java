@@ -114,6 +114,8 @@ public class Game {
 
     public Tile getTileLastDrawn() { return tLastDrawn; }
 
+    public Player [] getPlayers() { return aPlayers; }
+
 
     protected void initalizeTiles()
     {

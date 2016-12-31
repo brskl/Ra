@@ -436,7 +436,7 @@ public class GameActivity extends AppCompatActivity {
 
         btnOk.setEnabled(fOKonly);
         btnAuction.setEnabled(!fOKonly);
-        // TODO add Draw button
+        btnDraw.setEnabled(!fOKonly && !game.FAuctionTrackFull()));
         // TODO add God button
     }
 

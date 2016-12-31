@@ -171,7 +171,7 @@ public class GameActivity extends AppCompatActivity {
             Player player = game.getAuctionPlayerCurrent();
             Assert.assertFalse(player.getHuman());
 
-            // Get AI decision
+            // Get AI decision on what to bid
             game.MakeBid(player.AiBid());
         }
       }
@@ -240,14 +240,14 @@ public class GameActivity extends AppCompatActivity {
                 if (game.FAuctionTrackFull())
                 {
                     Log.v(GameActivity.class.toString(), "start in-voluntaary auction");
-                    // TODO: Add code to call StartAuction()
+                    StartAuction(false);
                 }
                 else
                 {
                     // Get AI decision
                     // TODO: for now, just draw tile
                     Log.v(GameActivity.class.toString(), "Get AI decision on what to do");
-                    // TODO: add code to draw tile
+
                     game.DrawTile();
                 }
                 break;

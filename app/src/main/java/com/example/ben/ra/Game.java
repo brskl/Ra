@@ -267,6 +267,27 @@ public class Game {
         statusCurrent = Status.DrewTile;
     }
 
+    public boolean FCanUseGod()
+    {
+        Player player = getPlayerCurrent();
+
+        // Must have at least 1 god tile and their must be a tile other than a God tile in the auction
+        // can take disaster tiles, but why would you?
+        if (player.getNTiles()[Tile.tGod.ordinal()] == 0)
+            return false;
+        for (Tile t: altAuction)
+        {
+            if ((t != Tile.tGod) &&
+                    (t != Tile.tDisasterC) &&
+                    (t != Tile.tDisasterM) &&
+                    (t != Tile.tDisasterN) &&
+                    (t != Tile.tDisasterP))
+                return true;
+        }
+
+        return false;
+    }
+
     protected boolean FEpochOver()
     {
         switch (statusCurrent)

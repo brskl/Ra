@@ -14,8 +14,6 @@ import junit.framework.Assert;
 
 import java.util.ArrayList;
 
-import static com.example.ben.ra.Game.getInstance;
-
 public class GameActivity extends AppCompatActivity {
     // Must be in same order as RaGame.Tile enum
     // All 2 characters for formatting
@@ -95,7 +93,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    protected void PlayerLiveBidDialog()
+    protected void PlayerHumanBidDialog()
     {
         Log.v(GameActivity.class.toString(), "Doing Live Player bid dialog");
 
@@ -166,7 +164,7 @@ public class GameActivity extends AppCompatActivity {
             return;
 
         if (game.getAuctionPlayerCurrent().getHuman()) {
-            PlayerLiveBidDialog();
+            PlayerHumanBidDialog();
         } else {
             Player player = game.getAuctionPlayerCurrent();
             Assert.assertFalse(player.getHuman());
@@ -228,7 +226,7 @@ public class GameActivity extends AppCompatActivity {
         UpdateDisplay();
     }
 
-    public void onClickGameOk(View v)
+    protected void onClickGameOk(View v)
     {
         Log.d(GameActivity.class.toString(), "onClickGameOk");
 

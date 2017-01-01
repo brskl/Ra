@@ -227,22 +227,32 @@
             android:text="@string/btnGod" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonOK"
+    <LinearLayout
+        android:id="@+id/LinearLayoutButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/LinearLayoutButtonsHuman"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickGame"
-        android:text="@android:string/ok" />
+        android:layout_below="@id/LinearLayoutButtonsHuman" >
 
-    <Button
-        android:id="@+id/buttonTiles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/LinearLayoutButtonsHuman"
-        android:layout_toRightOf="@id/buttonOK"
-        android:onClick="onClickGame"
-        android:text="Tiles" />
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="@android:string/ok" />
+        <Button
+            android:id="@+id/buttonTiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="Tiles" />
+        <Button
+            android:id="@+id/buttonScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="Score" />
+
+    </LinearLayout>
 
 </RelativeLayout>

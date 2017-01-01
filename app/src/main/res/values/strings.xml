@@ -9,7 +9,7 @@
     <string name="TitleAuctionTrack">Auction:</string>
     <string name="TitleBidDialog">Bid</string>
     <string name="TitleGodDialog">Exchange for</string>
-    <string name="TitleScoreEpoch">Score for Epoch %d</string>
+    <string name="TitleScore">Score</string>
     <string name="CurrentPlayer">Current Player: %s</string>
     <string name="btnPlay">Play</string>
     <string name="btnQuit">Quit</string>

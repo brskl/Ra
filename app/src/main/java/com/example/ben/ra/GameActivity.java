@@ -322,11 +322,21 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case R.id.buttonTiles:
             {
-                Log.v(GameActivity.class.toString(), "Starting RaTilesActivity");
+                Log.v(GameActivity.class.toString(), "Starting TilesActivity");
                 Intent intent = new Intent(v.getContext(), TilesActivity.class);
                 startActivity(intent);
             }
             break;
+            case R.id.buttonScore:
+            {
+                Log.v(GameActivity.class.toString(), "Starting ScoreActivity");
+                Intent intent = new Intent(v.getContext(), ScoreActivity.class);
+                startActivity(intent);
+            }
+            break;
+
+            default:
+                Assert.fail("Should never Reach in onClickGame");
         }
 
         UpdateDisplay();

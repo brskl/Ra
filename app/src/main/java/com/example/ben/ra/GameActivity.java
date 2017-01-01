@@ -128,6 +128,7 @@ public class GameActivity extends AppCompatActivity {
         asTileChoices = new String [alGodChoices.size()];
         alGodChoices.toArray(asTileChoices);
         builder = new AlertDialog.Builder(this);
+        // TODO: see if there is way for 'OK' button to be initially disabled
         builder.setTitle(R.string.TitleGodDialog);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -145,9 +146,8 @@ public class GameActivity extends AppCompatActivity {
                     if (lv.isItemChecked(i))
                     {
                         t = StringTile((String) lv.getItemAtPosition(i));
-                        // TODO: put code back in after DoExchangeForGod is written
-         //               if (game.DoExchangeForGod(t))
-         //                   fExchanged = true;
+                        if (Game.getInstance().DoExchangeForGod(t))
+                            fExchanged = true;
                     }
                 }
                 if (fExchanged)
@@ -371,6 +371,9 @@ public class GameActivity extends AppCompatActivity {
             case AuctionEveryonePassed:
                 game.SetNextPlayerTurn();
                 break;
+            case UsedGod:
+                game.SetNextPlayerTurn();
+                break;
             case CallsAuction:
                 StartAuction(true);
                 break;
@@ -492,6 +495,9 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case AuctionEveryonePassed:
                 sStatus = getString(R.string.StatusAuctionEveryonePassed);
+                break;
+            case UsedGod:
+                sStatus = getString(R.string.StatusUsedGod, game.getPlayerCurrent().getName());
                 break;
             default:
                 // TODO replace with assert

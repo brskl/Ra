@@ -267,6 +267,21 @@ public class Game {
         statusCurrent = Status.DrewTile;
     }
 
+    public boolean DoExchangeForGod(Tile t)
+    {
+        int [] anPlayerTiles = getPlayerCurrent().getNTiles();
+
+        if (anPlayerTiles[Tile.tGod.ordinal()] <= 0)
+            return false;
+        if (!altAuction.remove(t))
+            return false;
+        Log.v(Game.class.toString(), "Player " + getPlayerCurrent().getName() + " exchanged a God tile for a " + t);
+        anPlayerTiles[Tile.tGod.ordinal()]--;
+        anPlayerTiles[t.ordinal()]++;
+        statusCurrent = Status.UsedGod;
+        return true;
+    }
+
     public boolean FCanUseGod()
     {
         Player player = getPlayerCurrent();

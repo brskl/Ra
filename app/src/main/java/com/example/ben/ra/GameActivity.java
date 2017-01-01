@@ -6,8 +6,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import junit.framework.Assert;
@@ -93,6 +95,109 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    protected void PlayerHumanGodDialog()
+    {
+        Log.v(GameActivity.class.toString(), "Bringing up Player God dialog");
+
+        Game game = Game.getInstance();
+        Player player = game.getPlayerCurrent();
+        Assert.assertTrue(game.FCanUseGod());
+        Assert.assertTrue(player.getHuman());
+        Assert.assertTrue(player.getLocal());
+
+
+        // TODO: Maybe use MatrixCursor and provide to setMultiChoice
+        String [] asTileChoices;
+        AlertDialog.Builder builder;
+
+
+        ArrayList<String> alGodChoices = new ArrayList<String>(Game.nMaxAuction_c);
+
+        for (Game.Tile t: game.getAuction())
+        {
+            if ((t != Game.Tile.tGod) &&
+                    (t != Game.Tile.tDisasterC) &&
+                    (t != Game.Tile.tDisasterM) &&
+                    (t != Game.Tile.tDisasterN) &&
+                    (t != Game.Tile.tDisasterP))
+            {
+                alGodChoices.add(TileString(t));
+            }
+        }
+
+        asTileChoices = new String [alGodChoices.size()];
+        alGodChoices.toArray(asTileChoices);
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.TitleGodDialog);
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                int i;
+                ListView lv;
+                Game.Tile t;
+                boolean fExchanged = false;
+
+                Log.v(GameActivity.class.toString(), "God choice, Ok pressed");
+
+                lv = ((AlertDialog) dialog).getListView();
+
+                for (i = 0; i < lv.getCount(); i++)
+                {
+                    if (lv.isItemChecked(i))
+                    {
+                        t = StringTile((String) lv.getItemAtPosition(i));
+                        // TODO: put code back in after DoExchangeForGod is written
+         //               if (game.DoExchangeForGod(t))
+         //                   fExchanged = true;
+                    }
+                }
+                if (fExchanged)
+                    UpdateDisplay();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Log.v(GameActivity.class.toString(), "God choice, Cancel pressed");
+                dialog.cancel();
+            }
+        });
+        builder.setMultiChoiceItems(asTileChoices, null, new DialogInterface.OnMultiChoiceClickListener() {
+
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                Log.v(GameActivity.class.toString(), "God choice, item " + which + " checked " + isChecked);
+                // enable/disable ok as appropriate
+
+                Game game = Game.getInstance();
+                SparseBooleanArray afChecked;
+                int nChecked = 0;
+                ListView lv;
+                AlertDialog ad;
+                Button btn;
+
+                ad = (AlertDialog) dialog;
+                lv = ad.getListView();
+                // TODO: Eclipse gives me an error for lv.getCheckedItemCount();
+                afChecked = lv.getCheckedItemPositions();
+                for (int i = 0; i < afChecked.size(); i++)
+                {
+                    if (afChecked.get(i))
+                        nChecked++;
+                }
+
+
+                btn = (Button) ad.getButton(AlertDialog.BUTTON_POSITIVE);
+                if (0 < nChecked &&
+                        nChecked <= game.getPlayerCurrent().getNTiles()[Game.Tile.tGod.ordinal()])
+                    btn.setEnabled(true);
+                else
+                    btn.setEnabled(false);
+            }
+        });
+
+        builder.show();
+    }
+
     protected void PlayerHumanBidDialog()
     {
         Log.v(GameActivity.class.toString(), "Doing Live Player bid dialog");
@@ -100,13 +205,14 @@ public class GameActivity extends AppCompatActivity {
         String [] asHumanBidChoices;
         ArrayList<String> alBidChoices = new ArrayList<String>(5); // TODO replace 5 with constant
         Game game = Game.getInstance();
+        Player player = game.getAuctionPlayerCurrent();
         ArrayList<Integer> alSuns;
 
         Assert.assertTrue(game.FCanBid());
-        Assert.assertTrue(game.getAuctionPlayerCurrent().getHuman());
-        Assert.assertTrue(game.getAuctionPlayerCurrent().getLocal());
+        Assert.assertTrue(player.getHuman());
+        Assert.assertTrue(player.getLocal());
 
-        alSuns = game.getAuctionPlayerCurrent().getSuns();
+        alSuns = player.getSuns();
 
         for (Integer iValue: alSuns)
         {
@@ -212,7 +318,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case R.id.buttonGod:
                 Log.v(GameActivity.class.toString(), "buttonGod pressed");
-        //        PlayerGodDialog(); // ???
+                PlayerHumanGodDialog();
                 break;
             case R.id.buttonTiles:
             {
@@ -400,6 +506,18 @@ public class GameActivity extends AppCompatActivity {
     private String TileString(Game.Tile etValue)
     {
         return sTiles[etValue.ordinal()];
+    }
+
+    // TODO: better way to do this?
+    private Game.Tile StringTile(String s)
+    {
+        int i;
+        for (i = 0; i < sTiles.length; i++)
+        {
+            if (s.equals(sTiles[i]))
+                return Game.Tile.values()[i];
+        }
+        return Game.Tile.tNone;
     }
 
     protected void UpdateDisplayAuction(){

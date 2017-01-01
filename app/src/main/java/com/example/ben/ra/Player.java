@@ -8,16 +8,19 @@ import java.util.ArrayList;
  * Created by Ben on 12/9/2016.
  */
 abstract class Player {
+    static final int iScoreStart_c = 10;
     protected String sName = null;
     protected ArrayList<Integer> alSuns = null, alSunsNext = null;
     protected boolean fLocal = true;
     protected int [] nTiles = null; // count of tiles of type with index eaqual to tile ordinal
+    protected int iScore;
 
     Player(String name, boolean local)
     {
         sName = name;
         fLocal = local;
-
+        iScore = iScoreStart_c;
+        
         nTiles = new int [Game.Tile.values().length];
         // TODO: Check if this init is necessary
         for (int i = 0; i < nTiles.length; i++)

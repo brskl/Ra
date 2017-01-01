@@ -171,8 +171,14 @@ public class Game {
     {
         Log.v(Game.class.toString(), "Initializing player[" + Integer.toString(index) + "]");
 
-        // TODO: conditional of fHuman, new PlayerHuman() vs. new PlayerAI()
-        aPlayers[index] = new Player(name, fLocal, fHuman, aiLevel);
+        if (fHuman)
+        {
+            aPlayers[index] = new PlayerHuman(name, fLocal);
+        }
+        else
+        {
+            aPlayers[index] = new PlayerAi(name, fLocal, aiLevel);
+        }
     }
 
     public void initializeSuns()

@@ -272,7 +272,7 @@ public class GameActivity extends AppCompatActivity {
         if (game.getAuctionPlayerCurrent().getHuman()) {
             PlayerHumanBidDialog();
         } else {
-            Player player = game.getAuctionPlayerCurrent();
+            PlayerAi player = (PlayerAi) game.getAuctionPlayerCurrent();
             Assert.assertFalse(player.getHuman());
 
             // Get AI decision on what to bid

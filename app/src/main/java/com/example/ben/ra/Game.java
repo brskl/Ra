@@ -415,6 +415,9 @@ public class Game {
             }
 
             // Nile,Flood sum if at least 1 flood
+            if (player.getNTiles()[Tile.tFlood.ordinal()] > 0) {
+                player.aiScoreEpoch[Player.iScoreNile_c] = player.getNTiles()[Tile.tFlood.ordinal()] + player.getNTiles()[Tile.tNile.ordinal()];
+            }
 
             // Civ: #types =0->-5, 3->5, 4->10, 5->15
             int nCategories = 0;

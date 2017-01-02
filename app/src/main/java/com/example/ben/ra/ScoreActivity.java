@@ -22,12 +22,11 @@ public class ScoreActivity extends AppCompatActivity {
         TableLayout tl;
         String sScore;
         LayoutInflater inflater = getLayoutInflater();
-        int [] aiSE;
         Game game = Game.getInstance();
 
         if (game.getStatusCurrent() == Game.Status.EpochOver)
         {
-            if (game.getEpoch() == Game.nEpochs_c)
+            if (game.FLastEpoch())
             {
                 sScore = getString(R.string.TitleScoreFinal);
             } else {
@@ -42,55 +41,52 @@ public class ScoreActivity extends AppCompatActivity {
         tl = (TableLayout) findViewById(R.id.tableLayoutScore);
         for (Player player: game.getPlayers())
         {
-            // aiSE = game.getPlayers()[iPlayer].iScoreEpoch;
             tr = (TableRow) inflater.inflate(R.layout.tablerow_score, tl, false);
 
             // name
             tv = (TextView) tr.getChildAt(0);
             tv.setText(player.getName());
 
-            /*
             // previous score
             tv = (TextView) tr.getChildAt(1);
-            tv.setText(Integer.toString(RaGame.rgCurrent.aPlayers[iPlayer].iScore));
+            tv.setText(Integer.toString(player.getScore()));
 
             // God
             tv = (TextView) tr.getChildAt(2);
-            tv.setText(Integer.toString(aiSE[0]));
+            tv.setText(Integer.toString(player.aiScoreEpoch[Player.iScoreGod_c]));
             // Gold
             tv = (TextView) tr.getChildAt(3);
-            tv.setText(Integer.toString(aiSE[1]));
+            tv.setText(Integer.toString(player.aiScoreEpoch[Player.iScoreGold_c]));
 
             // Pharaoh
             tv = (TextView) tr.getChildAt(4);
-            sScore = String.format("%d(%d)", aiSE[2], RaGame.rgCurrent.aPlayers[iPlayer].nTiles[RaGame.Tile.tPharaoh.ordinal()]);
+            sScore = String.format("%d(%d)", player.aiScoreEpoch[Player.iScorePharoah_c], player.getNTiles()[Game.Tile.tPharaoh.ordinal()]);
             tv.setText(sScore);
 
             // Nile
             tv = (TextView) tr.getChildAt(5);
-            tv.setText(Integer.toString(aiSE[3]));
+            tv.setText(Integer.toString(player.aiScoreEpoch[Player.iScoreNile_c]));
 
             // Civ
             tv = (TextView) tr.getChildAt(6);
-            tv.setText(Integer.toString(aiSE[4]));
+            tv.setText(Integer.toString(player.aiScoreEpoch[Player.iScoreCiv_c]));
 
-            if (RaGame.rgCurrent.iEpoch == 3)
+            if (game.FLastEpoch())
             {
                 // Monuments
                 tv = (TextView) tr.getChildAt(7);
-                tv.setText(Integer.toString(aiSE[5]));
+                tv.setText(Integer.toString(player.aiScoreEpoch[Player.iScoreMonument_c]));
 
                 // Suns
                 tv = (TextView) tr.getChildAt(8);
-                sScore = String.format("%d(%d)", aiSE[6], aiSE[7]);
+                sScore = String.format("%d(%d)", player.aiScoreEpoch[Player.iScoreSuns_c], player.aiScoreEpoch[Player.iScoreSunsTotal_c]);
                 tv.setText(sScore);
             }
 
-            // new score
+            // new total score
             tv = (TextView) tr.getChildAt(9);
-            sScore = Integer.toString(RaGame.rgCurrent.aPlayers[iPlayer].iScore + aiSE[0] + aiSE[1] + aiSE[2] +aiSE[3] + aiSE[4] + aiSE[5] + aiSE[6]);
-            tv.setText(sScore);
-*/
+            tv.setText(Integer.toString(player.aiScoreEpoch[Player.iScoreTotal_c]));
+
             tl.addView(tr);
         }
     }

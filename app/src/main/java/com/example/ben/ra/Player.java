@@ -14,6 +14,16 @@ abstract class Player {
     protected boolean fLocal = true;
     protected int [] nTiles = null; // count of tiles of type with index eaqual to tile ordinal
     protected int iScore;
+    public int [] aiScoreEpoch = null; // God, Gold, Pharoah, Nile/Flood, Civ, Monument, (Suns, player Sun total)
+    static final int iScoreGod_c = 0;
+    static final int iScoreGold_c = 1;
+    static final int iScorePharoah_c = 2;
+    static final int iScoreNile_c = 3;
+    static final int iScoreCiv_c = 4;
+    static final int iScoreMonument_c = 5; // epoch 3 only
+    static final int iScoreSuns_c = 6; // epoch 3 only
+    static final int iScoreSunsTotal_c = 7; // epoch 3 only
+    static final int iScoreTotal_c = 8;
 
     Player(String name, boolean local)
     {

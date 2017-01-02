@@ -352,6 +352,49 @@ public class Game {
         return (getEpoch() == nEpochs_c);
     }
 
+    public void UpdateScore()
+    {
+        Log.v(Game.class.toString(), "UpdateScore");
+
+        int iPharaohMax = Integer.MIN_VALUE, iPharaohMin = Integer.MAX_VALUE;
+        int iSunMax = Integer.MIN_VALUE, iSunMin = Integer.MAX_VALUE;
+
+        for (Player player: aPlayers)
+        {
+            player.aiScoreEpoch = new int[9];
+
+            if (player.getNTiles()[Tile.tPharaoh.ordinal()] < iPharaohMin)
+                iPharaohMin = player.getNTiles()[Tile.tPharaoh.ordinal()];
+            if (player.getNTiles()[Tile.tPharaoh.ordinal()] > iPharaohMax)
+                iPharaohMax = player.getNTiles()[Tile.tPharaoh.ordinal()];
+        }
+
+        Log.v(Game.class.toString(), String.format("Pharaoh min/max %d/%d", iPharaohMin, iPharaohMax));
+
+        for (Player player: aPlayers) {
+            // TODO: A lot more
+
+            // God 2*#
+            // Gold 3*#
+
+            // Pharaohs min# -2, max# 5, all same 0
+            // Nile,Flood sum if at least 1 flood
+            // Civ: #types =0->-5, 3->5, 4->10, 5->15
+
+            if (FLastEpoch())
+            {
+                // Monuments nDiff 1-6 -> #, 7 -> 10, 8 -> 15 plus
+                // For each type 3->5, 4->10, 5->15
+
+                // Sun total, min -5, max 5
+                ;
+            }
+
+            // new total
+            player.aiScoreEpoch[Player.iScoreTotal_c] = player.getScore(); // + a lot of stuff
+        }
+    }
+
     public void SetNextPlayerTurn()
     {
         int iNext = iPlayerCurrent;

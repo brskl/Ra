@@ -407,7 +407,14 @@ public class Game {
             }
 
             // new total
-            player.aiScoreEpoch[Player.iScoreTotal_c] = player.getScore(); // + a lot of stuff
+            player.aiScoreEpoch[Player.iScoreTotal_c] = player.getScore() +
+                player.aiScoreEpoch[Player.iScoreGod_c] +
+                player.aiScoreEpoch[Player.iScoreGold_c] +
+                player.aiScoreEpoch[Player.iScorePharoah_c] +
+                player.aiScoreEpoch[Player.iScoreNile_c] +
+                player.aiScoreEpoch[Player.iScoreCiv_c] +
+                player.aiScoreEpoch[Player.iScoreMonument_c] +
+                player.aiScoreEpoch[Player.iScoreSuns_c];
         }
     }
 

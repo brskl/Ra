@@ -25,8 +25,19 @@ public class ScoreActivity extends AppCompatActivity {
         int [] aiSE;
         Game game = Game.getInstance();
 
-        tv = (TextView) findViewById(R.id.textViewTitleScore);
-        // tv.setText(getString(R.string.TitleScoreEpoch, RaGame.rgCurrent.iEpoch));
+        if (game.getStatusCurrent() == Game.Status.EpochOver)
+        {
+            if (game.getEpoch() == Game.nEpochs_c)
+            {
+                sScore = getString(R.string.TitleScoreFinal);
+            } else {
+                sScore = getString(R.string.TitleScoreEpochEnd, game.getEpoch());
+            }
+        } else {
+            sScore = getString(R.string.TitleScoreEpochDuring, game.getEpoch());
+        }
+        tv = (TextView) findViewById(R.id.textViewTitleScorePeriod);
+        tv.setText(sScore);
 
         tl = (TableLayout) findViewById(R.id.tableLayoutScore);
         for (Player player: game.getPlayers())

@@ -57,4 +57,6 @@ abstract class Player {
     }
 
     public int[] getNTiles() { return nTiles; }
+
+    public int getScore() { return iScore; }
 }

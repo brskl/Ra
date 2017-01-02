@@ -25,6 +25,11 @@ public class Game {
     static final int iScoreCivValue_3_c = 5;
     static final int iScoreCivValue_4_c = 10;
     static final int iScoreCivValue_5_c = 15;
+    static final int iScoreMonNumValue_5_c = 15;
+    static final int iScoreMonNumValue_4_c = 10;
+    static final int iScoreMonNumValue_3_c = 5;
+    static final int iScoreMonTypeValue_8_c = 15;
+    static final int iScoreMonTypeValue_7_c = 10;
     static final int iScoreSunMinValue_c = -5;
     static final int iScoreSunMaxValue_c = 5;
 
@@ -458,13 +463,13 @@ public class Game {
                         switch(player.getNTiles()[i])
                         {
                             case 5:
-                                player.aiScoreEpoch[Player.iScoreMonument_c] += 15;
+                                player.aiScoreEpoch[Player.iScoreMonument_c] += iScoreMonNumValue_5_c;
                                 break;
                             case 4:
-                                player.aiScoreEpoch[Player.iScoreMonument_c] += 10;
+                                player.aiScoreEpoch[Player.iScoreMonument_c] += iScoreMonNumValue_4_c;
                                 break;
                             case 3:
-                                player.aiScoreEpoch[Player.iScoreMonument_c] += 5;
+                                player.aiScoreEpoch[Player.iScoreMonument_c] += iScoreMonNumValue_3_c;
                                 break;
                             default:
                                 break;
@@ -474,10 +479,10 @@ public class Game {
                 switch(nMonumentTypes)
                 {
                     case 8:
-                        player.aiScoreEpoch[Player.iScoreMonument_c] += 15;
+                        player.aiScoreEpoch[Player.iScoreMonument_c] += iScoreMonTypeValue_8_c;
                         break;
                     case 7:
-                        player.aiScoreEpoch[Player.iScoreMonument_c] += 10;
+                        player.aiScoreEpoch[Player.iScoreMonument_c] += iScoreMonTypeValue_7_c;
                         break;
                     default:
                         Assert.assertTrue(nMonumentTypes >= 0 && nMonumentTypes <= 6);

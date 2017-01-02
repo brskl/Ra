@@ -451,7 +451,15 @@ public class Game {
                 // For each type 3->5, 4->10, 5->15
 
                 // Sun total, min -5, max 5
-                ;
+                if (player.aiScoreEpoch[Player.iScoreSunsTotal_c] == iSunMin)
+                {
+                    player.aiScoreEpoch[Player.iScoreSuns_c] = iScoreSunMinValue_c;
+                } else {
+                    if (player.aiScoreEpoch[Player.iScoreSunsTotal_c] == iSunMax) {
+                        player.aiScoreEpoch[Player.iScoreSuns_c] = iScoreSunMaxValue_c;
+                    }
+                }
+
             }
 
             // new total

@@ -387,10 +387,11 @@ public class Game {
         Log.v(Game.class.toString(), String.format("Sun min/max %d/%d", iSunMin, iSunMax));
 
         for (Player player: aPlayers) {
-            // TODO: A lot more
-
             // God 2*#
+            player.aiScoreEpoch[Player.iScoreGod_c] = 2 * player.getNTiles()[Tile.tGod.ordinal()];
+
             // Gold 3*#
+            player.aiScoreEpoch[Player.iScoreGold_c] = 2 * player.getNTiles()[Tile.tGold.ordinal()];
 
             // Pharaohs min# -2, max# 5, all same 0
             // Nile,Flood sum if at least 1 flood

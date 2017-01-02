@@ -415,7 +415,32 @@ public class Game {
             }
 
             // Nile,Flood sum if at least 1 flood
+
             // Civ: #types =0->-5, 3->5, 4->10, 5->15
+            int nCategories = 0;
+            for (int i = Tile.tCiv1.ordinal(); i <= Tile.tCiv5.ordinal(); i++)
+            {
+                if (player.getNTiles()[i] > 0)
+                    nCategories++;
+            }
+            switch (nCategories)
+            {
+                case 5:
+                    player.aiScoreEpoch[Player.iScoreCiv_c] = iScoreCivValue_5_c;
+                    break;
+                case 4:
+                    player.aiScoreEpoch[Player.iScoreCiv_c] = iScoreCivValue_4_c;
+                    break;
+                case 3:
+                    player.aiScoreEpoch[Player.iScoreCiv_c] = iScoreCivValue_3_c;
+                    break;
+                case 0:
+                    player.aiScoreEpoch[Player.iScoreCiv_c] = iScoreCivValue_0_c;
+                    break;
+                default:
+                    // no change in score
+                    break;
+            }
 
             if (FLastEpoch())
             {

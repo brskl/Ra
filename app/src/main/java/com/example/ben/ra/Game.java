@@ -447,8 +447,43 @@ public class Game {
 
             if (FLastEpoch())
             {
-                // Monuments nDiff 1-6 -> #, 7 -> 10, 8 -> 15 plus
+                // Monuments nDiff 0-6 -> #, 7 -> 10, 8 -> 15 and
                 // For each type 3->5, 4->10, 5->15
+                int nMonumentTypes = 0;
+                for (int i = Tile.tMon1.ordinal(); i <= Tile.tMon8.ordinal(); i++)
+                {
+                    if (player.getNTiles()[i] > 0)
+                    {
+                        nMonumentTypes++;
+                        switch(player.getNTiles()[i])
+                        {
+                            case 5:
+                                player.aiScoreEpoch[Player.iScoreMonument_c] += 15;
+                                break;
+                            case 4:
+                                player.aiScoreEpoch[Player.iScoreMonument_c] += 10;
+                                break;
+                            case 3:
+                                player.aiScoreEpoch[Player.iScoreMonument_c] += 5;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                switch(nMonumentTypes)
+                {
+                    case 8:
+                        player.aiScoreEpoch[Player.iScoreMonument_c] += 15;
+                        break;
+                    case 7:
+                        player.aiScoreEpoch[Player.iScoreMonument_c] += 10;
+                        break;
+                    default:
+                        Assert.assertTrue(nMonumentTypes >= 0 && nMonumentTypes <= 6);
+                        player.aiScoreEpoch[Player.iScoreMonument_c] += nMonumentTypes;
+                        break;
+                }
 
                 // Sun total, min -5, max 5
                 if (player.aiScoreEpoch[Player.iScoreSunsTotal_c] == iSunMin)

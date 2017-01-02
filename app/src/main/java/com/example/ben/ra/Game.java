@@ -367,9 +367,24 @@ public class Game {
                 iPharaohMin = player.getNTiles()[Tile.tPharaoh.ordinal()];
             if (player.getNTiles()[Tile.tPharaoh.ordinal()] > iPharaohMax)
                 iPharaohMax = player.getNTiles()[Tile.tPharaoh.ordinal()];
+
+            player.aiScoreEpoch[Player.iScoreSunsTotal_c] = 0;
+            if (FLastEpoch()) {
+                for (int i: player.getSuns()) {
+                    player.aiScoreEpoch[Player.iScoreSunsTotal_c] += i;
+                }
+                for (int i: player.getSunsNext()) {
+                    player.aiScoreEpoch[Player.iScoreSunsTotal_c] += i;
+                }
+                if (player.aiScoreEpoch[Player.iScoreSunsTotal_c] < iSunMin)
+                    iSunMin = player.aiScoreEpoch[Player.iScoreSunsTotal_c];
+                if (player.aiScoreEpoch[Player.iScoreSunsTotal_c] > iSunMax)
+                    iSunMax = player.aiScoreEpoch[Player.iScoreSunsTotal_c];
+            }
         }
 
         Log.v(Game.class.toString(), String.format("Pharaoh min/max %d/%d", iPharaohMin, iPharaohMax));
+        Log.v(Game.class.toString(), String.format("Sun min/max %d/%d", iSunMin, iSunMax));
 
         for (Player player: aPlayers) {
             // TODO: A lot more

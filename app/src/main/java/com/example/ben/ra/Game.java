@@ -17,6 +17,16 @@ public class Game {
     static final int nMaxPlayers_c = 5;
     static final int nMaxAuction_c = 8;
     static final int nEpochs_c = 3;
+    static final int iScoreGoldValue_c = 3;
+    static final int iScoreGodValue_c = 2;
+    static final int iScorePharaohMinValue_c = -2;
+    static final int iScorePharaohMaxValue_c = 5;
+    static final int iScoreCivValue_0_c = -5;
+    static final int iScoreCivValue_3_c = 5;
+    static final int iScoreCivValue_4_c = 10;
+    static final int iScoreCivValue_5_c = 15;
+    static final int iScoreSunMinValue_c = -5;
+    static final int iScoreSunMaxValue_c = 5;
 
     public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, EpochOver };
     public enum Tile {
@@ -388,12 +398,22 @@ public class Game {
 
         for (Player player: aPlayers) {
             // God 2*#
-            player.aiScoreEpoch[Player.iScoreGod_c] = 2 * player.getNTiles()[Tile.tGod.ordinal()];
+            player.aiScoreEpoch[Player.iScoreGod_c] = iScoreGodValue_c * player.getNTiles()[Tile.tGod.ordinal()];
 
             // Gold 3*#
-            player.aiScoreEpoch[Player.iScoreGold_c] = 2 * player.getNTiles()[Tile.tGold.ordinal()];
+            player.aiScoreEpoch[Player.iScoreGold_c] = iScoreGoldValue_c * player.getNTiles()[Tile.tGold.ordinal()];
 
             // Pharaohs min# -2, max# 5, all same 0
+            if (iPharaohMin != iPharaohMax) {
+                if (player.getNTiles()[Tile.tPharaoh.ordinal()] == iPharaohMin) {
+                    player.aiScoreEpoch[Player.iScorePharoah_c] = iScorePharaohMinValue_c;
+                } else {
+                    if (player.getNTiles()[Tile.tPharaoh.ordinal()] == iPharaohMax) {
+                        player.aiScoreEpoch[Player.iScorePharoah_c] = iScorePharaohMaxValue_c;
+                    }
+                }
+            }
+
             // Nile,Flood sum if at least 1 flood
             // Civ: #types =0->-5, 3->5, 4->10, 5->15
 

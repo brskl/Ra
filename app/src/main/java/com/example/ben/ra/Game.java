@@ -355,8 +355,7 @@ public class Game {
             statusCurrent = Status.EpochOver;
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -366,6 +365,42 @@ public class Game {
         Assert.assertTrue("Invalid number of epochs", getEpoch() <= nEpochs_c && getEpoch() >= 1);
         return (getEpoch() == nEpochs_c);
     }
+
+    public boolean SetupNextEpoch()
+    {
+        int iSunValue, iMaxSun = Integer.MIN_VALUE;
+
+        Log.v(Game.class.toString(), "SetupNextEpoch(), Epoch " + iEpoch + " over");
+        Assert.assertEquals(Status.EpochOver, getStatusCurrent());
+
+        if (!FLastEpoch())
+        {
+            for (int iPlayer = 0; iPlayer < nPlayers; iPlayer++)
+            {
+                aPlayers[iPlayer].SetForNextEpoch();
+                iSunValue = aPlayers[iPlayer].alSuns.get(aPlayers[iPlayer].alSuns.size()-1);
+                if (iSunValue > iMaxSun)
+                {
+                    iMaxSun = iSunValue;
+                    iPlayerCurrent = iPlayer;
+                }
+            }
+            Log.v(Game.class.toString(), "Starting player is " + iPlayerCurrent);
+
+            nRa = 0;
+            altAuction.clear();
+            iEpoch++;
+
+            statusCurrent = Status.TurnStart;
+            return false;
+        } else {
+            // game over
+            Log.v(Game.class.toString(), "Game over");
+            return true;
+        }
+    }
+
+
 
     public void UpdateScore()
     {

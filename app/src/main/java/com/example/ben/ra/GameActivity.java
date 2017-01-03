@@ -95,6 +95,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    // TODO: Test this more. Appears to be bug when more than 4 items to select from
     protected void PlayerHumanGodDialog()
     {
         Log.v(GameActivity.class.toString(), "Bringing up Player God dialog");
@@ -296,6 +297,20 @@ public class GameActivity extends AppCompatActivity {
         DoAuctionBid();
     }
 
+    protected void DoEpochOver()
+    {
+        Game game = Game.getInstance();
+
+        Assert.assertEquals(Game.Status.EpochOver, game.getStatusCurrent());
+        Log.v(GameActivity.class.toString(), "DoEpochOver " + game.getEpoch());
+
+        game.UpdateScore();
+
+        Intent intent = new Intent(this, ScoreActivity.class);
+        Log.v(GameActivity.class.toString(), "Starting ScoreActivity");
+        startActivity(intent);
+    }
+
     public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
 
@@ -372,8 +387,7 @@ public class GameActivity extends AppCompatActivity {
                 if (game.getTileLastDrawn() == Game.Tile.tRa)
                 {
                     if (game.TestEpochOver()) {
-                        //                   DoEpochOver();
-                        ;
+                        DoEpochOver();
                     } else {
                         StartAuction(false);
                     }
@@ -403,10 +417,18 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case AuctionWon:
                 if (game.TestEpochOver()) {
-                    // TODO: DoEpochOver()
-                    ;
+                    DoEpochOver();
                 } else {
                     game.SetNextPlayerTurn();
+                }
+                break;
+            case EpochOver:
+                if (game.SetupNextEpoch())
+                {
+                    // game over
+                    Log.v(GameActivity.class.toString(), "Game over, finishing activity");
+                    // TODO: exit activity, back to main menu, not player setup
+                    finish();
                 }
                 break;
             default:

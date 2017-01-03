@@ -3,6 +3,7 @@ package com.example.ben.ra;
 import junit.framework.Assert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Ben on 12/9/2016.
@@ -69,4 +70,40 @@ abstract class Player {
     public int[] getNTiles() { return nTiles; }
 
     public int getScore() { return iScore; }
+
+    protected void MoveSuns()
+    {
+        Assert.assertNotNull(alSuns);
+        Assert.assertNotNull(alSunsNext);
+
+        // Move any remaining Suns to next list
+        while (!alSuns.isEmpty())
+        {
+            alSunsNext.add(alSuns.remove(0));
+        }
+
+        // Make next list into the current list
+        alSuns = alSunsNext;
+        alSunsNext = new ArrayList<Integer>(alSuns.size());
+        Collections.sort(alSuns);
+    }
+
+    public void SetForNextEpoch()
+    {
+        MoveSuns();
+
+        // remove appropriate tiles
+        nTiles[Game.Tile.tCiv1.ordinal()] = 0;
+        nTiles[Game.Tile.tCiv2.ordinal()] = 0;
+        nTiles[Game.Tile.tCiv3.ordinal()] = 0;
+        nTiles[Game.Tile.tCiv4.ordinal()] = 0;
+        nTiles[Game.Tile.tCiv5.ordinal()] = 0;
+        nTiles[Game.Tile.tGod.ordinal()] = 0;
+        nTiles[Game.Tile.tGold.ordinal()] = 0;
+        nTiles[Game.Tile.tFlood.ordinal()] = 0;
+
+        iScore += aiScoreEpoch[iScoreGod_c] + aiScoreEpoch[iScoreGold_c] + aiScoreEpoch[iScorePharoah_c] + aiScoreEpoch[iScoreNile_c] + aiScoreEpoch[iScoreCiv_c];
+
+        aiScoreEpoch = null;
+    }
 }

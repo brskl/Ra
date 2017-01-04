@@ -111,7 +111,7 @@ public class NewGameActivity extends AppCompatActivity {
         }
     }
 
-    public void EnableUx()
+    private void EnableUx()
     {
         View et;
         CheckBox cb;
@@ -191,12 +191,10 @@ public class NewGameActivity extends AppCompatActivity {
         Intent intent = new Intent(v.getContext(), GameActivity.class);
         startActivity(intent);
 
-        // TODO: can we finish this activity now so Game Activity will go back to main
-        // Seems to work, test some more
         finish();
     }
 
-    public void onClickNewGameRadio(View v)
+    void onClickNewGameRadio(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameRadio");
 
@@ -218,7 +216,7 @@ public class NewGameActivity extends AppCompatActivity {
         EnableUx();
     }
 
-    public void onClickNewGameCheckbox(View v)
+    void onClickNewGameCheckbox(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameCheckbox");
 
@@ -246,7 +244,7 @@ public class NewGameActivity extends AppCompatActivity {
         EnableUx();
     }
 
-    public void onClickNewGameButton(View v)
+    void onClickNewGameButton(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameButton");
 

@@ -95,7 +95,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    // TODO: Test this more. Appears to be bug when more than 4 items to select from
     protected void PlayerHumanGodDialog()
     {
         Log.v(GameActivity.class.toString(), "Bringing up Player God dialog");
@@ -170,7 +169,6 @@ public class GameActivity extends AppCompatActivity {
                 // enable/disable ok as appropriate
 
                 Game game = Game.getInstance();
-                SparseBooleanArray afChecked;
                 int nChecked = 0;
                 ListView lv;
                 AlertDialog ad;
@@ -178,15 +176,7 @@ public class GameActivity extends AppCompatActivity {
 
                 ad = (AlertDialog) dialog;
                 lv = ad.getListView();
-                // TODO: Eclipse gives me an error for lv.getCheckedItemCount();
-                afChecked = lv.getCheckedItemPositions();
-                for (int i = 0; i < afChecked.size(); i++)
-                {
-                    if (afChecked.get(i))
-                        nChecked++;
-                }
-
-
+                nChecked = lv.getCheckedItemCount();
                 btn = (Button) ad.getButton(AlertDialog.BUTTON_POSITIVE);
                 if (0 < nChecked &&
                         nChecked <= game.getPlayerCurrent().getNTiles()[Game.Tile.tGod.ordinal()])

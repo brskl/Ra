@@ -32,6 +32,7 @@ class Game {
     static final int iScoreMonTypeValue_7_c = 10;
     static final int iScoreSunMinValue_c = -5;
     static final int iScoreSunMaxValue_c = 5;
+    static final int iTilesLostPerDisaster_c = 2;
 
     enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, EpochOver };
     enum Tile {
@@ -167,6 +168,8 @@ class Game {
         Log.v(Game.class.toString(), "Initializing game for " + nPlayersValue + " players.");
 
         rndPlay = new Random(); // TODO: replace with own random class which can save sequence and replay
+        // rndPlay.setSeed(1); // TODO: Remove. For debugging purposes only. Consider making advanced setting
+
         nPlayers = nPlayersValue;
 
         aPlayers = new Player[nPlayersValue];
@@ -329,12 +332,7 @@ class Game {
         switch (statusCurrent)
         {
             case DrewTile:
-                if (nRa == getMaxRas()) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
+                return (nRa == getMaxRas());
             case AuctionWon:
                 for (Player player : aPlayers)
                 {
@@ -653,7 +651,67 @@ class Game {
 
     }
 
-    void ResolveAuction()
+    // return value: true - player needs to resolve non-auto disaster tiles
+    private boolean ResolveDisastersAuto()
+    {
+        Player playerWinner = aPlayers[iAuctionPlayerHighest];
+        int [] aiPlayerTiles = playerWinner.getNTiles();
+        int nDisasterTiles;
+        int nLose;
+        int nHave;
+        boolean fResult = false;
+
+        // if any Funerals (Pharaoh) disaster tiles
+        if (aiPlayerTiles[Tile.tDisasterP.ordinal()] > 0)
+        {
+            nDisasterTiles = aiPlayerTiles[Tile.tDisasterP.ordinal()];
+            nLose = iTilesLostPerDisaster_c * nDisasterTiles;
+            aiPlayerTiles[Tile.tDisasterP.ordinal()] = 0;
+            if (aiPlayerTiles[Tile.tPharaoh.ordinal()] < nLose)
+            {
+                nLose = aiPlayerTiles[Tile.tPharaoh.ordinal()];
+            }
+            Log.v(Game.class.toString(), "Pharaoh disaster tile(s) " + nDisasterTiles + ", lose " +
+                    nLose + " of " +
+                    aiPlayerTiles[Tile.tPharaoh.ordinal()] + " Pharaoh tiles " );
+            aiPlayerTiles[Tile.tPharaoh.ordinal()] -= nLose;
+        }
+
+        // if any Drought (Flood, Nile) disaster tiles
+        if (aiPlayerTiles[Tile.tDisasterN.ordinal()] > 0)
+        {
+            int nLoseFlood = 0, nLoseNile = 0;
+            nDisasterTiles = aiPlayerTiles[Tile.tDisasterN.ordinal()];
+            nLose = 2 * nDisasterTiles;
+            aiPlayerTiles[Tile.tDisasterN.ordinal()] = 0;
+            if (aiPlayerTiles[Tile.tFlood.ordinal()] >= nLose)
+            {
+                nLoseFlood = nLose;
+            }
+            else
+            {
+                nLoseFlood = aiPlayerTiles[Tile.tFlood.ordinal()];
+                nLose -= nLoseFlood;
+                if (aiPlayerTiles[Tile.tNile.ordinal()] >= nLose)
+                {
+                    nLoseNile = nLose;
+                }
+                else
+                {
+                    nLoseNile = aiPlayerTiles[Tile.tNile.ordinal()];
+                }
+            }
+            Log.v(Game.class.toString(), "Nile/Flood disaster tile(s) " + nDisasterTiles + ", lose " +
+                    nLoseFlood + " flood tiles and " + nLoseNile + " Nile tiles");
+            aiPlayerTiles[Tile.tFlood.ordinal()] -= nLoseFlood;
+            aiPlayerTiles[Tile.tNile.ordinal()] -= nLoseNile;
+        }
+
+        return fResult;
+    }
+
+    // return value: true - player needs to resolve non-auto disaster tiles
+    boolean ResolveAuction()
     {
         if (iAuctionHighBid == Integer.MIN_VALUE) {
             Log.v(Game.class.toString(), "Everyone passed in auction");
@@ -663,6 +721,8 @@ class Game {
                 Log.v(Game.class.toString(), "Cleared tiles because auction track is full");
                 altAuction.clear();
             }
+
+            return false;
         } else {
             Log.v(Game.class.toString(), "Player " + aPlayers[iAuctionPlayerHighest].getName() + " won auction with sun tile value of " + iAuctionHighBid);
             Assert.assertTrue(0 <= iAuctionPlayerHighest && iAuctionPlayerHighest < nPlayers);
@@ -692,7 +752,7 @@ class Game {
                 playerWinner.getNTiles()[tCurrent.ordinal()]++;
             }
 
-            // TODO: ResolveDisastersAuto()
+            return ResolveDisastersAuto();
         }
 
     }

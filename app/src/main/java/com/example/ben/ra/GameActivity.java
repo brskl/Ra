@@ -95,7 +95,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    protected void PlayerHumanGodDialog()
+    void PlayerHumanGodDialog()
     {
         Log.v(GameActivity.class.toString(), "Bringing up Player God dialog");
 
@@ -189,7 +189,7 @@ public class GameActivity extends AppCompatActivity {
         builder.show();
     }
 
-    protected void PlayerHumanBidDialog()
+    void PlayerHumanBidDialog()
     {
         Log.v(GameActivity.class.toString(), "Doing Live Player bid dialog");
 
@@ -250,7 +250,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    protected void DoAuctionBid()
+    void DoAuctionBid()
     {
         Log.v(GameActivity.class.toString(), "Doing auction bid");
 
@@ -271,7 +271,7 @@ public class GameActivity extends AppCompatActivity {
         }
       }
 
-    protected void StartAuction(boolean fVoluntary)
+    void StartAuction(boolean fVoluntary)
     {
         Log.v(GameActivity.class.toString(), "Auction started, voluntary " + fVoluntary);
 
@@ -287,7 +287,7 @@ public class GameActivity extends AppCompatActivity {
         DoAuctionBid();
     }
 
-    protected void DoEpochOver()
+    void DoEpochOver()
     {
         Game game = Game.getInstance();
 
@@ -301,7 +301,7 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickGame(View v){
+    void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
 
         Game game = Game.getInstance();
@@ -350,7 +350,7 @@ public class GameActivity extends AppCompatActivity {
         UpdateDisplay();
     }
 
-    protected void onClickGameOk(View v)
+    void onClickGameOk(View v)
     {
         Log.d(GameActivity.class.toString(), "onClickGameOk");
 
@@ -426,7 +426,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    protected void UpdateDisplayPlayerNames(){
+    void UpdateDisplayPlayerNames(){
         TextView tv;
         Game game = Game.getInstance();
         final int atvIDs[] = {R.id.textViewNamePlayer1, R.id.textViewNamePlayer2, R.id.textViewNamePlayer3, R.id.textViewNamePlayer4, R.id.textViewNamePlayer5};
@@ -438,7 +438,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    protected void UpdateDisplayRound() {
+    void UpdateDisplayRound() {
         Game game = Game.getInstance();
 
         // current epoch
@@ -451,7 +451,7 @@ public class GameActivity extends AppCompatActivity {
         tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));
     }
 
-    protected void UpdateDisplayPlayerSuns(int iPlayer)
+    void UpdateDisplayPlayerSuns(int iPlayer)
     {
         Game game = Game.getInstance();
         StringBuilder sb = new StringBuilder();
@@ -480,7 +480,7 @@ public class GameActivity extends AppCompatActivity {
         atvPlayerSuns[iPlayer].setText(sb.toString());
     }
 
-    protected void UpdateDisplayPlayersSuns()
+    void UpdateDisplayPlayersSuns()
     {
         Game game = Game.getInstance();
 
@@ -490,7 +490,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    protected void UpdateDisplayStatus(){
+    void UpdateDisplayStatus(){
         Game game = Game.getInstance();
         String sStatus = null;
 
@@ -551,7 +551,7 @@ public class GameActivity extends AppCompatActivity {
         return Game.Tile.tNone;
     }
 
-    protected void UpdateDisplayAuction(){
+    void UpdateDisplayAuction(){
         Game game = Game.getInstance();
 
         StringBuilder sbAuction = new StringBuilder();
@@ -568,7 +568,7 @@ public class GameActivity extends AppCompatActivity {
         tvAuctionItems.setText(sbAuction.toString());
     }
 
-    protected void UpdateDisplayButtons()
+    void UpdateDisplayButtons()
     {
         boolean fCurrentPlayerLocalHuman;
         boolean fOKonly = true;
@@ -587,7 +587,7 @@ public class GameActivity extends AppCompatActivity {
         btnGod.setEnabled(!fOKonly && game.FCanUseGod());
     }
 
-    protected void UpdateDisplay(){
+    void UpdateDisplay(){
         UpdateDisplayRound();
         UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();

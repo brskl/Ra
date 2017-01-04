@@ -168,7 +168,6 @@ class Game {
         Log.v(Game.class.toString(), "Initializing game for " + nPlayersValue + " players.");
 
         rndPlay = new Random(); // TODO: replace with own random class which can save sequence and replay
-        // rndPlay.setSeed(1); // TODO: Remove. For debugging purposes only. Consider making advanced setting
 
         nPlayers = nPlayersValue;
 
@@ -263,6 +262,15 @@ class Game {
                 iPlayerCurrent = i; // first player
             }
         }
+    }
+
+    // TODO: Use during debugging. Consider making advanced user setting in final version
+    void setRandomSeed(long seed)
+    {
+        Log.v(Game.class.toString(), "Setting random seed to " + seed);
+        Assert.assertNotNull(rndPlay);
+
+        rndPlay.setSeed(seed);
     }
 
     void DrawTile()

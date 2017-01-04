@@ -12,7 +12,7 @@ import java.util.Random;
  * Created by Ben on 12/7/2016.
  */
 
-public class Game {
+class Game {
     static final int nMinPlayers_c = 3;
     static final int nMaxPlayers_c = 5;
     static final int nMaxAuction_c = 8;
@@ -33,8 +33,8 @@ public class Game {
     static final int iScoreSunMinValue_c = -5;
     static final int iScoreSunMaxValue_c = 5;
 
-    public enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, EpochOver };
-    public enum Tile {
+    enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, EpochOver };
+    enum Tile {
         tNone,	// none
         tRa,	// Ra
         tGod,	// God
@@ -60,24 +60,24 @@ public class Game {
 
     private static Game instance = null;
 
-    protected int nPlayers = 0;
-    protected int iPlayerCurrent = -1; // n-1 index
-    protected int iEpoch; // 1,2,3 - current epoch
-    protected Status statusCurrent;
-    protected int nRa; // number of Ra tiles played
-    protected Player [] aPlayers = null;
-    protected int iAtAuctionSun;
-    protected ArrayList<Tile> altAuction = null;
-    protected ArrayList<Tile> altTilebag = null;
-    protected int [] anTilebag = null;
-    protected Tile tLastDrawn;
+    int nPlayers = 0;
+    int iPlayerCurrent = -1; // n-1 index
+    int iEpoch; // 1,2,3 - current epoch
+    Status statusCurrent;
+    int nRa; // number of Ra tiles played
+    Player [] aPlayers = null;
+    int iAtAuctionSun;
+    ArrayList<Tile> altAuction = null;
+    ArrayList<Tile> altTilebag = null;
+    int [] anTilebag = null;
+    Tile tLastDrawn;
 
     // auction state
-    protected int iAuctionPlayerCaller;
-    protected int iAuctionPlayerCurrent;
-    protected int iAuctionPlayerHighest;
-    protected int iAuctionHighBid;
-    protected boolean fAuctionVoluntary;
+    int iAuctionPlayerCaller;
+    int iAuctionPlayerCurrent;
+    int iAuctionPlayerHighest;
+    int iAuctionHighBid;
+    boolean fAuctionVoluntary;
 
     private Random rndPlay = null;
 
@@ -85,7 +85,7 @@ public class Game {
         // defeat normal instantiation
     }
 
-    public static Game getInstance() {
+    static Game getInstance() {
         if (instance == null)
         {
             instance = new Game();
@@ -93,46 +93,46 @@ public class Game {
         return instance;
     }
 
-    public int getNPlayers()
+    int getNPlayers()
     {
         return nPlayers;
     }
 
-    public int getEpoch() {
+    int getEpoch() {
         return iEpoch;
     }
 
-    public Status getStatusCurrent() { return statusCurrent; }
+    Status getStatusCurrent() { return statusCurrent; }
 
-    public int getAtAuctionSun() { return iAtAuctionSun; }
+    int getAtAuctionSun() { return iAtAuctionSun; }
 
-    public int getRas() { return nRa; }
+    int getRas() { return nRa; }
 
-    public int getMaxRas() {return nPlayers + 5; }
+    int getMaxRas() {return nPlayers + 5; }
 
-    public Player getPlayerCurrent() { return aPlayers[iPlayerCurrent]; }
+    Player getPlayerCurrent() { return aPlayers[iPlayerCurrent]; }
 
-    public Player getAuctionPlayerCurrent() { return aPlayers[iAuctionPlayerCurrent]; }
+    Player getAuctionPlayerCurrent() { return aPlayers[iAuctionPlayerCurrent]; }
 
-    public Player getAuctionPlayerHighest() { return aPlayers[iAuctionPlayerHighest]; }
+    Player getAuctionPlayerHighest() { return aPlayers[iAuctionPlayerHighest]; }
 
-    public int getAuctionHighBid() { return iAuctionHighBid; }
+    int getAuctionHighBid() { return iAuctionHighBid; }
 
-    public boolean FAuctionCurrentPlayerBidHighest() { return (iAuctionPlayerCurrent == iAuctionPlayerHighest); }
+    boolean FAuctionCurrentPlayerBidHighest() { return (iAuctionPlayerCurrent == iAuctionPlayerHighest); }
 
-    public boolean FAuctionTrackFull()
+    boolean FAuctionTrackFull()
     {
         return (altAuction.size() == nMaxAuction_c);
     }
 
-    public ArrayList<Tile> getAuction() { return altAuction; }
+    ArrayList<Tile> getAuction() { return altAuction; }
 
-    public Tile getTileLastDrawn() { return tLastDrawn; }
+    Tile getTileLastDrawn() { return tLastDrawn; }
 
-    public Player [] getPlayers() { return aPlayers; }
+    Player [] getPlayers() { return aPlayers; }
 
 
-    protected void initalizeTiles()
+    private void initalizeTiles()
     {
         Log.v(Game.class.toString(), "Initializing tiles.");
 
@@ -159,7 +159,7 @@ public class Game {
         }
     }
 
-    public void initialize(int nPlayersValue)
+    void initialize(int nPlayersValue)
     {
         if (nPlayersValue < nMinPlayers_c || nPlayersValue > nMaxPlayers_c)
             throw new IllegalArgumentException("Illegal number of players");
@@ -182,7 +182,7 @@ public class Game {
         initalizeTiles();
     }
 
-    public void setPlayer(int index, String name, boolean fLocal, boolean fHuman, int aiLevel)
+    void setPlayer(int index, String name, boolean fLocal, boolean fHuman, int aiLevel)
     {
         Log.v(Game.class.toString(), "Initializing player[" + Integer.toString(index) + "]");
 
@@ -196,7 +196,7 @@ public class Game {
         }
     }
 
-    public void initializeSuns()
+    void initializeSuns()
     {
         Log.v(Game.class.toString(), "Initializing Suns");
         Assert.assertNotNull(aPlayers);
@@ -262,7 +262,7 @@ public class Game {
         }
     }
 
-    public void DrawTile()
+    void DrawTile()
     {
         int iTile;
 
@@ -288,7 +288,7 @@ public class Game {
         statusCurrent = Status.DrewTile;
     }
 
-    public boolean DoExchangeForGod(Tile t)
+    boolean DoExchangeForGod(Tile t)
     {
         int [] anPlayerTiles = getPlayerCurrent().getNTiles();
 
@@ -303,7 +303,7 @@ public class Game {
         return true;
     }
 
-    public boolean FCanUseGod()
+    boolean FCanUseGod()
     {
         Player player = getPlayerCurrent();
 
@@ -324,7 +324,7 @@ public class Game {
         return false;
     }
 
-    protected boolean FEpochOver()
+    private boolean FEpochOver()
     {
         switch (statusCurrent)
         {
@@ -347,7 +347,7 @@ public class Game {
         }
     }
 
-    public boolean TestEpochOver()
+    boolean TestEpochOver()
     {
         if (FEpochOver())
         {
@@ -360,13 +360,13 @@ public class Game {
         }
     }
 
-    public boolean FLastEpoch()
+    boolean FLastEpoch()
     {
         Assert.assertTrue("Invalid number of epochs", getEpoch() <= nEpochs_c && getEpoch() >= 1);
         return (getEpoch() == nEpochs_c);
     }
 
-    public boolean SetupNextEpoch()
+    boolean SetupNextEpoch()
     {
         int iSunValue, iMaxSun = Integer.MIN_VALUE;
 
@@ -402,7 +402,7 @@ public class Game {
 
 
 
-    public void UpdateScore()
+    void UpdateScore()
     {
         Log.v(Game.class.toString(), "UpdateScore");
 
@@ -549,7 +549,7 @@ public class Game {
         }
     }
 
-    public void SetNextPlayerTurn()
+    void SetNextPlayerTurn()
     {
         int iNext = iPlayerCurrent;
         int i;
@@ -567,7 +567,7 @@ public class Game {
         statusCurrent = Status.TurnStart;
     }
 
-    protected void InitAuction(boolean fVoluntary)
+    void InitAuction(boolean fVoluntary)
     {
         Log.v(Game.class.toString(), "Auction called voluntary: " + fVoluntary + " by player " + getPlayerCurrent().getName());
 
@@ -579,7 +579,7 @@ public class Game {
         statusCurrent = Status.AuctionInProgress;
     }
 
-    public void SetNextPlayerAuction()
+    void SetNextPlayerAuction()
     {
         Log.v(Game.class.toString(), "SetNextPlayerAuction");
 
@@ -596,7 +596,7 @@ public class Game {
         Assert.assertTrue("Can't determine next player", !aPlayers[iAuctionPlayerCurrent].alSuns.isEmpty() || FEpochOver());
     }
 
-    public boolean FCanBid()
+    boolean FCanBid()
     {
         int iHighestSun;
 
@@ -615,7 +615,7 @@ public class Game {
         return false;
     }
 
-    public boolean FMustBid()
+    boolean FMustBid()
     {
         // player must bid if voluntary auction and everyone else passed
         if (iAuctionHighBid > 0)
@@ -628,12 +628,12 @@ public class Game {
         return true;
     }
 
-    public boolean FAuctionFinished()
+    boolean FAuctionFinished()
     {
         return (iAuctionPlayerCaller == iAuctionPlayerCurrent);
     }
 
-    public void MakeBid(int valueBid)
+    void MakeBid(int valueBid)
     {
         if (valueBid == 0)
         {
@@ -653,7 +653,7 @@ public class Game {
 
     }
 
-    public void ResolveAuction()
+    void ResolveAuction()
     {
         if (iAuctionHighBid == Integer.MIN_VALUE) {
             Log.v(Game.class.toString(), "Everyone passed in auction");

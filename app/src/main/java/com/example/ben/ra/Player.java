@@ -10,12 +10,12 @@ import java.util.Collections;
  */
 abstract class Player {
     static final int iScoreStart_c = 10;
-    protected String sName = null;
-    protected ArrayList<Integer> alSuns = null, alSunsNext = null;
-    protected boolean fLocal = true;
-    protected int [] nTiles = null; // count of tiles of type with index eaqual to tile ordinal
-    protected int iScore;
-    public int [] aiScoreEpoch = null; // God, Gold, Pharoah, Nile/Flood, Civ, Monument, (Suns, player Sun total)
+    String sName = null;
+    ArrayList<Integer> alSuns = null, alSunsNext = null;
+    boolean fLocal = true;
+    int [] nTiles = null; // count of tiles of type with index eaqual to tile ordinal
+    int iScore;
+    int [] aiScoreEpoch = null; // God, Gold, Pharoah, Nile/Flood, Civ, Monument, (Suns, player Sun total)
     static final int iScoreGod_c = 0;
     static final int iScoreGold_c = 1;
     static final int iScorePharoah_c = 2;
@@ -38,40 +38,40 @@ abstract class Player {
             nTiles[i] = 0;
     }
 
-    public String getName()
+    String getName()
     {
         return sName;
     }
 
-    public boolean getLocal() { return fLocal; }
+    boolean getLocal() { return fLocal; }
 
-    abstract public boolean getHuman();
+    abstract boolean getHuman();
 
-    public ArrayList<Integer> getSuns()
+    ArrayList<Integer> getSuns()
     {
         return alSuns;
     }
 
-    public void setSuns(ArrayList<Integer> alSunsValue)
+    void setSuns(ArrayList<Integer> alSunsValue)
     {
         alSuns = alSunsValue;
     }
 
-    public ArrayList<Integer> getSunsNext()
+    ArrayList<Integer> getSunsNext()
     {
         return alSunsNext;
     }
 
-    public void setSunsNext(ArrayList<Integer> alSunsNextValue)
+    void setSunsNext(ArrayList<Integer> alSunsNextValue)
     {
         alSunsNext = alSunsNextValue;
     }
 
-    public int[] getNTiles() { return nTiles; }
+    int[] getNTiles() { return nTiles; }
 
-    public int getScore() { return iScore; }
+    int getScore() { return iScore; }
 
-    protected void MoveSuns()
+    void MoveSuns()
     {
         Assert.assertNotNull(alSuns);
         Assert.assertNotNull(alSunsNext);
@@ -88,7 +88,7 @@ abstract class Player {
         Collections.sort(alSuns);
     }
 
-    public void SetForNextEpoch()
+    void SetForNextEpoch()
     {
         MoveSuns();
 

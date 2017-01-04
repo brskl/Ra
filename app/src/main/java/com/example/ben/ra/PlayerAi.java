@@ -6,17 +6,17 @@ import junit.framework.Assert;
  * Created by Ben on 12/31/2016.
  */
 
-public class PlayerAi extends Player {
-    protected int iAiLevel = -1;
+class PlayerAi extends Player {
+    private int iAiLevel = -1;
 
     PlayerAi(String name, boolean local, int AiLevel) {
         super(name, local);
         iAiLevel = AiLevel;
     }
 
-    public boolean getHuman() { return false; }
+    boolean getHuman() { return false; }
 
-    public int AiBid()
+    int AiBid()
     {
         Game game = Game.getInstance();
 

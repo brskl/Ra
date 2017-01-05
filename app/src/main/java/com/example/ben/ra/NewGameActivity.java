@@ -206,15 +206,15 @@ public class NewGameActivity extends AppCompatActivity {
         // Setup Game instance
         Game game = Game.getInstance();
 
+        if (fSeed) {
+            game.setRandomSeed(lSeed);
+        }
+
         game.initialize(nPlayers);
         for (int i = 0; i < nPlayers; i++) {
             game.setPlayer(i, asNames[i], true, afHuman[i], aiAILevel[i]);
         }
         game.initializeSuns();
-
-        if (fSeed) {
-            game.setRandomSeed(lSeed);
-        }
 
         // Start GameActivity
         Intent intent = new Intent(v.getContext(), GameActivity.class);

@@ -80,10 +80,12 @@ class Game {
     int iAuctionHighBid;
     boolean fAuctionVoluntary;
 
-    private Random rndPlay = null;
+    private MyRandom rndPlay = null;
 
     private Game() {
-        // defeat normal instantiation
+        // private constructor so as to defeat normal instantiation
+
+        rndPlay = new MyRandom();
     }
 
     static Game getInstance() {
@@ -166,8 +168,6 @@ class Game {
             throw new IllegalArgumentException("Illegal number of players");
 
         Log.v(Game.class.toString(), "Initializing game for " + nPlayersValue + " players.");
-
-        rndPlay = new Random(); // TODO: replace with own random class which can save sequence and replay
 
         nPlayers = nPlayersValue;
 
@@ -264,7 +264,6 @@ class Game {
         }
     }
 
-    // TODO: Use during debugging. Consider making advanced user setting in final version
     void setRandomSeed(long seed)
     {
         Log.v(Game.class.toString(), "Setting random seed to " + seed);

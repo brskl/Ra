@@ -37,6 +37,7 @@
     <string name="TitlePlayer3">Player 3:</string>
     <string name="TitlePlayer4">Player 4:</string>
     <string name="TitlePlayer5">Player 5:</string>
+    <string name="TitleSeed">Random Seed:</string>
     <string name="cbHuman">Human</string>
     <string-array name="NamesAiEasy">
         <item>AI Easy 1</item>

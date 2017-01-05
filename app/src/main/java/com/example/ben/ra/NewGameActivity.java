@@ -18,6 +18,7 @@ public class NewGameActivity extends AppCompatActivity {
     private boolean [] afHuman = new boolean [Game.nMaxPlayers_c];
     private String [] asNames = new String[Game.nMaxPlayers_c];
     private int [] aiAILevel = new int[Game.nMaxPlayers_c];
+    private long lSeed;
 
     private final int [] aicbPlayers = { R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5 } ;
     private final int [] aietPlayers = {R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4, R.id.editText5 };
@@ -87,6 +88,11 @@ public class NewGameActivity extends AppCompatActivity {
             et.setText(asNames[i]);
         }
 
+        // TODO: add 'if' on Enable-setting-seed flag
+        lSeed = settings.getLong("Seed", 0);
+        et = (EditText) findViewById(R.id.editTextSeed);
+        et.setText(String.format("%d", lSeed));
+
         EnableUx();
     }
 
@@ -135,6 +141,8 @@ public class NewGameActivity extends AppCompatActivity {
                 }
             }
         }
+
+        // TODO: add code to hide RandomSeed fields based on Enable-setting-seed flag
     }
 
     private void SetupClickCheckBox(View v, int iPlayer)
@@ -173,6 +181,11 @@ public class NewGameActivity extends AppCompatActivity {
             }
         }
 
+        // TODO: add 'if' on Enable-setting-seed flag
+        et = (EditText) findViewById(R.id.editTextSeed);
+        lSeed = Long.parseLong(et.getText().toString());
+        editor.putLong("Seed", lSeed);
+
         editor.apply();
     }
 
@@ -186,6 +199,9 @@ public class NewGameActivity extends AppCompatActivity {
             game.setPlayer(i, asNames[i], true, afHuman[i], aiAILevel[i]);
         }
         game.initializeSuns();
+
+        // TODO: add 'if' on Enable-setting-seed flag
+        game.setRandomSeed(lSeed);
 
         // Start GameActivity
         Intent intent = new Intent(v.getContext(), GameActivity.class);

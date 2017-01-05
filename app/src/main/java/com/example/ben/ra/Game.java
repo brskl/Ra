@@ -689,7 +689,7 @@ class Game {
         {
             int nLoseFlood = 0, nLoseNile = 0;
             nDisasterTiles = aiPlayerTiles[Tile.tDisasterN.ordinal()];
-            nLose = 2 * nDisasterTiles;
+            nLose = iTilesLostPerDisaster_c * nDisasterTiles;
             aiPlayerTiles[Tile.tDisasterN.ordinal()] = 0;
             if (aiPlayerTiles[Tile.tFlood.ordinal()] >= nLose)
             {
@@ -712,6 +712,80 @@ class Game {
                     nLoseFlood + " flood tiles and " + nLoseNile + " Nile tiles");
             aiPlayerTiles[Tile.tFlood.ordinal()] -= nLoseFlood;
             aiPlayerTiles[Tile.tNile.ordinal()] -= nLoseNile;
+        }
+
+        // if any Unrest (Civilization) disaster tiles
+        if (aiPlayerTiles[Tile.tDisasterC.ordinal()] > 0)
+        {
+            int nCivTiles;
+            nDisasterTiles = aiPlayerTiles[Tile.tDisasterC.ordinal()];
+            nLose = iTilesLostPerDisaster_c * nDisasterTiles;
+
+            nCivTiles = aiPlayerTiles[Tile.tCiv1.ordinal()] +
+                    aiPlayerTiles[Tile.tCiv2.ordinal()] +
+                    aiPlayerTiles[Tile.tCiv3.ordinal()] +
+                    aiPlayerTiles[Tile.tCiv4.ordinal()] +
+                    aiPlayerTiles[Tile.tCiv5.ordinal()];
+            if (nCivTiles <= nLose)
+            {
+                Log.v(Game.class.toString(), "Civ disaster tile(s) " + nDisasterTiles + ", with only " + nCivTiles + " Civ tiles, lose all");
+                aiPlayerTiles[Tile.tDisasterC.ordinal()] = 0;
+
+                aiPlayerTiles[Tile.tCiv1.ordinal()] = 0;
+                aiPlayerTiles[Tile.tCiv2.ordinal()] = 0;
+                aiPlayerTiles[Tile.tCiv3.ordinal()] = 0;
+                aiPlayerTiles[Tile.tCiv4.ordinal()] = 0;
+                aiPlayerTiles[Tile.tCiv5.ordinal()] = 0;
+            }
+            else
+            {
+                // TODO: check if all civ tiles are the same type, then just deduct from that single type
+
+                Log.v(Game.class.toString(), "Civ disaster tile(s) " + nDisasterTiles + ", with " + nCivTiles + " Civ tiles, user input needed");
+                statusCurrent = Status.ResolveDisaster;
+                fResult = true;
+            }
+        }
+
+        // if any Earthquake (Monument) disaster tiles
+        if (aiPlayerTiles[Tile.tDisasterM.ordinal()] > 0)
+        {
+            int nMonumentTiles;
+            nDisasterTiles = aiPlayerTiles[Tile.tDisasterM.ordinal()];
+            nLose = iTilesLostPerDisaster_c * nDisasterTiles;
+
+            nMonumentTiles = aiPlayerTiles[Tile.tMon1.ordinal()] +
+                    aiPlayerTiles[Tile.tMon2.ordinal()] +
+                    aiPlayerTiles[Tile.tMon3.ordinal()] +
+                    aiPlayerTiles[Tile.tMon4.ordinal()] +
+                    aiPlayerTiles[Tile.tMon5.ordinal()] +
+                    aiPlayerTiles[Tile.tMon6.ordinal()] +
+                    aiPlayerTiles[Tile.tMon7.ordinal()] +
+                    aiPlayerTiles[Tile.tMon8.ordinal()];
+
+            if (nMonumentTiles <= nLose)
+            {
+                aiPlayerTiles[Tile.tDisasterM.ordinal()] = 0;
+
+                aiPlayerTiles[Tile.tMon1.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon2.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon3.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon4.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon5.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon6.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon7.ordinal()] = 0;
+                aiPlayerTiles[Tile.tMon8.ordinal()] = 0;
+
+                Log.v(Game.class.toString(), "Monument disaster tile(s) " + nDisasterTiles + " with only " + nMonumentTiles + " Mon tiles, lose all");
+            }
+            else
+            {
+                // TODO: check if all monument tiles are of a single type, then can just deduct from that type
+
+                Log.v(Game.class.toString(), "Monument disaster tile(s) " + nDisasterTiles + " with " + nMonumentTiles + " Mon tiles, user input needed");
+                statusCurrent = Status.ResolveDisaster;
+                fResult = true;
+            }
         }
 
         return fResult;

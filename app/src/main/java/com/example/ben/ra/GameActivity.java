@@ -269,7 +269,7 @@ public class GameActivity extends AppCompatActivity {
             // Get AI decision on what to bid
             game.MakeBid(player.AiBid());
         }
-      }
+    }
 
     void StartAuction(boolean fVoluntary)
     {
@@ -366,10 +366,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    // Get AI decision
-                    // TODO: for now, just draw tile
+                    Assert.assertFalse(game.getPlayerCurrent().getHuman());
                     Log.v(GameActivity.class.toString(), "Get AI decision on what to do");
 
+                    // Get AI decision
+                    // TODO: for now, just draw tile
                     game.DrawTile();
                 }
                 break;
@@ -406,6 +407,25 @@ public class GameActivity extends AppCompatActivity {
                 }
                 break;
             case AuctionWon:
+                if (!game.TestDisasters()) {
+                    if (game.TestEpochOver()) {
+                        DoEpochOver();
+                    } else {
+                        game.SetNextPlayerTurn();
+                    }
+                }
+                break;
+            case ResolveDisaster:
+                if (game.ResolveDisastersAuto()) {
+                    if (game.getAuctionPlayerHighest().getHuman()) {
+                        // bring up dialog
+                        ;
+                    } else {
+                        // call PlayerAI function
+                        ;
+                    }
+                }
+
                 if (game.TestEpochOver()) {
                     DoEpochOver();
                 } else {
@@ -523,6 +543,9 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case UsedGod:
                 sStatus = getString(R.string.StatusUsedGod, game.getPlayerCurrent().getName());
+                break;
+            case ResolveDisaster:
+                sStatus = getString(R.string.StatusResolveDisaster, game.getPlayerCurrent().getName());
                 break;
             default:
                 // TODO replace with assert

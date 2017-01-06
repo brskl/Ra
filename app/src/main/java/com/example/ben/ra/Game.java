@@ -356,7 +356,7 @@ class Game {
     {
         if (FEpochOver())
         {
-            Assert.assertTrue(statusCurrent == Status.DrewTile || statusCurrent == Status.AuctionWon);
+            Assert.assertTrue(statusCurrent == Status.DrewTile || statusCurrent == Status.AuctionWon || statusCurrent == Status.ResolveDisaster);
             statusCurrent = Status.EpochOver;
 
             return true;
@@ -658,8 +658,30 @@ class Game {
 
     }
 
+    boolean FDisasters()
+    {
+        Player playerWinner = aPlayers[iAuctionPlayerHighest];
+        int [] aiPlayerTiles = playerWinner.getNTiles();
+
+        return ((aiPlayerTiles[Tile.tDisasterP.ordinal()] > 0) ||
+                (aiPlayerTiles[Tile.tDisasterN.ordinal()] > 0) ||
+                (aiPlayerTiles[Tile.tDisasterC.ordinal()] > 0) ||
+                (aiPlayerTiles[Tile.tDisasterM.ordinal()] > 0));
+    }
+
+    boolean TestDisasters()
+    {
+        if (FDisasters())
+        {
+            statusCurrent = Status.ResolveDisaster;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // return value: true - player needs to resolve non-auto disaster tiles
-    private boolean ResolveDisastersAuto()
+    boolean ResolveDisastersAuto()
     {
         Player playerWinner = aPlayers[iAuctionPlayerHighest];
         int [] aiPlayerTiles = playerWinner.getNTiles();
@@ -742,7 +764,6 @@ class Game {
                 // TODO: check if all civ tiles are the same type, then just deduct from that single type
 
                 Log.v(Game.class.toString(), "Civ disaster tile(s) " + nDisasterTiles + ", with " + nCivTiles + " Civ tiles, user input needed");
-                statusCurrent = Status.ResolveDisaster;
                 fResult = true;
             }
         }
@@ -783,7 +804,6 @@ class Game {
                 // TODO: check if all monument tiles are of a single type, then can just deduct from that type
 
                 Log.v(Game.class.toString(), "Monument disaster tile(s) " + nDisasterTiles + " with " + nMonumentTiles + " Mon tiles, user input needed");
-                statusCurrent = Status.ResolveDisaster;
                 fResult = true;
             }
         }
@@ -791,8 +811,7 @@ class Game {
         return fResult;
     }
 
-    // return value: true - player needs to resolve non-auto disaster tiles
-    boolean ResolveAuction()
+    void ResolveAuction()
     {
         if (iAuctionHighBid == Integer.MIN_VALUE) {
             Log.v(Game.class.toString(), "Everyone passed in auction");
@@ -802,8 +821,6 @@ class Game {
                 Log.v(Game.class.toString(), "Cleared tiles because auction track is full");
                 altAuction.clear();
             }
-
-            return false;
         } else {
             Log.v(Game.class.toString(), "Player " + aPlayers[iAuctionPlayerHighest].getName() + " won auction with sun tile value of " + iAuctionHighBid);
             Assert.assertTrue(0 <= iAuctionPlayerHighest && iAuctionPlayerHighest < nPlayers);
@@ -832,10 +849,7 @@ class Game {
                 Tile tCurrent = altAuction.remove(0);
                 playerWinner.getNTiles()[tCurrent.ordinal()]++;
             }
-
-            return ResolveDisastersAuto();
         }
-
     }
 }
 

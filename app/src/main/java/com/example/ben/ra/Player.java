@@ -137,6 +137,35 @@ abstract class Player {
         game.ResolveDisasterCiv(t1, t2);
     }
 
+    private void ResolveDisastersAiMon()
+    {
+        Game game = Game.getInstance();
+        Game.Tile t1 = Game.Tile.tNone, t2 = Game.Tile.tNone;
+
+        for (int i = Game.Tile.tMon1.ordinal(); i <= Game.Tile.tMon8.ordinal(); i++)
+        {
+            if (nTiles[i] > 0)
+            {
+                if (t1 == Game.Tile.tNone)
+                {
+                    t1 = Game.Tile.values()[i];
+                    if (nTiles[i] > 1)
+                    {
+                        t2 = Game.Tile.values()[i];
+                        break;
+                    }
+                } else {
+                    t2 = Game.Tile.values()[i];
+                    break;
+                }
+            }
+        }
+        Assert.assertTrue(Game.FMonumentTile(t1));
+        Assert.assertTrue(Game.FMonumentTile(t2));
+
+        game.ResolveDisasterMonument(t1, t2);
+    }
+
     void ResolveDisastersAi()
     {
         Game game = Game.getInstance();
@@ -147,7 +176,7 @@ abstract class Player {
         }
         while (nTiles[Game.Tile.tDisasterM.ordinal()] > 0)
         {
-            ;
+            ResolveDisastersAiMon();
         }
     }
 }

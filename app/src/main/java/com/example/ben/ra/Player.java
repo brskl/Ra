@@ -106,4 +106,48 @@ abstract class Player {
 
         aiScoreEpoch = null;
     }
+
+    // TODO: Move to PlayerAi. Temporarily use for PlayerHuman until write Disaster resolution dialog
+    private void ResolveDisastersAiCiv()
+    {
+        Game game = Game.getInstance();
+        Game.Tile t1 = Game.Tile.tNone, t2 = Game.Tile.tNone;
+
+        for (int i = Game.Tile.tCiv1.ordinal(); i <= Game.Tile.tCiv5.ordinal(); i++)
+        {
+            if (nTiles[i] > 0)
+            {
+                if (t1 == Game.Tile.tNone)
+                {
+                    t1 = Game.Tile.values()[i];
+                    if (nTiles[i] > 1)
+                    {
+                        t2 = Game.Tile.values()[i];
+                        break;
+                    }
+                } else {
+                    t2 = Game.Tile.values()[i];
+                    break;
+                }
+            }
+        }
+        Assert.assertTrue(Game.FCivTile(t1));
+        Assert.assertTrue(Game.FCivTile(t2));
+
+        game.ResolveDisasterCiv(t1, t2);
+    }
+
+    void ResolveDisastersAi()
+    {
+        Game game = Game.getInstance();
+
+        while (nTiles[Game.Tile.tDisasterC.ordinal()] > 0)
+        {
+            ResolveDisastersAiCiv();
+        }
+        while (nTiles[Game.Tile.tDisasterM.ordinal()] > 0)
+        {
+            ;
+        }
+    }
 }

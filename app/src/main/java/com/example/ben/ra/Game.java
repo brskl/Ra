@@ -699,6 +699,27 @@ class Game {
         }
     }
 
+    static boolean FCivTile(Tile tile)
+    {
+        return ((tile == Tile.tCiv1) ||
+                (tile == Tile.tCiv2) ||
+                (tile == Tile.tCiv3) ||
+                (tile == Tile.tCiv4) ||
+                (tile == Tile.tCiv5));
+    }
+
+    static boolean FMonumentTile(Tile tile)
+    {
+        return ((tile == Tile.tMon1) ||
+                (tile == Tile.tMon2) ||
+                (tile == Tile.tMon3) ||
+                (tile == Tile.tMon4) ||
+                (tile == Tile.tMon5) ||
+                (tile == Tile.tMon6) ||
+                (tile == Tile.tMon7) ||
+                (tile == Tile.tMon8));
+    }
+
     boolean FDisasters()
     {
         Player playerWinner = aPlayers[iAuctionPlayerHighest];
@@ -719,6 +740,42 @@ class Game {
         } else {
             return false;
         }
+    }
+
+    void ResolveDisasterCiv(Tile t1, Tile t2)
+    {
+        Assert.assertTrue(FCivTile(t1));
+        Assert.assertTrue(FCivTile(t2));
+        Player playerWinner = aPlayers[iAuctionPlayerHighest];
+        int [] aiPlayerTiles = playerWinner.getNTiles();
+
+        aiPlayerTiles[t1.ordinal()]--;
+        aiPlayerTiles[t2.ordinal()]--;
+        aiPlayerTiles[Tile.tDisasterC.ordinal()]--;
+
+        // TODO: Add log
+
+        Assert.assertTrue(aiPlayerTiles[t1.ordinal()] >= 0);
+        Assert.assertTrue(aiPlayerTiles[t2.ordinal()] >= 0);
+        Assert.assertTrue(aiPlayerTiles[Tile.tDisasterC.ordinal()] >= 0);
+    }
+
+    void ResolveDisasterMonument(Tile t1, Tile t2)
+    {
+        Assert.assertTrue(FMonumentTile(t1));
+        Assert.assertTrue(FMonumentTile(t2));
+        Player playerWinner = aPlayers[iAuctionPlayerHighest];
+        int [] aiPlayerTiles = playerWinner.getNTiles();
+
+        aiPlayerTiles[t1.ordinal()]--;
+        aiPlayerTiles[t2.ordinal()]--;
+        aiPlayerTiles[Tile.tDisasterM.ordinal()]--;
+
+        // TODO: Add log
+
+        Assert.assertTrue(aiPlayerTiles[t1.ordinal()] >= 0);
+        Assert.assertTrue(aiPlayerTiles[t2.ordinal()] >= 0);
+        Assert.assertTrue(aiPlayerTiles[Tile.tDisasterM.ordinal()] >= 0);
     }
 
     // return value: true - player needs to resolve non-auto disaster tiles

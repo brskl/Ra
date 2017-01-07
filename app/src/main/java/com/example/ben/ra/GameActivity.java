@@ -417,12 +417,15 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case ResolveDisaster:
                 if (game.ResolveDisastersAuto()) {
-                    if (game.getAuctionPlayerHighest().getHuman()) {
+                    Player playerWinner = game.getAuctionPlayerHighest();
+                    if (playerWinner.getHuman()) {
                         // bring up dialog
-                        ;
+
+                        // TODO Remove
+                        playerWinner.ResolveDisastersAi();
                     } else {
                         // call PlayerAI function
-                        ;
+                        playerWinner.ResolveDisastersAi();
                     }
                 }
 

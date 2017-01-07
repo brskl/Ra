@@ -548,7 +548,7 @@ public class GameActivity extends AppCompatActivity {
                 sStatus = getString(R.string.StatusUsedGod, game.getPlayerCurrent().getName());
                 break;
             case ResolveDisaster:
-                sStatus = getString(R.string.StatusResolveDisaster, game.getPlayerCurrent().getName());
+                sStatus = getString(R.string.StatusResolveDisaster, game.getAuctionPlayerHighest().getName());
                 break;
             default:
                 // TODO replace with assert

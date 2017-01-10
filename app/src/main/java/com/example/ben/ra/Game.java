@@ -34,7 +34,7 @@ class Game {
     static final int iScoreSunMaxValue_c = 5;
     static final int iTilesLostPerDisaster_c = 2;
 
-    enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, EpochOver };
+    enum Status { TurnStart, DrewTile, UsedGod, CallsAuction, AuctionInProgress, AuctionWon, AuctionEveryonePassed, ResolveDisaster, ResolveDisasterCompleted, EpochOver };
     enum Tile {
         tNone,	// none
         tRa,	// Ra
@@ -738,6 +738,10 @@ class Game {
             statusCurrent = Status.ResolveDisaster;
             return true;
         } else {
+            if (statusCurrent == Status.ResolveDisaster)
+            {
+                statusCurrent = Status.ResolveDisasterCompleted;
+            }
             return false;
         }
     }
@@ -753,7 +757,7 @@ class Game {
         aiPlayerTiles[t2.ordinal()]--;
         aiPlayerTiles[Tile.tDisasterC.ordinal()]--;
 
-        // TODO: Add log
+        Log.v(Game.class.toString(), "Removed tiles 2 civ tiles (" + t1.toString() + "," + t2.toString() + ") to resolve disaster");
 
         Assert.assertTrue(aiPlayerTiles[t1.ordinal()] >= 0);
         Assert.assertTrue(aiPlayerTiles[t2.ordinal()] >= 0);
@@ -771,7 +775,7 @@ class Game {
         aiPlayerTiles[t2.ordinal()]--;
         aiPlayerTiles[Tile.tDisasterM.ordinal()]--;
 
-        // TODO: Add log
+        Log.v(Game.class.toString(), "Removed tiles 2 monument tiles (" + t1.toString() + "," + t2.toString() + ") to resolve disaster");
 
         Assert.assertTrue(aiPlayerTiles[t1.ordinal()] >= 0);
         Assert.assertTrue(aiPlayerTiles[t2.ordinal()] >= 0);

@@ -178,5 +178,10 @@ abstract class Player {
         {
             ResolveDisastersAiMon();
         }
+
+        boolean fDisasters = game.TestDisasters();
+        Assert.assertFalse(fDisasters);
+        Assert.assertEquals(Game.Status.ResolveDisasterCompleted, game.getStatusCurrent());
+
     }
 }

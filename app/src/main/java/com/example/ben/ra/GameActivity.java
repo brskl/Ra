@@ -95,6 +95,124 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    String [] MakeTileList(int [] anTiles, Game.Tile tStart, Game.Tile tEnd )
+    {
+        ArrayList<String> alTileChoices = new ArrayList<String>();
+        String [] asResult;
+
+        for (int tc = tStart.ordinal(); tc <= tEnd.ordinal(); tc++)
+        {
+            for (int j = 0; j < anTiles[tc]; j++)
+            {
+                alTileChoices.add(TileString(tc));
+            }
+        }
+        Assert.assertTrue(alTileChoices.size() > Game.iTilesLostPerDisaster_c);
+        asResult = new String [alTileChoices.size()];
+        alTileChoices.toArray(asResult);
+
+        return asResult;
+    }
+
+    void PlayerHumanDisasterDialog(String [] asTileChoices)
+    {
+        Log.v(GameActivity.class.toString(), "Starting PlayerHumanDisasterDialog");
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        // TODO: see if there is way for 'OK' button to be initially disabled.  Try setOnShowListner
+
+        // TODO: consider: modify title and MultiChoiceItems to do 2*#disaster tiles instead of constant 2
+        builder.setTitle(R.string.TitleDisasterDialog);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                int i;
+                ListView lv;
+                Game.Tile t1 = Game.Tile.tNone, t2 = Game.Tile.tNone;
+                Game game = Game.getInstance();
+
+                Log.v(GameActivity.class.toString(), "Tile disaster choice, Ok pressed");
+                lv = ((AlertDialog) dialog).getListView();
+                Assert.assertEquals(Game.iTilesLostPerDisaster_c, lv.getCheckedItemCount());
+                for (i = 0; i < lv.getCount(); i++)
+                {
+                    if (lv.isItemChecked(i)) {
+                        if (t1 == Game.Tile.tNone) {
+                            t1 = StringTile((String) lv.getItemAtPosition(i));
+                        } else {
+                            t2 = StringTile((String) lv.getItemAtPosition(i));
+                            break;
+                        }
+                    }
+                }
+
+                Log.v (GameActivity.class.toString(), "Resolving disaster with " + TileString(t1) + ", " + TileString(t2));
+
+                if (Game.FCivTile(t1)) {
+                    game.ResolveDisasterCiv(t1, t2);
+                } else {
+                    Assert.assertTrue(Game.FMonumentTile(t1));
+                    game.ResolveDisasterMonument(t1, t2);
+                }
+
+                if (!game.TestDisasters()) {
+                    Assert.assertEquals(Game.Status.ResolveDisasterCompleted, game.getStatusCurrent());
+                    UpdateDisplay();
+                }
+                dialog.dismiss();
+            }
+        });
+
+        builder.setMultiChoiceItems(asTileChoices, null, new DialogInterface.OnMultiChoiceClickListener() {
+
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                Log.v(GameActivity.class.toString(), "Tile disaster choice, item " + which + " checked " + isChecked);
+                // enable/disable ok as appropriate
+
+                int nChecked = 0;
+                ListView lv;
+                AlertDialog ad;
+                Button btn;
+
+                ad = (AlertDialog) dialog;
+                lv = ad.getListView();
+                nChecked = lv.getCheckedItemCount();
+                btn = (Button) ad.getButton(AlertDialog.BUTTON_POSITIVE);
+                btn.setEnabled(nChecked == 2);
+            }
+        });
+
+        builder.show();
+    }
+
+    void PlayerHumanDisasterHandling()
+    {
+        Game game = Game.getInstance();
+        Player playerWinner = game.getAuctionPlayerHighest();
+        int [] anTiles = playerWinner.getNTiles();
+        String [] asTileChoices = null;
+
+        Assert.assertTrue(playerWinner.getHuman());
+        Assert.assertTrue((anTiles[Game.Tile.tDisasterC.ordinal()] > 0) ||
+                          (anTiles[Game.Tile.tDisasterM.ordinal()] > 0));
+
+        Log.v(GameActivity.class.toString(), "Handling disasters manually for human player " + playerWinner.getName());
+
+        if (anTiles[Game.Tile.tDisasterC.ordinal()] > 0)
+        {
+            asTileChoices = MakeTileList(anTiles, Game.Tile.tCiv1, Game.Tile.tCiv5);
+        } else {
+            Assert.assertTrue(anTiles[Game.Tile.tDisasterM.ordinal()] > 0);
+            asTileChoices = MakeTileList(anTiles, Game.Tile.tMon1, Game.Tile.tMon8);
+        }
+
+        Assert.assertNotNull(asTileChoices);
+        PlayerHumanDisasterDialog(asTileChoices);
+    }
+
     void PlayerHumanGodDialog()
     {
         Log.v(GameActivity.class.toString(), "Bringing up Player God dialog");
@@ -419,16 +537,20 @@ public class GameActivity extends AppCompatActivity {
                 if (game.ResolveDisastersAuto()) {
                     Player playerWinner = game.getAuctionPlayerHighest();
                     if (playerWinner.getHuman()) {
-                        // bring up dialog
-
-                        // TODO Remove
-                        playerWinner.ResolveDisastersAi();
+                        PlayerHumanDisasterHandling();
                     } else {
                         // call PlayerAI function
                         playerWinner.ResolveDisastersAi();
                     }
+                } else {
+                    if (game.TestEpochOver()) {
+                        DoEpochOver();
+                    } else {
+                        game.SetNextPlayerTurn();
+                    }
                 }
-
+                break;
+            case ResolveDisasterCompleted:
                 if (game.TestEpochOver()) {
                     DoEpochOver();
                 } else {
@@ -550,6 +672,9 @@ public class GameActivity extends AppCompatActivity {
             case ResolveDisaster:
                 sStatus = getString(R.string.StatusResolveDisaster, game.getAuctionPlayerHighest().getName());
                 break;
+            case ResolveDisasterCompleted:
+                sStatus = getString(R.string.StatusResolveDisasterCompleted, game.getAuctionPlayerHighest().getName());
+                break;
             default:
                 // TODO replace with assert
                 sStatus = "Not Yet Implemented";
@@ -558,6 +683,11 @@ public class GameActivity extends AppCompatActivity {
 
         Assert.assertNotNull("Illegal Status", sStatus);
         tvStatus.setText(sStatus);
+    }
+
+    private String TileString(int iValue)
+    {
+        return sTiles[iValue];
     }
 
     private String TileString(Game.Tile etValue)

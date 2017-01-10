@@ -9,6 +9,7 @@
     <string name="TitleAuctionTrack">Auction:</string>
     <string name="TitleBidDialog">Bid</string>
     <string name="TitleGodDialog">Exchange for</string>
+    <string name="TitleDisasterDialog">Remove 2 for disaster</string>
     <string name="TitleScore">Score</string>
     <string name="TitleScoreEpochDuring">During Epoch %d</string>
     <string name="TitleScoreEpochEnd">at End of  Epoch %d</string>
@@ -31,6 +32,7 @@
     <string name="StatusEpochOver">Epoch %d is over</string>
     <string name="StatusGameOver">%s won</string>
     <string name="StatusResolveDisaster">%s resolving disasters</string>
+    <string name="StatusResolveDisasterCompleted">%s resolved disasters</string>
     <string name="PlayerNamePlaceholder">%s:</string>
     <string name="BidPass">Pass</string>
     <string name="TitlePlayer1">Player 1:</string>

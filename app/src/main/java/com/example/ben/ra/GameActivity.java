@@ -540,7 +540,7 @@ public class GameActivity extends AppCompatActivity {
                         PlayerHumanDisasterHandling();
                     } else {
                         // call PlayerAI function
-                        playerWinner.ResolveDisastersAi();
+                        ((PlayerAi) playerWinner).ResolveDisastersAi();
                     }
                 } else {
                     if (game.TestEpochOver()) {

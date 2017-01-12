@@ -118,9 +118,8 @@ public class GameActivity extends AppCompatActivity {
     {
         Log.v(GameActivity.class.toString(), "Starting PlayerHumanDisasterDialog");
 
+        AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        // TODO: see if there is way for 'OK' button to be initially disabled.  Try setOnShowListner
 
         // TODO: consider: modify title and MultiChoiceItems to do 2*#disaster tiles instead of constant 2
         builder.setTitle(R.string.TitleDisasterDialog);
@@ -185,7 +184,20 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        builder.show();
+        dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            public void onShow(DialogInterface dialog) {
+                AlertDialog ad;
+                Button btn;
+
+                ad = (AlertDialog) dialog;
+                btn = (Button) ad.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                btn.setEnabled(false);
+            }
+        });
+
+        dialog.show();
     }
 
     void PlayerHumanDisasterHandling()
@@ -226,9 +238,8 @@ public class GameActivity extends AppCompatActivity {
 
         // TODO: Maybe use MatrixCursor and provide to setMultiChoice
         String [] asTileChoices;
-        AlertDialog.Builder builder;
-
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);;
+        AlertDialog dialog;
         ArrayList<String> alGodChoices = new ArrayList<String>(Game.nMaxAuction_c);
 
         for (Game.Tile t: game.getAuction())
@@ -245,8 +256,6 @@ public class GameActivity extends AppCompatActivity {
 
         asTileChoices = new String [alGodChoices.size()];
         alGodChoices.toArray(asTileChoices);
-        builder = new AlertDialog.Builder(this);
-        // TODO: see if there is way for 'OK' button to be initially disabled
         builder.setTitle(R.string.TitleGodDialog);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -304,7 +313,20 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        builder.show();
+        dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            public void onShow(DialogInterface dialog) {
+                AlertDialog ad;
+                Button btn;
+
+                ad = (AlertDialog) dialog;
+                btn = (Button) ad.getButton(AlertDialog.BUTTON_POSITIVE);
+
+                btn.setEnabled(false);
+            }
+        });
+
+        dialog.show();
     }
 
     void PlayerHumanBidDialog()

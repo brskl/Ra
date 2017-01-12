@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.ToggleButton;
 
 import junit.framework.Assert;
 
@@ -22,7 +22,7 @@ public class NewGameActivity extends AppCompatActivity {
     private long lSeed;
     private boolean fSeed = false;
 
-    private final int [] aicbPlayers = { R.id.checkBox1, R.id.checkBox2, R.id.checkBox3, R.id.checkBox4, R.id.checkBox5 } ;
+    private final int [] aitbPlayers = { R.id.toggleButtonPlayer1, R.id.toggleButtonPlayer2, R.id.toggleButtonPlayer3, R.id.toggleButtonPlayer4, R.id.toggleButtonPlayer5 } ;
     private final int [] aietPlayers = {R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4, R.id.editText5 };
     private final String [] aisPrefNames = { "Player1Name", "Player2Name", "Player3Name", "Player4Name", "Player5Name" };
 
@@ -33,7 +33,7 @@ public class NewGameActivity extends AppCompatActivity {
 
         Log.d(NewGameActivity.class.toString(), "onCreate");
 
-        CheckBox cb;
+        ToggleButton tb;
         EditText et;
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupNumPlayers);
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -80,8 +80,8 @@ public class NewGameActivity extends AppCompatActivity {
 
         for (int i = 0; i < Game.nMaxPlayers_c; i++)
         {
-            cb = (CheckBox) findViewById(aicbPlayers[i]);
-            cb.setChecked(afHuman[i]);
+            tb = (ToggleButton) findViewById(aitbPlayers[i]);
+            tb.setChecked(afHuman[i]);
             if (!afHuman[i])
             {
                 asNames[i] = AIname(i);
@@ -125,24 +125,24 @@ public class NewGameActivity extends AppCompatActivity {
     private void EnableUx()
     {
         View et;
-        CheckBox cb;
+        ToggleButton tb;
         LinearLayout linearLayout;
 
         for (int i = 0; i < Game.nMaxPlayers_c; i++)
         {
-            cb = (CheckBox) findViewById(aicbPlayers[i]);
+            tb = (ToggleButton) findViewById(aitbPlayers[i]);
             et = findViewById(aietPlayers[i]);
-            et.setEnabled(cb.isChecked());
+            et.setEnabled(tb.isChecked());
             if (i >= 3)
             {
                 if (i < nPlayers)
                 {
-                    cb.setVisibility(View.VISIBLE);
+                    tb.setVisibility(View.VISIBLE);
                     et.setVisibility(View.VISIBLE);
                 }
                 else
                 {
-                    cb.setVisibility(View.INVISIBLE);
+                    tb.setVisibility(View.INVISIBLE);
                     et.setVisibility(View.INVISIBLE);
                 }
             }
@@ -156,11 +156,11 @@ public class NewGameActivity extends AppCompatActivity {
         }
     }
 
-    private void SetupClickCheckBox(View v, int iPlayer)
+    private void SetupClickToggleButton(View v, int iPlayer)
     {
         EditText et;
 
-        afHuman[iPlayer] = ((CheckBox) v).isChecked();
+        afHuman[iPlayer] = ((ToggleButton) v).isChecked();
         et = (EditText) findViewById(aietPlayers[iPlayer]);
         if (!afHuman[iPlayer])
         {
@@ -245,29 +245,29 @@ public class NewGameActivity extends AppCompatActivity {
         EnableUx();
     }
 
-    void onClickNewGameCheckbox(View v)
+    void onClickNewGameToggleButton(View v)
     {
-        Log.d(NewGameActivity.class.toString(), "onClickNewGameCheckbox");
+        Log.d(NewGameActivity.class.toString(), "onClickNewGameToggleButton");
 
         switch(v.getId()) {
-            case R.id.checkBox1:
+            case R.id.toggleButtonPlayer1:
                 Assert.fail("CheckBox1 clicked, should never be enabled");
                 break;
-            case R.id.checkBox2:
+            case R.id.toggleButtonPlayer2:
                 Log.v(NewGameActivity.class.toString(), "checkBox2 pressed");
-                SetupClickCheckBox(v, 1);
+                SetupClickToggleButton(v, 1);
                 break;
-            case R.id.checkBox3:
+            case R.id.toggleButtonPlayer3:
                 Log.v(NewGameActivity.class.toString(), "checkBox3 pressed");
-                SetupClickCheckBox(v, 2);
+                SetupClickToggleButton(v, 2);
                 break;
-            case R.id.checkBox4:
+            case R.id.toggleButtonPlayer4:
                 Log.v(NewGameActivity.class.toString(), "checkBox4 pressed");
-                SetupClickCheckBox(v, 3);
+                SetupClickToggleButton(v, 3);
                 break;
-            case R.id.checkBox5:
+            case R.id.toggleButtonPlayer5:
                 Log.v(NewGameActivity.class.toString(), "checkBox5 pressed");
-                SetupClickCheckBox(v, 4);
+                SetupClickToggleButton(v, 4);
                 break;
         }
         EnableUx();

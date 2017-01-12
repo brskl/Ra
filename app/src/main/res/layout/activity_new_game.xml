@@ -58,13 +58,16 @@
             android:layout_height="wrap_content"
             android:text="@string/TitlePlayer1"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        <CheckBox
-            android:id="@+id/checkBox1"
+        <ToggleButton
+            android:id="@+id/toggleButtonPlayer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:enabled="false"
-            android:text="@string/cbHuman" />
+            android:textOn="@string/tbtnHuman"
+            android:textOff="@string/tbtnAI"
+            android:onClick="onClickNewGameToggleButton"
+            />
         <EditText
             android:id="@+id/editText1"
             android:layout_width="wrap_content"
@@ -85,12 +88,14 @@
             android:layout_height="wrap_content"
             android:text="@string/TitlePlayer2"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        <CheckBox
-            android:id="@+id/checkBox2"
+        <ToggleButton
+            android:id="@+id/toggleButtonPlayer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickNewGameCheckbox"
-            android:text="@string/cbHuman" />
+            android:textOn="@string/tbtnHuman"
+            android:textOff="@string/tbtnAI"
+            android:onClick="onClickNewGameToggleButton"
+            />
         <EditText
             android:id="@+id/editText2"
             android:layout_width="0dp"
@@ -111,12 +116,14 @@
             android:layout_height="wrap_content"
             android:text="@string/TitlePlayer3"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        <CheckBox
-            android:id="@+id/checkBox3"
+        <ToggleButton
+            android:id="@+id/toggleButtonPlayer3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickNewGameCheckbox"
-            android:text="@string/cbHuman" />
+            android:textOn="@string/tbtnHuman"
+            android:textOff="@string/tbtnAI"
+            android:onClick="onClickNewGameToggleButton"
+            />
         <EditText
             android:id="@+id/editText3"
             android:layout_width="0dp"
@@ -137,12 +144,14 @@
             android:layout_height="wrap_content"
             android:text="@string/TitlePlayer4"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        <CheckBox
-            android:id="@+id/checkBox4"
+        <ToggleButton
+            android:id="@+id/toggleButtonPlayer4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickNewGameCheckbox"
-            android:text="@string/cbHuman" />
+            android:textOn="@string/tbtnHuman"
+            android:textOff="@string/tbtnAI"
+            android:onClick="onClickNewGameToggleButton"
+            />
         <EditText
             android:id="@+id/editText4"
             android:layout_width="0dp"
@@ -163,12 +172,14 @@
             android:layout_height="wrap_content"
             android:text="@string/TitlePlayer5"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        <CheckBox
-            android:id="@+id/checkBox5"
+        <ToggleButton
+            android:id="@+id/toggleButtonPlayer5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickNewGameCheckbox"
-            android:text="@string/cbHuman" />
+            android:textOn="@string/tbtnHuman"
+            android:textOff="@string/tbtnAI"
+            android:onClick="onClickNewGameToggleButton"
+            />
         <EditText
             android:id="@+id/editText5"
             android:layout_width="0dp"

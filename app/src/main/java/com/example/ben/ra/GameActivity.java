@@ -241,6 +241,7 @@ public class GameActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);;
         AlertDialog dialog;
         ArrayList<String> alGodChoices = new ArrayList<String>(Game.nMaxAuction_c);
+        int nGodTiles = game.getPlayerCurrent().getNTiles()[Game.Tile.tGod.ordinal()];
 
         for (Game.Tile t: game.getAuction())
         {
@@ -256,7 +257,7 @@ public class GameActivity extends AppCompatActivity {
 
         asTileChoices = new String [alGodChoices.size()];
         alGodChoices.toArray(asTileChoices);
-        builder.setTitle(R.string.TitleGodDialog);
+        builder.setTitle(getResources().getQuantityString(R.plurals.TitleGodDialog, nGodTiles, nGodTiles));
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 int i;

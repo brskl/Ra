@@ -1,9 +1,16 @@
 package com.example.ben.ra;
 
+import android.content.Context;
 import android.util.Log;
 
 import junit.framework.Assert;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,7 +19,7 @@ import java.util.Random;
  * Created by Ben on 12/7/2016.
  */
 
-class Game {
+class Game implements Serializable {
     static final int nMinPlayers_c = 3;
     static final int nMaxPlayers_c = 5;
     static final int nMaxAuction_c = 8;
@@ -133,6 +140,37 @@ class Game {
     Tile getTileLastDrawn() { return tLastDrawn; }
 
     Player [] getPlayers() { return aPlayers; }
+
+    public void saveToFile(Context context, String fileName) {
+        Log.v(Game.class.toString(), "saveToFile("+ fileName+")");
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Creates an object by reading it from a file
+    public static void readFromFile(Context context, String fileName) {
+        Game game = null;
+        try {
+            FileInputStream fileInputStream = context.openFileInput(fileName);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            game = (Game) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Game.instance = game;
+    }
 
 
     private void initalizeTiles()

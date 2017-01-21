@@ -66,10 +66,23 @@ public class GameActivity extends AppCompatActivity {
         btnDraw = (Button) findViewById(R.id.buttonDraw);
         btnGod = (Button) findViewById(R.id.buttonGod);
 
+        // TODO: load file if Resume button is pressed on MainActivity.
+
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
 
         UpdateDisplay();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.d(GameActivity.class.toString(), "onStop");
+        Game game = Game.getInstance();
+
+        // TODO: Add test for GameOver and do not save game in that case, maybe delete file if GameOver
+        game.getInstance().saveToFile(this, "Ra.game");
     }
 
     private void SetNumplayerUI() {

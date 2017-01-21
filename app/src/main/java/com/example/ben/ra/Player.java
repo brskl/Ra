@@ -2,13 +2,14 @@ package com.example.ben.ra;
 
 import junit.framework.Assert;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  * Created by Ben on 12/9/2016.
  */
-abstract class Player {
+abstract class Player implements Serializable {
     static final int iScoreStart_c = 10;
     String sName = null;
     ArrayList<Integer> alSuns = null, alSunsNext = null;

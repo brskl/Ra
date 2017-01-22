@@ -286,6 +286,8 @@ public class NewGameActivity extends AppCompatActivity {
                 Log.v(NewGameActivity.class.toString(), "buttonOK pressed");
                 SavePreferences();
 
+                // TODO: Consider deleting default game file.
+
                 StartGame(v);
 
         }

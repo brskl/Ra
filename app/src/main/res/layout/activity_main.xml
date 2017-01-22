@@ -11,17 +11,24 @@
     tools:context="com.example.ben.ra.MainActivity">
 
     <Button
-        android:id="@+id/buttonPlay"
+        android:id="@+id/buttonNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickMain"
-        android:text="@string/btnPlay" />
+        android:onClick="onClick"
+        android:text="@string/btnNew" />
+    <Button
+        android:id="@+id/buttonResume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/buttonNew"
+        android:onClick="onClick"
+        android:text="@string/btnResume"/>
     <Button
         android:id="@+id/buttonQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/buttonPlay"
-        android:onClick="onClickMain"
+        android:layout_toRightOf="@id/buttonResume"
+        android:onClick="onClick"
         android:text="@string/btnQuit" />
 
 </RelativeLayout>

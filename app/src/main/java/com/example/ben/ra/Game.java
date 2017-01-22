@@ -409,6 +409,11 @@ class Game implements Serializable {
         return (getEpoch() == nEpochs_c);
     }
 
+    boolean FGameOver()
+    {
+        return (FLastEpoch() && getStatusCurrent() == Status.EpochOver);
+    }
+
     boolean SetupNextEpoch()
     {
         int iSunValue, iMaxSun = Integer.MIN_VALUE;

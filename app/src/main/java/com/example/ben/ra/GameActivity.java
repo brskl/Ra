@@ -66,8 +66,6 @@ public class GameActivity extends AppCompatActivity {
         btnDraw = (Button) findViewById(R.id.buttonDraw);
         btnGod = (Button) findViewById(R.id.buttonGod);
 
-        // TODO: load file if Resume button is pressed on MainActivity.
-
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
 
@@ -81,8 +79,9 @@ public class GameActivity extends AppCompatActivity {
         Log.d(GameActivity.class.toString(), "onStop");
         Game game = Game.getInstance();
 
-        // TODO: Add test for GameOver and do not save game in that case, maybe delete file if GameOver
-        game.getInstance().saveToFile(this, "Ra.game");
+        if (!game.FGameOver()) {
+            game.getInstance().saveToFile(this, "Ra.game");
+        }
     }
 
     private void SetNumplayerUI() {
@@ -597,8 +596,9 @@ public class GameActivity extends AppCompatActivity {
                 if (game.SetupNextEpoch())
                 {
                     // game over
-                    Log.v(GameActivity.class.toString(), "Game over, finishing activity");
-                    // TODO: exit activity, back to main menu, not player setup
+                    Log.v(GameActivity.class.toString(), "Game over, deleting default save file, finishing activity");
+
+                    deleteFile("Ra.game");
                     finish();
                 }
                 break;

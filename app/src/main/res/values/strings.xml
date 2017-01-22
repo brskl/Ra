@@ -18,7 +18,8 @@
     <string name="TitleScoreEpochEnd">at End of  Epoch %d</string>
     <string name="TitleScoreFinal">Final</string>
     <string name="CurrentPlayer">Current Player: %s</string>
-    <string name="btnPlay">Play</string>
+    <string name="btnNew">New</string>
+    <string name="btnResume">Resume</string>
     <string name="btnQuit">Quit</string>
     <string name="btnDraw">Draw</string>
     <string name="btnAuction">Auction</string>

@@ -2,6 +2,7 @@ package com.example.ben.ra;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TableLayout;
@@ -42,6 +43,10 @@ public class TilesActivity extends AppCompatActivity {
         Game game = Game.getInstance();
         LayoutInflater inflater = getLayoutInflater();
         TableLayout tl = (TableLayout) findViewById(R.id.TableLayoutTiles);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         for (Player player: game.getPlayers()) {
             TextView tv;

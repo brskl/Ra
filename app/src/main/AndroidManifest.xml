@@ -17,8 +17,14 @@
         </activity>
         <activity android:name=".NewGameActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".TilesActivity" />
-        <activity android:name=".ScoreActivity"></activity>
+        <activity android:name=".TilesActivity"
+            android:label="@string/TitleActivityTiles"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".GameActivity"/>
+        <activity android:name=".ScoreActivity"
+            android:label="@string/TitleActivityScore"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".GameActivity"/>
     </application>
 
 </manifest>

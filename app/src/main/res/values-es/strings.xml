@@ -40,11 +40,11 @@
     <string name="StatusResolveDisasterCompleted">%s resolved disasters</string>
     <string name="PlayerNamePlaceholder" translatable="false">%s:</string>
     <string name="BidPass">Pass</string>
-    <string name="TitlePlayer1">Player 1:</string>
-    <string name="TitlePlayer2">Player 2:</string>
-    <string name="TitlePlayer3">Player 3:</string>
-    <string name="TitlePlayer4">Player 4:</string>
-    <string name="TitlePlayer5">Player 5:</string>
+    <string name="TitlePlayer1">Jugador 1:</string>
+    <string name="TitlePlayer2">Jugador 2:</string>
+    <string name="TitlePlayer3">Jugador 3:</string>
+    <string name="TitlePlayer4">Jugador 4:</string>
+    <string name="TitlePlayer5">Jugador 5:</string>
     <string name="TitleSeed">Random Seed:</string>
     <string name="tbtnHuman">Human</string>
     <string name="tbtnAI">AI</string>

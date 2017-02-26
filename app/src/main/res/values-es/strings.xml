@@ -18,7 +18,7 @@
     <string name="TitleScoreEpochDuring">During Epoch %d</string>
     <string name="TitleScoreEpochEnd">at End of  Epoch %d</string>
     <string name="TitleScoreFinal">Final</string>
-    <string name="CurrentPlayer">Current Player: %s</string>
+    <string name="CurrentPlayer">Jugador actual: %s</string>
     <string name="btnNew">New</string>
     <string name="btnResume">Resume</string>
     <string name="btnQuit">Quit</string>
@@ -26,20 +26,20 @@
     <string name="btnAuction">Auction</string>
     <string name="btnGod">God</string>
     <string name="defaultName">You</string>
-    <string name="StatusTurnStart">%s\'s turn</string>
-    <string name="StatusDrewTile" formatted="false">%s drew a %s tile</string>
+    <string name="StatusTurnStart">El turno de %s</string>
+    <string name="StatusDrewTile" formatted="false">%s dibujó un azulejo del %s</string>
     <string name="StatusUsedGod">%s used 1 or more God tiles</string>
-    <string name="StatusCallsAuction">%s calls Ra</string>
-    <string name="StatusAuctionPlayerBid" formatted="false">%s bid %d</string>
-    <string name="StatusAuctionPlayerPassed">%s passed</string>
-    <string name="StatusAuctionWon">%s won the auction</string>
-    <string name="StatusAuctionEveryonePassed">Everyone passed in the auction</string>
-    <string name="StatusEpochOver">Epoch %d is over</string>
-    <string name="StatusGameOver">%s won</string>
-    <string name="StatusResolveDisaster">%s resolving disasters</string>
-    <string name="StatusResolveDisasterCompleted">%s resolved disasters</string>
+    <string name="StatusCallsAuction">%s llama Ra</string>
+    <string name="StatusAuctionPlayerBid" formatted="false">%s hace %d</string>
+    <string name="StatusAuctionPlayerPassed">%s pasó</string>
+    <string name="StatusAuctionWon">%s ganó la subasta</string>
+    <string name="StatusAuctionEveryonePassed">Todo el mundo pasó en la subasta</string>
+    <string name="StatusEpochOver">La Época %d ha terminado</string>
+    <string name="StatusGameOver">%s ganó</string>
+    <string name="StatusResolveDisaster">%s resuelve los desastres</string>
+    <string name="StatusResolveDisasterCompleted">%s resolvió los desastres</string>
     <string name="PlayerNamePlaceholder" translatable="false">%s:</string>
-    <string name="BidPass">Pass</string>
+    <string name="BidPass">Pasa</string>
     <string name="TitlePlayer1">Jugador 1:</string>
     <string name="TitlePlayer2">Jugador 2:</string>
     <string name="TitlePlayer3">Jugador 3:</string>

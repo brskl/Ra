@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Ra</string>
-    <string name="TitleActivityTiles">Tiles</string>
-    <string name="TitleActivityScore">Score</string>
-    <string name="TitleActivityNewGame">New Game</string>
-    <string name="TitleActivityGame">Game board</string>
-    <string name="TitleEpoch">"Epoch: "</string>
+    <string name="TitleActivityTiles">Azulejos</string>
+    <string name="TitleActivityScore">Puntuación</string>
+    <string name="TitleActivityNewGame">Nuevo juego</string>
+    <string name="TitleActivityGame">Juego de mesa</string>
+    <string name="TitleEpoch">\"Época: \"</string>
     <string name="TitleRaTrack">"Ra Track: "</string>
-    <string name="TitleAuctionTrack">Auction:</string>
-    <string name="TitleBidDialog">Bid</string>
+    <string name="TitleAuctionTrack">Subasta:</string>
     <plurals name="TitleGodDialog">
         <item quantity="one">Exchange %d God tile</item>
         <item quantity="other">Exchange up to %d God tiles</item>
     </plurals>
-    <string name="TitleDisasterDialog">Remove 2 for disaster</string>
-    <string name="TitleScore">Score</string>
-    <string name="TitleScoreEpochDuring">During Epoch %d</string>
-    <string name="TitleScoreEpochEnd">at End of  Epoch %d</string>
+    <string name="TitleDisasterDialog">Eliminar 2 para el desastre</string>
+    <string name="TitleScore">Puntuación</string>
+    <string name="TitleScoreEpochDuring">Durante la Época %d</string>
+    <string name="TitleScoreEpochEnd">Al final de la Época %d</string>
     <string name="TitleScoreFinal">Final</string>
     <string name="CurrentPlayer">Jugador actual: %s</string>
     <string name="btnNew">New</string>
@@ -69,4 +68,5 @@
         <item>AI Hard 4</item>
         <item>AI Hard 5</item>
     </string-array>
+    <string name="TitleBidDialog">Oferta</string>
 </resources>

@@ -2,10 +2,10 @@
 <resources>
     <string name="app_name" translatable="false">Ra</string>
     <string name="TitleActivityTiles">Tiles</string>
-    <string name="TitleActivityScore">Score</string>
+    <string name="TitleActivityScore">But</string>
     <string name="TitleActivityNewGame">New Game</string>
     <string name="TitleActivityGame">Game board</string>
-    <string name="TitleEpoch">"Epoch: "</string>
+    <string name="TitleEpoch">\"Époque: \"</string>
     <string name="TitleRaTrack">"Ra Track: "</string>
     <string name="TitleAuctionTrack">Auction:</string>
     <string name="TitleBidDialog">Bid</string>
@@ -13,12 +13,12 @@
         <item quantity="one">Exchange %d God tile</item>
         <item quantity="other">Exchange up to %d God tiles</item>
     </plurals>
-    <string name="TitleDisasterDialog">Remove 2 for disaster</string>
-    <string name="TitleScore">Score</string>
-    <string name="TitleScoreEpochDuring">During Epoch %d</string>
-    <string name="TitleScoreEpochEnd">at End of  Epoch %d</string>
+    <string name="TitleDisasterDialog">Supprimer 2 pour désastre</string>
+    <string name="TitleScore">But</string>
+    <string name="TitleScoreEpochDuring">Pendant l\'Epoque %d</string>
+    <string name="TitleScoreEpochEnd">À la fin de la période %d</string>
     <string name="TitleScoreFinal">Final</string>
-    <string name="CurrentPlayer">Current Player: %s</string>
+    <string name="CurrentPlayer">Joueur actuel: %s</string>
     <string name="btnNew">New</string>
     <string name="btnResume">Resume</string>
     <string name="btnQuit">Quit</string>
@@ -33,18 +33,18 @@
     <string name="StatusAuctionPlayerBid" formatted="false">%s bid %d</string>
     <string name="StatusAuctionPlayerPassed">%s passed</string>
     <string name="StatusAuctionWon">%s won the auction</string>
-    <string name="StatusAuctionEveryonePassed">Everyone passed in the auction</string>
+    <string name="StatusAuctionEveryonePassed">Tout le monde est passé aux enchères</string>
     <string name="StatusEpochOver">Epoch %d is over</string>
     <string name="StatusGameOver">%s won</string>
     <string name="StatusResolveDisaster">%s resolving disasters</string>
     <string name="StatusResolveDisasterCompleted">%s resolved disasters</string>
     <string name="PlayerNamePlaceholder" translatable="false">%s:</string>
     <string name="BidPass">Pass</string>
-    <string name="TitlePlayer1">Player 1:</string>
-    <string name="TitlePlayer2">Player 2:</string>
-    <string name="TitlePlayer3">Player 3:</string>
-    <string name="TitlePlayer4">Player 4:</string>
-    <string name="TitlePlayer5">Player 5:</string>
+    <string name="TitlePlayer1">Joueur 1:</string>
+    <string name="TitlePlayer2">Joueur 2:</string>
+    <string name="TitlePlayer3">Joueur 3:</string>
+    <string name="TitlePlayer4">Joueur 4:</string>
+    <string name="TitlePlayer5">Joueur 5:</string>
     <string name="TitleSeed">Random Seed:</string>
     <string name="tbtnHuman">Human</string>
     <string name="tbtnAI">AI</string>

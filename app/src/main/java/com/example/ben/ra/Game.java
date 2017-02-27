@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 
 
@@ -76,7 +77,7 @@ class Game implements Serializable {
     Player [] aPlayers = null;
     int iAtAuctionSun;
     ArrayList<Tile> altAuction = null;
-    ArrayList<Tile> altTilebag = null;
+    LinkedList<Tile> llTilebag = null;
     int [] anTilebag = null;
     Tile tLastDrawn;
 
@@ -189,7 +190,7 @@ class Game implements Serializable {
             nTiles += anTileTypes_c[i];
         }
 
-        altTilebag = new ArrayList<Tile>(nTiles);
+        ArrayList<Tile> altTilebag = new ArrayList<Tile>(nTiles);
 
         for (i = 0; i < anTileTypes_c.length; i++)
         {
@@ -198,6 +199,16 @@ class Game implements Serializable {
                 altTilebag.add(Tile.values()[i]);
             }
         }
+
+        llTilebag = new LinkedList<Tile>();
+        while(!altTilebag.isEmpty())
+        {
+            int iTile = rndPlay.nextInt(altTilebag.size());
+            Tile tile = altTilebag.remove(iTile);
+            llTilebag.add(tile);
+        }
+
+        Assert.assertEquals("Tilebag queue should be full", nTiles, llTilebag.size());
     }
 
     void initialize(int nPlayersValue)
@@ -315,12 +326,9 @@ class Game implements Serializable {
         int iTile;
 
         Assert.assertTrue("Auction block should have space left", altAuction.size() < nMaxAuction_c);
-        Assert.assertFalse("Tile bag should not be empty", altTilebag.isEmpty());
+        Assert.assertFalse("Tile bag should not be empty", llTilebag.isEmpty());
 
-        iTile = rndPlay.nextInt(altTilebag.size());
-        // iTile = 0; // test sequence
-
-        tLastDrawn = altTilebag.remove(iTile);
+        tLastDrawn = llTilebag.remove();
         anTilebag[tLastDrawn.ordinal()]--;
         Assert.assertTrue(anTilebag[tLastDrawn.ordinal()] >= 0);
         Log.v(Game.class.toString(), "drawn from tile bag: " + tLastDrawn.name());

@@ -19,11 +19,11 @@
     <string name="TitleScoreEpochEnd">À la fin de la période %d</string>
     <string name="TitleScoreFinal">Final</string>
     <string name="CurrentPlayer">Joueur actuel: %s</string>
-    <string name="btnNew">New</string>
+    <string name="btnNew">Nouveau</string>
     <string name="btnResume">Resume</string>
     <string name="btnQuit">Quit</string>
-    <string name="btnDraw">Draw</string>
-    <string name="btnAuction">Auction</string>
+    <string name="btnDraw">Tirer</string>
+    <string name="btnAuction">Enchères</string>
     <string name="btnGod">God</string>
     <string name="defaultName">You</string>
     <string name="StatusTurnStart">%s\'s turn</string>

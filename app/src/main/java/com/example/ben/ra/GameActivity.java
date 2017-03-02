@@ -19,18 +19,7 @@ import java.util.ArrayList;
 public class GameActivity extends AppCompatActivity {
     // Must be in same order as RaGame.Tile enum
     // All 2 characters for formatting
-    private final String sTiles [] = {
-            "",		// none
-            "Ra",	// Ra
-            "G ",	// God
-            "Au",	// Gold
-            "P ",	// Pharaoh
-            "N ",	// Nile
-            "NF",	// Nile Flood
-            "C1", "C2", "C3", "C4", "C5",	// Civs
-            "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", // Monuments
-            "DP", "DN", "DC", "DM"	// Disasters (Pharaoh, Nile, Civs, Monuments)
-    };
+    private String [] sTiles; // loaded from R.array.Tiles
 
 
     private TextView tvEpoch;
@@ -50,6 +39,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         Log.d(GameActivity.class.toString(), "onCreate");
+
+        sTiles = getResources().getStringArray(R.array.Tiles);
 
         tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
         tvStatus = (TextView) findViewById(R.id.textViewStatus);

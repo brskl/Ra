@@ -69,4 +69,30 @@
         <item>AI Hard 4</item>
         <item>AI Hard 5</item>
     </string-array>
+    <string-array name="Tiles">  // Must be in same order as RaGame.Tile enum
+        <item></item>	// none
+        <item>Ra</item> // Ra
+        <item>G </item> // God
+        <item>Au</item> // Gold
+        <item>P </item> // Pharaoh
+        <item>N </item> // Nile
+        <item>NF</item> // Nile Flood
+        <item>C1</item> // Civs
+        <item>C2</item>
+        <item>C3</item>
+        <item>C4</item>
+        <item>C5</item>
+        <item>M1</item> // Monuments
+        <item>M2</item>
+        <item>M3</item>
+        <item>M4</item>
+        <item>M5</item>
+        <item>M6</item>
+        <item>M7</item>
+        <item>M8</item>
+        <item>DP</item> // Disasters (Pharaoh, Nile, Civs, Monuments)
+        <item>DN</item>
+        <item>DC</item>
+        <item>DM</item>
+    </string-array>
 </resources>

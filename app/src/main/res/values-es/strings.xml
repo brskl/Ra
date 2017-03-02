@@ -19,15 +19,15 @@
     <string name="TitleScoreFinal">Final</string>
     <string name="CurrentPlayer">Jugador actual: %s</string>
     <string name="btnNew">Nuevo</string>
-    <string name="btnResume">Resume</string>
-    <string name="btnQuit">Quit</string>
+    <string name="btnResume">Reanudar</string>
+    <string name="btnQuit">Dejar</string>
     <string name="btnDraw">Sacar</string>
     <string name="btnAuction">Subasta</string>
     <string name="btnGod">God</string>
     <string name="defaultName">You</string>
     <string name="StatusTurnStart">El turno de %s</string>
     <string name="StatusDrewTile" formatted="false">%s dibujó un azulejo del %s</string>
-    <string name="StatusUsedGod">%s used 1 or more God tiles</string>
+    <string name="StatusUsedGod">%s usó 1 o más azulejos de God</string>
     <string name="StatusCallsAuction">%s llama Ra</string>
     <string name="StatusAuctionPlayerBid" formatted="false">%s hace %d</string>
     <string name="StatusAuctionPlayerPassed">%s pasó</string>
@@ -45,7 +45,7 @@
     <string name="TitlePlayer4">Jugador 4:</string>
     <string name="TitlePlayer5">Jugador 5:</string>
     <string name="TitleSeed">Random Seed:</string>
-    <string name="tbtnHuman">Human</string>
+    <string name="tbtnHuman">Humano</string>
     <string name="tbtnAI">AI</string>
     <string-array name="NamesAiEasy">
         <item>AI Easy 1</item>

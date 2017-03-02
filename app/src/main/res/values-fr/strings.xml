@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Ra</string>
-    <string name="TitleActivityTiles">Tiles</string>
+    <string name="TitleActivityTiles">Carrelage</string>
     <string name="TitleActivityScore">But</string>
-    <string name="TitleActivityNewGame">New Game</string>
-    <string name="TitleActivityGame">Game board</string>
+    <string name="TitleActivityNewGame">Nouveau jeu</string>
+    <string name="TitleActivityGame">Plateau de jeu</string>
     <string name="TitleEpoch">\"Époque: \"</string>
     <string name="TitleRaTrack">"Ra Track: "</string>
-    <string name="TitleAuctionTrack">Auction:</string>
-    <string name="TitleBidDialog">Bid</string>
+    <string name="TitleAuctionTrack">Enchères:</string>
+    <string name="TitleBidDialog">Offre</string>
     <plurals name="TitleGodDialog">
         <item quantity="one">Exchange %d God tile</item>
         <item quantity="other">Exchange up to %d God tiles</item>
@@ -20,33 +20,33 @@
     <string name="TitleScoreFinal">Final</string>
     <string name="CurrentPlayer">Joueur actuel: %s</string>
     <string name="btnNew">Nouveau</string>
-    <string name="btnResume">Resume</string>
-    <string name="btnQuit">Quit</string>
+    <string name="btnResume">Reprendre</string>
+    <string name="btnQuit">Quitter</string>
     <string name="btnDraw">Tirer</string>
     <string name="btnAuction">Enchères</string>
     <string name="btnGod">God</string>
     <string name="defaultName">You</string>
-    <string name="StatusTurnStart">%s\'s turn</string>
-    <string name="StatusDrewTile" formatted="false">%s drew a %s tile</string>
-    <string name="StatusUsedGod">%s used 1 or more God tiles</string>
-    <string name="StatusCallsAuction">%s calls Ra</string>
-    <string name="StatusAuctionPlayerBid" formatted="false">%s bid %d</string>
-    <string name="StatusAuctionPlayerPassed">%s passed</string>
-    <string name="StatusAuctionWon">%s won the auction</string>
+    <string name="StatusTurnStart">Le tour de %s</string>
+    <string name="StatusDrewTile" formatted="false">%s a dessiné une tuile %s</string>
+    <string name="StatusUsedGod">%s a utilisé 1 ou plusieurs tuiles God</string>
+    <string name="StatusCallsAuction">%s appelle Ra</string>
+    <string name="StatusAuctionPlayerBid" formatted="false">%s offre %d</string>
+    <string name="StatusAuctionPlayerPassed">%s a passé</string>
+    <string name="StatusAuctionWon">%s a gagné la vente aux enchères</string>
     <string name="StatusAuctionEveryonePassed">Tout le monde est passé aux enchères</string>
-    <string name="StatusEpochOver">Epoch %d is over</string>
-    <string name="StatusGameOver">%s won</string>
-    <string name="StatusResolveDisaster">%s resolving disasters</string>
-    <string name="StatusResolveDisasterCompleted">%s resolved disasters</string>
+    <string name="StatusEpochOver">Époque %d est finie</string>
+    <string name="StatusGameOver">%s a gagné</string>
+    <string name="StatusResolveDisaster">%s résolu les catastrophes</string>
+    <string name="StatusResolveDisasterCompleted">%s a résolu les désastres</string>
     <string name="PlayerNamePlaceholder" translatable="false">%s:</string>
-    <string name="BidPass">Pass</string>
+    <string name="BidPass">Passer</string>
     <string name="TitlePlayer1">Joueur 1:</string>
     <string name="TitlePlayer2">Joueur 2:</string>
     <string name="TitlePlayer3">Joueur 3:</string>
     <string name="TitlePlayer4">Joueur 4:</string>
     <string name="TitlePlayer5">Joueur 5:</string>
     <string name="TitleSeed">Random Seed:</string>
-    <string name="tbtnHuman">Human</string>
+    <string name="tbtnHuman">Humain</string>
     <string name="tbtnAI">AI</string>
     <string-array name="NamesAiEasy">
         <item>AI Easy 1</item>

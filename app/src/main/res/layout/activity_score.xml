@@ -41,13 +41,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5px"
-                android:text="Player"
+                android:text="@string/tableHeaderPlayer"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5px"
-                android:text="Prev"
+                android:text="@string/tableHeaderPrevious"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
             <TextView
                 android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5px"
-                android:text="New"
+                android:text="@string/tableHeaderNew"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
     </TableLayout>

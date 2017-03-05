@@ -15,20 +15,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="@string/btnNew" />
+        android:text="@string/btnNew"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible"/>
     <Button
         android:id="@+id/buttonResume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/buttonNew"
         android:onClick="onClick"
-        android:text="@string/btnResume"/>
+        android:text="@string/btnResume"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
     <Button
         android:id="@+id/buttonQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/buttonResume"
         android:onClick="onClick"
-        android:text="@string/btnQuit" />
+        android:text="@string/btnQuit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SplashLoading"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:textAlignment="center"
+        android:id="@+id/textView" />
+    <ImageView
+        android:id="@+id/splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/Splash"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>

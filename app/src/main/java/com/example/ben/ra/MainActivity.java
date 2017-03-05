@@ -5,13 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import junit.framework.Assert;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Animation.AnimationListener {
 
     String fileGame;
+    ImageView ivSplash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(MainActivity.class.toString(), "onCreate");
 
-        Button btnResume = (Button) findViewById(R.id.buttonResume);
+        ivSplash = (ImageView) findViewById(R.id.splash);
 
         // Test if saved game file exists, enable 'Resume' button.
         String [] fileList = fileList();
@@ -33,7 +38,41 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.splashanim);
+        animation.setAnimationListener(this);
+        ivSplash.startAnimation(animation);
+
+    }
+    public void onAnimationEnd(Animation animation) {
+        Button btnNew = (Button) findViewById(R.id.buttonNew);
+        Button btnQuit = (Button) findViewById(R.id.buttonQuit);
+        Button btnResume = (Button) findViewById(R.id.buttonResume);
+        TextView tvLoading = (TextView) findViewById(R.id.textViewLoading);
+
+        btnNew.setVisibility(View.VISIBLE);
+        btnQuit.setVisibility(View.VISIBLE);
+        btnResume.setVisibility(View.VISIBLE);
         btnResume.setEnabled(fileGame != null);
+        tvLoading.setVisibility(View.INVISIBLE);
+    }
+
+    public void onAnimationRepeat(Animation animation)
+    {
+        ;
+    }
+
+    public void onAnimationStart(Animation animation) {
+
+        Button btnNew = (Button) findViewById(R.id.buttonNew);
+        Button btnQuit = (Button) findViewById(R.id.buttonQuit);
+        Button btnResume = (Button) findViewById(R.id.buttonResume);
+        TextView tvLoading = (TextView) findViewById(R.id.textViewLoading);
+
+        btnNew.setVisibility(View.INVISIBLE);
+        btnQuit.setVisibility(View.INVISIBLE);
+        btnResume.setVisibility(View.INVISIBLE);
+        tvLoading.setVisibility(View.VISIBLE);
     }
 
     public void onClick(View v)

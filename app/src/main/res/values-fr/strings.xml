@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Ra</string>
     <string name="TitleActivityTiles">Carrelage</string>
     <string name="TitleActivityScore">But</string>
     <string name="TitleActivityNewGame">Nouveau jeu</string>
@@ -10,8 +9,8 @@
     <string name="TitleAuctionTrack">Enchères:</string>
     <string name="TitleBidDialog">Offre</string>
     <plurals name="TitleGodDialog">
-        <item quantity="one">Exchange %d God tile</item>
-        <item quantity="other">Exchange up to %d God tiles</item>
+        <item quantity="one">Échange %d God tile</item>
+        <item quantity="other">Échangez jusqu'à %d tuiles de Dieu</item>
     </plurals>
     <string name="TitleDisasterDialog">Supprimer 2 pour désastre</string>
     <string name="TitleScore">But</string>

@@ -9,8 +9,8 @@
     <string name="TitleRaTrack">"Ra Track: "</string>
     <string name="TitleAuctionTrack">Subasta:</string>
     <plurals name="TitleGodDialog">
-        <item quantity="one">Exchange %d God tile</item>
-        <item quantity="other">Exchange up to %d God tiles</item>
+        <item quantity="one">Intercambio %d azulejo de Dios</item>
+        <item quantity="other">Intercambio de hasta %d azulejos de Dios</item>
     </plurals>
     <string name="TitleDisasterDialog">Eliminar 2 para el desastre</string>
     <string name="TitleScore">Puntuación</string>

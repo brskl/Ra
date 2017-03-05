@@ -38,43 +38,36 @@
                 android:text="@string/tableHeaderPlayer"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="5px"
-                android:text="G"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:src="@drawable/tile_god"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="5px"
-                android:text="Au"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:src="@drawable/tile_gold"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="5px"
-                android:text="P"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:src="@drawable/tile_pharoah"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="5px"
-                android:text="N(F)"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:src="@drawable/tile_nile"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="5px"
-                android:text="C 1-5"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:src="@drawable/tile_civ"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="5px"
-                android:text="M 1-8"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
+                android:src="@drawable/tile_monument"/>
         </TableRow>
 
 

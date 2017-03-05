@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         // Test if saved game file exists, enable 'Resume' button.
         String [] fileList = fileList();
         fileGame = null;
-        for (int i = 0; i < fileList.length; i++)
+        for (String sname: fileList)
         {
-            if (fileList[i].contentEquals("Ra.game"))
+            if (sname.contentEquals("Ra.game"))
             {
-                fileGame = fileList[i];
+                fileGame = sname;
                 break;
             }
         }

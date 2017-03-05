@@ -16,6 +16,7 @@
     <string name="TitleScoreEpochDuring">Durante la Época %d</string>
     <string name="TitleScoreEpochEnd">Al final de la Época %d</string>
     <string name="TitleScoreFinal">Final</string>
+    <string name="SplashLoading">Cargando &#8230;</string>
     <string name="CurrentPlayer">Jugador actual: %s</string>
     <string name="btnNew">Nuevo</string>
     <string name="btnResume">Reanudar</string>

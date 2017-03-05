@@ -18,6 +18,7 @@
     <string name="TitleScoreEpochDuring">During Epoch %d</string>
     <string name="TitleScoreEpochEnd">at End of  Epoch %d</string>
     <string name="TitleScoreFinal">Final</string>
+    <string name="SplashLoading">Loading &#8230;</string>
     <string name="CurrentPlayer">Current Player: %s</string>
     <string name="btnNew">New</string>
     <string name="btnResume">Resume</string>

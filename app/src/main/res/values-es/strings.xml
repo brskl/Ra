@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Ra</string>
     <string name="TitleActivityTiles">Azulejos</string>
     <string name="TitleActivityScore">Puntuación</string>
     <string name="TitleActivityNewGame">Nuevo juego</string>
@@ -37,7 +36,6 @@
     <string name="StatusGameOver">%s ganó</string>
     <string name="StatusResolveDisaster">%s resuelve los desastres</string>
     <string name="StatusResolveDisasterCompleted">%s resolvió los desastres</string>
-    <string name="PlayerNamePlaceholder" translatable="false">%s:</string>
     <string name="BidPass">Pasa</string>
     <string name="TitlePlayer1">Jugador 1:</string>
     <string name="TitlePlayer2">Jugador 2:</string>

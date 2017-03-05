@@ -10,7 +10,7 @@
     <string name="TitleBidDialog">Offre</string>
     <plurals name="TitleGodDialog">
         <item quantity="one">Échange %d God tile</item>
-        <item quantity="other">Échangez jusqu'à %d tuiles de Dieu</item>
+        <item quantity="other">Échangez jusqu\'à %d tuiles de Dieu</item>
     </plurals>
     <string name="TitleDisasterDialog">Supprimer 2 pour désastre</string>
     <string name="TitleScore">But</string>
@@ -37,7 +37,6 @@
     <string name="StatusGameOver">%s a gagné</string>
     <string name="StatusResolveDisaster">%s résolu les catastrophes</string>
     <string name="StatusResolveDisasterCompleted">%s a résolu les désastres</string>
-    <string name="PlayerNamePlaceholder" translatable="false">%s:</string>
     <string name="BidPass">Passer</string>
     <string name="TitlePlayer1">Joueur 1:</string>
     <string name="TitlePlayer2">Joueur 2:</string>

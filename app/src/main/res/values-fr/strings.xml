@@ -46,6 +46,9 @@
     <string name="TitleSeed">Random Seed:</string>
     <string name="tbtnHuman">Humain</string>
     <string name="tbtnAI">AI</string>
+    <string name="tableHeaderPlayer">Joueur</string>
+    <string name="tableHeaderPrevious">précédent</string>
+    <string name="tableHeaderNew">Nouveau</string>
     <string-array name="NamesAiEasy">
         <item>AI Easy 1</item>
         <item>Anubis</item>

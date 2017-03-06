@@ -35,16 +35,15 @@ public class SunImageView extends ImageView {
         super(context, attrs, defStyleAttr);
     }
 
-
-
-        protected void onDraw(Canvas canvas) {
+    @Override
+    protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
         Paint paint = new Paint();
 
         paint.setColor(Color.BLACK);
             paint.setTextAlign(Paint.Align.CENTER);
-            paint.setTextSize(30);
+            paint.setTextSize(30); // TODO: make size dependent on layout attribute
             // add getHeight() / 10 to offset text slightly to better fit image
             canvas.drawText(Integer.toString(iValue), getWidth() / 2, getHeight() / 2 + getHeight() / 10, paint);
        }

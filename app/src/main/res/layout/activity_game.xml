@@ -62,7 +62,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@id/textViewEpochTitle"
         android:layout_below="@id/textViewRaTrackTitle"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:text="Player1 name:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -70,6 +70,7 @@
         android:id="@+id/textViewNamePlayer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@id/textViewNamePlayer1"
         android:layout_below="@id/textViewNamePlayer1"
@@ -80,6 +81,7 @@
         android:id="@+id/textViewNamePlayer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@id/textViewNamePlayer2"
         android:layout_below="@id/textViewNamePlayer2"
@@ -90,6 +92,7 @@
         android:id="@+id/textViewNamePlayer4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@id/textViewNamePlayer3"
         android:layout_below="@id/textViewNamePlayer3"
@@ -100,61 +103,214 @@
         android:id="@+id/textViewNamePlayer5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@id/textViewNamePlayer4"
         android:layout_below="@id/textViewNamePlayer4"
         android:text="Player5 name:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewSunsPlayer1"
+    <LinearLayout
+        android:id="@+id/linearLayoutSunsPlayer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/textViewNamePlayer1"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/textViewEpochTitle"
-        android:text="Suns 1"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@id/textViewEpochValue">
 
-    <TextView
-        android:id="@+id/textViewSunsPlayer2"
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer1_0"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer1_1"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer1_2"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer1_3"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer1_4"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSunsPlayer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/textViewNamePlayer2"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/textViewEpochTitle"
-        android:text="Suns 2"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@id/textViewEpochValue">
 
-    <TextView
-        android:id="@+id/textViewSunsPlayer3"
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer2_0"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer2_1"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer2_2"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer2_3"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer2_4"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSunsPlayer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/textViewNamePlayer3"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/textViewEpochTitle"
-        android:text="Suns 3"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@id/textViewEpochValue">
 
-    <TextView
-        android:id="@+id/textViewSunsPlayer4"
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer3_0"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer3_1"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer3_2"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer3_3"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer3_4"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutSunsPlayer4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/textViewNamePlayer4"
-        android:layout_toRightOf="@id/textViewEpochTitle"
         android:layout_alignParentRight="true"
-        android:text="Suns 4"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@id/textViewEpochValue">
 
-    <TextView
-        android:id="@+id/textViewSunsPlayer5"
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer4_0"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer4_1"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer4_2"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer4_3"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer4_4"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutSunsPlayer5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/textViewNamePlayer5"
-        android:layout_toRightOf="@id/textViewEpochTitle"
         android:layout_alignParentRight="true"
-        android:text="Suns 5"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@id/textViewEpochValue">
+
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer5_0"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer5_1"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer5_2"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer5_3"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+        <com.example.ben.ra.SunImageView
+            android:id="@+id/ivSunPlayer5_4"
+            android:src="@drawable/tile_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewCurrentPlayer"
@@ -163,7 +319,7 @@
         android:layout_below="@id/textViewNamePlayer5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:text="@string/CurrentPlayer"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -241,23 +397,50 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="1dp" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/llAuction"
-        android:layout_marginTop="73dp"
+        android:layout_above="@id/LinearLayoutButtonsHuman"
+        android:layout_marginBottom="10dp"
         android:text="Status"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+    <LinearLayout
+        android:id="@+id/LinearLayoutButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" >
 
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="@android:string/ok" />
+        <Button
+            android:id="@+id/buttonTiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="Tiles" />
+        <Button
+            android:id="@+id/buttonScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGame"
+            android:text="Score" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutButtonsHuman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/textViewStatus" >
+        android:layout_above="@id/LinearLayoutButtons" >
 
         <Button
             android:id="@+id/buttonDraw"
@@ -281,32 +464,6 @@
             android:text="@string/btnGod" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/LinearLayoutButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/LinearLayoutButtonsHuman" >
 
-        <Button
-            android:id="@+id/buttonOK"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickGame"
-            android:text="@android:string/ok" />
-        <Button
-            android:id="@+id/buttonTiles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickGame"
-            android:text="Tiles" />
-        <Button
-            android:id="@+id/buttonScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickGame"
-            android:text="Score" />
-
-    </LinearLayout>
 
 </RelativeLayout>

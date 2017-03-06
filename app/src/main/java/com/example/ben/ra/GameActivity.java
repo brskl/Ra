@@ -6,10 +6,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvStatus;
     private TextView tvCurrentPlayer;
     private TextView tvRaTrackValue;
-    private TextView atvPlayerSuns[] = new TextView[Game.nMaxPlayers_c];
+    private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     private Button btnOk;
     private Button btnAuction;
     private Button btnDraw;
@@ -62,11 +62,11 @@ public class GameActivity extends AppCompatActivity {
         tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
         tvRaTrackValue = (TextView) findViewById(R.id.textViewRaTrackValue);
-        atvPlayerSuns[0] = (TextView) findViewById(R.id.textViewSunsPlayer1);
-        atvPlayerSuns[1] = (TextView) findViewById(R.id.textViewSunsPlayer2);
-        atvPlayerSuns[2] = (TextView) findViewById(R.id.textViewSunsPlayer3);
-        atvPlayerSuns[3] = (TextView) findViewById(R.id.textViewSunsPlayer4);
-        atvPlayerSuns[4] = (TextView) findViewById(R.id.textViewSunsPlayer5);
+        allPlayerSuns[0] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer1);
+        allPlayerSuns[1] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer2);
+        allPlayerSuns[2] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer3);
+        allPlayerSuns[3] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer4);
+        allPlayerSuns[4] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer5);
         btnOk = (Button) findViewById(R.id.buttonOK);
         btnAuction = (Button) findViewById(R.id.buttonAuction);
         btnDraw = (Button) findViewById(R.id.buttonDraw);
@@ -108,13 +108,13 @@ public class GameActivity extends AppCompatActivity {
             case 3:
                 v = findViewById(R.id.textViewNamePlayer4);
                 v.setVisibility(View.GONE);
-                v = findViewById(R.id.textViewSunsPlayer4);
+                v = findViewById(R.id.linearLayoutSunsPlayer4);
                 v.setVisibility(View.GONE);
                 // fall through
             case 4:
                 v = findViewById(R.id.textViewNamePlayer5);
                 v.setVisibility(View.GONE);
-                v = findViewById(R.id.textViewSunsPlayer5);
+                v = findViewById(R.id.linearLayoutSunsPlayer5);
                 v.setVisibility(View.GONE);
                 break;
             default:
@@ -651,30 +651,34 @@ public class GameActivity extends AppCompatActivity {
     void UpdateDisplayPlayerSuns(int iPlayer)
     {
         Game game = Game.getInstance();
-        StringBuilder sb = new StringBuilder();
-        boolean fFirst = true;
+        int iChild = 0;
         int i;
+        com.example.ben.ra.SunImageView sivCurrent;
+        LinearLayout llPlayerSuns = allPlayerSuns[iPlayer];
+        int nChild = llPlayerSuns.getChildCount();
+
 
         for (i = 0; i < game.aPlayers[iPlayer].getSuns().size(); i++)
         {
-            if (fFirst)
-                fFirst = false;
-            else
-                sb.append(", ");
-            sb.append(game.aPlayers[iPlayer].getSuns().get(i).toString());
+            sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent.setiValue(game.aPlayers[iPlayer].alSuns.get(i));
+            sivCurrent.setVisibility(View.VISIBLE);
         }
 
-        sb.append(" : ");
-        fFirst = true;
+        sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+        sivCurrent.setVisibility(View.INVISIBLE);
+
         for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
         {
-            if (fFirst)
-                fFirst = false;
-            else
-                sb.append(", ");
-            sb.append(game.aPlayers[iPlayer].alSunsNext.get(i).toString());
+            sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
+            sivCurrent.setVisibility(View.VISIBLE);
         }
-        atvPlayerSuns[iPlayer].setText(sb.toString());
+
+        while (iChild < nChild) {
+            sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent.setVisibility(View.INVISIBLE);
+        }
     }
 
     void UpdateDisplayPlayersSuns()

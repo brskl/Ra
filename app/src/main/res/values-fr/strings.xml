@@ -71,4 +71,30 @@
         <item>AI Hard 5</item>
     </string-array>
     <string name="SplashLoading">Chargement &#8230;</string>
+    <string-array name="Tiles">  // Must be in same order as RaGame.Tile enum
+        <item></item>	// none
+        <item>Ra</item> // Ra
+        <item>God</item> // God
+        <item>Or</item> // Gold
+        <item>Pharaon</item> // Pharaoh
+        <item>Nil</item> // Nile
+        <item>Inonder</item> // Nile Flood
+        <item>Agriculture</item> // Civs
+        <item>Art</item>
+        <item>Astronomie</item>
+        <item>Religion</item>
+        <item>L\'écriture</item>
+        <item>Forteresse</item> // Monuments
+        <item>Obélisque</item>
+        <item>Palais</item>
+        <item>Pyramide</item>
+        <item>Sphinx</item>
+        <item>Statue</item>
+        <item>Pyramide à pas</item>
+        <item>Temple</item>
+        <item>Funérailles</item> // Disasters (Pharaoh, Nile, Civs, Monuments)
+        <item>Sécheresse</item>
+        <item>Troubles</item>
+        <item>Tremblement de terre</item>
+    </string-array>
 </resources>

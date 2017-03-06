@@ -71,4 +71,30 @@
         <item>AI Hard 5</item>
     </string-array>
     <string name="TitleBidDialog">Oferta</string>
+    <string-array name="Tiles">  // Must be in same order as RaGame.Tile enum
+        <item></item>	// none
+        <item>Ra</item> // Ra
+        <item>God</item> // God
+        <item>Oro</item> // Gold
+        <item>Faraón</item> // Pharaoh
+        <item>Nilo</item> // Nile
+        <item>Inundar</item> // Nile Flood
+        <item>Agricultura</item> // Civs
+        <item>Art</item>
+        <item>Astronomía</item>
+        <item>Religión</item>
+        <item>Escritura</item>
+        <item>Fortaleza</item> // Monuments
+        <item>Obelisco</item>
+        <item>Palacio</item>
+        <item>Pirámide</item>
+        <item>Esfinge</item>
+        <item>Estatua</item>
+        <item>Pirámide escalonada</item>
+        <item>Templo</item>
+        <item>Funeral</item> // Disasters (Pharaoh, Nile, Civs, Monuments)
+        <item>Sequía</item>
+        <item>Disturbios</item>
+        <item>Terremoto</item>
+    </string-array>
 </resources>

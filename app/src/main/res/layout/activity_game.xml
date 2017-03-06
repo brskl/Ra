@@ -184,7 +184,7 @@
         android:layout_below="@+id/textViewAuctionTitle"
         android:layout_alignRight="@+id/LinearLayoutButtonsHuman"
         android:layout_alignEnd="@+id/LinearLayoutButtonsHuman">
-        <ImageView
+        <com.example.ben.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"

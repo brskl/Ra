@@ -47,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
     private Button btnDraw;
     private Button btnGod;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
-    private ImageView ivAuctionSun;
+    private com.example.ben.ra.SunImageView ivAuctionSun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class GameActivity extends AppCompatActivity {
         btnAuction = (Button) findViewById(R.id.buttonAuction);
         btnDraw = (Button) findViewById(R.id.buttonDraw);
         btnGod = (Button) findViewById(R.id.buttonGod);
-        ivAuctionSun = (ImageView) findViewById(R.id.ivAuctionSun);
+        ivAuctionSun = (com.example.ben.ra.SunImageView) findViewById(R.id.ivAuctionSun);
         aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);
         aivAuctionItems[1] = (ImageView) findViewById(R.id.ivAuction1);
         aivAuctionItems[2] = (ImageView) findViewById(R.id.ivAuction2);
@@ -766,7 +766,8 @@ public class GameActivity extends AppCompatActivity {
     void UpdateDisplayAuction(){
         Game game = Game.getInstance();
 
-        // TODO: update ivAuctionSun using game.getAtAuctionSun()
+        ivAuctionSun.setiValue(game.getAtAuctionSun());
+        ivAuctionSun.invalidate();
 
         int i;
         for (i = 0; i < game.getAuction().size(); i++)

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,17 +22,32 @@ public class GameActivity extends AppCompatActivity {
     // All 2 characters for formatting
     private String [] sTiles; // loaded from R.array.Tiles
 
+    // TODO: make individualized images for Civ 1-5 and Mon 1-8
+    // Image resource id for each kind of tile, must be in same order as enum
+    private static final int aiTileImageRes_c [] = {
+            0, // none
+            0, // Ra
+            R.drawable.tile_god, // God
+            R.drawable.tile_gold,	// Gold
+            R.drawable.tile_pharoah,	// Pharaoh
+            R.drawable.tile_nile, R.drawable.tile_nile_flood,	// Nile, Flooding Nile
+            R.drawable.tile_civ, R.drawable.tile_civ, R.drawable.tile_civ, R.drawable.tile_civ, R.drawable.tile_civ,	// Civilization tiles
+            R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument,	// Monument tiles
+            0, 0, 0, 0 // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
+    };
+
 
     private TextView tvEpoch;
     private TextView tvStatus;
     private TextView tvCurrentPlayer;
     private TextView tvRaTrackValue;
-    private TextView tvAuctionItems;
     private TextView atvPlayerSuns[] = new TextView[Game.nMaxPlayers_c];
     private Button btnOk;
     private Button btnAuction;
     private Button btnDraw;
     private Button btnGod;
+    private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
+    private ImageView ivAuctionSun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +62,6 @@ public class GameActivity extends AppCompatActivity {
         tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
         tvRaTrackValue = (TextView) findViewById(R.id.textViewRaTrackValue);
-        tvAuctionItems = (TextView) findViewById(R.id.textViewAuctionItems);
         atvPlayerSuns[0] = (TextView) findViewById(R.id.textViewSunsPlayer1);
         atvPlayerSuns[1] = (TextView) findViewById(R.id.textViewSunsPlayer2);
         atvPlayerSuns[2] = (TextView) findViewById(R.id.textViewSunsPlayer3);
@@ -56,6 +71,16 @@ public class GameActivity extends AppCompatActivity {
         btnAuction = (Button) findViewById(R.id.buttonAuction);
         btnDraw = (Button) findViewById(R.id.buttonDraw);
         btnGod = (Button) findViewById(R.id.buttonGod);
+        ivAuctionSun = (ImageView) findViewById(R.id.ivAuctionSun);
+        aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);
+        aivAuctionItems[1] = (ImageView) findViewById(R.id.ivAuction1);
+        aivAuctionItems[2] = (ImageView) findViewById(R.id.ivAuction2);
+        aivAuctionItems[3] = (ImageView) findViewById(R.id.ivAuction3);
+        aivAuctionItems[4] = (ImageView) findViewById(R.id.ivAuction4);
+        aivAuctionItems[5] = (ImageView) findViewById(R.id.ivAuction5);
+        aivAuctionItems[6] = (ImageView) findViewById(R.id.ivAuction6);
+        aivAuctionItems[7] = (ImageView) findViewById(R.id.ivAuction7);
+
 
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
@@ -712,6 +737,10 @@ public class GameActivity extends AppCompatActivity {
         tvStatus.setText(sStatus);
     }
 
+    private int TileImageRes(Game.Tile etValue) {
+        return aiTileImageRes_c[etValue.ordinal()];
+    }
+
     private String TileString(int iValue)
     {
         return sTiles[iValue];
@@ -737,18 +766,29 @@ public class GameActivity extends AppCompatActivity {
     void UpdateDisplayAuction(){
         Game game = Game.getInstance();
 
-        StringBuilder sbAuction = new StringBuilder();
+        // TODO: update ivAuctionSun using game.getAtAuctionSun()
 
-        // add current sun
-        sbAuction.append(String.format("%2d; ", game.getAtAuctionSun()));
-
-        // add current tiles
-        for (Game.Tile tile: game.getAuction())
+        int i;
+        for (i = 0; i < game.getAuction().size(); i++)
         {
-            sbAuction.append(TileString(tile) + " ");
-        }
+            int resId;
 
-        tvAuctionItems.setText(sbAuction.toString());
+            resId = TileImageRes(game.getAuction().get(i));
+
+            if (resId != 0) {
+                aivAuctionItems[i].setVisibility(View.VISIBLE);
+                aivAuctionItems[i].setImageResource(resId);
+            } else {
+                // TODO: Replace if != 0 with assert
+                aivAuctionItems[i].setVisibility(View.INVISIBLE);
+            }
+        }
+        // clear remaining ImageViews
+        for (;i < Game.nMaxAuction_c; i++)
+        {
+            // TODO: Is there a better way to clear image
+            aivAuctionItems[i].setVisibility(View.INVISIBLE);
+        }
     }
 
     void UpdateDisplayButtons()

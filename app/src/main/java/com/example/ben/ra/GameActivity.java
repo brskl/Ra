@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
             R.drawable.tile_nile, R.drawable.tile_nile_flood,	// Nile, Flooding Nile
             R.drawable.tile_civ, R.drawable.tile_civ, R.drawable.tile_civ, R.drawable.tile_civ, R.drawable.tile_civ,	// Civilization tiles
             R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument, R.drawable.tile_monument,	// Monument tiles
-            0, 0, 0, 0 // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
+            R.drawable.tile_pharoah_disaster, R.drawable.tile_nile_flood_disaster, R.drawable.tile_civ_disaster, R.drawable.tile_monument_disaster // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
     };
 
 

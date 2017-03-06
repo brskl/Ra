@@ -50,8 +50,8 @@ class Game implements Serializable {
         tGold,	// Gold
         tPharaoh,	// Pharaoh
         tNile, tFlood, // Nile, Flooding Nile
-        tCiv1, tCiv2, tCiv3, tCiv4, tCiv5, // Civilization tiles
-        tMon1, tMon2, tMon3, tMon4, tMon5, tMon6, tMon7, tMon8, // Monument tiles
+        tCiv1, tCiv2, tCiv3, tCiv4, tCiv5, // Civilization tiles (Agriculture, Art, Astronomy, Religion, Writing
+        tMon1, tMon2, tMon3, tMon4, tMon5, tMon6, tMon7, tMon8, // Monument tiles (Fortress, Obelisk, Palace, Pyramid, Sphinx, Statues, Step Pyramid, Temple
         tDisasterP, tDisasterN, tDisasterC, tDisasterM // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
     };
     // Number of each kind of tile, must be in same order as enum

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 
 /**
@@ -13,13 +14,6 @@ import android.widget.ImageView;
  */
 
 public class SunImageView extends ImageView {
-    public int getiValue() {
-        return iValue;
-    }
-
-    public void setiValue(int iValue) {
-        this.iValue = iValue;
-    }
 
     private int iValue = 0;
 
@@ -33,6 +27,19 @@ public class SunImageView extends ImageView {
 
     public SunImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public int getiValue() {
+        return iValue;
+    }
+
+    public void setiValue(int iValue) {
+        if (this.iValue != iValue) {
+            if (getVisibility() == View.VISIBLE) {
+                invalidate();
+            }
+        }
+        this.iValue = iValue;
     }
 
     @Override

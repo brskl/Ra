@@ -663,6 +663,7 @@ public class GameActivity extends AppCompatActivity {
             sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
             sivCurrent.setiValue(game.aPlayers[iPlayer].alSuns.get(i));
             sivCurrent.setVisibility(View.VISIBLE);
+            sivCurrent.invalidate();
         }
 
         sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
@@ -673,6 +674,7 @@ public class GameActivity extends AppCompatActivity {
             sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
             sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
             sivCurrent.setVisibility(View.VISIBLE);
+            sivCurrent.invalidate();
         }
 
         while (iChild < nChild) {

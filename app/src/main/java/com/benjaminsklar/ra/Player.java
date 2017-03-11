@@ -1,4 +1,4 @@
-package com.example.ben.ra;
+package com.benjaminsklar.ra;
 
 import junit.framework.Assert;
 

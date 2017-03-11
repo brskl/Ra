@@ -1,6 +1,6 @@
-package com.example.ben.ra;
+package com.benjaminsklar.ra;
 
-import com.example.ben.ra.Player;
+import com.benjaminsklar.ra.Player;
 
 /**
  * Created by Ben on 12/31/2016.

@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ben.ra.GameActivity">
+    tools:context="com.benjaminsklar.ra.GameActivity">
 
     <TextView
         android:id="@+id/TextView1"
@@ -118,31 +118,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/textViewEpochValue">
 
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer1_0"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer1_1"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer1_2"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer1_3"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer1_4"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
@@ -159,31 +159,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/textViewEpochValue">
 
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer2_0"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer2_1"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer2_2"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer2_3"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer2_4"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
@@ -200,31 +200,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/textViewEpochValue">
 
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer3_0"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer3_1"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer3_2"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer3_3"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer3_4"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
@@ -240,31 +240,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/textViewEpochValue">
 
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer4_0"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer4_1"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer4_2"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer4_3"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer4_4"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
@@ -280,31 +280,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/textViewEpochValue">
 
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer5_0"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer5_1"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer5_2"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer5_3"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp" />
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivSunPlayer5_4"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
@@ -340,7 +340,7 @@
         android:layout_below="@+id/textViewAuctionTitle"
         android:layout_alignRight="@+id/LinearLayoutButtonsHuman"
         android:layout_alignEnd="@+id/LinearLayoutButtonsHuman">
-        <com.example.ben.ra.SunImageView
+        <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.ben.ra;
+package com.benjaminsklar.ra;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

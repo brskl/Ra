@@ -1,4 +1,4 @@
-package com.example.ben.ra;
+package com.benjaminsklar.ra;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -47,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
     private Button btnDraw;
     private Button btnGod;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
-    private com.example.ben.ra.SunImageView ivAuctionSun;
+    private com.benjaminsklar.ra.SunImageView ivAuctionSun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class GameActivity extends AppCompatActivity {
         btnAuction = (Button) findViewById(R.id.buttonAuction);
         btnDraw = (Button) findViewById(R.id.buttonDraw);
         btnGod = (Button) findViewById(R.id.buttonGod);
-        ivAuctionSun = (com.example.ben.ra.SunImageView) findViewById(R.id.ivAuctionSun);
+        ivAuctionSun = (com.benjaminsklar.ra.SunImageView) findViewById(R.id.ivAuctionSun);
         aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);
         aivAuctionItems[1] = (ImageView) findViewById(R.id.ivAuction1);
         aivAuctionItems[2] = (ImageView) findViewById(R.id.ivAuction2);
@@ -653,30 +653,30 @@ public class GameActivity extends AppCompatActivity {
         Game game = Game.getInstance();
         int iChild = 0;
         int i;
-        com.example.ben.ra.SunImageView sivCurrent;
+        com.benjaminsklar.ra.SunImageView sivCurrent;
         LinearLayout llPlayerSuns = allPlayerSuns[iPlayer];
         int nChild = llPlayerSuns.getChildCount();
 
 
         for (i = 0; i < game.aPlayers[iPlayer].getSuns().size(); i++)
         {
-            sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
             sivCurrent.setiValue(game.aPlayers[iPlayer].alSuns.get(i));
             sivCurrent.setVisibility(View.VISIBLE);
         }
 
-        sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+        sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
         sivCurrent.setVisibility(View.INVISIBLE);
 
         for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
         {
-            sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
             sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
             sivCurrent.setVisibility(View.VISIBLE);
         }
 
         while (iChild < nChild) {
-            sivCurrent = (com.example.ben.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
             sivCurrent.setVisibility(View.INVISIBLE);
         }
     }

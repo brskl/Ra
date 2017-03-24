@@ -223,7 +223,7 @@ public class NewGameActivity extends AppCompatActivity {
         finish();
     }
 
-    void onClickNewGameRadio(View v)
+    public void onClickNewGameRadio(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameRadio");
 
@@ -245,7 +245,7 @@ public class NewGameActivity extends AppCompatActivity {
         EnableUx();
     }
 
-    void onClickNewGameToggleButton(View v)
+    public void onClickNewGameToggleButton(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameToggleButton");
 
@@ -273,7 +273,7 @@ public class NewGameActivity extends AppCompatActivity {
         EnableUx();
     }
 
-    void onClickNewGameButton(View v)
+    public void onClickNewGameButton(View v)
     {
         Log.d(NewGameActivity.class.toString(), "onClickNewGameButton");
 

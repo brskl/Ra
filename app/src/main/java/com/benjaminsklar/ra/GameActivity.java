@@ -470,7 +470,7 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    void onClickGame(View v){
+    public void onClickGame(View v){
         Log.d(GameActivity.class.toString(), "onClickGame");
 
         Game game = Game.getInstance();

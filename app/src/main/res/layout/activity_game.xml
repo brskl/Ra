@@ -10,21 +10,271 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.benjaminsklar.ra.GameActivity">
 
-    <TextView
-        android:id="@+id/TextView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/linearLayoutPlayers"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/TitleActivityGame" />
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/textViewNamePlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:text="Player1 name:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/textViewNamePlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/textViewNamePlayer1"
+            android:layout_below="@id/textViewNamePlayer1"
+            android:text="Player2 name:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/textViewNamePlayer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/textViewNamePlayer2"
+            android:layout_below="@id/textViewNamePlayer2"
+            android:text="Player3 name:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/textViewNamePlayer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/textViewNamePlayer3"
+            android:layout_below="@id/textViewNamePlayer3"
+            android:text="Player4 name:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/textViewNamePlayer5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/textViewNamePlayer4"
+            android:layout_below="@id/textViewNamePlayer4"
+            android:text="Player5 name:"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSunsPlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textViewNamePlayer1"
+            android:layout_toRightOf="@id/textViewNamePlayer1"
+            >
+
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer1_0"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer1_1"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer1_2"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer1_3"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer1_4"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutSunsPlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textViewNamePlayer2"
+            android:layout_toRightOf="@id/textViewNamePlayer2"
+            >
+
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer2_0"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer2_1"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer2_2"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer2_3"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer2_4"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSunsPlayer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textViewNamePlayer3"
+            android:layout_toRightOf="@id/textViewNamePlayer3"
+            >
+
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer3_0"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer3_1"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer3_2"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer3_3"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer3_4"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutSunsPlayer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textViewNamePlayer4"
+            android:layout_toRightOf="@id/textViewNamePlayer4"
+            >
+
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer4_0"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer4_1"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer4_2"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer4_3"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer4_4"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutSunsPlayer5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textViewNamePlayer5"
+            android:layout_toRightOf="@id/textViewNamePlayer5"
+            >
+
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer5_0"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer5_1"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer5_2"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer5_3"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+            <com.benjaminsklar.ra.SunImageView
+                android:id="@+id/ivSunPlayer5_4"
+                android:src="@drawable/tile_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textViewEpochTitle"
         android:layout_width="149dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/TextView1"
+        android:layout_toRightOf="@id/linearLayoutPlayers"
         android:text="@string/TitleEpoch"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -33,6 +283,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/textViewEpochTitle"
+        android:layout_toRightOf="@id/textViewEpochTitle"
         android:layout_centerHorizontal="true"
         android:text="current epoch"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -41,7 +292,7 @@
         android:id="@+id/textViewRaTrackTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@id/textViewEpochTitle"
         android:layout_below="@id/textViewEpochTitle"
         android:text="@string/TitleRaTrack"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -55,270 +306,17 @@
         android:text="Ra&apos;s / Max Ra&apos;s"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewNamePlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@id/textViewEpochTitle"
-        android:layout_below="@id/textViewRaTrackTitle"
-        android:layout_marginTop="10dp"
-        android:text="Player1 name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewNamePlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@id/textViewNamePlayer1"
-        android:layout_below="@id/textViewNamePlayer1"
-        android:text="Player2 name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewNamePlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@id/textViewNamePlayer2"
-        android:layout_below="@id/textViewNamePlayer2"
-        android:text="Player3 name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewNamePlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@id/textViewNamePlayer3"
-        android:layout_below="@id/textViewNamePlayer3"
-        android:text="Player4 name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewNamePlayer5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@id/textViewNamePlayer4"
-        android:layout_below="@id/textViewNamePlayer4"
-        android:text="Player5 name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <LinearLayout
-        android:id="@+id/linearLayoutSunsPlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewNamePlayer1"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@id/textViewEpochValue">
-
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer1_0"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer1_1"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer1_2"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer1_3"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer1_4"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutSunsPlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewNamePlayer2"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@id/textViewEpochValue">
-
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer2_0"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer2_1"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer2_2"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer2_3"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer2_4"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutSunsPlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewNamePlayer3"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@id/textViewEpochValue">
-
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer3_0"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer3_1"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer3_2"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer3_3"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer3_4"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayoutSunsPlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewNamePlayer4"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@id/textViewEpochValue">
-
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer4_0"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer4_1"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer4_2"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer4_3"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer4_4"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayoutSunsPlayer5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewNamePlayer5"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@id/textViewEpochValue">
-
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer5_0"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer5_1"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer5_2"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer5_3"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <com.benjaminsklar.ra.SunImageView
-            android:id="@+id/ivSunPlayer5_4"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewCurrentPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewNamePlayer5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/textViewRaTrackTitle"
+        android:layout_alignLeft="@id/textViewRaTrackTitle"
         android:layout_marginTop="25dp"
         android:text="@string/CurrentPlayer"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -329,7 +327,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_below="@id/textViewCurrentPlayer"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@id/textViewRaTrackTitle"
         android:text="@string/TitleAuctionTrack"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -338,8 +336,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewAuctionTitle"
-        android:layout_alignRight="@+id/LinearLayoutButtonsHuman"
-        android:layout_alignEnd="@+id/LinearLayoutButtonsHuman">
+         android:layout_toRightOf="@id/textViewAuctionTitle">
         <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
@@ -398,15 +395,7 @@
             android:layout_marginRight="1dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@id/LinearLayoutButtonsHuman"
-        android:layout_marginBottom="10dp"
-        android:text="Status"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <LinearLayout
         android:id="@+id/LinearLayoutButtons"
         android:layout_width="wrap_content"
@@ -464,6 +453,15 @@
             android:text="@string/btnGod" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textViewRaTrackTitle"
+        android:layout_above="@id/LinearLayoutButtonsHuman"
+        android:layout_marginBottom="10dp"
+        android:text="Status"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
 </RelativeLayout>

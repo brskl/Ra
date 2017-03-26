@@ -325,11 +325,6 @@
         android:text="Ra&apos;s / Max Ra&apos;s"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-
-
-
-
-
     <TextView
         android:id="@+id/textViewCurrentPlayer"
         android:layout_width="wrap_content"
@@ -340,68 +335,77 @@
         android:text="@string/CurrentPlayer"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-
-    <LinearLayout
-        android:id="@+id/llAuction"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_toRightOf="@id/linearLayoutPlayers">
+
+
+        <LinearLayout
+            android:id="@+id/llAuction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/ivAuction0"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivAuction7"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/border" />
+        </LinearLayout>
         <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp" />
-        <ImageView
-            android:id="@+id/ivAuction0"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction4"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction5"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction6"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivAuction7"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="1dp"
-            android:background="@drawable/border" />
-    </LinearLayout>
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_toLeftOf="@id/llAuction"
+            android:layout_marginRight="8dp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutButtons"

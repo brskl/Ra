@@ -307,74 +307,80 @@
         android:text="current epoch"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/linearLayoutPlayers"
         android:layout_below="@id/textViewEpochTitle"
         android:orientation="horizontal" >
 
-        <ImageView
-            android:id="@+id/ivRa0"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa4"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa5"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa6"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa7"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa8"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/border" />
-        <ImageView
-            android:id="@+id/ivRa9"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" >
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/ivRa0"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa6"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa7"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa8"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/border" />
+            <ImageView
+                android:id="@+id/ivRa9"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/border" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

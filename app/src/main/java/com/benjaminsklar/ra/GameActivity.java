@@ -40,13 +40,13 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvEpoch;
     private TextView tvStatus;
     private TextView tvCurrentPlayer;
-    private TextView tvRaTrackValue;
     private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     private Button btnOk;
     private Button btnAuction;
     private Button btnDraw;
     private Button btnGod;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
+    private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
 
     @Override
@@ -61,7 +61,6 @@ public class GameActivity extends AppCompatActivity {
         tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
         tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
-        tvRaTrackValue = (TextView) findViewById(R.id.textViewRaTrackValue);
         allPlayerSuns[0] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer1);
         allPlayerSuns[1] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer2);
         allPlayerSuns[2] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer3);
@@ -80,6 +79,16 @@ public class GameActivity extends AppCompatActivity {
         aivAuctionItems[5] = (ImageView) findViewById(R.id.ivAuction5);
         aivAuctionItems[6] = (ImageView) findViewById(R.id.ivAuction6);
         aivAuctionItems[7] = (ImageView) findViewById(R.id.ivAuction7);
+        aivRaTiles[0] = (ImageView) findViewById(R.id.ivRa0);
+        aivRaTiles[1] = (ImageView) findViewById(R.id.ivRa1);
+        aivRaTiles[2] = (ImageView) findViewById(R.id.ivRa2);
+        aivRaTiles[3] = (ImageView) findViewById(R.id.ivRa3);
+        aivRaTiles[4] = (ImageView) findViewById(R.id.ivRa4);
+        aivRaTiles[5] = (ImageView) findViewById(R.id.ivRa5);
+        aivRaTiles[6] = (ImageView) findViewById(R.id.ivRa6);
+        aivRaTiles[7] = (ImageView) findViewById(R.id.ivRa7);
+        aivRaTiles[8] = (ImageView) findViewById(R.id.ivRa8);
+        aivRaTiles[9] = (ImageView) findViewById(R.id.ivRa9);
 
 
         SetNumplayerUI();
@@ -108,10 +117,12 @@ public class GameActivity extends AppCompatActivity {
             case 3:
                 v = findViewById(R.id.relativeLayoutPlayer4);
                 v.setVisibility(View.GONE);
+                aivRaTiles[8].setVisibility(View.GONE);
                 // fall through
             case 4:
                 v = findViewById(R.id.relativeLayoutPlayer5);
                 v.setVisibility(View.GONE);
+                aivRaTiles[9].setVisibility(View.GONE);
                 break;
             default:
                 // do nothing
@@ -637,11 +648,22 @@ public class GameActivity extends AppCompatActivity {
         // current epoch
         tvEpoch.setText(String.format("%d", game.getEpoch()));
 
-        // current number of Ra tiles
-        tvRaTrackValue.setText(String.format("%d / %d", game.getRas(), game.getMaxRas()));
-
         // current player
         tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));
+    }
+
+    void UpdateDisplayRaTiles() {
+        Game game = Game.getInstance();
+
+        // current number of Ra tiles
+        int i;
+        for (i = 0; i < game.getRas(); i++) {
+            aivRaTiles[i].setImageResource(R.drawable.tile_ra);
+        }
+        for (; i < game.getMaxRas(); i++)
+        {
+            aivRaTiles[i].setImageResource(0);
+        }
     }
 
     void UpdateDisplayPlayerSuns(int iPlayer)
@@ -812,6 +834,7 @@ public class GameActivity extends AppCompatActivity {
 
     void UpdateDisplay(){
         UpdateDisplayRound();
+        UpdateDisplayRaTiles();
         UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();
         UpdateDisplayAuction();

@@ -307,23 +307,74 @@
         android:text="current epoch"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewRaTrackTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/textViewEpochTitle"
+        android:layout_toRightOf="@id/linearLayoutPlayers"
         android:layout_below="@id/textViewEpochTitle"
-        android:text="@string/TitleRaTrack"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/textViewRaTrackValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewRaTrackTitle"
-        android:layout_alignLeft="@id/textViewEpochValue"
-        android:text="Ra&apos;s / Max Ra&apos;s"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <ImageView
+            android:id="@+id/ivRa0"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/border" />
+        <ImageView
+            android:id="@+id/ivRa9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -471,7 +522,7 @@
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/textViewRaTrackTitle"
+        android:layout_alignLeft="@id/textViewEpochTitle"
         android:layout_above="@id/LinearLayoutButtonsHuman"
         android:layout_marginBottom="10dp"
         android:text="Status"

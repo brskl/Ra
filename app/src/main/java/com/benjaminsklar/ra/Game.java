@@ -24,6 +24,7 @@ class Game implements Serializable {
     static final int nMinPlayers_c = 3;
     static final int nMaxPlayers_c = 5;
     static final int nMaxAuction_c = 8;
+    static final int nMaxRas_c = 10;
     static final int nEpochs_c = 3;
     static final int iScoreGoldValue_c = 3;
     static final int iScoreGodValue_c = 2;

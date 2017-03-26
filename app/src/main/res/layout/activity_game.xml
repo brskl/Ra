@@ -340,22 +340,13 @@
         android:text="@string/CurrentPlayer"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewAuctionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_below="@id/textViewCurrentPlayer"
-        android:layout_alignLeft="@id/textViewRaTrackTitle"
-        android:text="@string/TitleAuctionTrack"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <LinearLayout
         android:id="@+id/llAuction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewAuctionTitle"
-        android:layout_toRightOf="@id/textViewAuctionTitle">
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
         <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
@@ -367,51 +358,65 @@
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000" />
         <ImageView
             android:id="@+id/ivAuction1"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000" />
         <ImageView
             android:id="@+id/ivAuction2"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000" />
         <ImageView
             android:id="@+id/ivAuction3"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
-
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000"  />
         <ImageView
             android:id="@+id/ivAuction4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="1dp"
-            android:src="@drawable/tile_sun" />
-
+            android:src="@drawable/tile_sun"
+            android:padding="1dp"
+            android:background="#000000" />
         <ImageView
             android:id="@+id/ivAuction5"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000" />
         <ImageView
             android:id="@+id/ivAuction6"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000" />
         <ImageView
             android:id="@+id/ivAuction7"
             android:src="@drawable/tile_sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="1dp" />
+            android:layout_marginRight="1dp"
+            android:padding="1dp"
+            android:background="#000000" />
     </LinearLayout>
 
 

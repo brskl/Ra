@@ -780,14 +780,14 @@ public class GameActivity extends AppCompatActivity {
                 aivAuctionItems[i].setImageResource(resId);
             } else {
                 // TODO: Replace if != 0 with assert
-                aivAuctionItems[i].setVisibility(View.INVISIBLE);
+                aivAuctionItems[i].setImageResource(0);
             }
         }
         // clear remaining ImageViews
         for (;i < Game.nMaxAuction_c; i++)
         {
             // TODO: Is there a better way to clear image
-            aivAuctionItems[i].setVisibility(View.INVISIBLE);
+            aivAuctionItems[i].setImageResource(0);;
         }
     }
 

@@ -355,68 +355,60 @@
             android:layout_marginRight="4dp" />
         <ImageView
             android:id="@+id/ivAuction0"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction1"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction2"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction3"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000"  />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:src="@drawable/tile_sun"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction5"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction6"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
         <ImageView
             android:id="@+id/ivAuction7"
-            android:src="@drawable/tile_sun"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/tile_gold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="1dp"
-            android:padding="1dp"
-            android:background="#000000" />
+            android:background="@drawable/border" />
     </LinearLayout>
 
 

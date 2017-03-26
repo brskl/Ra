@@ -4,7 +4,7 @@
     <string name="TitleActivityScore">Puntuación</string>
     <string name="TitleActivityNewGame">Nuevo juego</string>
     <string name="TitleActivityGame">Juego de mesa</string>
-    <string name="TitleEpoch">\"Época: \"</string>
+    <string name="TitleEpoch">\"Época: %d\"</string>
     <string name="TitleAuctionTrack">Subasta:</string>
     <plurals name="TitleGodDialog">
         <item quantity="one">Intercambio %d azulejo de Dios</item>

@@ -58,7 +58,7 @@ public class GameActivity extends AppCompatActivity {
 
         sTiles = getResources().getStringArray(R.array.Tiles);
 
-        tvEpoch = (TextView) findViewById(R.id.textViewEpochValue);
+        tvEpoch = (TextView) findViewById(R.id.textViewEpoch);
         tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
         allPlayerSuns[0] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer1);
@@ -646,7 +646,7 @@ public class GameActivity extends AppCompatActivity {
         Game game = Game.getInstance();
 
         // current epoch
-        tvEpoch.setText(String.format("%d", game.getEpoch()));
+        tvEpoch.setText(getResources().getString(R.string.TitleEpoch, game.getEpoch()));
 
         // current player
         tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));

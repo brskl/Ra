@@ -290,28 +290,18 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewEpochTitle"
-        android:layout_width="149dp"
+        android:id="@+id/textViewEpoch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/linearLayoutPlayers"
         android:text="@string/TitleEpoch"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textViewEpochValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textViewEpochTitle"
-        android:layout_toRightOf="@id/textViewEpochTitle"
-        android:layout_centerHorizontal="true"
-        android:text="current epoch"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/linearLayoutPlayers"
-        android:layout_below="@id/textViewEpochTitle"
+        android:layout_below="@id/textViewEpoch"
         android:orientation="horizontal" >
 
         <LinearLayout
@@ -528,7 +518,7 @@
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/textViewEpochTitle"
+        android:layout_alignLeft="@id/textViewEpoch"
         android:layout_above="@id/LinearLayoutButtonsHuman"
         android:layout_marginBottom="10dp"
         android:text="Status"

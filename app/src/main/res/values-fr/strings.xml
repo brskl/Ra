@@ -4,7 +4,7 @@
     <string name="TitleActivityScore">But</string>
     <string name="TitleActivityNewGame">Nouveau jeu</string>
     <string name="TitleActivityGame">Plateau de jeu</string>
-    <string name="TitleEpoch">\"Époque: \"</string>
+    <string name="TitleEpoch">\"Époque: %d\"</string>
     <string name="TitleAuctionTrack">Enchères:</string>
     <string name="TitleBidDialog">Offre</string>
     <plurals name="TitleGodDialog">

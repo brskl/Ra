@@ -342,10 +342,11 @@
         android:layout_toRightOf="@id/linearLayoutPlayers">
 
 
-        <LinearLayout
-            android:id="@+id/llAuction"
+        <RelativeLayout
+            android:id="@+id/relativeLayoutAuction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="4dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true">
 
@@ -353,57 +354,71 @@
                 android:id="@+id/ivAuction0"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignTop="@id/ivAuction0"
+                android:layout_toRightOf="@id/ivAuction0"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignTop="@id/ivAuction1"
+                android:layout_toRightOf="@id/ivAuction1"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+
+                android:layout_alignTop="@id/ivAuction2"
+                android:layout_toRightOf="@id/ivAuction2"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction4"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_alignLeft="@id/ivAuction0"
+                android:layout_below="@id/ivAuction0"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction5"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_alignLeft="@id/ivAuction1"
+                android:layout_alignTop="@id/ivAuction4"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction6"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_alignLeft="@id/ivAuction2"
+                android:layout_alignTop="@id/ivAuction5"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction7"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="1dp"
+                android:layout_alignLeft="@id/ivAuction3"
+                android:layout_alignTop="@id/ivAuction6"
                 android:background="@drawable/border" />
-        </LinearLayout>
+        </RelativeLayout>
         <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
+            android:layout_centerVertical="true"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_toLeftOf="@id/llAuction"
+            android:layout_toLeftOf="@id/relativeLayoutAuction"
             android:layout_marginRight="8dp" />
     </RelativeLayout>
 

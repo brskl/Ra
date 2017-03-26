@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewGameActivity" />
-        <activity android:name=".GameActivity" />
+        <activity android:name=".GameActivity" android:screenOrientation="landscape"/>
         <activity android:name=".TilesActivity"
             android:label="@string/TitleActivityTiles"
             android:theme="@style/AppTheme.NoActionBar"

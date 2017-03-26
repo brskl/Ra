@@ -350,12 +350,12 @@
         android:text="@string/TitleAuctionTrack"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-     <LinearLayout
+    <LinearLayout
         android:id="@+id/llAuction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewAuctionTitle"
-         android:layout_toRightOf="@id/textViewAuctionTitle">
+        android:layout_toRightOf="@id/textViewAuctionTitle">
         <com.benjaminsklar.ra.SunImageView
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"

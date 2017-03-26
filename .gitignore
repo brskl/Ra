@@ -9,3 +9,5 @@
 /captures
 .externalNativeBuild
 /doc/notes
+~$*.docx
+~$*.pptx

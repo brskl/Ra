@@ -449,7 +449,7 @@
             android:layout_height="80dp"
             android:layout_toLeftOf="@id/relativeLayoutAuction"
             android:layout_marginRight="8dp" />
-    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/LinearLayoutButtons"
@@ -512,7 +512,6 @@
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/linearLayoutPlayers"
         android:layout_above="@id/LinearLayoutButtonsHuman"
         android:layout_marginBottom="10dp"
         android:text="Status"
@@ -522,10 +521,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/textViewStatus"
-        android:layout_toRightOf="@id/linearLayoutPlayers"
         android:layout_marginTop="25dp"
         android:text="@string/CurrentPlayer"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -106,15 +106,11 @@ public class GameActivity extends AppCompatActivity {
 
         switch (game.getNPlayers()) {
             case 3:
-                v = findViewById(R.id.textViewNamePlayer4);
-                v.setVisibility(View.GONE);
-                v = findViewById(R.id.linearLayoutSunsPlayer4);
+                v = findViewById(R.id.relativeLayoutPlayer4);
                 v.setVisibility(View.GONE);
                 // fall through
             case 4:
-                v = findViewById(R.id.textViewNamePlayer5);
-                v.setVisibility(View.GONE);
-                v = findViewById(R.id.linearLayoutSunsPlayer5);
+                v = findViewById(R.id.relativeLayoutPlayer5);
                 v.setVisibility(View.GONE);
                 break;
             default:

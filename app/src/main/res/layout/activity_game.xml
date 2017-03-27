@@ -486,12 +486,12 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@id/LinearLayoutButtons" >
 
-        <Button
+        <ImageButton
             android:id="@+id/buttonDraw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickGame"
-            android:text="@string/btnDraw" />
+            android:src="@drawable/button_draw" />
 
         <Button
             android:id="@+id/buttonAuction"

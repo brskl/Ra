@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -43,7 +44,7 @@ public class GameActivity extends AppCompatActivity {
     private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     private Button btnOk;
     private Button btnAuction;
-    private Button btnDraw;
+    private ImageButton btnDraw;
     private Button btnGod;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
@@ -68,7 +69,7 @@ public class GameActivity extends AppCompatActivity {
         allPlayerSuns[4] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer5);
         btnOk = (Button) findViewById(R.id.buttonOK);
         btnAuction = (Button) findViewById(R.id.buttonAuction);
-        btnDraw = (Button) findViewById(R.id.buttonDraw);
+        btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
         btnGod = (Button) findViewById(R.id.buttonGod);
         ivAuctionSun = (com.benjaminsklar.ra.SunImageView) findViewById(R.id.ivAuctionSun);
         aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);

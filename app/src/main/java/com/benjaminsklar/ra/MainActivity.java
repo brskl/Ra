@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         ivSplash.startAnimation(animation);
 
     }
+
     public void onAnimationEnd(Animation animation) {
         Button btnNew = (Button) findViewById(R.id.buttonNew);
         Button btnQuit = (Button) findViewById(R.id.buttonQuit);
@@ -73,6 +74,18 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         btnQuit.setVisibility(View.INVISIBLE);
         btnResume.setVisibility(View.INVISIBLE);
         tvLoading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d(MainActivity.class.toString(), "onResume");
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     public void onClick(View v)

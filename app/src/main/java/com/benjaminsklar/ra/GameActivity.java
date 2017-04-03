@@ -91,11 +91,22 @@ public class GameActivity extends AppCompatActivity {
         aivRaTiles[8] = (ImageView) findViewById(R.id.ivRa8);
         aivRaTiles[9] = (ImageView) findViewById(R.id.ivRa9);
 
-
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
 
         UpdateDisplay();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d(GameActivity.class.toString(), "onResume");
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     @Override

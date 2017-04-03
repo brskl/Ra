@@ -101,6 +101,18 @@ public class NewGameActivity extends AppCompatActivity {
         EnableUx();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d(NewGameActivity.class.toString(), "onResume");
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+    }
+
     private String AIname(int iPlayer)
     {
         final String asNamesAiEasy[] = getResources().getStringArray(R.array.NamesAiEasy);

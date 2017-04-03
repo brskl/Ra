@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -95,5 +96,17 @@ public class ScoreActivity extends AppCompatActivity {
 
             tl.addView(tr);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d(ScoreActivity.class.toString(), "onResume");
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 }

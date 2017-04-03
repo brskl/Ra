@@ -3,4 +3,5 @@
     <item android:drawable="@drawable/bag_enabled"
         android:state_enabled="true" />
     <item android:drawable="@drawable/bag_disabled" />
+        <!--default-->
 </selector>

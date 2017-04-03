@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import junit.framework.Assert;
 
+/**
+ * Main or starting activity for app
+ */
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener {
 
     String fileGame;

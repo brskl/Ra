@@ -18,9 +18,11 @@
         <activity android:name=".NewGameActivity" />
         <activity android:name=".GameActivity" android:screenOrientation="landscape"/>
         <activity android:name=".TilesActivity"
+            android:screenOrientation="landscape"
             android:label="@string/TitleActivityTiles"
             android:parentActivityName=".GameActivity"/>
         <activity android:name=".ScoreActivity"
+            android:screenOrientation="landscape"
             android:label="@string/TitleActivityScore"
             android:parentActivityName=".GameActivity"/>
     </application>

@@ -454,19 +454,19 @@
         <Button
             android:id="@+id/buttonOK"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/gameBoardButtonHeight"
             android:onClick="onClickGame"
             android:text="@android:string/ok" />
         <Button
             android:id="@+id/buttonTiles"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/gameBoardButtonHeight"
             android:onClick="onClickGame"
             android:text="Tiles" />
         <Button
             android:id="@+id/buttonScore"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/gameBoardButtonHeight"
             android:onClick="onClickGame"
             android:text="Score" />
 
@@ -482,21 +482,21 @@
         <ImageButton
             android:id="@+id/buttonDraw"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/gameBoardButtonHeight"
             android:onClick="onClickGame"
             android:src="@drawable/button_draw" />
 
         <Button
             android:id="@+id/buttonAuction"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/gameBoardButtonHeight"
             android:onClick="onClickGame"
             android:text="@string/btnAuction" />
 
         <Button
             android:id="@+id/buttonGod"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/gameBoardButtonHeight"
             android:onClick="onClickGame"
             android:text="@string/btnGod" />
     </LinearLayout>
@@ -506,7 +506,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/LinearLayoutButtonsHuman"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/gameBoardStatusMarginB"
         android:text="Status"
         android:textAppearance="?android:attr/textAppearanceSmall" />
     <TextView

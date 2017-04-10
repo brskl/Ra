@@ -5,4 +5,5 @@
     <dimen name="gameBoardRaWH">36dp</dimen>
     <dimen name="gameBoardAuctionSunWH">48dp</dimen>
     <dimen name="gameBoardAuctionItemWH">48dp</dimen>
+    <dimen name="gameBoardStatusMarginB">4dp</dimen>
 </resources>

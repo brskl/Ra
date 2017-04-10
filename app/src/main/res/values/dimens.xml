@@ -13,4 +13,6 @@
     <dimen name="gameBoardAuctionPadding">2dp</dimen>
     <dimen name="gameBoardAuctionItemWH">40dp</dimen>
     <dimen name="gameBoardAuctionItemMargin">4dp</dimen>
+    <dimen name="gameBoardButtonHeight">36dp</dimen>
+    <dimen name="gameBoardStatusMarginB">2dp</dimen>
 </resources>

@@ -307,62 +307,62 @@
 
             <ImageView
                 android:id="@+id/ivRa0"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa5"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa6"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa7"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa8"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="6dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
+                android:layout_marginRight="@dimen/gameBoardRaMarginE"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivRa9"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/gameBoardRaWH"
+                android:layout_height="@dimen/gameBoardRaWH"
                 android:background="@drawable/border" />
         </LinearLayout>
 

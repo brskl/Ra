@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- GameActivity layout values -->
+    <dimen name="gameBoardRaMarginE">3dp</dimen>
+    <dimen name="gameBoardRaWH">36dp</dimen>
+</resources>

@@ -6,4 +6,6 @@
     <dimen name="gamePlayersPaddingE">10dp</dimen>
     <dimen name="gamePlayerSunMarginE">4dp</dimen>
     <dimen name="gamePlayerSunWH">10dp</dimen>
+    <dimen name="gameBoardRaMarginE">2dp</dimen>
+    <dimen name="gameBoardRaWH">32dp</dimen>
 </resources>

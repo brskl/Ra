@@ -2,6 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- MainActivity layout values -->
+    <dimen name="mainSplashW">145dp</dimen>
+    <dimen name="mainSplashH">169dp</dimen>
     <!-- GameActivity layout values -->
     <dimen name="gamePlayersPaddingE">10dp</dimen>
     <dimen name="gamePlayerSunMarginE">4dp</dimen>

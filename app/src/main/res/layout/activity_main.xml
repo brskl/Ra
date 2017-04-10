@@ -46,8 +46,8 @@
         android:id="@+id/textViewLoading" />
     <ImageView
         android:id="@+id/splash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/mainSplashW"
+        android:layout_height="@dimen/mainSplashH"
         android:src="@drawable/splash"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"

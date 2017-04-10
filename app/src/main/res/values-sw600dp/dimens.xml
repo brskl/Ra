@@ -2,6 +2,9 @@
 <resources>
     <dimen name="activity_horizontal_margin">32dp</dimen>
     <dimen name="activity_vertical_margin">32dp</dimen>
+    <!-- MainActivity layout values -->
+    <dimen name="mainSplashW">290dp</dimen>
+    <dimen name="mainSplashH">338dp</dimen>
     <!-- GameActivity layout values -->
     <dimen name="gamePlayerSunWH">32dp</dimen>
     <dimen name="gameBoardRaMarginE">6dp</dimen>
@@ -14,3 +17,4 @@
     <dimen name="gameBoardButtonHeight">48dp</dimen>
     <dimen name="gameBoardStatusMarginB">10dp</dimen>
 </resources>
+

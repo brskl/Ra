@@ -17,7 +17,7 @@
         android:layout_weight="0.3"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:paddingRight="10dp" >
+        android:paddingRight="@dimen/gamePlayersPaddingE" >
         <!--TODO: Adjust width and padding-->
 
         <RelativeLayout
@@ -44,33 +44,33 @@
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer1_0"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer1_1"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer1_2"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer1_3"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer1_4"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -97,34 +97,33 @@
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer2_0"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer2_1"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer2_2"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer2_3"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer2_4"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
-
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
@@ -150,36 +149,34 @@
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer3_0"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer3_1"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer3_2"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer3_3"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer3_4"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
-
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
             </LinearLayout>
-
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/relativeLayoutPlayer4"
@@ -204,37 +201,35 @@
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer4_0"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer4_1"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer4_2"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer4_3"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer4_4"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
-
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
             </LinearLayout>
         </RelativeLayout>
-
         <RelativeLayout
             android:id="@+id/relativeLayoutPlayer5"
             android:layout_width="wrap_content"
@@ -259,33 +254,33 @@
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer5_0"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer5_1"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer5_2"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer5_3"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
                 <com.benjaminsklar.ra.SunImageView
                     android:id="@+id/ivSunPlayer5_4"
                     android:src="@drawable/tile_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp" />
+                    android:layout_width="@dimen/gamePlayerSunWH"
+                    android:layout_height="@dimen/gamePlayerSunWH"
+                    android:layout_marginRight="@dimen/gamePlayerSunMarginE" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

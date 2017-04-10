@@ -3,4 +3,6 @@
     <!-- GameActivity layout values -->
     <dimen name="gameBoardRaMarginE">3dp</dimen>
     <dimen name="gameBoardRaWH">36dp</dimen>
+    <dimen name="gameBoardAuctionSunWH">48dp</dimen>
+    <dimen name="gameBoardAuctionItemWH">48dp</dimen>
 </resources>

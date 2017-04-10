@@ -6,5 +6,9 @@
     <dimen name="gamePlayerSunWH">32dp</dimen>
     <dimen name="gameBoardRaMarginE">6dp</dimen>
     <dimen name="gameBoardRaWH">56dp</dimen>
-
+    <dimen name="gameBoardAuctionSunWH">80dp</dimen>
+    <dimen name="gameBoardAuctionSunMarginE">8dp</dimen>
+    <dimen name="gameBoardAuctionPadding">6dp</dimen>
+    <dimen name="gameBoardAuctionItemWH">80dp</dimen>
+    <dimen name="gameBoardAuctionItemMargin">10dp</dimen>
 </resources>

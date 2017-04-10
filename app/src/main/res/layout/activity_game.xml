@@ -371,67 +371,67 @@
             android:id="@+id/relativeLayoutAuction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
+            android:padding="@dimen/gameBoardAuctionPadding"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true">
 
             <ImageView
                 android:id="@+id/ivAuction0"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginRight="8dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
+                android:layout_marginRight="@dimen/gameBoardAuctionItemMargin"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginRight="8dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
+                android:layout_marginRight="@dimen/gameBoardAuctionItemMargin"
                 android:layout_alignTop="@id/ivAuction0"
                 android:layout_toRightOf="@id/ivAuction0"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginRight="8dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
+                android:layout_marginRight="@dimen/gameBoardAuctionItemMargin"
                 android:layout_alignTop="@id/ivAuction1"
                 android:layout_toRightOf="@id/ivAuction1"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
                 android:layout_alignTop="@id/ivAuction2"
                 android:layout_toRightOf="@id/ivAuction2"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
                 android:layout_alignLeft="@id/ivAuction0"
                 android:layout_below="@id/ivAuction0"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/gameBoardAuctionItemMargin"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction5"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
                 android:layout_alignLeft="@id/ivAuction1"
                 android:layout_alignTop="@id/ivAuction4"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction6"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
                 android:layout_alignLeft="@id/ivAuction2"
                 android:layout_alignTop="@id/ivAuction5"
                 android:background="@drawable/border" />
             <ImageView
                 android:id="@+id/ivAuction7"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/gameBoardAuctionItemWH"
+                android:layout_height="@dimen/gameBoardAuctionItemWH"
                 android:layout_alignLeft="@id/ivAuction3"
                 android:layout_alignTop="@id/ivAuction6"
                 android:background="@drawable/border" />
@@ -440,12 +440,10 @@
             android:id="@+id/ivAuctionSun"
             android:src="@drawable/tile_sun"
             android:layout_centerVertical="true"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/gameBoardAuctionSunWH"
+            android:layout_height="@dimen/gameBoardAuctionSunWH"
             android:layout_toLeftOf="@id/relativeLayoutAuction"
-            android:layout_marginRight="8dp" />
-
-
+            android:layout_marginRight="@dimen/gameBoardAuctionSunMarginE" />
     <LinearLayout
         android:id="@+id/LinearLayoutButtons"
         android:layout_width="wrap_content"

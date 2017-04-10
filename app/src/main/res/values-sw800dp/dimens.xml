@@ -5,5 +5,10 @@
     <!-- GameActivity layout values -->
     <dimen name="gameBoardRaMarginE">8dp</dimen>
     <dimen name="gameBoardRaWH">74dp</dimen>
+    <dimen name="gameBoardAuctionSunWH">120dp</dimen>
+    <dimen name="gameBoardAuctionSunMarginE">12dp</dimen>
+    <dimen name="gameBoardAuctionPadding">8dp</dimen>
+    <dimen name="gameBoardAuctionItemWH">100dp</dimen>
+    <dimen name="gameBoardAuctionItemMargin">12dp</dimen>
 
 </resources>

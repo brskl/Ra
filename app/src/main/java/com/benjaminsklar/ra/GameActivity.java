@@ -2,16 +2,24 @@ package com.benjaminsklar.ra;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import junit.framework.Assert;
@@ -27,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
     // Image resource id for each kind of tile, must be in same order as enum
     private static final int aiTileImageRes_c [] = {
             0, // none
-            0, // Ra
+            R.drawable.tile_ra, // Ra
             R.drawable.tile_god, // God
             R.drawable.tile_gold,	// Gold
             R.drawable.tile_pharoah,	// Pharaoh
@@ -49,6 +57,8 @@ public class GameActivity extends AppCompatActivity {
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
+
+    Animation anim = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -508,6 +518,7 @@ public class GameActivity extends AppCompatActivity {
                 Log.v(GameActivity.class.toString(), "buttonDraw pressed");
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
+                StartAnimationDrawTile();
                 break;
             case R.id.buttonGod:
                 Log.v(GameActivity.class.toString(), "buttonGod pressed");
@@ -560,6 +571,7 @@ public class GameActivity extends AppCompatActivity {
                     // Get AI decision
                     // TODO: for now, just draw tile
                     game.DrawTile();
+                    StartAnimationDrawTile();
                 }
                 break;
             case DrewTile:
@@ -640,6 +652,61 @@ public class GameActivity extends AppCompatActivity {
             default:
                 Assert.fail();
         }
+    }
+
+    void StartAnimationDrawTile() {
+        Animation animTrans1, animTrans2;
+        AnimationSet animationSet;
+        ImageView ivDest;
+
+        Game game = Game.getInstance();
+        Game.Tile tile = game.getTileLastDrawn();
+        RelativeLayout rlBoard = (RelativeLayout) findViewById(R.id.relativeLayoutBoard);
+        RelativeLayout rlAuction = (RelativeLayout) findViewById(R.id.relativeLayoutAuction);
+        ImageView ivTileDrawn = new ImageView(this);
+
+        if (tile == Game.Tile.tRa) {
+            ivDest = aivRaTiles[game.getRas()-1];
+        } else {
+            ivDest = aivAuctionItems[game.getAuction().size()-1];
+        }
+        Rect rectStart = new Rect();
+        Rect rectAuction = new Rect();
+        Rect rectDest = new Rect();
+        btnDraw.getDrawingRect(rectStart);
+        rlBoard.offsetDescendantRectToMyCoords(btnDraw, rectStart);
+        rlAuction.getDrawingRect(rectAuction);
+        rlBoard.offsetDescendantRectToMyCoords(rlAuction, rectAuction);
+        ivDest.getDrawingRect(rectDest);
+        rlBoard.offsetDescendantRectToMyCoords(ivDest, rectDest);
+
+        ViewGroup.LayoutParams destLayout = ivDest.getLayoutParams();
+        ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
+
+        ivTileDrawn.setImageResource(TileImageRes(tile));
+        ivTileDrawn.setLayoutParams(imageLayout);
+        ivTileDrawn.setX(rectStart.centerX() - imageLayout.width / 2);
+        ivTileDrawn.setY(rectStart.centerY() - imageLayout.height / 2);
+
+        rlBoard.addView(ivTileDrawn);
+
+        animationSet = new AnimationSet(true);
+
+        animTrans1 = new TranslateAnimation(0, rectAuction.centerX() - rectStart.centerX(), 0, rectAuction.centerY() - rectStart.centerY());
+        animTrans2 = new TranslateAnimation(0, rectDest.centerX() - rectAuction.centerX(), 0, rectDest.centerY() - rectAuction.centerY());
+
+        ivTileDrawn.setAnimation(animationSet);
+        // TODO: replace durations with setting value
+        animTrans1.setDuration(1000);
+        animTrans2.setDuration(1000);
+        animTrans2.setStartOffset(1500);
+
+        animationSet.addAnimation(animTrans1);
+        animationSet.addAnimation(animTrans2);
+        animationSet.setFillAfter(false);
+
+        animationSet.startNow();
+
     }
 
     void UpdateDisplayPlayerNames(){
@@ -743,6 +810,7 @@ public class GameActivity extends AppCompatActivity {
                 if (game.FAuctionCurrentPlayerBidHighest()) {
                     sStatus = getString(R.string.StatusAuctionPlayerBid, game.getAuctionPlayerCurrent().getName(), game.getAuctionHighBid());
                 } else {
+                    // if local human, check if bid-dialog is open
                     sStatus = getString(R.string.StatusAuctionPlayerPassed, game.getAuctionPlayerCurrent().getName());
                 }
                 break;

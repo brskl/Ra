@@ -42,6 +42,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvStatus;
     private TextView tvCurrentPlayer;
     private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
+    private LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     private Button btnOk;
     private Button btnAuction;
     private ImageButton btnDraw;
@@ -67,6 +68,11 @@ public class GameActivity extends AppCompatActivity {
         allPlayerSuns[2] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer3);
         allPlayerSuns[3] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer4);
         allPlayerSuns[4] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer5);
+        allPlayerSunsNext[0] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer1);
+        allPlayerSunsNext[1] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer2);
+        allPlayerSunsNext[2] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer3);
+        allPlayerSunsNext[3] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer4);
+        allPlayerSunsNext[4] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer5);
         btnOk = (Button) findViewById(R.id.buttonOK);
         btnAuction = (Button) findViewById(R.id.buttonAuction);
         btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
@@ -685,9 +691,11 @@ public class GameActivity extends AppCompatActivity {
         int i;
         com.benjaminsklar.ra.SunImageView sivCurrent;
         LinearLayout llPlayerSuns = allPlayerSuns[iPlayer];
+        LinearLayout llPlayerSunsNext = allPlayerSunsNext[iPlayer];
         int nChild = llPlayerSuns.getChildCount();
 
 
+        iChild = 0;
         for (i = 0; i < game.aPlayers[iPlayer].getSuns().size(); i++)
         {
             sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
@@ -695,18 +703,21 @@ public class GameActivity extends AppCompatActivity {
             sivCurrent.setVisibility(View.VISIBLE);
         }
 
-        sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
-        sivCurrent.setVisibility(View.INVISIBLE);
+        while (iChild < nChild) {
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent.setVisibility(View.INVISIBLE);
+        }
 
+        iChild = 0;
         for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
         {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
             sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
             sivCurrent.setVisibility(View.VISIBLE);
         }
 
         while (iChild < nChild) {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
             sivCurrent.setVisibility(View.INVISIBLE);
         }
     }

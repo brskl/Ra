@@ -130,6 +130,7 @@ public class GameActivity extends AppCompatActivity {
     private void SetNumplayerUI() {
         View v;
         Game game = Game.getInstance();
+        int iChild;
 
         switch (game.getNPlayers()) {
             case 3:
@@ -145,6 +146,17 @@ public class GameActivity extends AppCompatActivity {
             default:
                 // do nothing
                 break;
+        }
+
+        // Remove from layout sun tile spots not used
+        for (iChild = game.getSunsPerPlayer(); iChild < Game.nMaxSunsPerPlayer; iChild++) {
+            int iPlayer;
+            for (iPlayer = 0; iPlayer < Game.nMaxPlayers_c; iPlayer++) {
+                v = allPlayerSuns[iPlayer].getChildAt(iChild);
+                v.setVisibility(View.GONE);
+                v = allPlayerSunsNext[iPlayer].getChildAt(iChild);
+                v.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -703,7 +715,7 @@ public class GameActivity extends AppCompatActivity {
             sivCurrent.setVisibility(View.VISIBLE);
         }
 
-        while (iChild < nChild) {
+        while (iChild < game.getSunsPerPlayer()) {
             sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
             sivCurrent.setVisibility(View.INVISIBLE);
         }
@@ -716,7 +728,7 @@ public class GameActivity extends AppCompatActivity {
             sivCurrent.setVisibility(View.VISIBLE);
         }
 
-        while (iChild < nChild) {
+        while (iChild < game.getSunsPerPlayer()) {
             sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
             sivCurrent.setVisibility(View.INVISIBLE);
         }

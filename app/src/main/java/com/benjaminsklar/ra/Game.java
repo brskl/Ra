@@ -25,6 +25,7 @@ class Game implements Serializable {
     static final int nMaxPlayers_c = 5;
     static final int nMaxAuction_c = 8;
     static final int nMaxRas_c = 10;
+    static final int nMaxSunsPerPlayer = 4;
     static final int nEpochs_c = 3;
     static final int iScoreGoldValue_c = 3;
     static final int iScoreGodValue_c = 2;
@@ -143,6 +144,18 @@ class Game implements Serializable {
 
     Player [] getPlayers() { return aPlayers; }
 
+    public int getSunsPerPlayer() {
+        switch (nPlayers) {
+            case 3:
+                return 4;
+            case 4:
+            case 5:
+                return 3;
+            default:
+                throw new IllegalArgumentException("Invalid number of players");
+        }
+    }
+
     public void saveToFile(Context context, String fileName) {
         Log.v(Game.class.toString(), "saveToFile("+ fileName+")");
         try {
@@ -253,7 +266,7 @@ class Game implements Serializable {
         Log.v(Game.class.toString(), "Initializing Suns");
         Assert.assertNotNull(aPlayers);
 
-        int nSunsPerPlayer;
+        int nSunsPerPlayer = getSunsPerPlayer();
         int aSunsInitial[][];
         ArrayList<Integer> alSunList = new ArrayList<Integer>(nPlayers);
         int i, j;
@@ -264,15 +277,12 @@ class Game implements Serializable {
         {
             case 3:
                 aSunsInitial = new int[][] {{2, 5, 8, 13}, {3, 6, 9, 12}, {4, 7, 10, 11}};
-                nSunsPerPlayer = 4;
                 break;
             case 4:
                 aSunsInitial = new int[][] {{2, 6, 13}, {3, 7, 12}, {4, 8, 11}, {5, 9, 10}};
-                nSunsPerPlayer = 3;
                 break;
             case 5:
                 aSunsInitial = new int[][] {{2, 7, 16}, {3, 8, 15}, {4, 9, 14}, {5, 10, 13}, {6, 11, 12}};
-                nSunsPerPlayer = 3;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid number of players");

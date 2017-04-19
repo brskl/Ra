@@ -721,16 +721,15 @@ public class GameActivity extends AppCompatActivity {
         }
 
         iChild = 0;
+        while (iChild < game.getSunsPerPlayer() - game.aPlayers[iPlayer].getSunsNext().size()) {
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
+            sivCurrent.setVisibility(View.INVISIBLE);
+        }
         for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
         {
             sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
             sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
             sivCurrent.setVisibility(View.VISIBLE);
-        }
-
-        while (iChild < game.getSunsPerPlayer()) {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
-            sivCurrent.setVisibility(View.INVISIBLE);
         }
     }
 

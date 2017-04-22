@@ -45,10 +45,6 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvCurrentPlayer;
     private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     private LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
-    private Button btnOk;
-    private Button btnAuction;
-    private ImageButton btnDraw;
-    private Button btnGod;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
@@ -77,10 +73,7 @@ public class GameActivity extends AppCompatActivity {
         allPlayerSunsNext[2] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer3);
         allPlayerSunsNext[3] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer4);
         allPlayerSunsNext[4] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer5);
-        btnOk = (Button) findViewById(R.id.buttonOK);
-        btnAuction = (Button) findViewById(R.id.buttonAuction);
-        btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
-        btnGod = (Button) findViewById(R.id.buttonGod);
+
         ivAuctionSun = (com.benjaminsklar.ra.SunImageView) findViewById(R.id.ivAuctionSun);
         aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);
         aivAuctionItems[1] = (ImageView) findViewById(R.id.ivAuction1);
@@ -849,24 +842,5 @@ public class GameActivity extends AppCompatActivity {
             // TODO: Is there a better way to clear image
             aivAuctionItems[i].setImageResource(0);;
         }
-    }
-
-    void UpdateDisplayButtons()
-    {
-        boolean fCurrentPlayerLocalHuman;
-        boolean fOKonly = true;
-        Game game = Game.getInstance();
-
-        fCurrentPlayerLocalHuman = (game.getPlayerCurrent().getHuman() && game.getPlayerCurrent().getLocal());
-        if (fCurrentPlayerLocalHuman)
-        {
-            if (game.getStatusCurrent() == Game.Status.TurnStart)
-                fOKonly = false;
-        }
-
-        btnOk.setEnabled(fOKonly);
-        btnAuction.setEnabled(!fOKonly);
-        btnDraw.setEnabled(!fOKonly && !game.FAuctionTrackFull());
-        btnGod.setEnabled(!fOKonly && game.FCanUseGod());
     }
 }

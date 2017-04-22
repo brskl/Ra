@@ -19,6 +19,8 @@ import junit.framework.Assert;
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
+    private GameActivityUpdate gameActivityUpdate;
+
     // Must be in same order as RaGame.Tile enum
     // All 2 characters for formatting
     private String [] sTiles; // loaded from R.array.Tiles
@@ -57,6 +59,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         Log.d(GameActivity.class.toString(), "onCreate");
+
+        gameActivityUpdate = new GameActivityUpdate(this);
 
         sTiles = getResources().getStringArray(R.array.Tiles);
 
@@ -100,7 +104,7 @@ public class GameActivity extends AppCompatActivity {
         SetNumplayerUI();
         UpdateDisplayPlayerNames();
 
-        UpdateDisplay();
+        gameActivityUpdate.UpdateDisplay();
     }
 
     @Override
@@ -223,7 +227,7 @@ public class GameActivity extends AppCompatActivity {
 
                 if (!game.TestDisasters()) {
                     Assert.assertEquals(Game.Status.ResolveDisasterCompleted, game.getStatusCurrent());
-                    UpdateDisplay();
+                    gameActivityUpdate.UpdateDisplay();
                 }
                 dialog.dismiss();
             }
@@ -344,7 +348,7 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }
                 if (fExchanged)
-                    UpdateDisplay();
+                    gameActivityUpdate.UpdateDisplay();
                 dialog.dismiss();
             }
         });
@@ -447,7 +451,7 @@ public class GameActivity extends AppCompatActivity {
                 }
 
                 game.MakeBid(iBidValue);
-                UpdateDisplay();
+                gameActivityUpdate.UpdateDisplay();
                 dialog.dismiss();
             }
 
@@ -553,7 +557,7 @@ public class GameActivity extends AppCompatActivity {
                 Assert.fail("Should never Reach in onClickGame");
         }
 
-        UpdateDisplay();
+        gameActivityUpdate.UpdateDisplay();
     }
 
     void onClickGameOk(View v)
@@ -864,14 +868,5 @@ public class GameActivity extends AppCompatActivity {
         btnAuction.setEnabled(!fOKonly);
         btnDraw.setEnabled(!fOKonly && !game.FAuctionTrackFull());
         btnGod.setEnabled(!fOKonly && game.FCanUseGod());
-    }
-
-    void UpdateDisplay(){
-        UpdateDisplayRound();
-        UpdateDisplayRaTiles();
-        UpdateDisplayPlayersSuns();
-        UpdateDisplayStatus();
-        UpdateDisplayAuction();
-        UpdateDisplayButtons();
     }
 }

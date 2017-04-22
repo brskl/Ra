@@ -52,12 +52,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         Button btnNew = (Button) findViewById(R.id.buttonNew);
         Button btnQuit = (Button) findViewById(R.id.buttonQuit);
         Button btnResume = (Button) findViewById(R.id.buttonResume);
+        Button btnSettings = (Button) findViewById(R.id.buttonSettings);
         TextView tvLoading = (TextView) findViewById(R.id.textViewLoading);
 
         btnNew.setVisibility(View.VISIBLE);
         btnQuit.setVisibility(View.VISIBLE);
         btnResume.setVisibility(View.VISIBLE);
         btnResume.setEnabled(fileGame != null);
+        btnSettings.setVisibility(View.VISIBLE);
         tvLoading.setVisibility(View.INVISIBLE);
     }
 
@@ -71,11 +73,13 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         Button btnNew = (Button) findViewById(R.id.buttonNew);
         Button btnQuit = (Button) findViewById(R.id.buttonQuit);
         Button btnResume = (Button) findViewById(R.id.buttonResume);
+        Button btnSettings = (Button) findViewById(R.id.buttonSettings);
         TextView tvLoading = (TextView) findViewById(R.id.textViewLoading);
 
         btnNew.setVisibility(View.INVISIBLE);
         btnQuit.setVisibility(View.INVISIBLE);
         btnResume.setVisibility(View.INVISIBLE);
+        btnSettings.setVisibility(View.INVISIBLE);
         tvLoading.setVisibility(View.VISIBLE);
     }
 
@@ -120,6 +124,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
             case R.id.buttonQuit:
                 Log.v(MainActivity.class.toString(), "Exitting app");
                 finish();
+                break;
+            case R.id.buttonSettings:
+                {
+                Log.v(MainActivity.class.toString(), "Starting SettingsActivity");
+
+                Intent intent = new Intent(v.getContext(), SettingsActivity.class);
+                startActivity(intent);
+                }
                 break;
         }
     }

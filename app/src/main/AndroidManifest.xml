@@ -16,15 +16,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewGameActivity" />
-        <activity android:name=".GameActivity" android:screenOrientation="landscape"/>
-        <activity android:name=".TilesActivity"
-            android:screenOrientation="landscape"
+        <activity
+            android:name=".GameActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TilesActivity"
             android:label="@string/TitleActivityTiles"
-            android:parentActivityName=".GameActivity"/>
-        <activity android:name=".ScoreActivity"
-            android:screenOrientation="landscape"
+            android:parentActivityName=".GameActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ScoreActivity"
             android:label="@string/TitleActivityScore"
-            android:parentActivityName=".GameActivity"/>
+            android:parentActivityName=".GameActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

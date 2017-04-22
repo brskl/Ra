@@ -10,32 +10,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.benjaminsklar.ra.MainActivity">
 
-    <Button
-        android:id="@+id/buttonNew"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="@string/btnNew"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <Button
-        android:id="@+id/buttonResume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="@string/btnResume"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-    <Button
-        android:id="@+id/buttonQuit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="@string/btnQuit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true" >
+        <Button
+            android:id="@+id/buttonSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btnSettings" />
+        <Button
+            android:id="@+id/buttonNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_above="@id/buttonSettings"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/btnNew" />
+        <Button
+            android:id="@+id/buttonResume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_above="@id/buttonSettings"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btnResume" />
+        <Button
+            android:id="@+id/buttonQuit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:layout_above="@id/buttonSettings"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/btnQuit" />
+
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

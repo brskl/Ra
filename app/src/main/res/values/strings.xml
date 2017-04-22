@@ -22,6 +22,7 @@
     <string name="btnNew">New</string>
     <string name="btnResume">Resume</string>
     <string name="btnQuit">Quit</string>
+    <string name="btnSettings">Settings</string>
     <string name="btnDraw">Draw</string>
     <string name="btnAuction">Auction</string>
     <string name="btnGod">God</string>
@@ -51,6 +52,7 @@
     <string name="tableHeaderPlayer">Player</string>
     <string name="tableHeaderPrevious">Previous</string>
     <string name="tableHeaderNew">New</string>
+    <string name="settingTitleRandomSeedEnabled">Random Seed</string>
     <string-array name="NamesAiEasy">
         <item>AI Easy 1</item>
         <item>Anubis</item>
@@ -72,8 +74,8 @@
         <item>AI Hard 4</item>
         <item>AI Hard 5</item>
     </string-array>
-    <string-array name="Tiles">  // Must be in same order as RaGame.Tile enum
-        <item></item>	// none
+    <string-array name="Tiles"> // Must be in same order as RaGame.Tile enum
+        <item></item> // none
         <item>Ra</item> // Ra
         <item>God</item> // God
         <item>Gold</item> // Gold

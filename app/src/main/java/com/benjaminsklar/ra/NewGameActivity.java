@@ -90,10 +90,10 @@ public class NewGameActivity extends AppCompatActivity {
             et.setText(asNames[i]);
         }
 
-        fSeed = settings.getBoolean("SeedEnabled", false);
+        fSeed = settings.getBoolean(SettingsActivity.sSettingsRandomSeedEnabled, false);
 
         if (fSeed) {
-            lSeed = settings.getLong("Seed", 0);
+            lSeed = settings.getLong(SettingsActivity.sSettingsRandomSeedValue, 0);
             et = (EditText) findViewById(R.id.editTextSeed);
             et.setText(String.format("%d", lSeed));
         }
@@ -207,7 +207,7 @@ public class NewGameActivity extends AppCompatActivity {
         if (fSeed) {
             et = (EditText) findViewById(R.id.editTextSeed);
             lSeed = Long.parseLong(et.getText().toString());
-            editor.putLong("Seed", lSeed);
+            editor.putLong(SettingsActivity.sSettingsRandomSeedValue, lSeed);
         }
 
         editor.apply();

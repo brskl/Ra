@@ -45,9 +45,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvCurrentPlayer;
     private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     private LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
-    private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
-    private com.benjaminsklar.ra.SunImageView ivAuctionSun;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +56,8 @@ public class GameActivity extends AppCompatActivity {
         Log.d(GameActivity.class.toString(), "onCreate");
 
         gameActivityUpdate = new GameActivityUpdate(this);
+
+        gameActivityUpdate.onCreate();
 
         sTiles = getResources().getStringArray(R.array.Tiles);
 
@@ -74,15 +75,8 @@ public class GameActivity extends AppCompatActivity {
         allPlayerSunsNext[3] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer4);
         allPlayerSunsNext[4] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer5);
 
-        ivAuctionSun = (com.benjaminsklar.ra.SunImageView) findViewById(R.id.ivAuctionSun);
-        aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);
-        aivAuctionItems[1] = (ImageView) findViewById(R.id.ivAuction1);
-        aivAuctionItems[2] = (ImageView) findViewById(R.id.ivAuction2);
-        aivAuctionItems[3] = (ImageView) findViewById(R.id.ivAuction3);
-        aivAuctionItems[4] = (ImageView) findViewById(R.id.ivAuction4);
-        aivAuctionItems[5] = (ImageView) findViewById(R.id.ivAuction5);
-        aivAuctionItems[6] = (ImageView) findViewById(R.id.ivAuction6);
-        aivAuctionItems[7] = (ImageView) findViewById(R.id.ivAuction7);
+
+
         aivRaTiles[0] = (ImageView) findViewById(R.id.ivRa0);
         aivRaTiles[1] = (ImageView) findViewById(R.id.ivRa1);
         aivRaTiles[2] = (ImageView) findViewById(R.id.ivRa2);
@@ -790,7 +784,7 @@ public class GameActivity extends AppCompatActivity {
         tvStatus.setText(sStatus);
     }
 
-    private int TileImageRes(Game.Tile etValue) {
+    int TileImageRes(Game.Tile etValue) {
         return aiTileImageRes_c[etValue.ordinal()];
     }
 
@@ -814,33 +808,5 @@ public class GameActivity extends AppCompatActivity {
                 return Game.Tile.values()[i];
         }
         return Game.Tile.tNone;
-    }
-
-    void UpdateDisplayAuction(){
-        Game game = Game.getInstance();
-
-        ivAuctionSun.setiValue(game.getAtAuctionSun());
-
-        int i;
-        for (i = 0; i < game.getAuction().size(); i++)
-        {
-            int resId;
-
-            resId = TileImageRes(game.getAuction().get(i));
-
-            if (resId != 0) {
-                aivAuctionItems[i].setVisibility(View.VISIBLE);
-                aivAuctionItems[i].setImageResource(resId);
-            } else {
-                // TODO: Replace if != 0 with assert
-                aivAuctionItems[i].setImageResource(0);
-            }
-        }
-        // clear remaining ImageViews
-        for (;i < Game.nMaxAuction_c; i++)
-        {
-            // TODO: Is there a better way to clear image
-            aivAuctionItems[i].setImageResource(0);;
-        }
     }
 }

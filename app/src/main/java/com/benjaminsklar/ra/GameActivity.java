@@ -45,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvCurrentPlayer;
     LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
-    private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
+    ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
 
 
     @Override
@@ -668,23 +668,6 @@ public class GameActivity extends AppCompatActivity {
         // current player
         tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));
     }
-
-    void UpdateDisplayRaTiles() {
-        Game game = Game.getInstance();
-
-        // current number of Ra tiles
-        int i;
-        for (i = 0; i < game.getRas(); i++) {
-            aivRaTiles[i].setImageResource(R.drawable.tile_ra);
-        }
-        for (; i < game.getMaxRas(); i++)
-        {
-            aivRaTiles[i].setImageResource(0);
-        }
-    }
-
-
-
 
     int TileImageRes(Game.Tile etValue) {
         return aiTileImageRes_c[etValue.ordinal()];

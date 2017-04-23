@@ -51,6 +51,20 @@ public class GameActivityUpdate {
         aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
      }
 
+    void UpdateDisplayRaTiles() {
+        Game game = Game.getInstance();
+
+        // current number of Ra tiles
+        int i;
+        for (i = 0; i < game.getRas(); i++) {
+            gameActivity.aivRaTiles[i].setImageResource(R.drawable.tile_ra);
+        }
+        for (; i < game.getMaxRas(); i++)
+        {
+            gameActivity.aivRaTiles[i].setImageResource(0);
+        }
+    }
+
     void UpdateDisplayPlayerSuns(int iPlayer)
     {
         Game game = Game.getInstance();
@@ -196,7 +210,7 @@ public class GameActivityUpdate {
 
     void UpdateDisplay(){
         gameActivity.UpdateDisplayRound();
-        gameActivity.UpdateDisplayRaTiles();
+        UpdateDisplayRaTiles();
         UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();
         UpdateDisplayAuction();

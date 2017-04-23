@@ -22,7 +22,8 @@ public class GameActivityUpdate {
     private Button btnGod;
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
-
+    private TextView tvEpoch;
+    private TextView tvCurrentPlayer;
     private TextView tvStatus;
 
     GameActivityUpdate(GameActivity gameActivityValue)
@@ -35,6 +36,8 @@ public class GameActivityUpdate {
     }
 
     void onCreate() {
+        tvEpoch = (TextView) gameActivity.findViewById(R.id.textViewEpoch);
+        tvCurrentPlayer = (TextView) gameActivity.findViewById(R.id.textViewCurrentPlayer);
         tvStatus = (TextView) gameActivity.findViewById(R.id.textViewStatus);
         btnOk = (Button) gameActivity.findViewById(R.id.buttonOK);
         btnAuction = (Button) gameActivity.findViewById(R.id.buttonAuction);
@@ -50,6 +53,16 @@ public class GameActivityUpdate {
         aivAuctionItems[6] = (ImageView) gameActivity.findViewById(R.id.ivAuction6);
         aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
      }
+
+    void UpdateDisplayRound() {
+        Game game = Game.getInstance();
+
+        // current epoch
+        tvEpoch.setText(gameActivity.getResources().getString(R.string.TitleEpoch, game.getEpoch()));
+
+        // current player
+        tvCurrentPlayer.setText(gameActivity.getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));
+    }
 
     void UpdateDisplayRaTiles() {
         Game game = Game.getInstance();
@@ -209,7 +222,7 @@ public class GameActivityUpdate {
     }
 
     void UpdateDisplay(){
-        gameActivity.UpdateDisplayRound();
+        UpdateDisplayRound();
         UpdateDisplayRaTiles();
         UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();

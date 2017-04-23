@@ -39,10 +39,6 @@ public class GameActivity extends AppCompatActivity {
             R.drawable.tile_pharoah_disaster, R.drawable.tile_nile_flood_disaster, R.drawable.tile_civ_disaster, R.drawable.tile_monument_disaster // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
     };
 
-
-    private TextView tvEpoch;
-
-    private TextView tvCurrentPlayer;
     LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
@@ -56,13 +52,10 @@ public class GameActivity extends AppCompatActivity {
         Log.d(GameActivity.class.toString(), "onCreate");
 
         gameActivityUpdate = new GameActivityUpdate(this);
-
         gameActivityUpdate.onCreate();
 
         sTiles = getResources().getStringArray(R.array.Tiles);
 
-        tvEpoch = (TextView) findViewById(R.id.textViewEpoch);
-        tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
         allPlayerSuns[0] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer1);
         allPlayerSuns[1] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer2);
         allPlayerSuns[2] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer3);
@@ -657,16 +650,6 @@ public class GameActivity extends AppCompatActivity {
             tv = (TextView) findViewById(atvIDs[i]);
             tv.setText(getString(R.string.PlayerNamePlaceholder, game.aPlayers[i].getName()));
         }
-    }
-
-    void UpdateDisplayRound() {
-        Game game = Game.getInstance();
-
-        // current epoch
-        tvEpoch.setText(getResources().getString(R.string.TitleEpoch, game.getEpoch()));
-
-        // current player
-        tvCurrentPlayer.setText(getResources().getString(R.string.CurrentPlayer, game.getPlayerCurrent().getName()));
     }
 
     int TileImageRes(Game.Tile etValue) {

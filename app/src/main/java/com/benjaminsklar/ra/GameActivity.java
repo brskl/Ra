@@ -41,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
 
 
     private TextView tvEpoch;
-    private TextView tvStatus;
+
     private TextView tvCurrentPlayer;
     private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     private LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
@@ -62,7 +62,6 @@ public class GameActivity extends AppCompatActivity {
         sTiles = getResources().getStringArray(R.array.Tiles);
 
         tvEpoch = (TextView) findViewById(R.id.textViewEpoch);
-        tvStatus = (TextView) findViewById(R.id.textViewStatus);
         tvCurrentPlayer = (TextView) findViewById(R.id.textViewCurrentPlayer);
         allPlayerSuns[0] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer1);
         allPlayerSuns[1] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer2);
@@ -734,66 +733,18 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    void UpdateDisplayStatus(){
-        Game game = Game.getInstance();
-        String sStatus = null;
 
-        switch(game.getStatusCurrent())
-        {
-            case TurnStart:
-                sStatus = getString(R.string.StatusTurnStart, game.getPlayerCurrent().getName());
-                break;
-            case DrewTile:
-                sStatus = getString(R.string.StatusDrewTile, game.getPlayerCurrent().getName(), TileString(game.getTileLastDrawn()));
-                break;
-            case EpochOver:
-                sStatus = getString(R.string.StatusEpochOver, game.getEpoch());
-                break;
-            case CallsAuction:
-                sStatus = getString(R.string.StatusCallsAuction, game.getPlayerCurrent().getName());
-                break;
-            case AuctionInProgress:
-                if (game.FAuctionCurrentPlayerBidHighest()) {
-                    sStatus = getString(R.string.StatusAuctionPlayerBid, game.getAuctionPlayerCurrent().getName(), game.getAuctionHighBid());
-                } else {
-                    sStatus = getString(R.string.StatusAuctionPlayerPassed, game.getAuctionPlayerCurrent().getName());
-                }
-                break;
-            case AuctionWon:
-                sStatus = getString(R.string.StatusAuctionWon, game.getAuctionPlayerHighest().getName());
-                break;
-            case AuctionEveryonePassed:
-                sStatus = getString(R.string.StatusAuctionEveryonePassed);
-                break;
-            case UsedGod:
-                sStatus = getString(R.string.StatusUsedGod, game.getPlayerCurrent().getName());
-                break;
-            case ResolveDisaster:
-                sStatus = getString(R.string.StatusResolveDisaster, game.getAuctionPlayerHighest().getName());
-                break;
-            case ResolveDisasterCompleted:
-                sStatus = getString(R.string.StatusResolveDisasterCompleted, game.getAuctionPlayerHighest().getName());
-                break;
-            default:
-                // TODO replace with assert
-                sStatus = "Not Yet Implemented";
-                break;
-        }
-
-        Assert.assertNotNull("Illegal Status", sStatus);
-        tvStatus.setText(sStatus);
-    }
 
     int TileImageRes(Game.Tile etValue) {
         return aiTileImageRes_c[etValue.ordinal()];
     }
 
-    private String TileString(int iValue)
+    String TileString(int iValue)
     {
         return sTiles[iValue];
     }
 
-    private String TileString(Game.Tile etValue)
+    String TileString(Game.Tile etValue)
     {
         return sTiles[etValue.ordinal()];
     }

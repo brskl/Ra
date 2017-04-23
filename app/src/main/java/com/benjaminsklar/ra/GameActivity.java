@@ -43,8 +43,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView tvEpoch;
 
     private TextView tvCurrentPlayer;
-    private LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
-    private LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
+    LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
+    LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     private ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
 
 
@@ -73,9 +73,6 @@ public class GameActivity extends AppCompatActivity {
         allPlayerSunsNext[2] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer3);
         allPlayerSunsNext[3] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer4);
         allPlayerSunsNext[4] = (LinearLayout) findViewById(R.id.linearLayoutPlayerSunsNextPlayer5);
-
-
-
         aivRaTiles[0] = (ImageView) findViewById(R.id.ivRa0);
         aivRaTiles[1] = (ImageView) findViewById(R.id.ivRa1);
         aivRaTiles[2] = (ImageView) findViewById(R.id.ivRa2);
@@ -686,52 +683,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    void UpdateDisplayPlayerSuns(int iPlayer)
-    {
-        Game game = Game.getInstance();
-        int iChild = 0;
-        int i;
-        com.benjaminsklar.ra.SunImageView sivCurrent;
-        LinearLayout llPlayerSuns = allPlayerSuns[iPlayer];
-        LinearLayout llPlayerSunsNext = allPlayerSunsNext[iPlayer];
-        int nChild = llPlayerSuns.getChildCount();
-
-
-        iChild = 0;
-        for (i = 0; i < game.aPlayers[iPlayer].getSuns().size(); i++)
-        {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
-            sivCurrent.setiValue(game.aPlayers[iPlayer].alSuns.get(i));
-            sivCurrent.setVisibility(View.VISIBLE);
-        }
-
-        while (iChild < game.getSunsPerPlayer()) {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
-            sivCurrent.setVisibility(View.INVISIBLE);
-        }
-
-        iChild = 0;
-        while (iChild < game.getSunsPerPlayer() - game.aPlayers[iPlayer].getSunsNext().size()) {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
-            sivCurrent.setVisibility(View.INVISIBLE);
-        }
-        for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
-        {
-            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
-            sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
-            sivCurrent.setVisibility(View.VISIBLE);
-        }
-    }
-
-    void UpdateDisplayPlayersSuns()
-    {
-        Game game = Game.getInstance();
-
-        for (int i = 0; i < game.getNPlayers(); i++)
-        {
-            UpdateDisplayPlayerSuns(i);
-        }
-    }
 
 
 

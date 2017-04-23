@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import junit.framework.Assert;
@@ -21,6 +22,7 @@ public class GameActivityUpdate {
     private Button btnGod;
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
     private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
+
     private TextView tvStatus;
 
     GameActivityUpdate(GameActivity gameActivityValue)
@@ -47,6 +49,52 @@ public class GameActivityUpdate {
         aivAuctionItems[5] = (ImageView) gameActivity.findViewById(R.id.ivAuction5);
         aivAuctionItems[6] = (ImageView) gameActivity.findViewById(R.id.ivAuction6);
         aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
+     }
+
+    void UpdateDisplayPlayerSuns(int iPlayer)
+    {
+        Game game = Game.getInstance();
+        int iChild = 0;
+        int i;
+        com.benjaminsklar.ra.SunImageView sivCurrent;
+        LinearLayout llPlayerSuns = gameActivity.allPlayerSuns[iPlayer];
+        LinearLayout llPlayerSunsNext = gameActivity.allPlayerSunsNext[iPlayer];
+        int nChild = llPlayerSuns.getChildCount();
+
+        iChild = 0;
+        for (i = 0; i < game.aPlayers[iPlayer].getSuns().size(); i++)
+        {
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent.setiValue(game.aPlayers[iPlayer].alSuns.get(i));
+            sivCurrent.setVisibility(View.VISIBLE);
+        }
+
+        while (iChild < game.getSunsPerPlayer()) {
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSuns.getChildAt(iChild++);
+            sivCurrent.setVisibility(View.INVISIBLE);
+        }
+
+        iChild = 0;
+        while (iChild < game.getSunsPerPlayer() - game.aPlayers[iPlayer].getSunsNext().size()) {
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
+            sivCurrent.setVisibility(View.INVISIBLE);
+        }
+        for (i = 0; i < game.aPlayers[iPlayer].getSunsNext().size(); i++)
+        {
+            sivCurrent = (com.benjaminsklar.ra.SunImageView) llPlayerSunsNext.getChildAt(iChild++);
+            sivCurrent.setiValue(game.aPlayers[iPlayer].alSunsNext.get(i));
+            sivCurrent.setVisibility(View.VISIBLE);
+        }
+    }
+
+    void UpdateDisplayPlayersSuns()
+    {
+        Game game = Game.getInstance();
+
+        for (int i = 0; i < game.getNPlayers(); i++)
+        {
+            UpdateDisplayPlayerSuns(i);
+        }
     }
 
     void UpdateDisplayStatus(){
@@ -149,7 +197,7 @@ public class GameActivityUpdate {
     void UpdateDisplay(){
         gameActivity.UpdateDisplayRound();
         gameActivity.UpdateDisplayRaTiles();
-        gameActivity.UpdateDisplayPlayersSuns();
+        UpdateDisplayPlayersSuns();
         UpdateDisplayStatus();
         UpdateDisplayAuction();
         UpdateDisplayButtons();

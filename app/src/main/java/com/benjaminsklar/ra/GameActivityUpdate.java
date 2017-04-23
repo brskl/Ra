@@ -52,7 +52,19 @@ public class GameActivityUpdate {
         aivAuctionItems[5] = (ImageView) gameActivity.findViewById(R.id.ivAuction5);
         aivAuctionItems[6] = (ImageView) gameActivity.findViewById(R.id.ivAuction6);
         aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
-     }
+    }
+
+    void UpdateDisplayPlayerNames(){
+        TextView tv;
+        Game game = Game.getInstance();
+        final int atvIDs[] = {R.id.textViewNamePlayer1, R.id.textViewNamePlayer2, R.id.textViewNamePlayer3, R.id.textViewNamePlayer4, R.id.textViewNamePlayer5};
+
+        for (int i = 0; i < game.getNPlayers(); i++)
+        {
+            tv = (TextView) gameActivity.findViewById(atvIDs[i]);
+            tv.setText(gameActivity.getString(R.string.PlayerNamePlaceholder, game.aPlayers[i].getName()));
+        }
+    }
 
     void UpdateDisplayRound() {
         Game game = Game.getInstance();

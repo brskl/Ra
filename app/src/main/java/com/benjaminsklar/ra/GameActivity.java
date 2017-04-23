@@ -78,7 +78,7 @@ public class GameActivity extends AppCompatActivity {
         aivRaTiles[9] = (ImageView) findViewById(R.id.ivRa9);
 
         SetNumplayerUI();
-        UpdateDisplayPlayerNames();
+        gameActivityUpdate.UpdateDisplayPlayerNames();
 
         gameActivityUpdate.UpdateDisplay();
     }
@@ -637,18 +637,6 @@ public class GameActivity extends AppCompatActivity {
                 break;
             default:
                 Assert.fail();
-        }
-    }
-
-    void UpdateDisplayPlayerNames(){
-        TextView tv;
-        Game game = Game.getInstance();
-        final int atvIDs[] = {R.id.textViewNamePlayer1, R.id.textViewNamePlayer2, R.id.textViewNamePlayer3, R.id.textViewNamePlayer4, R.id.textViewNamePlayer5};
-
-        for (int i = 0; i < game.getNPlayers(); i++)
-        {
-            tv = (TextView) findViewById(atvIDs[i]);
-            tv.setText(getString(R.string.PlayerNamePlaceholder, game.aPlayers[i].getName()));
         }
     }
 

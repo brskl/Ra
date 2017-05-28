@@ -21,7 +21,7 @@ public class GameActivityUpdate {
     private ImageButton btnDraw;
     private Button btnGod;
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
-    private ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
+
     private TextView tvEpoch;
     private TextView tvCurrentPlayer;
     private TextView tvStatus;
@@ -44,14 +44,14 @@ public class GameActivityUpdate {
         btnDraw = (ImageButton) gameActivity.findViewById(R.id.buttonDraw);
         btnGod = (Button) gameActivity.findViewById(R.id.buttonGod);
         ivAuctionSun = (com.benjaminsklar.ra.SunImageView) gameActivity.findViewById(R.id.ivAuctionSun);
-        aivAuctionItems[0] = (ImageView) gameActivity.findViewById(R.id.ivAuction0);
-        aivAuctionItems[1] = (ImageView) gameActivity.findViewById(R.id.ivAuction1);
-        aivAuctionItems[2] = (ImageView) gameActivity.findViewById(R.id.ivAuction2);
-        aivAuctionItems[3] = (ImageView) gameActivity.findViewById(R.id.ivAuction3);
-        aivAuctionItems[4] = (ImageView) gameActivity.findViewById(R.id.ivAuction4);
-        aivAuctionItems[5] = (ImageView) gameActivity.findViewById(R.id.ivAuction5);
-        aivAuctionItems[6] = (ImageView) gameActivity.findViewById(R.id.ivAuction6);
-        aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
+        gameActivity.aivAuctionItems[0] = (ImageView) gameActivity.findViewById(R.id.ivAuction0);
+        gameActivity.aivAuctionItems[1] = (ImageView) gameActivity.findViewById(R.id.ivAuction1);
+        gameActivity.aivAuctionItems[2] = (ImageView) gameActivity.findViewById(R.id.ivAuction2);
+        gameActivity.aivAuctionItems[3] = (ImageView) gameActivity.findViewById(R.id.ivAuction3);
+        gameActivity.aivAuctionItems[4] = (ImageView) gameActivity.findViewById(R.id.ivAuction4);
+        gameActivity.aivAuctionItems[5] = (ImageView) gameActivity.findViewById(R.id.ivAuction5);
+        gameActivity.aivAuctionItems[6] = (ImageView) gameActivity.findViewById(R.id.ivAuction6);
+        gameActivity.aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
     }
 
     void UpdateDisplayPlayerNames(){
@@ -222,18 +222,18 @@ public class GameActivityUpdate {
             resId = gameActivity.TileImageRes(game.getAuction().get(i));
 
             if (resId != 0) {
-                aivAuctionItems[i].setVisibility(View.VISIBLE);
-                aivAuctionItems[i].setImageResource(resId);
+                gameActivity.aivAuctionItems[i].setVisibility(View.VISIBLE);
+                gameActivity.aivAuctionItems[i].setImageResource(resId);
             } else {
                 // TODO: Replace if != 0 with assert
-                aivAuctionItems[i].setImageResource(0);
+                gameActivity.aivAuctionItems[i].setImageResource(0);
             }
         }
         // clear remaining ImageViews
         for (;i < Game.nMaxAuction_c; i++)
         {
             // TODO: Is there a better way to clear image
-            aivAuctionItems[i].setImageResource(0);;
+            gameActivity.aivAuctionItems[i].setImageResource(0);;
         }
     }
 

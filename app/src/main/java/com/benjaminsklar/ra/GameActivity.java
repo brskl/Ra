@@ -43,6 +43,7 @@ public class GameActivity extends AppCompatActivity {
     LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
+    ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
 
 
     @Override

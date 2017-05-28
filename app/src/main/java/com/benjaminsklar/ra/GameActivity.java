@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import junit.framework.Assert;
@@ -44,7 +45,10 @@ public class GameActivity extends AppCompatActivity {
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
+    RelativeLayout rlBoard, rlAuction;
+    ImageButton btnDraw;
 
+    GameActivityAnimationTile animationTileDrawn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +82,13 @@ public class GameActivity extends AppCompatActivity {
         aivRaTiles[7] = (ImageView) findViewById(R.id.ivRa7);
         aivRaTiles[8] = (ImageView) findViewById(R.id.ivRa8);
         aivRaTiles[9] = (ImageView) findViewById(R.id.ivRa9);
+
+        rlBoard = (RelativeLayout) findViewById(R.id.relativeLayoutBoard);
+        rlAuction = (RelativeLayout) findViewById(R.id.relativeLayoutAuction);
+
+        btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
+
+
 
         SetNumplayerUI();
         gameActivityUpdate.UpdateDisplayPlayerNames();
@@ -510,6 +521,16 @@ public class GameActivity extends AppCompatActivity {
                 Log.v(GameActivity.class.toString(), "buttonDraw pressed");
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
+                // TODO: move to when animation ends or is canceled
+                if (animationTileDrawn != null)
+                {
+                    animationTileDrawn.dispose();
+                    animationTileDrawn = null;
+                }
+
+                animationTileDrawn = new GameActivityAnimationTile(this);
+                animationTileDrawn.initialize();
+                animationTileDrawn.startNow();
                 break;
             case R.id.buttonGod:
                 Log.v(GameActivity.class.toString(), "buttonGod pressed");
@@ -562,6 +583,17 @@ public class GameActivity extends AppCompatActivity {
                     // Get AI decision
                     // TODO: for now, just draw tile
                     game.DrawTile();
+                    // TODO: move to when animation ends or is canceled
+                    if (animationTileDrawn != null)
+                    {
+                        animationTileDrawn.dispose();
+                        animationTileDrawn = null;
+                    }
+
+                    animationTileDrawn = new GameActivityAnimationTile(this);
+                    animationTileDrawn.initialize();
+                    animationTileDrawn.startNow();
+
                 }
                 break;
             case DrewTile:

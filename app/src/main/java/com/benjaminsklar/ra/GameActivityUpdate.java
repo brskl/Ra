@@ -18,7 +18,6 @@ public class GameActivityUpdate {
 
     private Button btnOk;
     private Button btnAuction;
-    private ImageButton btnDraw;
     private Button btnGod;
     private com.benjaminsklar.ra.SunImageView ivAuctionSun;
 
@@ -41,7 +40,6 @@ public class GameActivityUpdate {
         tvStatus = (TextView) gameActivity.findViewById(R.id.textViewStatus);
         btnOk = (Button) gameActivity.findViewById(R.id.buttonOK);
         btnAuction = (Button) gameActivity.findViewById(R.id.buttonAuction);
-        btnDraw = (ImageButton) gameActivity.findViewById(R.id.buttonDraw);
         btnGod = (Button) gameActivity.findViewById(R.id.buttonGod);
         ivAuctionSun = (com.benjaminsklar.ra.SunImageView) gameActivity.findViewById(R.id.ivAuctionSun);
         gameActivity.aivAuctionItems[0] = (ImageView) gameActivity.findViewById(R.id.ivAuction0);
@@ -205,7 +203,7 @@ public class GameActivityUpdate {
 
         btnOk.setEnabled(fOKonly);
         btnAuction.setEnabled(!fOKonly);
-        btnDraw.setEnabled(!fOKonly && !game.FAuctionTrackFull());
+        gameActivity.btnDraw.setEnabled(!fOKonly && !game.FAuctionTrackFull());
         btnGod.setEnabled(!fOKonly && game.FCanUseGod());
     }
 

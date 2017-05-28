@@ -82,9 +82,8 @@ public class GameActivityAnimationTile {
         animationSet.cancel();
     }
 
-    void dispose() {
+    void close() {
         gameActivity.rlBoard.removeView(ivTile);
         ivTile = null;
     }
-    
 }

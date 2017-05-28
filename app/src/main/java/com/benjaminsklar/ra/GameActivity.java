@@ -529,7 +529,7 @@ public class GameActivity extends AppCompatActivity {
                 if (fAnimationEnabled) {
                     // TODO: move to when animation ends or is canceled
                     if (animationTileDrawn != null) {
-                        animationTileDrawn.dispose();
+                        animationTileDrawn.close();
                         animationTileDrawn = null;
                     }
 
@@ -592,7 +592,7 @@ public class GameActivity extends AppCompatActivity {
                     if (fAnimationEnabled) {
                         // TODO: move to when animation ends or is canceled
                         if (animationTileDrawn != null) {
-                            animationTileDrawn.dispose();
+                            animationTileDrawn.close();
                             animationTileDrawn = null;
                         }
 

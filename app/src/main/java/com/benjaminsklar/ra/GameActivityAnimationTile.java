@@ -32,17 +32,50 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         int nTiles = game.getAuction().size();
         int i;
         ivTiles = new ImageView[nTiles];
+        Rect rectStart = new Rect();
+        Rect rectDest = new Rect();
 
         animationSet = new AnimationSet(true);
-        animationSet.setAnimationListener(this);
-        animationSet.setFillAfter(true);
+        gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()].getDrawingRect(rectDest);
+        gameActivity.llGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
 
         for (i = 0; i < nTiles; i++) {
             AnimationSet animationSetTile;
             TranslateAnimation translateAnimation;
             AlphaAnimation alphaAnimation;
+            ImageView ivAuctionTile = gameActivity.aivAuctionItems[i];
             // TODO: Create animation for particular tile and add to instance animationSet
+
+            animationSetTile = new AnimationSet(true);
+            ivTiles[i] = new ImageView(gameActivity);
+            ivTiles[i].setImageResource(gameActivity.TileImageRes(game.getAuction().get(i)));
+
+            ivAuctionTile.getDrawingRect(rectStart);
+            gameActivity.llGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
+
+            ViewGroup.LayoutParams startLayout = gameActivity.aivAuctionItems[i].getLayoutParams();
+            ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(startLayout.width, startLayout.height);
+
+            ivTiles[i].setLayoutParams(imageLayout);
+            ivTiles[i].setX(rectStart.centerX() - imageLayout.width / 2);
+            ivTiles[i].setY(rectStart.centerY() - imageLayout.height / 2);
+
+            ivTiles[i].setAnimation(animationSetTile);
+            gameActivity.rlBoard.addView(ivTiles[i]);
+
+            translateAnimation = new TranslateAnimation(0, rectDest.centerX() - rectStart.centerX(), 0, rectDest.centerY() - rectStart.centerY());
+            translateAnimation.setDuration(1000);
+            translateAnimation.setStartOffset(100 * i);
+            animationSetTile.addAnimation(translateAnimation);
+
+            // TODO: Add Alpha 1.0->0.0 animation
+
+            animationSet.addAnimation(animationSetTile);
         }
+        // TODO: Add swapping of Sun tiles
+
+        animationSet.setAnimationListener(this);
+        animationSet.setFillAfter(true);
     }
 
     void initializeDrawOne() {
@@ -108,11 +141,13 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             gameActivity.rlBoard.removeView(ivTile);
             ivTile = null;
         } else {
-            // TODO: Add assert ivTiles[] is not null
-            for (ImageView iv : ivTiles) {
-                gameActivity.llGameActivity.removeView(iv);
+            if (ivTiles != null) {
+                ivTile = null; // TODO: Remove
+                for (ImageView iv : ivTiles) {
+                    gameActivity.llGameActivity.removeView(iv);
+                }
+                ivTiles = null;
             }
-            ivTiles = null;
         }
     }
 

@@ -44,6 +44,7 @@ public class GameActivity extends AppCompatActivity {
 
     boolean fAnimationEnabled = true;
     boolean fBiddingInProgress = false;
+    RelativeLayout arlPlayers[] =new RelativeLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
@@ -68,6 +69,11 @@ public class GameActivity extends AppCompatActivity {
 
         sTiles = getResources().getStringArray(R.array.Tiles);
 
+        arlPlayers[0] = (RelativeLayout) findViewById(R.id.relativeLayoutPlayer1);
+        arlPlayers[1] = (RelativeLayout) findViewById(R.id.relativeLayoutPlayer2);
+        arlPlayers[2] = (RelativeLayout) findViewById(R.id.relativeLayoutPlayer3);
+        arlPlayers[3] = (RelativeLayout) findViewById(R.id.relativeLayoutPlayer4);
+        arlPlayers[4] = (RelativeLayout) findViewById(R.id.relativeLayoutPlayer5);
         allPlayerSuns[0] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer1);
         allPlayerSuns[1] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer2);
         allPlayerSuns[2] = (LinearLayout) findViewById(R.id.linearLayoutSunsPlayer3);
@@ -620,6 +626,11 @@ public class GameActivity extends AppCompatActivity {
             case AuctionInProgress:
                 if (game.FAuctionFinished())
                 {
+                    if (fAnimationEnabled) {
+                        animationTile = new GameActivityAnimationTile(this);
+                        animationTile.initializeTakeAll();
+                        animationTile.startNow();
+                    }
                     game.ResolveAuction();
                 }
                 else

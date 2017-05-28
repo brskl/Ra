@@ -129,6 +129,8 @@ class Game implements Serializable {
 
     Player getAuctionPlayerHighest() { return aPlayers[iAuctionPlayerHighest]; }
 
+    int getAuctionPlayerHighestIndex() { return iAuctionPlayerHighest; }
+
     int getAuctionHighBid() { return iAuctionHighBid; }
 
     boolean FAuctionCurrentPlayerBidHighest() { return (iAuctionPlayerCurrent == iAuctionPlayerHighest); }

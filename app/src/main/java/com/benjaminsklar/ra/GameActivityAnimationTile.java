@@ -66,7 +66,11 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             translateAnimation = new TranslateAnimation(0, rectDest.centerX() - rectStart.centerX(), 0, rectDest.centerY() - rectStart.centerY());
             translateAnimation.setDuration(1000);
             translateAnimation.setStartOffset(100 * i);
+            alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+            alphaAnimation.setDuration(1000);
+            alphaAnimation.setStartOffset(100*i);
             animationSetTile.addAnimation(translateAnimation);
+            animationSetTile.addAnimation(alphaAnimation);
 
             // TODO: Add Alpha 1.0->0.0 animation
 

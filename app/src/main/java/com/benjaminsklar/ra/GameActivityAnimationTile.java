@@ -11,7 +11,7 @@ import android.widget.ImageView;
  * Created by Ben on 5/27/2017.
  */
 
-public class GameActivityAnimationTile {
+public class GameActivityAnimationTile implements Animation.AnimationListener{
     GameActivity gameActivity;
     ImageView ivTile;
     AnimationSet animationSet;
@@ -72,6 +72,7 @@ public class GameActivityAnimationTile {
         animationSet.addAnimation(animTrans1);
         animationSet.addAnimation(animTrans2);
         animationSet.setFillAfter(true);
+        animationSet.setAnimationListener(this);
     }
 
     void startNow() {
@@ -85,5 +86,18 @@ public class GameActivityAnimationTile {
     void close() {
         gameActivity.rlBoard.removeView(ivTile);
         ivTile = null;
+    }
+
+    public void onAnimationEnd(Animation animation) {
+        close();
+        gameActivity.animationTileDrawn = null;
+    }
+
+    public void onAnimationRepeat(Animation animation) {
+        ;
+    }
+
+    public void onAnimationStart(Animation animation) {
+        ;
     }
 }

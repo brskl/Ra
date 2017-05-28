@@ -32,7 +32,7 @@ public class GameActivity extends AppCompatActivity {
     // Image resource id for each kind of tile, must be in same order as enum
     private static final int aiTileImageRes_c [] = {
             0, // none
-            0, // Ra
+            R.drawable.tile_ra, // Ra
             R.drawable.tile_god, // God
             R.drawable.tile_gold,	// Gold
             R.drawable.tile_pharoah,	// Pharaoh
@@ -527,12 +527,6 @@ public class GameActivity extends AppCompatActivity {
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
                 if (fAnimationEnabled) {
-                    // TODO: move to when animation ends or is canceled
-                    if (animationTileDrawn != null) {
-                        animationTileDrawn.close();
-                        animationTileDrawn = null;
-                    }
-
                     animationTileDrawn = new GameActivityAnimationTile(this);
                     animationTileDrawn.initialize();
                     animationTileDrawn.startNow();
@@ -571,6 +565,10 @@ public class GameActivity extends AppCompatActivity {
     {
         Log.d(GameActivity.class.toString(), "onClickGameOk");
 
+        if (animationTileDrawn != null) {
+            animationTileDrawn.cancel();
+        }
+
         Game game = Game.getInstance();
         switch (game.getStatusCurrent())
         {
@@ -590,17 +588,10 @@ public class GameActivity extends AppCompatActivity {
                     // TODO: for now, just draw tile
                     game.DrawTile();
                     if (fAnimationEnabled) {
-                        // TODO: move to when animation ends or is canceled
-                        if (animationTileDrawn != null) {
-                            animationTileDrawn.close();
-                            animationTileDrawn = null;
-                        }
-
                         animationTileDrawn = new GameActivityAnimationTile(this);
                         animationTileDrawn.initialize();
                         animationTileDrawn.startNow();
                     }
-
                 }
                 break;
             case DrewTile:

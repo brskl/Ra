@@ -39,6 +39,7 @@ public class GameActivity extends AppCompatActivity {
             R.drawable.tile_pharoah_disaster, R.drawable.tile_nile_flood_disaster, R.drawable.tile_civ_disaster, R.drawable.tile_monument_disaster // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
     };
 
+    boolean fBiddingInProgress = false;
     LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
@@ -390,6 +391,7 @@ public class GameActivity extends AppCompatActivity {
         Assert.assertTrue(player.getLocal());
 
         alSuns = player.getSuns();
+        fBiddingInProgress = true;
 
         for (Integer iValue: alSuns)
         {
@@ -427,6 +429,7 @@ public class GameActivity extends AppCompatActivity {
                 }
 
                 game.MakeBid(iBidValue);
+                fBiddingInProgress = false;
                 gameActivityUpdate.UpdateDisplay();
                 dialog.dismiss();
             }

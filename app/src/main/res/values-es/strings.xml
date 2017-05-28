@@ -96,4 +96,5 @@
         <item>Disturbios</item>
         <item>Terremoto</item>
     </string-array>
+    <string name="StatusAuctionPlayerInProgress">%s pujando</string>
 </resources>

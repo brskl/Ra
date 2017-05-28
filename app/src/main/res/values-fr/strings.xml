@@ -96,4 +96,5 @@
         <item>Troubles</item>
         <item>Tremblement de terre</item>
     </string-array>
+    <string name="StatusAuctionPlayerInProgress">%s offre</string>
 </resources>

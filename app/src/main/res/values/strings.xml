@@ -33,6 +33,7 @@
     <string name="StatusCallsAuction">%s calls Ra</string>
     <string name="StatusAuctionPlayerBid" formatted="false">%s bid %d</string>
     <string name="StatusAuctionPlayerPassed">%s passed</string>
+    <string name="StatusAuctionPlayerInProgress">%s bidding</string>
     <string name="StatusAuctionWon">%s won the auction</string>
     <string name="StatusAuctionEveryonePassed">Everyone passed in the auction</string>
     <string name="StatusEpochOver">Epoch %d is over</string>

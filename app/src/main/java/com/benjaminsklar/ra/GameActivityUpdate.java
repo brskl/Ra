@@ -158,7 +158,11 @@ public class GameActivityUpdate {
                 if (game.FAuctionCurrentPlayerBidHighest()) {
                     sStatus = gameActivity.getString(R.string.StatusAuctionPlayerBid, game.getAuctionPlayerCurrent().getName(), game.getAuctionHighBid());
                 } else {
-                    sStatus = gameActivity.getString(R.string.StatusAuctionPlayerPassed, game.getAuctionPlayerCurrent().getName());
+                    if (gameActivity.fBiddingInProgress) {
+                        sStatus = gameActivity.getString(R.string.StatusAuctionPlayerInProgress, game.getAuctionPlayerCurrent().getName());
+                    } else {
+                        sStatus = gameActivity.getString(R.string.StatusAuctionPlayerPassed, game.getAuctionPlayerCurrent().getName());
+                    }
                 }
                 break;
             case AuctionWon:

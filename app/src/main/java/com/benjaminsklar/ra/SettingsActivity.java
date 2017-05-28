@@ -4,8 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class SettingsActivity extends AppCompatActivity {
-    static final String sSettingsRandomSeedEnabled = "RandomSeedEnabled";
+    static final String sSettingsRandomSeedEnabled = "RandomSeedEnabled"; // matches setting.xml key
     static final String sSettingsRandomSeedValue = "RandomSeedValue";
+    static final String sSettingsAnimationEnabled = "AnimationEnabled"; // matches setting.xml key
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

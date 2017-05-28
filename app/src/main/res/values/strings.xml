@@ -54,6 +54,7 @@
     <string name="tableHeaderPrevious">Previous</string>
     <string name="tableHeaderNew">New</string>
     <string name="settingTitleRandomSeedEnabled">Random Seed</string>
+    <string name="settingTitleAnimationEnabled">Animation</string>
     <string-array name="NamesAiEasy">
         <item>AI Easy 1</item>
         <item>Anubis</item>

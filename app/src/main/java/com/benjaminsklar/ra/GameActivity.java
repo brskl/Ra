@@ -2,6 +2,8 @@ package com.benjaminsklar.ra;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +42,7 @@ public class GameActivity extends AppCompatActivity {
             R.drawable.tile_pharoah_disaster, R.drawable.tile_nile_flood_disaster, R.drawable.tile_civ_disaster, R.drawable.tile_monument_disaster // Disaster tiles (Pharaoh, Nile/Flood, Civ, Monument)
     };
 
+    boolean fAnimationEnabled = true;
     boolean fBiddingInProgress = false;
     LinearLayout allPlayerSuns[] = new LinearLayout[Game.nMaxPlayers_c];
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
@@ -57,6 +60,8 @@ public class GameActivity extends AppCompatActivity {
 
         Log.d(GameActivity.class.toString(), "onCreate");
 
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        fAnimationEnabled = settings.getBoolean(SettingsActivity.sSettingsAnimationEnabled, true);
         gameActivityUpdate = new GameActivityUpdate(this);
         gameActivityUpdate.onCreate();
 
@@ -521,16 +526,17 @@ public class GameActivity extends AppCompatActivity {
                 Log.v(GameActivity.class.toString(), "buttonDraw pressed");
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
-                // TODO: move to when animation ends or is canceled
-                if (animationTileDrawn != null)
-                {
-                    animationTileDrawn.dispose();
-                    animationTileDrawn = null;
-                }
+                if (fAnimationEnabled) {
+                    // TODO: move to when animation ends or is canceled
+                    if (animationTileDrawn != null) {
+                        animationTileDrawn.dispose();
+                        animationTileDrawn = null;
+                    }
 
-                animationTileDrawn = new GameActivityAnimationTile(this);
-                animationTileDrawn.initialize();
-                animationTileDrawn.startNow();
+                    animationTileDrawn = new GameActivityAnimationTile(this);
+                    animationTileDrawn.initialize();
+                    animationTileDrawn.startNow();
+                }
                 break;
             case R.id.buttonGod:
                 Log.v(GameActivity.class.toString(), "buttonGod pressed");
@@ -583,16 +589,17 @@ public class GameActivity extends AppCompatActivity {
                     // Get AI decision
                     // TODO: for now, just draw tile
                     game.DrawTile();
-                    // TODO: move to when animation ends or is canceled
-                    if (animationTileDrawn != null)
-                    {
-                        animationTileDrawn.dispose();
-                        animationTileDrawn = null;
-                    }
+                    if (fAnimationEnabled) {
+                        // TODO: move to when animation ends or is canceled
+                        if (animationTileDrawn != null) {
+                            animationTileDrawn.dispose();
+                            animationTileDrawn = null;
+                        }
 
-                    animationTileDrawn = new GameActivityAnimationTile(this);
-                    animationTileDrawn.initialize();
-                    animationTileDrawn.startNow();
+                        animationTileDrawn = new GameActivityAnimationTile(this);
+                        animationTileDrawn.initialize();
+                        animationTileDrawn.startNow();
+                    }
 
                 }
                 break;

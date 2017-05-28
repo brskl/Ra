@@ -49,9 +49,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     RelativeLayout rlBoard, rlAuction;
+    LinearLayout llGameActivity;
     ImageButton btnDraw;
 
-    GameActivityAnimationTile animationTileDrawn;
+    GameActivityAnimationTile animationTile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class GameActivity extends AppCompatActivity {
 
         rlBoard = (RelativeLayout) findViewById(R.id.relativeLayoutBoard);
         rlAuction = (RelativeLayout) findViewById(R.id.relativeLayoutAuction);
+        llGameActivity = (LinearLayout) findViewById(R.id.activity_game);
 
         btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
 
@@ -527,9 +529,9 @@ public class GameActivity extends AppCompatActivity {
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
                 if (fAnimationEnabled) {
-                    animationTileDrawn = new GameActivityAnimationTile(this);
-                    animationTileDrawn.initialize();
-                    animationTileDrawn.startNow();
+                    animationTile = new GameActivityAnimationTile(this);
+                    animationTile.initializeDrawOne();
+                    animationTile.startNow();
                 }
                 break;
             case R.id.buttonGod:
@@ -565,8 +567,8 @@ public class GameActivity extends AppCompatActivity {
     {
         Log.d(GameActivity.class.toString(), "onClickGameOk");
 
-        if (animationTileDrawn != null) {
-            animationTileDrawn.cancel();
+        if (animationTile != null) {
+            animationTile.cancel();
         }
 
         Game game = Game.getInstance();
@@ -588,9 +590,9 @@ public class GameActivity extends AppCompatActivity {
                     // TODO: for now, just draw tile
                     game.DrawTile();
                     if (fAnimationEnabled) {
-                        animationTileDrawn = new GameActivityAnimationTile(this);
-                        animationTileDrawn.initialize();
-                        animationTileDrawn.startNow();
+                        animationTile = new GameActivityAnimationTile(this);
+                        animationTile.initializeDrawOne();
+                        animationTile.startNow();
                     }
                 }
                 break;

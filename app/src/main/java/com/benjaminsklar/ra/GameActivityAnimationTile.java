@@ -2,6 +2,7 @@ package com.benjaminsklar.ra;
 
 import android.graphics.Rect;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 public class GameActivityAnimationTile implements Animation.AnimationListener{
     GameActivity gameActivity;
     ImageView ivTile;
+    ImageView [] ivTiles;
     AnimationSet animationSet;
 
     GameActivityAnimationTile(GameActivity gameActivityValue)
@@ -25,7 +27,25 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         gameActivity = gameActivityValue;
     }
 
-    void initialize() {
+    void initializeTakeAll() {
+        Game game = Game.getInstance();
+        int nTiles = game.getAuction().size();
+        int i;
+        ivTiles = new ImageView[nTiles];
+
+        animationSet = new AnimationSet(true);
+        animationSet.setAnimationListener(this);
+        animationSet.setFillAfter(true);
+
+        for (i = 0; i < nTiles; i++) {
+            AnimationSet animationSetTile;
+            TranslateAnimation translateAnimation;
+            AlphaAnimation alphaAnimation;
+            // TODO: Create animation for particular tile and add to instance animationSet
+        }
+    }
+
+    void initializeDrawOne() {
         Animation animTrans1, animTrans2;
         ImageView ivDest;
         Game game = Game.getInstance();
@@ -84,13 +104,21 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     void close() {
-        gameActivity.rlBoard.removeView(ivTile);
-        ivTile = null;
+        if (ivTile != null) {
+            gameActivity.rlBoard.removeView(ivTile);
+            ivTile = null;
+        } else {
+            // TODO: Add assert ivTiles[] is not null
+            for (ImageView iv : ivTiles) {
+                gameActivity.llGameActivity.removeView(iv);
+            }
+            ivTiles = null;
+        }
     }
 
     public void onAnimationEnd(Animation animation) {
         close();
-        gameActivity.animationTileDrawn = null;
+        gameActivity.animationTile = null;
     }
 
     public void onAnimationRepeat(Animation animation) {

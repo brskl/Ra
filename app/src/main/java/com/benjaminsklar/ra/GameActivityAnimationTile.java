@@ -1,6 +1,7 @@
 package com.benjaminsklar.ra;
 
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -28,6 +29,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     void initializeTakeAll() {
+        Log.d(GameActivityAnimationTile.class.toString(), "initializeTakeAll()");
         Game game = Game.getInstance();
         int nTiles = game.getAuction().size();
         int i;
@@ -59,9 +61,9 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             ivTiles[i].setLayoutParams(imageLayout);
             ivTiles[i].setX(rectStart.centerX() - imageLayout.width / 2);
             ivTiles[i].setY(rectStart.centerY() - imageLayout.height / 2);
+            gameActivity.rlBoard.addView(ivTiles[i]);
 
             ivTiles[i].setAnimation(animationSetTile);
-            gameActivity.rlBoard.addView(ivTiles[i]);
 
             translateAnimation = new TranslateAnimation(0, rectDest.centerX() - rectStart.centerX(), 0, rectDest.centerY() - rectStart.centerY());
             translateAnimation.setDuration(1000);
@@ -83,6 +85,8 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     void initializeDrawOne() {
+        Log.d(GameActivityAnimationTile.class.toString(), "initializeDrawOne()");
+
         Animation animTrans1, animTrans2;
         ImageView ivDest;
         Game game = Game.getInstance();
@@ -133,20 +137,24 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     void startNow() {
+        Log.d(GameActivityAnimationTile.class.toString(), "startNow()");
         animationSet.startNow();
     }
 
     void cancel() {
+        Log.d(GameActivityAnimationTile.class.toString(), "cancel()");
         animationSet.cancel();
     }
 
     void close() {
+        Log.d(GameActivityAnimationTile.class.toString(), "close()");
         if (ivTile != null) {
+            Log.d(GameActivityAnimationTile.class.toString(), "removing single drawn tile");
             gameActivity.rlBoard.removeView(ivTile);
             ivTile = null;
         } else {
             if (ivTiles != null) {
-                ivTile = null; // TODO: Remove
+                Log.d(GameActivityAnimationTile.class.toString(), "removing Take won tiles");
                 for (ImageView iv : ivTiles) {
                     gameActivity.llGameActivity.removeView(iv);
                 }
@@ -156,6 +164,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     public void onAnimationEnd(Animation animation) {
+        Log.d(GameActivityAnimationTile.class.toString(), "onAnimationEnd()");
         close();
         gameActivity.animationTile = null;
     }

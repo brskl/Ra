@@ -72,17 +72,18 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
             alphaAnimation.setDuration(1000);
             alphaAnimation.setStartOffset(100*i);
+
             animationSetTile.addAnimation(translateAnimation);
             animationSetTile.addAnimation(alphaAnimation);
-
-            // TODO: Add Alpha 1.0->0.0 animation
+            animationSetTile.setFillAfter(true);
+            animationSetTile.setAnimationListener(this);
 
             animationSet.addAnimation(animationSetTile);
         }
         // TODO: Add swapping of Sun tiles
 
-        animationSet.setAnimationListener(this);
-        animationSet.setFillAfter(true);
+        //animationSet.setFillAfter(true);
+        //animationSet.setAnimationListener(this);
     }
 
     void initializeDrawOne() {
@@ -156,10 +157,10 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         } else {
             if (ivTiles != null) {
                 Log.d(GameActivityAnimationTile.class.toString(), "removing Take won tiles");
-                for (ImageView iv : ivTiles) {
-                    gameActivity.rlBoard.removeView(iv);
-                }
-                ivTiles = null;
+                //for (ImageView iv : ivTiles) {
+                //    gameActivity.rlBoard.removeView(iv);
+                //}
+                //ivTiles = null;
             }
         }
     }

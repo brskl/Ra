@@ -55,12 +55,12 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             ivAuctionTile.getDrawingRect(rectStart);
             gameActivity.llGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
 
-            ViewGroup.LayoutParams startLayout = gameActivity.aivAuctionItems[i].getLayoutParams();
+            ViewGroup.LayoutParams startLayout = ivAuctionTile.getLayoutParams();
             ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(startLayout.width, startLayout.height);
 
             ivTiles[i].setLayoutParams(imageLayout);
-            ivTiles[i].setX(rectStart.centerX() - imageLayout.width / 2);
-            ivTiles[i].setY(rectStart.centerY() - imageLayout.height / 2);
+            ivTiles[i].setX(rectStart.left);
+            ivTiles[i].setY(rectStart.top);
             gameActivity.rlBoard.addView(ivTiles[i]);
 
             ivTiles[i].setAnimation(animationSetTile);

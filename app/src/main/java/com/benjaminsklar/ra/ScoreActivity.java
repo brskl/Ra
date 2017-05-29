@@ -1,16 +1,23 @@
 package com.benjaminsklar.ra;
 
+import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 public class ScoreActivity extends AppCompatActivity {
+    private ShareActionProvider mShareActionProvider;
+    private Intent mShareIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +103,34 @@ public class ScoreActivity extends AppCompatActivity {
 
             tl.addView(tr);
         }
+
+        // TODO replace conditional with if (Game Over)
+        if (true) {
+            StringBuilder stringBuilder = new StringBuilder();
+            boolean fFirst = true;
+
+            stringBuilder.append("Ra Score: ");
+            for (Player player: game.getPlayers()) {
+                if (!fFirst) {
+                    stringBuilder.append(", ");
+                } else {
+                    fFirst = false;
+                }
+                stringBuilder.append(player.getName());
+                stringBuilder.append(" ");
+                if (!player.getHuman()) {
+                    stringBuilder.append(getResources().getString(R.string.tbtnAI));
+                    stringBuilder.append(" ");
+                }
+                stringBuilder.append(": ");
+                stringBuilder.append(player.aiScoreEpoch[Player.iScoreTotal_c]);
+            }
+
+            mShareIntent = new Intent();
+            mShareIntent.setAction(Intent.ACTION_SEND);
+            mShareIntent.setType("text/plain");
+            mShareIntent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
+        }
     }
 
     @Override
@@ -108,5 +143,29 @@ public class ScoreActivity extends AppCompatActivity {
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(ScoreActivity.class.toString(), "onCreateOptionsMenu");
+
+        getMenuInflater().inflate(R.menu.menu_score, menu);
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        if (mShareActionProvider != null && mShareIntent != null) {
+            mShareActionProvider.setShareIntent(mShareIntent);
+        }
+
+        // Return true to display menu
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        Log.d(ScoreActivity.class.toString(), "onPrepareOptionsMenu");
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+
+        // TODO: hide/show share menu item
+        return true;
     }
 }

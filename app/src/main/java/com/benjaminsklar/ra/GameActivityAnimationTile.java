@@ -59,8 +59,9 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(startLayout.width, startLayout.height);
 
             ivTiles[i].setLayoutParams(imageLayout);
-            ivTiles[i].setX(rectStart.left);
-            ivTiles[i].setY(rectStart.top);
+            // TODO: Adjusting rects to llGameActivity but can't add to this viewGroup as it is a linearLayout. Is there a better way?
+            ivTiles[i].setX(rectStart.left - gameActivity.rlBoard.getLeft());
+            ivTiles[i].setY(rectStart.top - gameActivity.rlBoard.getTop());
             gameActivity.rlBoard.addView(ivTiles[i]);
 
             ivTiles[i].setAnimation(animationSetTile);
@@ -156,7 +157,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             if (ivTiles != null) {
                 Log.d(GameActivityAnimationTile.class.toString(), "removing Take won tiles");
                 for (ImageView iv : ivTiles) {
-                    gameActivity.llGameActivity.removeView(iv);
+                    gameActivity.rlBoard.removeView(iv);
                 }
                 ivTiles = null;
             }

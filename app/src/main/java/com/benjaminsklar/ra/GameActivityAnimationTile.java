@@ -171,10 +171,10 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     public void onAnimationRepeat(Animation animation) {
-        ;
+        Log.d(GameActivityAnimationTile.class.toString(), "onAnimationRepeat()");
     }
 
     public void onAnimationStart(Animation animation) {
-        ;
+        Log.d(GameActivityAnimationTile.class.toString(), "onAnimationStart()");
     }
 }

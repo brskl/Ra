@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -53,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
     LinearLayout llGameActivity;
     ImageButton btnDraw;
 
-    GameActivityAnimationTile animationTile;
+    AnimationSet animationSetTiles = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -535,9 +536,9 @@ public class GameActivity extends AppCompatActivity {
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
                 if (fAnimationEnabled) {
-                    animationTile = new GameActivityAnimationTile(this);
-                    animationTile.initializeDrawOne();
-                    animationTile.startNow();
+                    GameActivityAnimationTile animationTile = new GameActivityAnimationTile(this);
+                    animationSetTiles = animationTile.initializeDrawOne();
+                    animationSetTiles.startNow();
                 }
                 break;
             case R.id.buttonGod:
@@ -573,10 +574,6 @@ public class GameActivity extends AppCompatActivity {
     {
         Log.d(GameActivity.class.toString(), "onClickGameOk");
 
-        if (animationTile != null) {
-            animationTile.cancel();
-        }
-
         Game game = Game.getInstance();
         switch (game.getStatusCurrent())
         {
@@ -596,9 +593,9 @@ public class GameActivity extends AppCompatActivity {
                     // TODO: for now, just draw tile
                     game.DrawTile();
                     if (fAnimationEnabled) {
-                        animationTile = new GameActivityAnimationTile(this);
-                        animationTile.initializeDrawOne();
-                        animationTile.startNow();
+                        GameActivityAnimationTile animationTile = new GameActivityAnimationTile(this);
+                        animationSetTiles = animationTile.initializeDrawOne();
+                        animationSetTiles.startNow();
                     }
                 }
                 break;
@@ -627,9 +624,9 @@ public class GameActivity extends AppCompatActivity {
                 if (game.FAuctionFinished())
                 {
                     if (fAnimationEnabled) {
-                        animationTile = new GameActivityAnimationTile(this);
-                        animationTile.initializeTakeAll();
-                        animationTile.startNow();
+                        GameActivityAnimationTile animationTile = new GameActivityAnimationTile(this);
+                        animationSetTiles = animationTile.initializeTakeAll();
+                        animationSetTiles.startNow();
                     }
                     game.ResolveAuction();
                 }

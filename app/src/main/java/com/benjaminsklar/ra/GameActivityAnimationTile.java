@@ -15,9 +15,7 @@ import android.widget.ImageView;
 
 public class GameActivityAnimationTile implements Animation.AnimationListener{
     GameActivity gameActivity;
-    ImageView ivTile;
-    ImageView [] ivTiles;
-    AnimationSet animationSet;
+    ImageView ivTile = null;
 
     GameActivityAnimationTile(GameActivity gameActivityValue)
     {
@@ -28,20 +26,21 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         gameActivity = gameActivityValue;
     }
 
-    void initializeTakeAll() {
+    AnimationSet initializeTakeAll() {
         Log.d(GameActivityAnimationTile.class.toString(), "initializeTakeAll()");
         Game game = Game.getInstance();
         int nTiles = game.getAuction().size();
         int i;
-        ivTiles = new ImageView[nTiles];
+        ImageView imageView;
         Rect rectStart = new Rect();
         Rect rectDest = new Rect();
 
-        animationSet = new AnimationSet(true);
+        AnimationSet animationSet = new AnimationSet(true);
         gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()].getDrawingRect(rectDest);
         gameActivity.llGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
 
         for (i = 0; i < nTiles; i++) {
+            GameActivityAnimationTile gameActivityAnimationTile = new GameActivityAnimationTile(gameActivity);
             AnimationSet animationSetTile;
             TranslateAnimation translateAnimation;
             AlphaAnimation alphaAnimation;
@@ -49,8 +48,9 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             // TODO: Create animation for particular tile and add to instance animationSet
 
             animationSetTile = new AnimationSet(true);
-            ivTiles[i] = new ImageView(gameActivity);
-            ivTiles[i].setImageResource(gameActivity.TileImageRes(game.getAuction().get(i)));
+            imageView = new ImageView(gameActivity);
+            gameActivityAnimationTile.ivTile = imageView;
+            imageView.setImageResource(gameActivity.TileImageRes(game.getAuction().get(i)));
 
             ivAuctionTile.getDrawingRect(rectStart);
             gameActivity.llGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
@@ -58,13 +58,13 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             ViewGroup.LayoutParams startLayout = ivAuctionTile.getLayoutParams();
             ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(startLayout.width, startLayout.height);
 
-            ivTiles[i].setLayoutParams(imageLayout);
+            imageView.setLayoutParams(imageLayout);
             // TODO: Adjusting rects to llGameActivity but can't add to this viewGroup as it is a linearLayout. Is there a better way?
-            ivTiles[i].setX(rectStart.left - gameActivity.rlBoard.getLeft());
-            ivTiles[i].setY(rectStart.top - gameActivity.rlBoard.getTop());
-            gameActivity.rlBoard.addView(ivTiles[i]);
+            imageView.setX(rectStart.left - gameActivity.rlBoard.getLeft());
+            imageView.setY(rectStart.top - gameActivity.rlBoard.getTop());
+            gameActivity.rlBoard.addView(imageView);
 
-            ivTiles[i].setAnimation(animationSetTile);
+            imageView.setAnimation(animationSetTile);
 
             translateAnimation = new TranslateAnimation(0, rectDest.centerX() - rectStart.centerX(), 0, rectDest.centerY() - rectStart.centerY());
             translateAnimation.setDuration(1000);
@@ -76,17 +76,16 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
             animationSetTile.addAnimation(translateAnimation);
             animationSetTile.addAnimation(alphaAnimation);
             animationSetTile.setFillAfter(true);
-            animationSetTile.setAnimationListener(this);
+            animationSetTile.setAnimationListener(gameActivityAnimationTile);
 
             animationSet.addAnimation(animationSetTile);
         }
         // TODO: Add swapping of Sun tiles
 
-        //animationSet.setFillAfter(true);
-        //animationSet.setAnimationListener(this);
+        return animationSet;
     }
 
-    void initializeDrawOne() {
+    AnimationSet initializeDrawOne() {
         Log.d(GameActivityAnimationTile.class.toString(), "initializeDrawOne()");
 
         Animation animTrans1, animTrans2;
@@ -123,7 +122,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
 
         gameActivity.rlBoard.addView(ivTile);
 
-        animationSet = new AnimationSet(true);
+        AnimationSet animationSet = new AnimationSet(true);
         animTrans1 = new TranslateAnimation(0, rectAuction.centerX() - rectStart.centerX(), 0, rectAuction.centerY() - rectStart.centerY());
         animTrans2 = new TranslateAnimation(0, rectDest.centerX() - rectAuction.centerX(), 0, rectDest.centerY() - rectAuction.centerY());
         ivTile.setAnimation(animationSet);
@@ -136,39 +135,25 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         animationSet.addAnimation(animTrans2);
         animationSet.setFillAfter(true);
         animationSet.setAnimationListener(this);
+
+        return animationSet;
     }
 
-    void startNow() {
-        Log.d(GameActivityAnimationTile.class.toString(), "startNow()");
-        animationSet.startNow();
-    }
-
-    void cancel() {
-        Log.d(GameActivityAnimationTile.class.toString(), "cancel()");
-        animationSet.cancel();
-    }
-
-    void close() {
+    void close(Animation animation) {
         Log.d(GameActivityAnimationTile.class.toString(), "close()");
         if (ivTile != null) {
-            Log.d(GameActivityAnimationTile.class.toString(), "removing single drawn tile");
-            gameActivity.rlBoard.removeView(ivTile);
-            ivTile = null;
-        } else {
-            if (ivTiles != null) {
-                Log.d(GameActivityAnimationTile.class.toString(), "removing Take won tiles");
-                //for (ImageView iv : ivTiles) {
-                //    gameActivity.rlBoard.removeView(iv);
-                //}
-                //ivTiles = null;
+            Log.d(GameActivityAnimationTile.class.toString(), "Trying removing single tile");
+            if (animation.hasEnded()) {
+                Log.d(GameActivityAnimationTile.class.toString(), "Actually removing single tile");
+                gameActivity.rlBoard.removeView(ivTile);
+                ivTile = null;
             }
         }
     }
 
     public void onAnimationEnd(Animation animation) {
         Log.d(GameActivityAnimationTile.class.toString(), "onAnimationEnd()");
-        close();
-        gameActivity.animationTile = null;
+        close(animation);
     }
 
     public void onAnimationRepeat(Animation animation) {

@@ -97,4 +97,7 @@
         <item>Terremoto</item>
     </string-array>
     <string name="StatusAuctionPlayerInProgress">%s pujando</string>
+    <string name="btnSettings">Ajustes</string>
+    <string name="settingTitleAnimationEnabled">Animación</string>
+    <string name="settingTitleRandomSeedEnabled">Semilla aleatoria</string>
 </resources>

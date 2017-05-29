@@ -97,4 +97,7 @@
         <item>Tremblement de terre</item>
     </string-array>
     <string name="StatusAuctionPlayerInProgress">%s offre</string>
+    <string name="btnSettings">Réglage</string>
+    <string name="settingTitleAnimationEnabled">Animation</string>
+    <string name="settingTitleRandomSeedEnabled">Semence aléatoire</string>
 </resources>

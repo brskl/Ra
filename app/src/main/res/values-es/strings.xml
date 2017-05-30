@@ -100,4 +100,6 @@
     <string name="btnSettings">Ajustes</string>
     <string name="settingTitleAnimationEnabled">Animación</string>
     <string name="settingTitleRandomSeedEnabled">Semilla aleatoria</string>
+    <string name="shareScoreStart">Ra Puntuación:</string>
+    <string name="shareScoreNameAI">%s (AI)</string>
 </resources>

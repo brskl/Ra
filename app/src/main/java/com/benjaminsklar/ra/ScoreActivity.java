@@ -161,19 +161,17 @@ public class ScoreActivity extends AppCompatActivity {
             boolean fFirst = true;
 
             // TODO: move strings to string table
-            stringBuilder.append("Ra Score: ");
+            stringBuilder.append(getString(R.string.shareScoreStart));
             for (Player player : game.getPlayers()) {
                 if (!fFirst) {
                     stringBuilder.append(", ");
                 } else {
                     fFirst = false;
                 }
-                stringBuilder.append(player.getName());
-                stringBuilder.append(" ");
-                if (!player.getHuman()) {
-                    stringBuilder.append("(");
-                    stringBuilder.append(getResources().getString(R.string.tbtnAI));
-                    stringBuilder.append(") ");
+                if (player.getHuman()) {
+                    stringBuilder.append(player.getName());
+                } else {
+                    stringBuilder.append(getString(R.string.shareScoreNameAI, player.getName()));
                 }
                 stringBuilder.append(": ");
                 stringBuilder.append(player.aiScoreEpoch[Player.iScoreTotal_c]);

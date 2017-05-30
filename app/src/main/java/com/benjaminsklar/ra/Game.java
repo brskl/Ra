@@ -722,9 +722,13 @@ class Game implements Serializable {
 
     }
 
+    boolean FAuctionEveryonePassed() {
+        return (iAuctionHighBid == Integer.MIN_VALUE);
+    }
+
     void ResolveAuction()
     {
-        if (iAuctionHighBid == Integer.MIN_VALUE) {
+        if (FAuctionEveryonePassed()) {
             Log.v(Game.class.toString(), "Everyone passed in auction");
             statusCurrent = Status.AuctionEveryonePassed;
             if (FAuctionTrackFull()) {

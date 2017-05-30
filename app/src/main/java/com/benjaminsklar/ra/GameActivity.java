@@ -511,6 +511,15 @@ public class GameActivity extends AppCompatActivity {
 
         game.UpdateScore();
 
+        if (game.FGameOver()) {
+            Log.v(GameActivity.class.toString(), "GameOver, uploading score");
+
+            ScoreMapper scoreMapper = new ScoreMapper();
+
+            scoreMapper.setValues();
+            scoreMapper.save();
+        }
+
         Intent intent = new Intent(this, ScoreActivity.class);
         Log.v(GameActivity.class.toString(), "Starting ScoreActivity");
         startActivity(intent);
@@ -623,7 +632,7 @@ public class GameActivity extends AppCompatActivity {
             case AuctionInProgress:
                 if (game.FAuctionFinished())
                 {
-                    if (fAnimationEnabled) {
+                    if (fAnimationEnabled && !game.FAuctionEveryonePassed()) {
                         GameActivityAnimationTile animationTile = new GameActivityAnimationTile(this);
                         animationSetTiles = animationTile.initializeTakeAll();
                         animationSetTiles.startNow();

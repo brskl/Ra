@@ -9,6 +9,4 @@
         android:key="AnimationEnabled"
         android:title="@string/settingTitleAnimationEnabled"
         android:defaultValue="true" />
-
-
 </PreferenceScreen>

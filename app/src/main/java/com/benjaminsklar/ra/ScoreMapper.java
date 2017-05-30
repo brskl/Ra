@@ -9,6 +9,8 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
+import java.util.Date;
+
 
 /**
  * Created by Ben on 5/29/2017.
@@ -20,11 +22,14 @@ public class ScoreMapper {
     private int nPlayers;
     private String [] playerNames;
     private int [] playerScores;
+    private boolean [] playerHuman;
+    private Date date;
 
     ScoreMapper() {
         nPlayers = Integer.MIN_VALUE;
         playerNames = new String[Game.nMaxPlayers_c];
         playerScores = new int[Game.nMaxPlayers_c];
+        playerHuman = new boolean[Game.nMaxPlayers_c];
 
         int i;
         for (i = 0; i < playerScores.length; i++) {
@@ -36,6 +41,10 @@ public class ScoreMapper {
     @DynamoDBHashKey(attributeName = "RaScoreId")
     public String getRaScoreId() { return raScoreId;}
     public void setRaScoreId(String raScoreId) { this.raScoreId = raScoreId; }
+
+    @DynamoDBAttribute(attributeName = "Date")
+    public Date getDate() { return this.date; }
+    public void setDate(Date date) { this.date = date; }
 
     @DynamoDBAttribute(attributeName = "NPlayers")
     public int getNPlayers() { return nPlayers; }
@@ -49,6 +58,10 @@ public class ScoreMapper {
     public int getPlayerScore1() { return playerScores[0]; }
     public void setPlayerScore1(int playerScore) { this.playerScores[0] = playerScore; }
 
+    @DynamoDBAttribute(attributeName = "PlayerHuman1")
+    public boolean getPlayerHuman1() { return playerHuman[0]; }
+    public void setPlayerHuman1(boolean playerHuman) { this.playerHuman[0] = playerHuman; }
+
     @DynamoDBAttribute(attributeName = "PlayerName2")
     public String getPlayerName2() { return playerNames[1]; }
     public void setPlayerName2(String playerName) { this.playerNames[1] = playerName; }
@@ -56,6 +69,10 @@ public class ScoreMapper {
     @DynamoDBAttribute(attributeName = "PlayerScore2")
     public int getPlayerScore2() { return playerScores[1]; }
     public void setPlayerScore2(int playerScore) { this.playerScores[1] = playerScore; }
+
+    @DynamoDBAttribute(attributeName = "PlayerHuman2")
+    public boolean getPlayerHuman2() { return playerHuman[1]; }
+    public void setPlayerHuman2(boolean playerHuman) { this.playerHuman[1] = playerHuman; }
 
     @DynamoDBAttribute(attributeName = "PlayerName3")
     public String getPlayerName3() { return playerNames[2]; }
@@ -65,6 +82,10 @@ public class ScoreMapper {
     public int getPlayerScore3() { return playerScores[2]; }
     public void setPlayerScore3(int playerScore) { this.playerScores[2] = playerScore; }
 
+    @DynamoDBAttribute(attributeName = "PlayerHuman3")
+    public boolean getPlayerHuman3() { return playerHuman[2]; }
+    public void setPlayerHuman3(boolean playerHuman) { this.playerHuman[2] = playerHuman; }
+
     @DynamoDBAttribute(attributeName = "PlayerName4")
     public String getPlayerName4() { return playerNames[3]; }
     public void setPlayerName4(String playerName) { this.playerNames[3] = playerName; }
@@ -72,6 +93,10 @@ public class ScoreMapper {
     @DynamoDBAttribute(attributeName = "PlayerScore4")
     public int getPlayerScore4() { return playerScores[3]; }
     public void setPlayerScore4(int playerScore) { this.playerScores[3] = playerScore; }
+
+    @DynamoDBAttribute(attributeName = "PlayerHuman4")
+    public boolean getPlayerHuman4() { return playerHuman[3]; }
+    public void setPlayerHuman4(boolean playerHuman) { this.playerHuman[3] = playerHuman; }
 
     @DynamoDBAttribute(attributeName = "PlayerName5")
     public String getPlayerName5() { return playerNames[4]; }
@@ -81,14 +106,20 @@ public class ScoreMapper {
     public int getPlayerScore5() { return playerScores[4]; }
     public void setPlayerScore5(int playerScore) { this.playerScores[4] = playerScore; }
 
+    @DynamoDBAttribute(attributeName = "PlayerHuman5")
+    public boolean getPlayerHuman5() { return playerHuman[4]; }
+    public void setPlayerHuman5(boolean playerHuman) { this.playerHuman[4] = playerHuman; }
+
     public void setValues() {
         Game game = Game.getInstance();
         nPlayers = game.getNPlayers();
+        date = new Date();
         int i;
         Player [] players = game.getPlayers();
         for (i = 0; i < nPlayers; i++) {
             playerNames[i] = players[i].getName();
             playerScores[i] = players[i].aiScoreEpoch[Player.iScoreTotal_c];
+            playerHuman[i] = players[i].getHuman();
         }
     }
 

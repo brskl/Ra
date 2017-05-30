@@ -104,7 +104,7 @@ public class ScoreActivity extends AppCompatActivity {
             tl.addView(tr);
         }
 
-        mShareIntent = buildShareIntent();
+        buildShareIntent();
     }
 
     @Override
@@ -140,20 +140,22 @@ public class ScoreActivity extends AppCompatActivity {
 
         if (mShareActionProvider != null && mShareIntent != null) {
             mShareActionProvider.setShareIntent(mShareIntent);
-            // display menu
-            return true;
+            // display share menu item
+            item.setVisible(true);
         } else {
-            // do not display menu
-            return false;
+            // do not display share menu item
+            item.setVisible(false);
         }
+
+        return true;
     }
 
-    private Intent buildShareIntent() {
+    private void buildShareIntent() {
         Log.d(ScoreActivity.class.toString(), "buildShareIntent");
 
         Game game = Game.getInstance();
         if (!game.FGameOver()) {
-            return null;
+            mShareIntent = null;
         } else {
             StringBuilder stringBuilder = new StringBuilder();
             boolean fFirst = true;
@@ -177,12 +179,10 @@ public class ScoreActivity extends AppCompatActivity {
                 stringBuilder.append(player.aiScoreEpoch[Player.iScoreTotal_c]);
             }
 
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
-
-            return shareIntent;
+            mShareIntent = new Intent();
+            mShareIntent.setAction(Intent.ACTION_SEND);
+            mShareIntent.setType("text/plain");
+            mShareIntent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
         }
     }
 }

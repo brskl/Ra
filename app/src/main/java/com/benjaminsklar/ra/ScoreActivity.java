@@ -106,30 +106,7 @@ public class ScoreActivity extends AppCompatActivity {
 
         // TODO replace conditional with if (Game Over)
         if (true) {
-            StringBuilder stringBuilder = new StringBuilder();
-            boolean fFirst = true;
-
-            stringBuilder.append("Ra Score: ");
-            for (Player player: game.getPlayers()) {
-                if (!fFirst) {
-                    stringBuilder.append(", ");
-                } else {
-                    fFirst = false;
-                }
-                stringBuilder.append(player.getName());
-                stringBuilder.append(" ");
-                if (!player.getHuman()) {
-                    stringBuilder.append(getResources().getString(R.string.tbtnAI));
-                    stringBuilder.append(" ");
-                }
-                stringBuilder.append(": ");
-                stringBuilder.append(player.aiScoreEpoch[Player.iScoreTotal_c]);
-            }
-
-            mShareIntent = new Intent();
-            mShareIntent.setAction(Intent.ACTION_SEND);
-            mShareIntent.setType("text/plain");
-            mShareIntent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
+            buildShareIntent();
         }
     }
 
@@ -156,7 +133,6 @@ public class ScoreActivity extends AppCompatActivity {
             mShareActionProvider.setShareIntent(mShareIntent);
         }
 
-        // Return true to display menu
         return true;
     }
 
@@ -167,5 +143,36 @@ public class ScoreActivity extends AppCompatActivity {
 
         // TODO: hide/show share menu item
         return true;
+    }
+
+    private void buildShareIntent() {
+        Log.d(ScoreActivity.class.toString(), "buildShareIntent");
+
+        Game game = Game.getInstance();
+        StringBuilder stringBuilder = new StringBuilder();
+        boolean fFirst = true;
+
+        stringBuilder.append("Ra Score: ");
+        for (Player player: game.getPlayers()) {
+            if (!fFirst) {
+                stringBuilder.append(", ");
+            } else {
+                fFirst = false;
+            }
+            stringBuilder.append(player.getName());
+            stringBuilder.append(" ");
+            if (!player.getHuman()) {
+                stringBuilder.append(getResources().getString(R.string.tbtnAI));
+                stringBuilder.append(" ");
+            }
+            stringBuilder.append(": ");
+            stringBuilder.append(player.aiScoreEpoch[Player.iScoreTotal_c]);
+        }
+
+        mShareIntent = new Intent();
+        mShareIntent.setAction(Intent.ACTION_SEND);
+        mShareIntent.setType("text/plain");
+        mShareIntent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
+
     }
 }

@@ -25,8 +25,5 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.amazonaws:aws-android-sdk-core:2.+'
-    compile 'com.amazonaws:aws-android-sdk-ddb:2.+'
-    compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.+'
     testCompile 'junit:junit:4.12'
 }

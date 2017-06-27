@@ -102,4 +102,7 @@
     <string name="settingTitleRandomSeedEnabled">Semilla aleatoria</string>
     <string name="shareScoreStart">Ra Puntuación:</string>
     <string name="shareScoreNameAI">%s (AI)</string>
+    <string name="btnRules">Reglas</string>
+    <string name="btnNext">Siguiente</string>
+    <string name="btnPrevious">Anterior</string>
 </resources>

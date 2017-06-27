@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         Button btnQuit = (Button) findViewById(R.id.buttonQuit);
         Button btnResume = (Button) findViewById(R.id.buttonResume);
         Button btnSettings = (Button) findViewById(R.id.buttonSettings);
+        Button btnRules = (Button) findViewById(R.id.buttonRules);
         TextView tvLoading = (TextView) findViewById(R.id.textViewLoading);
 
         btnNew.setVisibility(View.VISIBLE);
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         btnResume.setVisibility(View.VISIBLE);
         btnResume.setEnabled(fileGame != null);
         btnSettings.setVisibility(View.VISIBLE);
+        btnRules.setVisibility(View.VISIBLE);
         tvLoading.setVisibility(View.INVISIBLE);
     }
 
@@ -74,12 +76,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         Button btnQuit = (Button) findViewById(R.id.buttonQuit);
         Button btnResume = (Button) findViewById(R.id.buttonResume);
         Button btnSettings = (Button) findViewById(R.id.buttonSettings);
+        Button btnRules = (Button) findViewById(R.id.buttonRules);
         TextView tvLoading = (TextView) findViewById(R.id.textViewLoading);
 
         btnNew.setVisibility(View.INVISIBLE);
         btnQuit.setVisibility(View.INVISIBLE);
         btnResume.setVisibility(View.INVISIBLE);
         btnSettings.setVisibility(View.INVISIBLE);
+        btnRules.setVisibility(View.INVISIBLE);
         tvLoading.setVisibility(View.VISIBLE);
     }
 
@@ -133,6 +137,13 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
                 startActivity(intent);
                 }
                 break;
+            case R.id.buttonRules:
+                {
+                    Log.v(MainActivity.class.toString(), "Starting RulesActivity");
+
+                    Intent intent = new Intent(v.getContext(), RulesActivity.class);
+                    startActivity(intent);
+                }
         }
     }
 }

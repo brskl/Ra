@@ -23,6 +23,9 @@
     <string name="btnResume">Resume</string>
     <string name="btnQuit">Quit</string>
     <string name="btnSettings">Settings</string>
+    <string name="btnRules">Rules</string>
+    <string name="btnPrevious">Previous</string>
+    <string name="btnNext">Next</string>
     <string name="btnDraw">Draw</string>
     <string name="btnAuction">Auction</string>
     <string name="btnGod">God</string>
@@ -78,20 +81,29 @@
         <item>AI Hard 4</item>
         <item>AI Hard 5</item>
     </string-array>
-    <string-array name="Tiles"> // Must be in same order as RaGame.Tile enum
-        <item></item> // none
-        <item>Ra</item> // Ra
-        <item>God</item> // God
-        <item>Gold</item> // Gold
-        <item>Pharaoh</item> // Pharaoh
-        <item>Nile</item> // Nile
-        <item>Flood</item> // Nile Flood
-        <item>Agriculture</item> // Civs
+    <string-array name="Tiles">// Must be in same order as RaGame.Tile enum
+        <item></item>
+        // none
+        <item>Ra</item>
+        // Ra
+        <item>God</item>
+        // God
+        <item>Gold</item>
+        // Gold
+        <item>Pharaoh</item>
+        // Pharaoh
+        <item>Nile</item>
+        // Nile
+        <item>Flood</item>
+        // Nile Flood
+        <item>Agriculture</item>
+        // Civs
         <item>Art</item>
         <item>Astronomy</item>
         <item>Religion</item>
         <item>Writing</item>
-        <item>Fortress</item> // Monuments
+        <item>Fortress</item>
+        // Monuments
         <item>Obelisk</item>
         <item>Palace</item>
         <item>Pyramid</item>
@@ -99,7 +111,8 @@
         <item>Statues</item>
         <item>Step Pyramid</item>
         <item>Temple</item>
-        <item>Funeral</item> // Disasters (Pharaoh, Nile, Civs, Monuments)
+        <item>Funeral</item>
+        // Disasters (Pharaoh, Nile, Civs, Monuments)
         <item>Drought</item>
         <item>Unrest</item>
         <item>Earthquake</item>

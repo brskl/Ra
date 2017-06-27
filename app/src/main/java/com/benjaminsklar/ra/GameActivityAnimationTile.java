@@ -37,7 +37,9 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
 
         AnimationSet animationSet = new AnimationSet(true);
         gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()].getDrawingRect(rectDest);
-        gameActivity.llGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
+        imageView = gameActivity.aivAuctionItems[0];
+        rectDest.offset(-imageView.getWidth() / 2, - imageView.getHeight()/2);
 
         for (i = 0; i < nTiles; i++) {
             GameActivityAnimationTile gameActivityAnimationTile = new GameActivityAnimationTile(gameActivity);
@@ -49,20 +51,18 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
 
             animationSetTile = new AnimationSet(true);
             imageView = new ImageView(gameActivity);
-            gameActivityAnimationTile.ivTile = imageView;
             imageView.setImageResource(gameActivity.TileImageRes(game.getAuction().get(i)));
 
             ivAuctionTile.getDrawingRect(rectStart);
-            gameActivity.llGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
+            gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
 
             ViewGroup.LayoutParams startLayout = ivAuctionTile.getLayoutParams();
             ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(startLayout.width, startLayout.height);
 
             imageView.setLayoutParams(imageLayout);
-            // TODO: Adjusting rects to llGameActivity but can't add to this viewGroup as it is a linearLayout. Is there a better way?
-            imageView.setX(rectStart.left - gameActivity.rlBoard.getLeft());
-            imageView.setY(rectStart.top - gameActivity.rlBoard.getTop());
-            gameActivity.rlBoard.addView(imageView);
+            imageView.setX(rectStart.left - gameActivity.rlGameActivity.getLeft());
+            imageView.setY(rectStart.top - gameActivity.rlGameActivity.getTop());
+            gameActivity.rlGameActivity.addView(imageView);
 
             imageView.setAnimation(animationSetTile);
 

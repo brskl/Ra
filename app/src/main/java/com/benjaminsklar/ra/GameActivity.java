@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import junit.framework.Assert;
 
@@ -51,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     RelativeLayout rlBoard, rlAuction;
-    LinearLayout llGameActivity;
+    RelativeLayout rlGameActivity;
     ImageButton btnDraw;
 
     AnimationSet animationSetTiles = null;
@@ -98,7 +97,7 @@ public class GameActivity extends AppCompatActivity {
 
         rlBoard = (RelativeLayout) findViewById(R.id.relativeLayoutBoard);
         rlAuction = (RelativeLayout) findViewById(R.id.relativeLayoutAuction);
-        llGameActivity = (LinearLayout) findViewById(R.id.activity_game);
+        rlGameActivity = (RelativeLayout) findViewById(R.id.activity_game);
 
         btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
 

@@ -119,7 +119,7 @@ public class GameActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams destLayout = aivAuctionItems[0].getLayoutParams();
                 ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
                 aivAnimationTiles[i].setLayoutParams(imageLayout);
-                rlBoard.addView(aivAnimationTiles[i]);
+                rlGameActivity.addView(aivAnimationTiles[i]);
             }
         }
 

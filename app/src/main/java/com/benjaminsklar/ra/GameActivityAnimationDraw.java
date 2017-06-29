@@ -49,9 +49,9 @@ public class GameActivityAnimationDraw implements Animation.AnimationListener{
         gameActivity.rlAuction.getDrawingRect(rectAuction);
         ivDest.getDrawingRect(rectDest);
 
-        gameActivity.rlBoard.offsetDescendantRectToMyCoords(gameActivity.btnDraw, rectStart);
-        gameActivity.rlBoard.offsetDescendantRectToMyCoords(gameActivity.rlAuction, rectAuction);
-        gameActivity.rlBoard.offsetDescendantRectToMyCoords(ivDest, rectDest);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.btnDraw, rectStart);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.rlAuction, rectAuction);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivDest, rectDest);
 
         ViewGroup.LayoutParams imageLayout = ivTile.getLayoutParams();
 

@@ -643,8 +643,8 @@ public class GameActivity extends AppCompatActivity {
                 if (game.FAuctionFinished())
                 {
                     if (fAnimationEnabled && !game.FAuctionEveryonePassed()) {
-                        GameActivityAnimationDraw animationTile = new GameActivityAnimationDraw(this);
-                        animationSetTiles = animationTile.initializeTakeAll();
+                        GameActivityAnimationBuy animationTiles = new GameActivityAnimationBuy(this);
+                        animationSetTiles = animationTiles.initializeTakeAll();
                         animationSetTiles.startNow();
                     }
                     game.ResolveAuction();

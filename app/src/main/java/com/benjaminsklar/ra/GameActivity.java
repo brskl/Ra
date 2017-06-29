@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -49,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
     LinearLayout allPlayerSunsNext[] = new LinearLayout[Game.nMaxPlayers_c];
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
+    ImageView aivAnimationTiles[] = new ImageView[Game.nMaxAuction_c];
     RelativeLayout rlBoard, rlAuction;
     RelativeLayout rlGameActivity;
     ImageButton btnDraw;
@@ -94,6 +96,14 @@ public class GameActivity extends AppCompatActivity {
         aivRaTiles[7] = (ImageView) findViewById(R.id.ivRa7);
         aivRaTiles[8] = (ImageView) findViewById(R.id.ivRa8);
         aivRaTiles[9] = (ImageView) findViewById(R.id.ivRa9);
+        aivAuctionItems[0] = (ImageView) findViewById(R.id.ivAuction0);
+        aivAuctionItems[1] = (ImageView) findViewById(R.id.ivAuction1);
+        aivAuctionItems[2] = (ImageView) findViewById(R.id.ivAuction2);
+        aivAuctionItems[3] = (ImageView) findViewById(R.id.ivAuction3);
+        aivAuctionItems[4] = (ImageView) findViewById(R.id.ivAuction4);
+        aivAuctionItems[5] = (ImageView) findViewById(R.id.ivAuction5);
+        aivAuctionItems[6] = (ImageView) findViewById(R.id.ivAuction6);
+        aivAuctionItems[7] = (ImageView) findViewById(R.id.ivAuction7);
 
         rlBoard = (RelativeLayout) findViewById(R.id.relativeLayoutBoard);
         rlAuction = (RelativeLayout) findViewById(R.id.relativeLayoutAuction);
@@ -101,7 +111,17 @@ public class GameActivity extends AppCompatActivity {
 
         btnDraw = (ImageButton) findViewById(R.id.buttonDraw);
 
+        if (fAnimationEnabled) {
+            int i;
 
+            for (i = 0; i < Game.nMaxAuction_c; i++) {
+                aivAnimationTiles[i] = new ImageView(this);
+                ViewGroup.LayoutParams destLayout = aivAuctionItems[0].getLayoutParams();
+                ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
+                aivAnimationTiles[i].setLayoutParams(imageLayout);
+                rlBoard.addView(aivAnimationTiles[i]);
+            }
+        }
 
         SetNumplayerUI();
         gameActivityUpdate.UpdateDisplayPlayerNames();

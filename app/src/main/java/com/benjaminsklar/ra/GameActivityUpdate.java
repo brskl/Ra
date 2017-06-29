@@ -42,14 +42,7 @@ public class GameActivityUpdate {
         btnAuction = (Button) gameActivity.findViewById(R.id.buttonAuction);
         btnGod = (Button) gameActivity.findViewById(R.id.buttonGod);
         ivAuctionSun = (com.benjaminsklar.ra.SunImageView) gameActivity.findViewById(R.id.ivAuctionSun);
-        gameActivity.aivAuctionItems[0] = (ImageView) gameActivity.findViewById(R.id.ivAuction0);
-        gameActivity.aivAuctionItems[1] = (ImageView) gameActivity.findViewById(R.id.ivAuction1);
-        gameActivity.aivAuctionItems[2] = (ImageView) gameActivity.findViewById(R.id.ivAuction2);
-        gameActivity.aivAuctionItems[3] = (ImageView) gameActivity.findViewById(R.id.ivAuction3);
-        gameActivity.aivAuctionItems[4] = (ImageView) gameActivity.findViewById(R.id.ivAuction4);
-        gameActivity.aivAuctionItems[5] = (ImageView) gameActivity.findViewById(R.id.ivAuction5);
-        gameActivity.aivAuctionItems[6] = (ImageView) gameActivity.findViewById(R.id.ivAuction6);
-        gameActivity.aivAuctionItems[7] = (ImageView) gameActivity.findViewById(R.id.ivAuction7);
+
     }
 
     void UpdateDisplayPlayerNames(){

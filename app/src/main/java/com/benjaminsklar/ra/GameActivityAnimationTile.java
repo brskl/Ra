@@ -96,7 +96,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         Rect rectDest = new Rect();
 
         Game.Tile tile = game.getTileLastDrawn();
-        ivTile = new ImageView(gameActivity);
+        ivTile = gameActivity.aivAnimationTiles[0];
 
         if (tile == Game.Tile.tRa) {
             ivDest = gameActivity.aivRaTiles[game.getRas()-1];
@@ -112,15 +112,12 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         gameActivity.rlBoard.offsetDescendantRectToMyCoords(gameActivity.rlAuction, rectAuction);
         gameActivity.rlBoard.offsetDescendantRectToMyCoords(ivDest, rectDest);
 
-        ViewGroup.LayoutParams destLayout = ivDest.getLayoutParams();
-        ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
+        ViewGroup.LayoutParams imageLayout = ivTile.getLayoutParams();
 
         ivTile.setImageResource(gameActivity.TileImageRes(tile));
-        ivTile.setLayoutParams(imageLayout);
         ivTile.setX(rectStart.centerX() - imageLayout.width / 2);
         ivTile.setY(rectStart.centerY() - imageLayout.height / 2);
 
-        gameActivity.rlBoard.addView(ivTile);
 
         AnimationSet animationSet = new AnimationSet(true);
         animTrans1 = new TranslateAnimation(0, rectAuction.centerX() - rectStart.centerX(), 0, rectAuction.centerY() - rectStart.centerY());
@@ -143,11 +140,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         Log.d(GameActivityAnimationTile.class.toString(), "close()");
         if (ivTile != null) {
             Log.d(GameActivityAnimationTile.class.toString(), "Trying removing single tile");
-            if (animation.hasEnded()) {
-                Log.d(GameActivityAnimationTile.class.toString(), "Actually removing single tile");
-                gameActivity.rlBoard.removeView(ivTile);
-                ivTile = null;
-            }
+            ivTile.setImageResource(0);
         }
     }
 

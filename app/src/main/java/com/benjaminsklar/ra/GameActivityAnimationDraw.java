@@ -13,11 +13,11 @@ import android.widget.ImageView;
  * Created by Ben on 5/27/2017.
  */
 
-public class GameActivityAnimationTile implements Animation.AnimationListener{
+public class GameActivityAnimationDraw implements Animation.AnimationListener{
     GameActivity gameActivity;
     ImageView ivTile = null;
 
-    GameActivityAnimationTile(GameActivity gameActivityValue)
+    GameActivityAnimationDraw(GameActivity gameActivityValue)
     {
         if (gameActivityValue == null) {
             throw new IllegalArgumentException("null not allowed");
@@ -27,7 +27,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     AnimationSet initializeTakeAll() {
-        Log.d(GameActivityAnimationTile.class.toString(), "initializeTakeAll()");
+        Log.d(GameActivityAnimationDraw.class.toString(), "initializeTakeAll()");
         Game game = Game.getInstance();
         int nTiles = game.getAuction().size();
         int i;
@@ -42,7 +42,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
         rectDest.offset(-imageView.getWidth() / 2, - imageView.getHeight()/2);
 
         for (i = 0; i < nTiles; i++) {
-            GameActivityAnimationTile gameActivityAnimationTile = new GameActivityAnimationTile(gameActivity);
+            GameActivityAnimationDraw gameActivityAnimationTile = new GameActivityAnimationDraw(gameActivity);
             AnimationSet animationSetTile;
             TranslateAnimation translateAnimation;
             AlphaAnimation alphaAnimation;
@@ -86,7 +86,7 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     AnimationSet initializeDrawOne() {
-        Log.d(GameActivityAnimationTile.class.toString(), "initializeDrawOne()");
+        Log.d(GameActivityAnimationDraw.class.toString(), "initializeDrawOne()");
 
         Animation animTrans1, animTrans2;
         ImageView ivDest;
@@ -137,23 +137,23 @@ public class GameActivityAnimationTile implements Animation.AnimationListener{
     }
 
     void close(Animation animation) {
-        Log.d(GameActivityAnimationTile.class.toString(), "close()");
+        Log.d(GameActivityAnimationDraw.class.toString(), "close()");
         if (ivTile != null) {
-            Log.d(GameActivityAnimationTile.class.toString(), "Trying removing single tile");
+            Log.d(GameActivityAnimationDraw.class.toString(), "Trying removing single tile");
             ivTile.setImageResource(0);
         }
     }
 
     public void onAnimationEnd(Animation animation) {
-        Log.d(GameActivityAnimationTile.class.toString(), "onAnimationEnd()");
+        Log.d(GameActivityAnimationDraw.class.toString(), "onAnimationEnd()");
         close(animation);
     }
 
     public void onAnimationRepeat(Animation animation) {
-        Log.d(GameActivityAnimationTile.class.toString(), "onAnimationRepeat()");
+        Log.d(GameActivityAnimationDraw.class.toString(), "onAnimationRepeat()");
     }
 
     public void onAnimationStart(Animation animation) {
-        Log.d(GameActivityAnimationTile.class.toString(), "onAnimationStart()");
+        Log.d(GameActivityAnimationDraw.class.toString(), "onAnimationStart()");
     }
 }

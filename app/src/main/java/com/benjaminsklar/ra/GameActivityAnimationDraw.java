@@ -37,11 +37,12 @@ public class GameActivityAnimationDraw implements Animation.AnimationListener{
         Rect rectDest = new Rect();
 
         Game.Tile tile = game.getTileLastDrawn();
-        ivTile = gameActivity.aivAnimationTiles[0];
 
         if (tile == Game.Tile.tRa) {
+            ivTile = gameActivity.aivAnimationTileRa;
             ivDest = gameActivity.aivRaTiles[game.getRas()-1];
         } else {
+            ivTile = gameActivity.aivAnimationTiles[0];
             ivDest = gameActivity.aivAuctionItems[game.getAuction().size()-1];
         }
 

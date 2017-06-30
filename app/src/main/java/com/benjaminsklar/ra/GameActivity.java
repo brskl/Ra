@@ -51,6 +51,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     ImageView aivAnimationTiles[] = new ImageView[Game.nMaxAuction_c];
+    ImageView aivAnimationTileRa;
     RelativeLayout rlBoard, rlAuction;
     RelativeLayout rlGameActivity;
     ImageButton btnDraw;
@@ -113,14 +114,20 @@ public class GameActivity extends AppCompatActivity {
 
         if (fAnimationEnabled) {
             int i;
+            ViewGroup.LayoutParams destLayout = aivAuctionItems[0].getLayoutParams();
+            ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
 
             for (i = 0; i < Game.nMaxAuction_c; i++) {
                 aivAnimationTiles[i] = new ImageView(this);
-                ViewGroup.LayoutParams destLayout = aivAuctionItems[0].getLayoutParams();
-                ViewGroup.LayoutParams imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
                 aivAnimationTiles[i].setLayoutParams(imageLayout);
                 rlGameActivity.addView(aivAnimationTiles[i]);
             }
+
+            destLayout = aivRaTiles[0].getLayoutParams();
+            imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
+            aivAnimationTileRa = new ImageView(this);
+            aivAnimationTileRa.setLayoutParams(imageLayout);
+            rlGameActivity.addView(aivAnimationTileRa);
         }
 
         SetNumplayerUI();

@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
@@ -66,6 +67,58 @@ public class GameActivityAnimation implements Animation.AnimationListener{
         animationSet.addAnimation(animTrans2);
         animationSet.setFillAfter(false);
         animationSet.setAnimationListener(gameActivityAnimation);
+
+        return animationSet;
+    }
+
+    static AnimationSet initializeTakeAll(GameActivity gameActivity) {
+        Log.d(GameActivityAnimation.class.toString(), "initializeTakeAll()");
+        Game game = Game.getInstance();
+        int nTiles = game.getAuction().size();
+        int i;
+        Rect rectStart = new Rect();
+        Rect rectDest = new Rect();
+
+        AnimationSet animationSet = new AnimationSet(true);
+        gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()].getDrawingRect(rectDest);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
+
+        for (i = 0; i < nTiles; i++) {
+            GameActivityAnimation gameActivityAnimation = new GameActivityAnimation();
+            AnimationSet animationSetTile;
+            TranslateAnimation translateAnimation;
+            AlphaAnimation alphaAnimation;
+            ImageView ivAuctionTile = gameActivity.aivAuctionItems[i];
+
+            gameActivityAnimation.ivTile = gameActivity.aivAnimationTiles[i];
+            gameActivityAnimation.ivTile.setVisibility(View.VISIBLE);
+
+            animationSetTile = new AnimationSet(true);
+            gameActivityAnimation.ivTile.setImageResource(gameActivity.TileImageRes(game.getAuction().get(i)));
+
+            ivAuctionTile.getDrawingRect(rectStart);
+            gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
+
+            gameActivityAnimation.ivTile.setX(rectStart.left - gameActivity.rlGameActivity.getLeft());
+            gameActivityAnimation.ivTile.setY(rectStart.top - gameActivity.rlGameActivity.getTop());
+
+            gameActivityAnimation.ivTile.setAnimation(animationSetTile);
+
+            translateAnimation = new TranslateAnimation(0, rectDest.centerX() - rectStart.centerX(), 0, rectDest.centerY() - rectStart.centerY());
+            translateAnimation.setDuration(1000);
+            translateAnimation.setStartOffset(100 * i);
+            alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+            alphaAnimation.setDuration(1000);
+            alphaAnimation.setStartOffset(100*i);
+
+            animationSetTile.addAnimation(translateAnimation);
+            animationSetTile.addAnimation(alphaAnimation);
+            animationSetTile.setFillAfter(false);
+            animationSetTile.setAnimationListener(gameActivityAnimation);
+
+            animationSet.addAnimation(animationSetTile);
+        }
+        // TODO: Add swapping of Sun tiles
 
         return animationSet;
     }

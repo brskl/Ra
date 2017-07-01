@@ -562,8 +562,7 @@ public class GameActivity extends AppCompatActivity {
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
                 if (fAnimationEnabled) {
-                    GameActivityAnimationDraw animationDraw = new GameActivityAnimationDraw(this);
-                    animationSetTiles = animationDraw.initializeDrawOne();
+                    animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
                     animationSetTiles.startNow();
                 }
                 break;
@@ -619,8 +618,7 @@ public class GameActivity extends AppCompatActivity {
                     // TODO: for now, just draw tile
                     game.DrawTile();
                     if (fAnimationEnabled) {
-                        GameActivityAnimationDraw animationDraw = new GameActivityAnimationDraw(this);
-                        animationSetTiles = animationDraw.initializeDrawOne();
+                        animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
                         animationSetTiles.startNow();
                     }
                 }

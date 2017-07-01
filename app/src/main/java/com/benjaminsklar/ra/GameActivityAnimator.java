@@ -2,6 +2,7 @@ package com.benjaminsklar.ra;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.ImageView;
 public class GameActivityAnimator implements Animator.AnimatorListener {
     ImageView imageView; // TODO: Is this necessary? Is it possible to use getTarget in onAnim callbacks
 
-    static ViewPropertyAnimator initializeDrawOne(GameActivity gameActivity) {
+    static AnimatorSet initializeDrawOne(GameActivity gameActivity) {
         Log.d(GameActivityAnimator.class.toString(), "initializeDrawOne()");
 
         ImageView ivDest;
@@ -26,6 +27,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         Game game = Game.getInstance();
         GameActivityAnimator gameActivityAnimator = new GameActivityAnimator();
         AnimatorSet animatorSet = new AnimatorSet();
+        ObjectAnimator animScale1x, animScale1y, animScale2, animAlpha1, animTrans1x, animTrans1y, animTrans2;
 
         Game.Tile tile = game.getTileLastDrawn();
 
@@ -49,21 +51,23 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         ViewGroup.LayoutParams imageLayout = gameActivityAnimator.imageView.getLayoutParams();
 
         gameActivityAnimator.imageView.setImageResource(gameActivity.TileImageRes(tile));
-        gameActivityAnimator.imageView.setX(rectStart.centerX() - imageLayout.width / 2);
-        gameActivityAnimator.imageView.setY(rectStart.centerY() - imageLayout.height / 2);
-        gameActivityAnimator.imageView.setAlpha(0.0f);
-        gameActivityAnimator.imageView.setScaleX(1.0f);
-        gameActivityAnimator.imageView.setScaleY(1.0f);
+        // TODO: try to replace with ofFloat(obj, xprop, yprop, path) for trans and scale
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectStart.centerX() - imageLayout.width / 2, rectAuction.centerX() - imageLayout.width);
+        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectStart.centerY() - imageLayout.height / 2, rectAuction.centerY() - imageLayout.height);
+        animAlpha1 = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "alpha", 0.1f, 1.0f);
+        animScale1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 0.1f, 1.5f);
+        animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 0.1f, 1.5f);
+        animTrans1x.setDuration(1000);
+        animTrans1y.setDuration(1000);
+        animAlpha1.setDuration(1000);
+        animScale1x.setDuration(1000);
+        animScale1y.setDuration(1000);
+        animatorSet.play(animTrans1x).with(animTrans1y).with(animScale1x).with(animScale1y);
+        animatorSet.play(animTrans1x).with(animAlpha1);
 
-        ViewPropertyAnimator animator = gameActivityAnimator.imageView.animate();
-        animator.setDuration(1000);
-        animator.alpha(1.0f).xBy(rectAuction.centerX() - rectStart.centerX()).yBy(rectAuction.centerY() - rectStart.centerY());
-        animator.scaleX(2.0f);
-        animator.scaleY(2.0f);
+        animatorSet.addListener(gameActivityAnimator);
 
-        animator.setListener(gameActivityAnimator);
-
-        return animator;
+        return animatorSet;
     }
 
     public void onAnimationRepeat (Animator animation) {

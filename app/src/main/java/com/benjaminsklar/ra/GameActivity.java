@@ -1,5 +1,6 @@
 package com.benjaminsklar.ra;
 
+import android.animation.AnimatorSet;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -58,7 +59,7 @@ public class GameActivity extends AppCompatActivity {
     ImageButton btnDraw;
 
     AnimationSet animationSetTiles = null;
-    ViewPropertyAnimator animatorSet = null;
+    AnimatorSet animatorSet = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -57,6 +58,7 @@ public class GameActivity extends AppCompatActivity {
     ImageButton btnDraw;
 
     AnimationSet animationSetTiles = null;
+    ViewPropertyAnimator animatorSet = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -562,8 +564,10 @@ public class GameActivity extends AppCompatActivity {
                 Assert.assertFalse(game.FAuctionTrackFull());
                 game.DrawTile();
                 if (fAnimationEnabled) {
-                    animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
-                    animationSetTiles.startNow();
+                    animatorSet = GameActivityAnimator.initializeDrawOne(this);
+                    animatorSet.start();
+                    //animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
+                    //animationSetTiles.startNow();
                 }
                 break;
             case R.id.buttonGod:
@@ -618,8 +622,10 @@ public class GameActivity extends AppCompatActivity {
                     // TODO: for now, just draw tile
                     game.DrawTile();
                     if (fAnimationEnabled) {
-                        animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
-                        animationSetTiles.startNow();
+                        animatorSet = GameActivityAnimator.initializeDrawOne(this);
+                        animatorSet.start();
+                        //animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
+                        //animationSetTiles.startNow();
                     }
                 }
                 break;

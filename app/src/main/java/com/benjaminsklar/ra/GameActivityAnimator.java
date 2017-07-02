@@ -28,7 +28,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         Game game = Game.getInstance();
         GameActivityAnimator gameActivityAnimator = new GameActivityAnimator();
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animScale1x, animScale1y, animScale2, animAlpha1, animTrans1x, animTrans1y, animTrans2x, animTrans2y;
+        ObjectAnimator animScale1x, animScale1y, animScale2x, animScale2y, animAlpha1, animTrans1x, animTrans1y, animTrans2x, animTrans2y;
 
         Game.Tile tile = game.getTileLastDrawn();
 
@@ -62,6 +62,8 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         animAlpha1 = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "alpha", 0.1f, 1.0f);
         animScale1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 0.1f, 1.5f);
         animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 0.1f, 1.5f);
+        animScale2x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 1.0f);
+        animScale2y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 1.0f);
         animTrans1x.setDuration(1000);
         animTrans1y.setDuration(1000);
         animTrans2x.setDuration(1000);
@@ -71,8 +73,13 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         animAlpha1.setDuration(1000);
         animScale1x.setDuration(1000);
         animScale1y.setDuration(1000);
-        animatorSet.play(animTrans1x).with(animTrans1y).with(animTrans2x).with(animTrans2y);//.with(animScale1x).with(animScale1y);
-        //animatorSet.play(animTrans1x).with(animAlpha1);
+        animScale2x.setDuration(1000);
+        animScale2y.setDuration(1000);
+        animScale2x.setStartDelay(1500);
+        animScale2y.setStartDelay(1500);
+        animatorSet.play(animTrans1x).with(animTrans1y).with(animTrans2x).with(animTrans2y);
+        animatorSet.play(animTrans1x).with(animScale1x).with(animScale1y).with(animScale2x).with(animScale2y);
+        animatorSet.play(animTrans1x).with(animAlpha1);
 
         animatorSet.addListener(gameActivityAnimator);
 

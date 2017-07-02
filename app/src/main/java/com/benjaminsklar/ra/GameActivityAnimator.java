@@ -21,13 +21,14 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         Log.d(GameActivityAnimator.class.toString(), "initializeDrawOne()");
 
         ImageView ivDest;
+        int imageHalfX, imageHalfY;
         Rect rectStart = new Rect();
         Rect rectAuction = new Rect();
         Rect rectDest = new Rect();
         Game game = Game.getInstance();
         GameActivityAnimator gameActivityAnimator = new GameActivityAnimator();
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animScale1x, animScale1y, animScale2, animAlpha1, animTrans1x, animTrans1y, animTrans2;
+        ObjectAnimator animScale1x, animScale1y, animScale2, animAlpha1, animTrans1x, animTrans1y, animTrans2x, animTrans2y;
 
         Game.Tile tile = game.getTileLastDrawn();
 
@@ -48,22 +49,30 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.rlAuction, rectAuction);
         gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivDest, rectDest);
 
-        ViewGroup.LayoutParams imageLayout = gameActivityAnimator.imageView.getLayoutParams();
-
         gameActivityAnimator.imageView.setImageResource(gameActivity.TileImageRes(tile));
+        imageHalfX = gameActivityAnimator.imageView.getWidth() / 2;
+        imageHalfY = gameActivityAnimator.imageView.getHeight() / 2;
+
+
         // TODO: try to replace with ofFloat(obj, xprop, yprop, path) for trans and scale
-        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectStart.centerX() - imageLayout.width / 2, rectAuction.centerX() - imageLayout.width);
-        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectStart.centerY() - imageLayout.height / 2, rectAuction.centerY() - imageLayout.height);
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectStart.centerX() - imageHalfX , rectAuction.centerX() - imageHalfX);
+        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectStart.centerY() - imageHalfY, rectAuction.centerY() - imageHalfY);
+        animTrans2x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX() - imageHalfX);
+        animTrans2y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY() - imageHalfY);
         animAlpha1 = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "alpha", 0.1f, 1.0f);
         animScale1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 0.1f, 1.5f);
         animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 0.1f, 1.5f);
         animTrans1x.setDuration(1000);
         animTrans1y.setDuration(1000);
+        animTrans2x.setDuration(1000);
+        animTrans2y.setDuration(1000);
+        animTrans2x.setStartDelay(1500);
+        animTrans2y.setStartDelay(1500);
         animAlpha1.setDuration(1000);
         animScale1x.setDuration(1000);
         animScale1y.setDuration(1000);
-        animatorSet.play(animTrans1x).with(animTrans1y).with(animScale1x).with(animScale1y);
-        animatorSet.play(animTrans1x).with(animAlpha1);
+        animatorSet.play(animTrans1x).with(animTrans1y).with(animTrans2x).with(animTrans2y);//.with(animScale1x).with(animScale1y);
+        //animatorSet.play(animTrans1x).with(animAlpha1);
 
         animatorSet.addListener(gameActivityAnimator);
 

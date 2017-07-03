@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5px"
-                android:src="@drawable/tile_civ"/>
+                android:src="@drawable/tile_civ1"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

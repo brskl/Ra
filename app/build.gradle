@@ -7,7 +7,7 @@ android {
         applicationId "com.benjaminsklar.ra"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 10
+        versionCode 11
         versionName "0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

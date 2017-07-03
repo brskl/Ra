@@ -15,7 +15,12 @@ import java.util.ArrayList;
  */
 
 public class GameActivityAnimator implements Animator.AnimatorListener {
-    ImageView imageView; // TODO: Is this necessary? Is it possible to use getTarget in onAnim callbacks
+    static long lDuration=1000; // TODO: get from setting
+    static long lDelay=100; // TODO: get from setting
+    static long lDelayTrans2 = 1500; // TODO: get from setting
+
+    ImageView imageView; // TODO: Is this necessary? Is it possible to use getTarget in onAnim callback
+
 
     static AnimatorSet initializeDrawOne(GameActivity gameActivity) {
         Log.d(GameActivityAnimator.class.toString(), "initializeDrawOne()");
@@ -64,19 +69,19 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 0.1f, 1.5f);
         animScale2x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 1.0f);
         animScale2y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 1.0f);
-        animTrans1x.setDuration(1000);
-        animTrans1y.setDuration(1000);
-        animTrans2x.setDuration(1000);
-        animTrans2y.setDuration(1000);
-        animTrans2x.setStartDelay(1500);
-        animTrans2y.setStartDelay(1500);
-        animAlpha1.setDuration(1000);
-        animScale1x.setDuration(1000);
-        animScale1y.setDuration(1000);
-        animScale2x.setDuration(1000);
-        animScale2y.setDuration(1000);
-        animScale2x.setStartDelay(1500);
-        animScale2y.setStartDelay(1500);
+        animTrans1x.setDuration(lDuration);
+        animTrans1y.setDuration(lDuration);
+        animTrans2x.setDuration(lDuration);
+        animTrans2y.setDuration(lDuration);
+        animTrans2x.setStartDelay(lDelayTrans2);
+        animTrans2y.setStartDelay(lDelayTrans2);
+        animAlpha1.setDuration(lDuration);
+        animScale1x.setDuration(lDuration);
+        animScale1y.setDuration(lDuration);
+        animScale2x.setDuration(lDuration);
+        animScale2y.setDuration(lDuration);
+        animScale2x.setStartDelay(lDelayTrans2);
+        animScale2y.setStartDelay(lDelayTrans2);
         animatorSet.play(animTrans1x).with(animTrans1y).with(animTrans2x).with(animTrans2y);
         animatorSet.play(animTrans1x).with(animScale1x).with(animScale1y).with(animScale2x).with(animScale2y);
         animatorSet.play(animTrans1x).with(animAlpha1);
@@ -95,7 +100,10 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         Rect rectDest = new Rect();
         int imageHalfX, imageHalfY;
         AnimatorSet animatorSet = new AnimatorSet();
+        AnimatorSet animatorSetTile;
+        GameActivityAnimator gameActivityAnimator;
         ArrayList<Animator> animatorList = new ArrayList<Animator>();
+        ObjectAnimator animTrans1x, animTrans1y, animScale1x, animScale1y;
 
         gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()].getDrawingRect(rectDest);
         gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
@@ -103,8 +111,8 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         imageHalfY = gameActivity.aivAuctionItems[0].getHeight() / 2;
 
         for (i = 0; i < nTiles; i++) {
-            GameActivityAnimator gameActivityAnimator = new GameActivityAnimator();
-            AnimatorSet animatorSetTile = new AnimatorSet();
+            gameActivityAnimator = new GameActivityAnimator();
+            animatorSetTile = new AnimatorSet();
             ImageView ivAuctionTile = gameActivity.aivAuctionItems[i];
             ivAuctionTile.getDrawingRect(rectStart);
             gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
@@ -115,20 +123,20 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
             gameActivityAnimator.imageView.setY(rectStart.centerY() - imageHalfY);
             gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
 
-            ObjectAnimator animTrans1x, animTrans1y, animAlpha;
+            ObjectAnimator animAlpha;
 
             animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX() - imageHalfX);
             animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY() - imageHalfY);
             animAlpha = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "alpha", 1.0f, 0.0f);
             // TODO: consider changing interpolator for animAlpha so lasts longer until end
             animatorSetTile.play(animTrans1x).with(animTrans1y).with(animAlpha);
-            // TODO: adjust duration & delay with setting
-            animatorSetTile.setDuration(1000);
-            animatorSetTile.setStartDelay(100*i);
+            animatorSetTile.setDuration(lDuration);
+            animatorSetTile.setStartDelay(lDelay*i);
             animatorSetTile.addListener(gameActivityAnimator);
 
             animatorList.add(animatorSetTile);
         }
+
         // TODO: Add swapping of Sun tiles
 
         animatorSet.playTogether(animatorList);

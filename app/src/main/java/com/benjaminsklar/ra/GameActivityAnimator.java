@@ -6,9 +6,9 @@ import android.animation.ObjectAnimator;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
+import java.util.ArrayList;
+
 
 /**
  * Created by Ben on 7/1/2017.
@@ -55,7 +55,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
 
 
         // TODO: try to replace with ofFloat(obj, xprop, yprop, path) for trans and scale
-        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectStart.centerX() - imageHalfX , rectAuction.centerX() - imageHalfX);
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectStart.centerX() - imageHalfX, rectAuction.centerX() - imageHalfX);
         animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectStart.centerY() - imageHalfY, rectAuction.centerY() - imageHalfY);
         animTrans2x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX() - imageHalfX);
         animTrans2y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY() - imageHalfY);
@@ -83,6 +83,55 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
 
         animatorSet.addListener(gameActivityAnimator);
 
+        return animatorSet;
+    }
+
+    static AnimatorSet initializeTakeAll(GameActivity gameActivity) {
+        Log.d(GameActivityAnimator.class.toString(), "initializeTakeAll()");
+        Game game = Game.getInstance();
+        int nTiles = game.getAuction().size();
+        int i;
+        Rect rectStart = new Rect();
+        Rect rectDest = new Rect();
+        int imageHalfX, imageHalfY;
+        AnimatorSet animatorSet = new AnimatorSet();
+        ArrayList<Animator> animatorList = new ArrayList<Animator>();
+
+        gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()].getDrawingRect(rectDest);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivity.arlPlayers[game.getAuctionPlayerHighestIndex()], rectDest);
+        imageHalfX = gameActivity.aivAuctionItems[0].getWidth() / 2;
+        imageHalfY = gameActivity.aivAuctionItems[0].getHeight() / 2;
+
+        for (i = 0; i < nTiles; i++) {
+            GameActivityAnimator gameActivityAnimator = new GameActivityAnimator();
+            AnimatorSet animatorSetTile = new AnimatorSet();
+            ImageView ivAuctionTile = gameActivity.aivAuctionItems[i];
+            ivAuctionTile.getDrawingRect(rectStart);
+            gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivAuctionTile, rectStart);
+            gameActivityAnimator.imageView = gameActivity.aivAnimationTiles[i];
+            gameActivityAnimator.imageView.setImageResource(gameActivity.TileImageRes(game.getAuction().get(i)));
+            // due to delayed start (for most) setting initial X,Y before making visible;
+            gameActivityAnimator.imageView.setX(rectStart.centerX() - imageHalfX);
+            gameActivityAnimator.imageView.setY(rectStart.centerY() - imageHalfY);
+            gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
+
+            ObjectAnimator animTrans1x, animTrans1y, animAlpha;
+
+            animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX() - imageHalfX);
+            animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY() - imageHalfY);
+            animAlpha = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "alpha", 1.0f, 0.0f);
+            // TODO: consider changing interpolator for animAlpha so lasts longer until end
+            animatorSetTile.play(animTrans1x).with(animTrans1y).with(animAlpha);
+            // TODO: adjust duration & delay with setting
+            animatorSetTile.setDuration(1000);
+            animatorSetTile.setStartDelay(100*i);
+            animatorSetTile.addListener(gameActivityAnimator);
+
+            animatorList.add(animatorSetTile);
+        }
+        // TODO: Add swapping of Sun tiles
+
+        animatorSet.playTogether(animatorList);
         return animatorSet;
     }
 

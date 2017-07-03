@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -58,7 +56,6 @@ public class GameActivity extends AppCompatActivity {
     RelativeLayout rlGameActivity;
     ImageButton btnDraw;
 
-    AnimationSet animationSetTiles = null;
     AnimatorSet animatorSet = null;
 
     @Override
@@ -567,8 +564,6 @@ public class GameActivity extends AppCompatActivity {
                 if (fAnimationEnabled) {
                     animatorSet = GameActivityAnimator.initializeDrawOne(this);
                     animatorSet.start();
-                    //animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
-                    //animationSetTiles.startNow();
                 }
                 break;
             case R.id.buttonGod:
@@ -625,8 +620,6 @@ public class GameActivity extends AppCompatActivity {
                     if (fAnimationEnabled) {
                         animatorSet = GameActivityAnimator.initializeDrawOne(this);
                         animatorSet.start();
-                        //animationSetTiles = GameActivityAnimation.initializeDrawOne(this);
-                        //animationSetTiles.startNow();
                     }
                 }
                 break;
@@ -655,8 +648,8 @@ public class GameActivity extends AppCompatActivity {
                 if (game.FAuctionFinished())
                 {
                     if (fAnimationEnabled && !game.FAuctionEveryonePassed()) {
-                        animationSetTiles = GameActivityAnimation.initializeTakeAll(this);
-                        animationSetTiles.startNow();
+                        animatorSet = GameActivityAnimator.initializeTakeAll(this);
+                        animatorSet.start();
                     }
                     game.ResolveAuction();
                 }

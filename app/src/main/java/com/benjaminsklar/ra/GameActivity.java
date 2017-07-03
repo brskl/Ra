@@ -23,7 +23,7 @@ import junit.framework.Assert;
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
-    private GameActivityUpdate gameActivityUpdate;
+    GameActivityUpdate gameActivityUpdate;
 
     // Must be in same order as RaGame.Tile enum
     // All 2 characters for formatting
@@ -647,9 +647,13 @@ public class GameActivity extends AppCompatActivity {
             case AuctionInProgress:
                 if (game.FAuctionFinished())
                 {
-                    if (fAnimationEnabled && !game.FAuctionEveryonePassed()) {
-                        animatorSet = GameActivityAnimator.initializeTakeAll(this);
-                        animatorSet.start();
+                    if (fAnimationEnabled) {
+                        if (game.FAuctionEveryonePassed()) {
+                            // TODO: Add clearing all auction tiles
+                        } else {
+                            animatorSet = GameActivityAnimator.initializeTakeAll(this);
+                            animatorSet.start();
+                        }
                     }
                     game.ResolveAuction();
                 }

@@ -33,7 +33,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         Game.Tile tile = game.getTileLastDrawn();
 
         if (tile == Game.Tile.tRa) {
-            gameActivityAnimator.imageView = gameActivity.aivAnimationTileRa;
+            gameActivityAnimator.imageView = gameActivity.ivAnimationTileRa;
             ivDest = gameActivity.aivRaTiles[game.getRas()-1];
         } else {
             gameActivityAnimator.imageView = gameActivity.aivAnimationTiles[0];

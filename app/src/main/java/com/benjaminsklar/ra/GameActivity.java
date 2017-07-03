@@ -51,7 +51,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView aivRaTiles[] = new ImageView[Game.nMaxRas_c];
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     ImageView aivAnimationTiles[] = new ImageView[Game.nMaxAuction_c];
-    ImageView aivAnimationTileRa;
+    ImageView ivAnimationTileRa;
     RelativeLayout rlBoard, rlAuction;
     RelativeLayout rlGameActivity;
     ImageButton btnDraw;
@@ -125,9 +125,9 @@ public class GameActivity extends AppCompatActivity {
 
             destLayout = aivRaTiles[0].getLayoutParams();
             imageLayout = new ViewGroup.LayoutParams(destLayout.width, destLayout.height);
-            aivAnimationTileRa = new ImageView(this);
-            aivAnimationTileRa.setLayoutParams(imageLayout);
-            rlGameActivity.addView(aivAnimationTileRa);
+            ivAnimationTileRa = new ImageView(this);
+            ivAnimationTileRa.setLayoutParams(imageLayout);
+            rlGameActivity.addView(ivAnimationTileRa);
         }
 
         SetNumplayerUI();

@@ -1,10 +1,13 @@
 package com.benjaminsklar.ra;
 
+import android.graphics.Rect;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import junit.framework.Assert;
@@ -43,6 +46,21 @@ public class GameActivityUpdate {
         btnGod = (Button) gameActivity.findViewById(R.id.buttonGod);
         ivAuctionSun = (com.benjaminsklar.ra.SunImageView) gameActivity.findViewById(R.id.ivAuctionSun);
 
+    }
+
+    void copyAuctionSunLayout(com.benjaminsklar.ra.SunImageView ivAnimationAuctionSun) {
+        RelativeLayout.LayoutParams imageLayout = new RelativeLayout.LayoutParams(ivAuctionSun.getWidth(), ivAuctionSun.getHeight());
+        ivAnimationAuctionSun.setLayoutParams(imageLayout);
+    }
+
+    void copyAuctionSunPosval(com.benjaminsklar.ra.SunImageView ivAnimationAuctionSun) {
+        Rect rect = new Rect();
+
+        ivAnimationAuctionSun.setiValue(ivAuctionSun.getiValue());
+        ivAuctionSun.getDrawingRect(rect);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(ivAuctionSun, rect);
+        ivAnimationAuctionSun.setX(rect.left);
+        ivAnimationAuctionSun.setY(rect.top);
     }
 
     void UpdateDisplayPlayerNames(){

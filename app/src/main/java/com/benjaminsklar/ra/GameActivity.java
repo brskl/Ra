@@ -52,6 +52,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView aivAuctionItems[] = new ImageView[Game.nMaxAuction_c];
     ImageView aivAnimationTiles[] = new ImageView[Game.nMaxAuction_c];
     ImageView ivAnimationTileRa;
+    com.benjaminsklar.ra.SunImageView ivAnimationAuctionSun, ivAnimationPlayerSun;
     RelativeLayout rlBoard, rlAuction;
     RelativeLayout rlGameActivity;
     ImageButton btnDraw;
@@ -128,6 +129,15 @@ public class GameActivity extends AppCompatActivity {
             ivAnimationTileRa = new ImageView(this);
             ivAnimationTileRa.setLayoutParams(imageLayout);
             rlGameActivity.addView(ivAnimationTileRa);
+            ivAnimationAuctionSun = new com.benjaminsklar.ra.SunImageView(this);
+            ivAnimationAuctionSun.setImageResource(R.drawable.tile_sun);
+            ivAnimationAuctionSun.setVisibility(View.INVISIBLE);
+            rlGameActivity.addView(ivAnimationAuctionSun);
+            ivAnimationPlayerSun = new com.benjaminsklar.ra.SunImageView(this);
+            ivAnimationPlayerSun.setImageResource(R.drawable.tile_sun);
+            rlGameActivity.addView(ivAnimationPlayerSun);
+
+            gameActivityUpdate.copyAuctionSunLayout(ivAnimationAuctionSun);
         }
 
         SetNumplayerUI();

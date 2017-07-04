@@ -96,6 +96,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         Game game = Game.getInstance();
         int nTiles = game.getAuction().size();
         int i;
+        long lDelayCurrent;
         Rect rectStart = new Rect();
         Rect rectDest = new Rect();
         int imageHalfX, imageHalfY;
@@ -110,7 +111,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         imageHalfX = gameActivity.aivAuctionItems[0].getWidth() / 2;
         imageHalfY = gameActivity.aivAuctionItems[0].getHeight() / 2;
 
-        for (i = 0; i < nTiles; i++) {
+        for (i = 0, lDelayCurrent = 0; i < nTiles; i++, lDelayCurrent += lDelay) {
             gameActivityAnimator = new GameActivityAnimator();
             animatorSetTile = new AnimatorSet();
             ImageView ivAuctionTile = gameActivity.aivAuctionItems[i];
@@ -131,13 +132,26 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
             // TODO: consider changing interpolator for animAlpha so lasts longer until end
             animatorSetTile.play(animTrans1x).with(animTrans1y).with(animAlpha);
             animatorSetTile.setDuration(lDuration);
-            animatorSetTile.setStartDelay(lDelay*i);
+            animatorSetTile.setStartDelay(lDelayCurrent);
             animatorSetTile.addListener(gameActivityAnimator);
 
             animatorList.add(animatorSetTile);
         }
 
         // TODO: Add swapping of Sun tiles
+        animatorSetTile = new AnimatorSet();
+        gameActivity.gameActivityUpdate.copyAuctionSunLayout(gameActivity.ivAnimationAuctionSun);
+        gameActivity.gameActivityUpdate.copyAuctionSunPosval(gameActivity.ivAnimationAuctionSun);
+        gameActivityAnimator = new GameActivityAnimator();
+        gameActivityAnimator.imageView = gameActivity.ivAnimationAuctionSun;
+
+        gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", gameActivityAnimator.imageView.getX() -100);
+        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", gameActivityAnimator.imageView.getY() -100);
+        animatorSetTile.playTogether(animTrans1x, animTrans1y);
+        animatorSetTile.setDuration(lDuration);
+        animatorSetTile.addListener(gameActivityAnimator);
+        animatorList.add(animatorSetTile);
 
         animatorSet.playTogether(animatorList);
         return animatorSet;

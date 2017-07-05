@@ -139,15 +139,21 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         }
 
         // TODO: Add swapping of Sun tiles
+        int iPlayerSunsNext;
+        com.benjaminsklar.ra.SunImageView sivPlayerSunDest;
         animatorSetTile = new AnimatorSet();
         gameActivity.gameActivityUpdate.copyAuctionSunLayout(gameActivity.ivAnimationAuctionSun); // TODO: Can this be done in GameActivity.onCreate
         gameActivity.gameActivityUpdate.copyAuctionSunPosval(gameActivity.ivAnimationAuctionSun);
         gameActivityAnimator = new GameActivityAnimator();
         gameActivityAnimator.imageView = gameActivity.ivAnimationAuctionSun;
 
+        iPlayerSunsNext = 0; // TODO: Calculate this better
+        sivPlayerSunDest = (com.benjaminsklar.ra.SunImageView) gameActivity.allPlayerSunsNext[game.getAuctionPlayerHighestIndex()].getChildAt(iPlayerSunsNext);
+        sivPlayerSunDest.getDrawingRect(rectDest);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(sivPlayerSunDest, rectDest);
         gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
-        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", gameActivityAnimator.imageView.getX() -100);
-        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", gameActivityAnimator.imageView.getY() -100);
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX());
+        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY());
         animatorSetTile.playTogether(animTrans1x, animTrans1y);
         animatorSetTile.setDuration(lDuration);
         animatorSetTile.setStartDelay(lDelayCurrent);

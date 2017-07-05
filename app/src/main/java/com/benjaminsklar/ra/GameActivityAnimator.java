@@ -140,22 +140,32 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
 
         // TODO: Add swapping of Sun tiles
         int iPlayerSunsNext;
+        float fScaleX, fScaleY;
+        float imageWidth, imageHeight;
         com.benjaminsklar.ra.SunImageView sivPlayerSunDest;
         animatorSetTile = new AnimatorSet();
         gameActivity.gameActivityUpdate.copyAuctionSunLayout(gameActivity.ivAnimationAuctionSun); // TODO: Can this be done in GameActivity.onCreate
         gameActivity.gameActivityUpdate.copyAuctionSunPosval(gameActivity.ivAnimationAuctionSun);
         gameActivityAnimator = new GameActivityAnimator();
         gameActivityAnimator.imageView = gameActivity.ivAnimationAuctionSun;
+        gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
 
         iPlayerSunsNext = 0; // TODO: Calculate this better
         sivPlayerSunDest = (com.benjaminsklar.ra.SunImageView) gameActivity.allPlayerSunsNext[game.getAuctionPlayerHighestIndex()].getChildAt(iPlayerSunsNext);
         sivPlayerSunDest.getDrawingRect(rectDest);
         gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(sivPlayerSunDest, rectDest);
-        gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
-        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX());
-        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY());
-        animatorSetTile.playTogether(animTrans1x, animTrans1y);
-        animatorSetTile.setDuration(lDuration);
+        imageWidth = gameActivityAnimator.imageView.getLayoutParams().width;
+        imageHeight = gameActivityAnimator.imageView.getLayoutParams().height;
+        // TODO: Can fScaleX/Y be calculated once in gameActivity.onCreate?
+        fScaleX = rectDest.width() / imageWidth;
+        fScaleY = rectDest.height() / imageHeight;
+
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX() - (imageWidth / 2.0f));
+        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY() - (imageHeight / 2.0f));
+        animScale1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 1.0f, fScaleX);
+        animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 1.0f, fScaleY);
+        animatorSetTile.playTogether(animTrans1x, animTrans1y, animScale1x, animScale1y);
+        animatorSetTile.setDuration(lDuration*4);
         animatorSetTile.setStartDelay(lDelayCurrent);
         animatorSetTile.addListener(gameActivityAnimator);
         animatorList.add(animatorSetTile);

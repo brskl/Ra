@@ -135,6 +135,7 @@ public class GameActivity extends AppCompatActivity {
             rlGameActivity.addView(ivAnimationAuctionSun);
             ivAnimationPlayerSun = new com.benjaminsklar.ra.SunImageView(this);
             ivAnimationPlayerSun.setImageResource(R.drawable.tile_sun);
+            ivAnimationPlayerSun.setVisibility(View.INVISIBLE);
             rlGameActivity.addView(ivAnimationPlayerSun);
 
             gameActivityUpdate.copyAuctionSunLayout(ivAnimationAuctionSun);

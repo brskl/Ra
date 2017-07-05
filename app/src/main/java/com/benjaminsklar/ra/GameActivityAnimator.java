@@ -140,7 +140,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
 
         // TODO: Add swapping of Sun tiles
         animatorSetTile = new AnimatorSet();
-        gameActivity.gameActivityUpdate.copyAuctionSunLayout(gameActivity.ivAnimationAuctionSun);
+        gameActivity.gameActivityUpdate.copyAuctionSunLayout(gameActivity.ivAnimationAuctionSun); // TODO: Can this be done in GameActivity.onCreate
         gameActivity.gameActivityUpdate.copyAuctionSunPosval(gameActivity.ivAnimationAuctionSun);
         gameActivityAnimator = new GameActivityAnimator();
         gameActivityAnimator.imageView = gameActivity.ivAnimationAuctionSun;
@@ -150,6 +150,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", gameActivityAnimator.imageView.getY() -100);
         animatorSetTile.playTogether(animTrans1x, animTrans1y);
         animatorSetTile.setDuration(lDuration);
+        animatorSetTile.setStartDelay(lDelayCurrent);
         animatorSetTile.addListener(gameActivityAnimator);
         animatorList.add(animatorSetTile);
 

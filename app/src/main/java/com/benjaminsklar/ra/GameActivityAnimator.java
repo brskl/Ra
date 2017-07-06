@@ -7,6 +7,8 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
 import java.util.ArrayList;
 
 
@@ -138,17 +140,20 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
             animatorList.add(animatorSetTile);
         }
 
-        // TODO: Add swapping of Sun tiles
-        int iPlayerSunsNext;
+        // Swapping of Sun tiles
+        int iPlayerSunsNext, iPlayerSuns;
         float fScaleX, fScaleY;
         float imageWidth, imageHeight;
-        com.benjaminsklar.ra.SunImageView sivPlayerSunDest;
+        com.benjaminsklar.ra.SunImageView sivPlayerSunDest, sivPlayerSunStart;
         animatorSetTile = new AnimatorSet();
         gameActivity.gameActivityUpdate.copyAuctionSunLayout(gameActivity.ivAnimationAuctionSun); // TODO: Can this be done in GameActivity.onCreate
         gameActivity.gameActivityUpdate.copyAuctionSunPosval(gameActivity.ivAnimationAuctionSun);
         gameActivityAnimator = new GameActivityAnimator();
         gameActivityAnimator.imageView = gameActivity.ivAnimationAuctionSun;
         gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
+        rectStart.left = gameActivityAnimator.imageView.getLeft();
+        rectStart.top = gameActivityAnimator.imageView.getTop();
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(gameActivityAnimator.imageView, rectStart);
 
         // move auction Sun to player
         iPlayerSunsNext = 0; // TODO: Calculate this better
@@ -172,7 +177,36 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         animatorList.add(animatorSetTile);
 
         // move player sun to auction
-        // TODO
+        lDelayCurrent += lDelay;
+        rectDest.set(rectStart);
+        fScaleX = 1.0f / fScaleX;
+        fScaleY = 1.0f / fScaleY;
+        iPlayerSuns = 0; // TODO: Calculate this better
+        sivPlayerSunStart = (com.benjaminsklar.ra.SunImageView) gameActivity.allPlayerSuns[game.getAuctionPlayerHighestIndex()].getChildAt(iPlayerSuns);
+        sivPlayerSunStart.getDrawingRect(rectStart);
+        gameActivity.rlGameActivity.offsetDescendantRectToMyCoords(sivPlayerSunStart, rectStart);
+        imageHeight = rectStart.height();
+        imageWidth = rectStart.width();
+        animatorSetTile = new AnimatorSet();
+        gameActivityAnimator = new GameActivityAnimator();
+        gameActivityAnimator.imageView = gameActivity.ivAnimationPlayerSun;
+        RelativeLayout.LayoutParams imageLayout = new RelativeLayout.LayoutParams(gameActivity.ivAnimationPlayerSun.getWidth(), gameActivity.ivAnimationPlayerSun.getHeight());
+        gameActivityAnimator.imageView.setLayoutParams(imageLayout);
+        gameActivityAnimator.imageView.setX(rectStart.left);
+        gameActivityAnimator.imageView.setY(rectStart.top);
+        // TODO: call SunImageView.setiValue()
+        gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
+
+        animTrans1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "x", rectDest.centerX() - (imageWidth / 2.0f));
+        animTrans1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "y", rectDest.centerY() - (imageHeight / 2.0f));
+        animScale1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 1.0f, fScaleX);
+        animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 1.0f, fScaleY);
+        animatorSetTile.playTogether(animTrans1x, animTrans1y, animScale1x, animScale1y);
+        animatorSetTile.setDuration(lDuration);
+        animatorSetTile.setStartDelay(lDelayCurrent);
+        animatorSetTile.addListener(gameActivityAnimator);
+        animatorList.add(animatorSetTile);
+
 
         animatorSet.playTogether(animatorList);
         return animatorSet;

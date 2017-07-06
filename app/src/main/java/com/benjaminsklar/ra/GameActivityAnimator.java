@@ -150,6 +150,7 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         gameActivityAnimator.imageView = gameActivity.ivAnimationAuctionSun;
         gameActivityAnimator.imageView.setVisibility(View.VISIBLE);
 
+        // move auction Sun to player
         iPlayerSunsNext = 0; // TODO: Calculate this better
         sivPlayerSunDest = (com.benjaminsklar.ra.SunImageView) gameActivity.allPlayerSunsNext[game.getAuctionPlayerHighestIndex()].getChildAt(iPlayerSunsNext);
         sivPlayerSunDest.getDrawingRect(rectDest);
@@ -165,10 +166,13 @@ public class GameActivityAnimator implements Animator.AnimatorListener {
         animScale1x = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleX", 1.0f, fScaleX);
         animScale1y = ObjectAnimator.ofFloat(gameActivityAnimator.imageView, "scaleY", 1.0f, fScaleY);
         animatorSetTile.playTogether(animTrans1x, animTrans1y, animScale1x, animScale1y);
-        animatorSetTile.setDuration(lDuration*4);
+        animatorSetTile.setDuration(lDuration);
         animatorSetTile.setStartDelay(lDelayCurrent);
         animatorSetTile.addListener(gameActivityAnimator);
         animatorList.add(animatorSetTile);
+
+        // move player sun to auction
+        // TODO
 
         animatorSet.playTogether(animatorList);
         return animatorSet;
